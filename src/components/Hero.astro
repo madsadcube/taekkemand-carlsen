@@ -12,12 +12,21 @@ const {
 } = Astro.props
 ---
 
-<section
-  class="relative min-h-screen flex items-center justify-center overflow-hidden"
-  style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://taekkemandcarlsen.dk/img/straatag1.jpg') center/cover no-repeat;"
->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- LCP image as proper <img> so browser can preload it -->
+  <img
+    src="https://taekkemandcarlsen.dk/img/straatag1.jpg"
+    alt=""
+    fetchpriority="high"
+    loading="eager"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover"
+    aria-hidden="true"
+  />
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/55"></div>
   <!-- USP bar at top (visible below nav) -->
-  <div class="absolute top-20 left-0 right-0 bg-black/30 backdrop-blur-sm hidden lg:block">
+  <div class="absolute top-20 left-0 right-0 bg-black/30 backdrop-blur-sm hidden lg:block z-10">
     <div class="max-w-7xl mx-auto px-6 py-2">
       <ul class="flex items-center justify-center gap-8 text-white text-sm font-medium">
         <li class="flex items-center gap-2">

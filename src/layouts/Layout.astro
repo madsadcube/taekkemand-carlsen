@@ -58,7 +58,7 @@ const schema = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="robots" content={canonical.includes('vercel.app') ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
@@ -78,10 +78,15 @@ const schema = {
       })(window,document,'script','dataLayer','GTM-NQZXR4D6');
     </script>
 
-    <!-- Fonts -->
+    <!-- Preload LCP hero image -->
+    <link rel="preload" as="image" href="https://taekkemandcarlsen.dk/img/straatag1.jpg" fetchpriority="high" />
+
+    <!-- Fonts — non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Schema.org -->
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
