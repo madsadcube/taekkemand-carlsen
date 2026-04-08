@@ -1,0 +1,41 @@
+---
+import { cities } from '../data/cities'
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Hero from '../components/Hero.astro'
+import About from '../components/About.astro'
+import Services from '../components/Services.astro'
+import Pricing from '../components/Pricing.astro'
+import Testimonials from '../components/Testimonials.astro'
+import Contact from '../components/Contact.astro'
+import Footer from '../components/Footer.astro'
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }))
+}
+
+const { city } = Astro.props
+---
+
+<Layout
+  title={`Tækkemand i ${city.name} | Stråtag & Tagrenovering`}
+  description={city.description}
+  canonical={`https://taekkemandcarlsen.dk/${city.slug}`}
+  city={city.name}
+>
+  <Nav />
+  <Hero
+    heading={`Professionel tækkemand i ${city.name} — levering på under 90 dage`}
+    subheading={`Tækkemand Carlsen betjener ${city.region} og omegn. Med 15+ års erfaring leverer vi stråtag, reparation og vedligehold til konkurrencedygtige priser.`}
+    city={city.name}
+  />
+  <About city={city.name} />
+  <Services />
+  <Pricing />
+  <Testimonials />
+  <Contact />
+  <Footer />
+</Layout>

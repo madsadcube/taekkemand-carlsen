@@ -1,0 +1,149 @@
+---
+const navLinks = [
+  {
+    label: 'Stråtag',
+    dropdown: [
+      { label: 'Stråtag', href: '/straatag' },
+      { label: 'Holdbarhed', href: '/holdbarhed-straatag' },
+      { label: 'Vedligeholdelse', href: '/vedligehold-straatag' },
+      { label: 'Algebehandling', href: '/algebehandling' },
+      { label: 'Reparation', href: '/reparation-straatag' },
+      { label: 'Mønning/Rygning', href: '/reparation-monning' },
+      { label: 'Skorsten', href: '/skorstensrenovering' },
+      { label: 'Tagrender', href: '/#kontakt' },
+    ],
+  },
+  { label: 'Din Garanti', href: '/#om-os' },
+  { label: 'Priser', href: '/#priser' },
+  { label: 'Om os', href: '/#om-os' },
+  { label: 'Kontakt os', href: '/#kontakt' },
+]
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+  style="background: rgba(30,32,34,0)"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img
+          src="https://taekkemandcarlsen.dk/img/logo-light.png"
+          alt="Tækkemand Carlsen logo"
+          width="140"
+          height="50"
+          class="h-12 w-auto"
+          id="nav-logo"
+        />
+      </a>
+
+      <!-- Desktop menu -->
+      <div class="hidden md:flex items-center gap-6">
+        {navLinks.map((link) =>
+          link.dropdown ? (
+            <div class="relative group">
+              <button class="text-white hover:text-primary font-semibold flex items-center gap-1 transition-colors nav-link">
+                {link.label}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {link.dropdown.map((item) => (
+                  <a
+                    href={item.href}
+                    class="block px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary text-sm font-medium transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class="text-white hover:text-primary font-semibold transition-colors nav-link"
+            >
+              {link.label}
+            </a>
+          )
+        )}
+        <a href="tel:+4589883453" class="btn-primary text-sm">
+          Ring nu: 89 88 34 53
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden text-white p-2" aria-label="Åbn menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path id="icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gray-700">
+    <div class="px-4 py-4 space-y-2">
+      {navLinks.map((link) =>
+        link.dropdown ? (
+          <details class="group">
+            <summary class="text-white font-semibold py-2 cursor-pointer list-none flex justify-between items-center">
+              {link.label}
+              <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="pl-4 mt-1 space-y-1">
+              {link.dropdown.map((item) => (
+                <a href={item.href} class="block text-gray-300 hover:text-primary py-1.5 text-sm transition-colors">
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <a href={link.href} class="block text-white font-semibold py-2 hover:text-primary transition-colors">
+            {link.label}
+          </a>
+        )
+      )}
+      <a href="tel:+4589883453" class="btn-primary block text-center mt-4">
+        Ring nu: 89 88 34 53
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar')!
+  const logo = document.getElementById('nav-logo') as HTMLImageElement
+  const menuBtn = document.getElementById('menu-btn')!
+  const mobileMenu = document.getElementById('mobile-menu')!
+  const iconOpen = document.getElementById('icon-open')!
+  const iconClose = document.getElementById('icon-close')!
+
+  // Scroll: change navbar bg
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.style.background = 'rgba(30,32,34,0.97)'
+      navbar.style.boxShadow = '0 2px 12px rgba(0,0,0,0.3)'
+      logo.src = 'https://taekkemandcarlsen.dk/img/logo-dark.png'
+    } else {
+      navbar.style.background = 'rgba(30,32,34,0)'
+      navbar.style.boxShadow = 'none'
+      logo.src = 'https://taekkemandcarlsen.dk/img/logo-light.png'
+    }
+  })
+
+  // Mobile toggle
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden')
+    mobileMenu.classList.toggle('hidden')
+    iconOpen.classList.toggle('hidden', !isOpen)
+    iconClose.classList.toggle('hidden', isOpen)
+  })
+</script>

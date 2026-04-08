@@ -1,0 +1,98 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description: string
+  canonical?: string
+  city?: string
+}
+
+const {
+  title,
+  description,
+  canonical = 'https://taekkemandcarlsen.dk/',
+  city,
+} = Astro.props
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "RoofingContractor",
+  "name": "Tækkemand Carlsen",
+  "url": "https://taekkemandcarlsen.dk/",
+  "logo": "https://taekkemandcarlsen.dk/img/logo.png",
+  "image": "https://taekkemandcarlsen.dk/img/og-image.jpg",
+  "description": "Professionel tækkemand i Ringsted med speciale i stråtag, tagrenovering og vedligehold.",
+  "telephone": "+45 8988 3453",
+  "email": "post@taekkemandcarlsen.dk",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nørretorv 30",
+    "addressLocality": "Ringsted",
+    "postalCode": "4100",
+    "addressCountry": "DK"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "areaServed": city
+    ? { "@type": "City", "name": city }
+    : { "@type": "State", "name": "Sjælland" },
+  "sameAs": [
+    "https://www.facebook.com/taekkemandcarlsen",
+    "https://www.instagram.com/taekkemandcarlsen"
+  ]
+}
+---
+
+<!doctype html>
+<html lang="da-DK">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://taekkemandcarlsen.dk/img/og-image.jpg" />
+    <meta property="og:locale" content="da_DK" />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NQZXR4D6');
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <!-- GTM noscript -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQZXR4D6"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <slot />
+  </body>
+</html>

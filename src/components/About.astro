@@ -1,0 +1,83 @@
+---
+interface Props {
+  city?: string
+}
+const { city } = Astro.props
+---
+
+<section id="om-os" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section 1: Garanti -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">
+          Mangeårig erfaring gør at vi kan garantere levering indenfor 90 dage
+        </h2>
+        <p class="text-gray-600 text-lg mb-6">
+          Hos Tækkemand Carlsen kan du stole på vores omfattende erfaring og ekspertise som tækkefirma. Vi tilbyder en bred vifte af behandlinger til vedligeholdelse af stråtage.
+        </p>
+        <ul class="space-y-3 mb-8">
+          {[
+            'Alt arbejde udføres i henhold til Tækkelaugets vejledning "Veludført Stråtag"',
+            'God projektstyring giver leveringsgaranti',
+            'Materialer i den bedste kvalitet',
+            'Levering maksimalt 90 dage — garanteret',
+          ].map((item) => (
+            <li class="flex items-start gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href="#kontakt" class="btn-primary">Få et uforpligtende tilbud</a>
+      </div>
+      <div class="relative">
+        <img
+          src="https://taekkemandcarlsen.dk/img/straatag1.jpg"
+          alt="Stråtag arbejde af Tækkemand Carlsen"
+          width="600"
+          height="450"
+          loading="lazy"
+          class="rounded-lg shadow-xl w-full object-cover"
+        />
+        <div class="absolute -bottom-6 -left-6 bg-primary text-white p-5 rounded-lg shadow-lg">
+          <div class="text-4xl font-bold">15+</div>
+          <div class="text-sm font-medium opacity-90">års erfaring</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Om os -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img
+          src="https://taekkemandcarlsen.dk/img/rep_straatag4.jpeg"
+          alt="Tækkemand Carlsen team"
+          width="600"
+          height="450"
+          loading="lazy"
+          class="rounded-lg shadow-xl w-full object-cover"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">
+          15 års erfaring med stråtag{city ? ` i ${city}` : ' og andre services'}
+        </h2>
+        <p class="text-gray-600 text-lg mb-4">
+          Har dit stråtag brug for professionel pleje? Tækkemand Carlsen kan hjælpe dig. Med 15 års erfaring tilbyder vi professionel reparation og vedligeholdelse af stråtage samt en række serviceydelser, der holder dit hjem pænt og velholdt.
+        </p>
+        <p class="text-gray-600 mb-6">
+          {city
+            ? `Vi betjener kunder i ${city} og hele det omgivende område. Vi leverer flotte resultater med hurtig responstid, så du ikke skal vente længe på at få arbejdet udført.`
+            : 'Vi er baseret i Ringsted og betjener kunder i hele området, herunder Sorø og Næstved. Vi leverer flotte resultater med hurtig responstid, så du ikke skal vente længe på at få arbejdet udført.'}
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#services" class="btn-primary">Se vores services</a>
+          <a href="#priser" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold px-6 py-3 rounded transition-colors">Se vores priser</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

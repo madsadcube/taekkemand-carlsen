@@ -1,0 +1,72 @@
+---
+interface Props {
+  heading?: string
+  subheading?: string
+  city?: string
+}
+
+const {
+  heading = 'Lokal service virksomhed med ekspertise i stråtækt tag og levering på under 90 dage!',
+  subheading = 'Velkommen til Tækkemand Carlsen. Vi har arbejdet med tækkefaget i mere end 15 år. Vores servicevirksomhed er specialiseret i stråtækning, hvor vi altid leverer flotte resultater med hurtig responstid.',
+  city,
+} = Astro.props
+---
+
+<section
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://taekkemandcarlsen.dk/img/straatag1.jpg') center/cover no-repeat;"
+>
+  <!-- USP bar at top (visible below nav) -->
+  <div class="absolute top-20 left-0 right-0 bg-black/30 backdrop-blur-sm hidden lg:block">
+    <div class="max-w-7xl mx-auto px-6 py-2">
+      <ul class="flex items-center justify-center gap-8 text-white text-sm font-medium">
+        <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Nyt stråtag på under 90 dage
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Reparation af alle typer skader
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          15+ års erfaring
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Fjernelse af skadelige alger
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero content -->
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white pt-32 pb-20">
+    {city && (
+      <p class="text-primary font-semibold uppercase tracking-widest text-sm mb-4">
+        Tækkemand i {city}
+      </p>
+    )}
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+      {heading}
+    </h1>
+    <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+      {subheading}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#kontakt" class="btn-primary text-lg px-8 py-4">
+        Få et uforpligtende tilbud
+      </a>
+      <a href="#priser" class="btn-outline text-lg px-8 py-4">
+        Se vores priser
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</section>
