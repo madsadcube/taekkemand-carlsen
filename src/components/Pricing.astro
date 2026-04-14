@@ -1,0 +1,36 @@
+---
+---
+
+<section id="priser" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-brown mb-4">Hvad koster det?</h2>
+      <p class="text-brown-mid leading-relaxed">
+        Prisen afhænger af tagets størrelse, tilstand og type af arbejde. Vi giver altid et præcist tilbud efter besigtigelse.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      {[
+        { ydelse: 'Taginspektion', pris: 'Gratis', detalje: 'Vi kigger på dit tag og giver en ærlig vurdering' },
+        { ydelse: 'Reparation', pris: 'Fra 5.000 kr.', detalje: 'Mindre reparationer og udskiftning af slidte partier' },
+        { ydelse: 'Nyt stråtag', pris: 'Tilbud', detalje: 'Komplet ny tækning — pris afhænger af husets størrelse' },
+      ].map((item) => (
+        <div class="border border-cream-dark rounded-2xl p-6 text-center">
+          <p class="text-brown-mid text-sm mb-2">{item.ydelse}</p>
+          <p class="font-serif text-2xl font-bold text-brown mb-2">{item.pris}</p>
+          <p class="text-brown-mid text-xs leading-relaxed">{item.detalje}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <p class="text-brown-mid text-sm mb-6">Ingen skjulte tillæg. Betaling først ved godkendt arbejde.</p>
+      <a href="#kontakt" class="inline-block bg-green hover:bg-green-dark text-white font-bold py-3.5 px-10 rounded-lg transition-colors">
+        Få et uforpligtende tilbud
+      </a>
+    </div>
+
+  </div>
+</section>

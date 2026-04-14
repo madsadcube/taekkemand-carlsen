@@ -1,0 +1,86 @@
+---
+---
+
+<section id="saadan-arbejder-vi" class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-brown mb-4">
+        Sådan arbejder vi
+      </h2>
+      <p class="text-brown-mid leading-relaxed">
+        Fra første kontakt til afleveret opgave — vi holder dig informeret hele vejen.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      {[
+        {
+          trin: '1',
+          titel: 'Kontakt & besigtigelse',
+          tekst: 'Ring eller udfyld formularen. Vi besøger dig og ser på opgaven — helt uforpligtende.',
+        },
+        {
+          trin: '2',
+          titel: 'Klart tilbud',
+          tekst: 'Du modtager et detaljeret, gennemsigtigt tilbud. Ingen skjulte tillæg eller overraskelser.',
+        },
+        {
+          trin: '3',
+          titel: 'Professionel udførelse',
+          tekst: 'Opgaven udføres af erfarne fagfolk. Vi holder dig opdateret undervejs og rydder op bagefter.',
+        },
+      ].map((item) => (
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-cream-dark">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white mb-4 text-lg" style="background:#936704">
+            {item.trin}
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brown mb-2">{item.titel}</h3>
+          <p class="text-brown-mid text-sm leading-relaxed">{item.tekst}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Billede + tekst -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="rounded-2xl overflow-hidden shadow-xl">
+        <img
+          src="/img/rep_straatag4.webp"
+          alt="Tækkemand Carlsen udfører stråtag"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-96 object-cover"
+        />
+      </div>
+      <div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-brown mb-4">
+          Hvorfor vælge <span class="text-gold">Tækkemand Carlsen?</span>
+        </h3>
+        <ul class="space-y-4 mb-8">
+          {[
+            { titel: 'Stor erfaring', tekst: 'Over 50 års erfaring med nyt stråtag, renovering og vedligehold.' },
+            { titel: 'Klar kommunikation', tekst: 'Ærlig rådgivning fra start til slut — ingen overraskelser.' },
+            { titel: 'Fair priser', tekst: 'Gennemsigtigt tilbud. Du betaler ikke mere end aftalt.' },
+            { titel: 'Hurtig udførelse', tekst: 'Nye opgaver udføres inden 90 dage, mønning inden seks uger.' },
+          ].map((item) => (
+            <li class="flex gap-4">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#53A316">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-bold text-brown text-sm">{item.titel}</p>
+                <p class="text-brown-mid text-sm leading-relaxed">{item.tekst}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <a href="#kontakt" class="inline-block bg-green hover:bg-green-dark text-white font-bold py-3 px-8 rounded-lg transition-colors">
+          Få et tilbud
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

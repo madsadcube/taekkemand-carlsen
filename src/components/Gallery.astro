@@ -1,0 +1,35 @@
+---
+const billeder = [
+  { src: '/img/straatag1.jpg', alt: 'Nyt stråtag på gammelt hus' },
+  { src: '/img/reparation3.webp', alt: 'Reparation af stråtag' },
+  { src: '/img/vedligehold1.webp', alt: 'Vedligehold af stråtag' },
+  { src: '/img/rygning.webp', alt: 'Mønning og rygning' },
+  { src: '/img/skorsten3.webp', alt: 'Skorstensrenovering' },
+  { src: '/img/algebehandling2.webp', alt: 'Algebehandling af tag' },
+]
+---
+
+<section id="billeder" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-brown mb-4">Billeder af vores arbejde</h2>
+      <p class="text-brown-mid">Se eksempler på det håndværk vi er stolte af.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {billeder.map((b) => (
+        <div class="rounded-xl overflow-hidden shadow-sm aspect-square">
+          <img
+            src={b.src}
+            alt={b.alt}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

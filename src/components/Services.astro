@@ -1,0 +1,32 @@
+---
+---
+
+<section id="ydelser" class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-brown mb-4">Vores ydelser</h2>
+      <p class="text-brown-mid">Alt inden for tækning og tagvedligehold — udført af erfarne fagfolk.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {[
+        'Nyt stråtag',
+        'Reparation af stråtag',
+        'Renovering af stråtag',
+        'Mønning og rygning',
+        'Vedligeholdelse',
+        'Algebehandling',
+        'Mosbehandling',
+        'Taginspektion',
+        'Skorstensrenovering',
+      ].map((ydelse) => (
+        <div class="flex items-center gap-3 bg-white border border-cream-dark rounded-xl px-4 py-3">
+          <span class="w-4 h-4 rounded-full flex-shrink-0" style="background:#53A316"></span>
+          <span class="text-brown text-sm font-medium">{ydelse}</span>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
