@@ -1,0 +1,260 @@
+---
+import { cities } from '../../data/cities'
+import { services } from '../../data/services'
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Hero from '../../components/Hero.astro'
+import About from '../../components/About.astro'
+import Pricing from '../../components/Pricing.astro'
+import Testimonials from '../../components/Testimonials.astro'
+import Gallery from '../../components/Gallery.astro'
+import Contact from '../../components/Contact.astro'
+import Footer from '../../components/Footer.astro'
+
+// Generer alle kombinationer af tagdækning services × byer
+export function getStaticPaths() {
+  const tagdaekningServices = services.filter((s) => s.category === 'tagdaekning')
+  const paths = []
+  for (const service of tagdaekningServices) {
+    for (const city of cities) {
+      paths.push({
+        params: { service: service.slug, city: city.slug },
+        props: { service, city },
+      })
+    }
+  }
+  return paths
+}
+
+const { service, city } = Astro.props
+
+// Relaterede services i samme silo (eksklusive nuværende)
+const relatedServices = services
+  .filter((s) => s.category === 'tagdaekning' && s.slug !== service.slug)
+  .slice(0, 3)
+
+// Nærliggende byer i samme region
+const nearbyCities = cities
+  .filter((c) => c.region === city.region && c.slug !== city.slug)
+  .slice(0, 4)
+
+// PAA spørgsmål
+const paaQuestions = [
+  `Hvad koster ${service.title.toLowerCase()} i ${city.name}?`,
+  `Hvem er den bedste tækkemand i ${city.name}?`,
+  `Hvornår skal man have lavet ${service.title.toLowerCase()}?`,
+]
+
+// LSI H2
+const lsiHeading = `${service.title} i ${city.name} — lokal specialist i ${city.region}`
+---
+
+<Layout
+  title={`${service.title} ${city.name} | Tækkemand i ${city.name} — Tækkemand Carlsen`}
+  description={`Professionel ${service.title.toLowerCase()} i ${city.name}. Tækkemand Carlsen betjener ${city.name} og hele ${city.region}. Få et gratis og uforpligtende tilbud i dag.`}
+  canonical={`https://taekkemandcarlsen.dk/${service.slug}/${city.slug}`}
+>
+  <Nav />
+
+  <!-- Breadcrumb -->
+  <nav class="bg-cream pt-24 pb-4" aria-label="Breadcrumb">
+    <div class="max-w-4xl mx-auto px-6">
+      <ol class="flex items-center gap-2 text-sm text-brown-mid flex-wrap">
+        <li><a href="/" class="hover:text-gold transition-colors">Forside</a></li>
+        <li class="text-stone-400">/</li>
+        <li><a href="/tagdaekning/" class="hover:text-gold transition-colors">Tagdækning</a></li>
+        <li class="text-stone-400">/</li>
+        <li><a href={`/tagdaekning/${service.slug}`} class="hover:text-gold transition-colors">{service.title}</a></li>
+        <li class="text-stone-400">/</li>
+        <li class="text-brown font-semibold">{city.name}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- H1 + intro -->
+  <section class="bg-cream pb-12">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-gold font-bold uppercase tracking-widest text-sm mb-3">
+        Tækkemand i {city.name}
+      </p>
+      <h1 class="font-serif text-4xl md:text-5xl font-bold text-brown mb-6 leading-tight">
+        {service.title} i {city.name}
+      </h1>
+      <p class="text-brown-mid text-lg leading-relaxed mb-8 max-w-2xl">
+        Tækkemand Carlsen er din lokale specialist i {service.title.toLowerCase()} i {city.name} og hele {city.region}.
+        Med over 50 års erfaring i faget leverer vi professionelt arbejde til fair priser og med garanti for kvalitet.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#kontakt" class="btn-primary px-8 py-4 rounded-lg inline-block text-center">
+          Få gratis og uforpligtende tilbud
+        </a>
+        <a href="tel:+4589883455" class="btn-outline px-8 py-4 rounded-lg inline-block text-center">
+          Ring: 89 88 34 55
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Billede + brødtekst -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      {service.image && (
+        <div class="rounded-2xl overflow-hidden shadow-lg mb-10">
+          <img
+            src={service.image}
+            alt={`${service.title} i ${city.name}`}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-72 object-cover"
+          />
+        </div>
+      )}
+
+      <h2 class="font-serif text-3xl font-bold text-brown mb-4">{lsiHeading}</h2>
+      <div class="space-y-4 text-brown-mid leading-relaxed">
+        <p>
+          Leder du efter en dygtig tækkemand i {city.name}? Tækkemand Carlsen er den lokale specialist
+          med fast base i Nordsjælland. Vi udfører {service.title.toLowerCase()} professionelt og til
+          gennemsigtige priser — med gratis besigtigelse og uforpligtende tilbud.
+        </p>
+        <p>
+          {service.description}
+        </p>
+        <p>
+          Vi betjener {city.name}, {nearbyCities.slice(0, 2).map(c => c.name).join(', ')} og hele {city.region}.
+          Ring til os på 89 88 34 55 eller udfyld formularen — vi svarer inden for 24 timer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAA -->
+  <section class="bg-cream py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="font-serif text-2xl font-bold text-brown mb-8">
+        Ofte stillede spørgsmål om {service.title.toLowerCase()} i {city.name}
+      </h3>
+      <div class="space-y-4">
+        {paaQuestions.map((q, i) => (
+          <details class="bg-white border border-cream-dark rounded-xl overflow-hidden group">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-brown hover:text-gold transition-colors list-none">
+              {q}
+              <svg class="w-5 h-5 flex-shrink-0 transition-transform group-open:rotate-180 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-4 text-brown-mid text-sm leading-relaxed">
+              {i === 0 && <p>Prisen afhænger af tagets størrelse og tilstand. Kontakt os for en gratis besigtigelse og et præcist, uforpligtende tilbud på {service.title.toLowerCase()} i {city.name}.</p>}
+              {i === 1 && <p>Tækkemand Carlsen er din lokale specialist i {city.name} og {city.region}. Vi har 50+ års erfaring og leverer altid arbejde i topkvalitet med fuld gennemsigtighed i pris og proces.</p>}
+              {i === 2 && <p>Vi anbefaler at kontakte os for en gratis taginspektion, der afslører om dit tag trænger til {service.title.toLowerCase()} nu eller inden for de næste år. Det er gratis og uforpligtende.</p>}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Intern linking (Pat Quiro SOP) -->
+  <section class="bg-cream py-12 border-t border-cream-dark">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="font-serif text-xl font-bold text-brown mb-2">
+        Vores tagdækningsydelser i {city.name}
+      </h3>
+      <p class="text-brown-mid text-sm mb-6">
+        Se hvad vi ellers tilbyder — eller{' '}
+        <a href="/" class="text-gold font-semibold hover:underline">gå til forsiden</a>.
+      </p>
+
+      <!-- Relaterede services (grønne knapper) -->
+      <div class="grid sm:grid-cols-3 gap-3 mb-6">
+        {relatedServices.map((rel) => (
+          <a
+            href={`/${rel.slug}/${city.slug}`}
+            class="flex items-center gap-2 bg-green hover:bg-green-dark text-white font-semibold text-sm px-4 py-3 rounded-lg transition-colors"
+          >
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+            {rel.title} i {city.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Opad-links: generisk serviceside + byside + homepage -->
+      <div class="flex flex-wrap gap-4 border-t border-cream-dark pt-5">
+        <a href={`/tagdaekning/${service.slug}`} class="text-sm font-semibold text-gold hover:underline">
+          ← {service.title} — generel side
+        </a>
+        <a href={`/${city.slug}`} class="text-sm font-semibold text-gold hover:underline">
+          ← Tækkemand i {city.name}
+        </a>
+        <a href="/" class="text-sm font-semibold text-gold hover:underline">
+          ← Tækkemand Carlsen — forside
+        </a>
+      </div>
+
+      <!-- Nærliggende byer -->
+      {nearbyCities.length > 0 && (
+        <div class="mt-6">
+          <p class="text-xs font-semibold text-brown-mid uppercase tracking-widest mb-3">
+            {service.title} i nærliggende byer
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {nearbyCities.map((c) => (
+              <a
+                href={`/${service.slug}/${c.slug}`}
+                class="text-sm text-brown font-semibold hover:text-gold transition-colors border border-cream-dark rounded-lg px-3 py-1.5 bg-white hover:bg-cream"
+              >
+                {c.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Kontaktformular -->
+  <section id="kontakt" class="bg-brown py-16">
+    <div class="max-w-xl mx-auto px-6">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="font-serif text-2xl font-bold text-brown mb-2">
+          Få tilbud på {service.title.toLowerCase()} i {city.name}
+        </h2>
+        <p class="text-brown-mid text-sm mb-6">Gratis besigtigelse — vi svarer inden for 24 timer.</p>
+        <form
+          action="https://formsubmit.co/post@taekkemandcarlsen.dk"
+          method="POST"
+          class="space-y-4"
+        >
+          <input type="hidden" name="_subject" value={`${service.title} i ${city.name}`} />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://taekkemandcarlsen.dk/?tak=1" />
+          <input type="hidden" name="opgave" value={service.title} />
+          <input type="hidden" name="by" value={city.name} />
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Navn</label>
+            <input type="text" name="navn" required placeholder="Dit fulde navn"
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Telefon</label>
+            <input type="tel" name="telefon" required placeholder="Dit telefonnummer"
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Besked (valgfri)</label>
+            <textarea name="besked" rows="3" placeholder="Beskriv din opgave..."
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-green hover:bg-green-dark text-white font-bold py-3.5 rounded-lg transition-colors text-base">
+            Send forespørgsel — gratis og uforpligtende
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

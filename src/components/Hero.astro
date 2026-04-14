@@ -6,76 +6,145 @@ interface Props {
 }
 
 const {
-  heading = 'Lokal service virksomhed med ekspertise i stråtækt tag og levering på under 90 dage!',
-  subheading = 'Velkommen til Tækkemand Carlsen. Vi har arbejdet med tækkefaget i mere end 15 år. Vores servicevirksomhed er specialiseret i stråtækning, hvor vi altid leverer flotte resultater med hurtig responstid.',
+  heading = 'Professionel tækkemand med over <span class="text-gold">50 års</span> erfaring',
+  subheading = 'Uanset om det gælder nyt stråtag, reparation eller mønning, hjælper vi dig sikkert videre – på hele Sjælland.',
   city,
 } = Astro.props
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- LCP image as proper <img> so browser can preload it -->
-  <img
-    src="/img/straatag1.jpg"
-    alt=""
-    fetchpriority="high"
-    loading="eager"
-    decoding="async"
-    class="absolute inset-0 w-full h-full object-cover"
-    aria-hidden="true"
-  />
-  <!-- Dark overlay -->
-  <div class="absolute inset-0 bg-black/55"></div>
-  <!-- USP bar at top (visible below nav) -->
-  <div class="absolute top-20 left-0 right-0 bg-black/30 backdrop-blur-sm hidden lg:block z-10">
-    <div class="max-w-7xl mx-auto px-6 py-2">
-      <ul class="flex items-center justify-center gap-8 text-white text-sm font-medium">
-        <li class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Nyt stråtag på under 90 dage
-        </li>
-        <li class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Reparation af alle typer skader
-        </li>
-        <li class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          15+ års erfaring
-        </li>
-        <li class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Fjernelse af skadelige alger
-        </li>
-      </ul>
-    </div>
-  </div>
+<section class="pt-28 pb-16" style="background: linear-gradient(180deg, #FFFFFF 0%, rgba(235,207,162,0.65) 100%);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-  <!-- Hero content -->
-  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white pt-32 pb-20">
-    {city && (
-      <p class="text-primary font-semibold uppercase tracking-widest text-sm mb-4">
-        Tækkemand i {city}
-      </p>
-    )}
-    <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
-      {heading}
-    </h1>
-    <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
-      {subheading}
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#kontakt" class="btn-primary text-lg px-8 py-4">
-        Få et uforpligtende tilbud
-      </a>
-      <a href="#priser" class="btn-outline text-lg px-8 py-4">
-        Se vores priser
-      </a>
+    <!-- Overskrift (centreret) -->
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      {city && (
+        <p class="text-gold font-bold uppercase tracking-widest text-sm mb-3">Tækkemand i {city}</p>
+      )}
+      <h1
+        class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-brown leading-tight mb-5"
+        set:html={heading}
+      />
+      <p class="text-brown-mid text-lg leading-relaxed">{subheading}</p>
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-    <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>
+    <!-- To kolonner: billede + USPs venstre / formular højre -->
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+
+      <!-- VENSTRE: billede + USPs + citat -->
+      <div>
+        <div class="rounded-2xl overflow-hidden shadow-lg mb-6">
+          <img
+            src="/img/straatag1.jpg"
+            alt="Professionelt stråtag lagt af Tækkemand Carlsen"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            class="w-full h-72 object-cover"
+          />
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-cream-dark">
+          <p class="font-bold text-brown mb-4">Derfor vælger kunderne os:</p>
+          <ul class="space-y-3 mb-6">
+            {[
+              'Fast pris – ingen ubehagelige overraskelser',
+              'Tydelig proces og løbende opdatering',
+              '50+ års erfaring med stråtag på Sjælland',
+            ].map((usp) => (
+              <li class="flex items-center gap-3 text-brown-mid text-sm">
+                <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:#53A316">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </span>
+                <span class="font-medium">{usp}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="border-t border-cream-dark pt-4">
+            <p class="text-brown-mid text-sm italic leading-relaxed">
+              "Vi fik et klart og gennemsigtigt tilbud, og arbejdet blev udført præcis som aftalt. Det gav virkelig ro i maven."
+            </p>
+            <p class="text-brown font-semibold text-sm mt-2">— Maria, Holte</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HØJRE: formular -->
+      <div class="sticky top-24">
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-cream-dark">
+          <h2 class="font-serif text-2xl font-bold text-brown mb-2">
+            Få 100% uforpligtende tilbud på tækkearbejde
+          </h2>
+          <p class="text-brown-mid text-sm mb-6">
+            Fortæl os hvad du har brug for hjælp til, og vi vender tilbage med et skræddersyet og gennemsigtigt tilbud.
+          </p>
+
+          <form
+            action="https://formsubmit.co/post@taekkemandcarlsen.dk"
+            method="POST"
+            enctype="multipart/form-data"
+            class="space-y-4"
+          >
+            <input type="hidden" name="_subject" value="Ny forespørgsel fra hjemmesiden" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://taekkemandcarlsen.dk/?tak=1" />
+
+            <div>
+              <label class="block text-sm font-semibold text-brown mb-1" for="opgave">Hvad skal du have lavet?</label>
+              <select id="opgave" name="opgave" required class="w-full border border-gray-400 rounded-md px-4 py-2 text-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-gold">
+                <option value="" disabled selected>Vælg mulighed</option>
+                <option>Nyt stråtag</option>
+                <option>Reparation af stråtag</option>
+                <option>Renovering af stråtag</option>
+                <option>Mønning / rygning</option>
+                <option>Vedligeholdelse</option>
+                <option>Algebehandling</option>
+                <option>Mosbehandling / mosafrensning</option>
+                <option>Taginspektion</option>
+                <option>Skorstensrenovering</option>
+                <option>Rensning af tagrender</option>
+                <option>Andet</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-brown mb-1" for="tidspunkt">Hvornår skal opgaven udføres?</label>
+              <select id="tidspunkt" name="tidspunkt" class="w-full border border-gray-400 rounded-md px-4 py-2 text-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-gold">
+                <option value="" disabled selected>Vælg venligst</option>
+                <option>Hurtigst muligt</option>
+                <option>Inden for 1 måned</option>
+                <option>Inden for 3 måneder</option>
+                <option>Fleksibelt / ved ikke</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-brown mb-1" for="besked">Din besked</label>
+              <textarea id="besked" name="besked" rows="3" placeholder="Beskriv gerne din opgave..." class="w-full border border-gray-400 rounded-md px-4 py-2 text-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-gold resize-none"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-brown mb-1" for="billede">Upload billeder af din opgave</label>
+              <input id="billede" type="file" name="billede" accept="image/*" class="w-full text-sm text-brown-mid file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-cream-dark file:text-brown hover:file:bg-gold hover:file:text-white file:cursor-pointer" />
+              <p class="text-xs text-brown-mid mt-1">Max. filstørrelse: 5 MB</p>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full text-white font-bold text-lg py-4 rounded-lg transition-colors"
+              style="background:#53A316"
+              onmouseover="this.style.background='#3e7d10'"
+              onmouseout="this.style.background='#53A316'"
+            >
+              Hent tilbud
+            </button>
+          </form>
+
+          <p class="text-xs text-brown-mid mt-4 text-center">🔒 Dine oplysninger er 100% sikre hos os</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>

@@ -1,0 +1,288 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import { services } from '../../data/services'
+
+export function getStaticPaths() {
+  return services
+    .filter((s) => s.category === 'tagdaekning')
+    .map((service) => ({
+      params: { service: service.slug },
+      props: { service },
+    }))
+}
+
+const { service } = Astro.props
+
+// Find 2-3 relaterede services (andre i samme kategori, eksklusive den aktuelle)
+const relatedServices = services
+  .filter((s) => s.category === 'tagdaekning' && s.slug !== service.slug)
+  .slice(0, 3)
+
+// PAA-spørgsmål baseret på slug (fallback til generiske)
+const paaMap: Record<string, string[]> = {
+  'nyt-straatag': [
+    'Hvad koster et nyt stråtag?',
+    'Hvor lang tid tager det at lægge et nyt stråtag?',
+    'Hvad er levetiden på et nyt stråtag?',
+  ],
+  'reparation-af-straatag': [
+    'Hvornår skal mit stråtag repareres?',
+    'Hvad koster reparation af stråtag?',
+    'Kan man reparere et stråtag selv?',
+  ],
+  'monning-til-straatag': [
+    'Hvad er mønning på et stråtag?',
+    'Hvornår skal mønningen udskiftes?',
+    'Hvad koster ny mønning til stråtag?',
+  ],
+  'aldebehandling-af-straatag': [
+    'Hvad er algebehandling af stråtag?',
+    'Hvor tit skal man algebehandle sit stråtag?',
+    'Hvad koster algebehandling af stråtag?',
+  ],
+  'vedligeholdelse-af-straatag': [
+    'Hvad kræver vedligeholdelse af stråtag?',
+    'Hvor tit skal stråtaget vedligeholdes?',
+    'Hvad koster vedligeholdelse af stråtag?',
+  ],
+  'skorstensrenovering': [
+    'Hvornår skal skorstenen renoveres?',
+    'Hvad koster skorstensrenovering?',
+    'Kan en dårlig skorsten skade stråtaget?',
+  ],
+  'taginspektion': [
+    'Hvornår bør man få foretaget en taginspektion?',
+    'Hvad indeholder en professionel taginspektion?',
+    'Er taginspektion gratis hos Tækkemand Carlsen?',
+  ],
+}
+
+const paaQuestions = paaMap[service.slug] ?? [
+  `Hvad koster ${service.title.toLowerCase()} i Nordsjælland?`,
+  `Hvornår skal man have lavet ${service.title.toLowerCase()}?`,
+  `Hvem udfører ${service.title.toLowerCase()} professionelt i Nordsjælland?`,
+]
+
+// LSI H2 variation
+const lsiMap: Record<string, string> = {
+  'nyt-straatag': 'Nyt stråtag i Helsinge og Nordsjælland — kvalitet og holdbarhed i 20-40 år',
+  'reparation-af-straatag': 'Stråtagsreparation i Nordsjælland — hurtig og professionel service',
+  'monning-til-straatag': 'Mønning og rygning til stråtag i Helsinge og omegn',
+  'aldebehandling-af-straatag': 'Algebehandling beskytter dit stråtag mod nedslidning',
+  'vedligeholdelse-af-straatag': 'Regelmæssig vedligeholdelse forlænger dit stråtags levetid',
+  'skorstensrenovering': 'Skorstensrenovering — sikr dit stråtags mest udsatte punkt',
+  'taginspektion': 'Professionel taginspektion — find problemer inden de bliver dyre',
+}
+
+const lsiHeading = lsiMap[service.slug] ?? `${service.title} — lokal ekspert i Nordsjælland`
+---
+
+<Layout
+  title={`${service.title} Helsinge | ${service.title} Nordsjælland — Tækkemand Carlsen`}
+  description={service.description}
+  canonical={`https://taekkemandcarlsen.dk/tagdaekning/${service.slug}`}
+>
+  <Nav />
+
+  <!-- Breadcrumb -->
+  <nav class="bg-cream pt-24 pb-4" aria-label="Breadcrumb">
+    <div class="max-w-4xl mx-auto px-6">
+      <ol class="flex items-center gap-2 text-sm text-brown-mid">
+        <li><a href="/" class="hover:text-gold transition-colors">Forside</a></li>
+        <li class="text-stone-400">/</li>
+        <li><a href="/tagdaekning/" class="hover:text-gold transition-colors">Tagdækning</a></li>
+        <li class="text-stone-400">/</li>
+        <li class="text-brown font-semibold">{service.title}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- H1 + intro -->
+  <section class="bg-cream pb-12">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold text-brown mb-6 leading-tight">
+        {service.title} i Helsinge og Nordsjælland
+      </h1>
+      <p class="text-brown-mid text-lg leading-relaxed mb-8 max-w-2xl">
+        {service.description}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#kontakt" class="btn-primary px-8 py-4 rounded-lg inline-block text-center">
+          Få gratis og uforpligtende tilbud
+        </a>
+        <a href="tel:+4589883455" class="btn-outline px-8 py-4 rounded-lg inline-block text-center">
+          Ring: 89 88 34 55
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Billede + brødtekst -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      {service.image && (
+        <div class="rounded-2xl overflow-hidden shadow-lg mb-10">
+          <img
+            src={service.image}
+            alt={service.alt ?? service.title}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-72 object-cover"
+          />
+        </div>
+      )}
+
+      <!-- H2 LSI variation -->
+      <h2 class="font-serif text-3xl font-bold text-brown mb-4">{lsiHeading}</h2>
+      <div class="prose prose-lg max-w-none text-brown-mid space-y-4">
+        <p>
+          Hos Tækkemand Carlsen er vi specialister i {service.title.toLowerCase()} i Nordsjælland.
+          Vi er baseret i Helsinge og betjener alle byer i Nordsjælland — herunder Hillerød,
+          Frederiksværk, Gilleleje, Hundested, Tisvildeleje og Frederikssund.
+        </p>
+        <p>
+          {service.description}
+        </p>
+        <p>
+          Med over 50 års samlet erfaring i tækkefaget leverer vi altid arbejde i topkvalitet med
+          de bedste materialer. Vi tilbyder gratis besigtigelse og uforpligtende tilbud — kontakt
+          os i dag og hør hvad vi kan gøre for dit tag.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- People Also Ask (PAA) -->
+  <section class="bg-cream py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="font-serif text-2xl font-bold text-brown mb-8">
+        Ofte stillede spørgsmål om {service.title.toLowerCase()}
+      </h3>
+      <div class="space-y-4">
+        {paaQuestions.map((q, i) => (
+          <details class="bg-white border border-cream-dark rounded-xl overflow-hidden group">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-brown hover:text-gold transition-colors list-none">
+              {q}
+              <svg class="w-5 h-5 flex-shrink-0 transition-transform group-open:rotate-180 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-4 text-brown-mid text-sm leading-relaxed">
+              {i === 0 && (
+                <p>Prisen afhænger af tagets størrelse, alder og tilstand. Kontakt os for en gratis besigtigelse og uforpligtende tilbud — vi giver dig et præcist prisoverslag uden forpligtelse.</p>
+              )}
+              {i === 1 && (
+                <p>Det varierer fra opgave til opgave. Vi kan i de fleste tilfælde påbegynde arbejdet inden for 90 dage og vurderer tidsplanen ved besigtigelsen. Ring til os på 89 88 34 55 for at høre mere.</p>
+              )}
+              {i === 2 && (
+                <p>Ja — Tækkemand Carlsen er dine lokale specialister i {service.title.toLowerCase()} i Nordsjælland. Vi betjener Helsinge, Hillerød, Frederiksværk og alle omkringliggende kommuner. Kontakt os i dag for et uforpligtende tilbud.</p>
+              )}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Intern linking: relaterede services (Pat Quiro SOP: 3-5 interne links per side) -->
+  <section class="bg-cream py-14">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="font-serif text-xl font-bold text-brown mb-2">
+        Vores {service.category === 'tagdaekning' ? 'tagdæknings' : ''}ydelser
+      </h3>
+      <p class="text-brown-mid text-sm mb-6">
+        Se vores andre services — eller{' '}
+        <a href="/" class="text-gold font-semibold hover:underline">gå til forsiden</a>
+        {' '}for et samlet overblik.
+      </p>
+
+      <!-- Relaterede service links (grønne knapper som i Miro-diagram) -->
+      <div class="grid sm:grid-cols-3 gap-3 mb-6">
+        {relatedServices.map((rel) => (
+          <a
+            href={`/tagdaekning/${rel.slug}`}
+            class="flex items-center gap-2 bg-green hover:bg-green-dark text-white font-semibold text-sm px-4 py-3 rounded-lg transition-colors"
+          >
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+            {rel.title}
+          </a>
+        ))}
+      </div>
+
+      <!-- Opad-links til silo + homepage (dofollow, keyword-rige anchors) -->
+      <div class="flex flex-wrap gap-4 border-t border-cream-dark pt-5">
+        <a
+          href="/tagdaekning/"
+          class="text-sm font-semibold text-gold hover:underline"
+        >
+          ← Tagdækning i Nordsjælland — oversigt
+        </a>
+        <a
+          href="/"
+          class="text-sm font-semibold text-gold hover:underline"
+        >
+          ← Tækkemand Carlsen — forside
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt-formular -->
+  <section id="kontakt" class="bg-brown py-16">
+    <div class="max-w-xl mx-auto px-6">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="font-serif text-2xl font-bold text-brown mb-2">
+          Få tilbud på {service.title.toLowerCase()}
+        </h2>
+        <p class="text-brown-mid text-sm mb-6">Gratis besigtigelse — vi svarer inden for 24 timer.</p>
+
+        <form
+          action="https://formsubmit.co/post@taekkemandcarlsen.dk"
+          method="POST"
+          class="space-y-4"
+        >
+          <input type="hidden" name="_subject" value={`Forespørgsel: ${service.title}`} />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://taekkemandcarlsen.dk/?tak=1" />
+          <input type="hidden" name="opgave" value={service.title} />
+
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Navn</label>
+            <input type="text" name="navn" required placeholder="Dit fulde navn"
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Telefon</label>
+            <input type="tel" name="telefon" required placeholder="Dit telefonnummer"
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Privat eller erhverv?</label>
+            <select name="kundeType" required
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold">
+              <option value="" disabled selected>Vælg kundetype</option>
+              <option>Privat</option>
+              <option>Erhverv</option>
+              <option>Boligforening / andelsbolig</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Besked (valgfri)</label>
+            <textarea name="besked" rows="3" placeholder="Beskriv din opgave..."
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-green hover:bg-green-dark text-white font-bold py-3.5 rounded-lg transition-colors text-base">
+            Send forespørgsel — gratis og uforpligtende
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

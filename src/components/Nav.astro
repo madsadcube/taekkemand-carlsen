@@ -1,149 +1,77 @@
 ---
-const navLinks = [
-  {
-    label: 'Stråtag',
-    dropdown: [
-      { label: 'Stråtag', href: '/straatag' },
-      { label: 'Holdbarhed', href: '/holdbarhed-straatag' },
-      { label: 'Vedligeholdelse', href: '/vedligehold-straatag' },
-      { label: 'Algebehandling', href: '/algebehandling' },
-      { label: 'Reparation', href: '/reparation-straatag' },
-      { label: 'Mønning/Rygning', href: '/reparation-monning' },
-      { label: 'Skorsten', href: '/skorstensrenovering' },
-      { label: 'Tagrender', href: '/#kontakt' },
-    ],
-  },
-  { label: 'Din Garanti', href: '/#om-os' },
-  { label: 'Priser', href: '/#priser' },
-  { label: 'Om os', href: '/#om-os' },
-  { label: 'Kontakt os', href: '/#kontakt' },
-]
 ---
 
-<nav
-  id="navbar"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
-  style="background: rgba(30,32,34,0)"
->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="/" class="flex-shrink-0">
-        <img
-          src="/img/logo-light.webp"
-          alt="Tækkemand Carlsen logo"
-          width="140"
-          height="50"
-          class="h-12 w-auto"
-          id="nav-logo"
-        />
-      </a>
+<header>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
 
-      <!-- Desktop menu -->
-      <div class="hidden md:flex items-center gap-6">
-        {navLinks.map((link) =>
-          link.dropdown ? (
-            <div class="relative group">
-              <button class="text-white hover:text-primary font-semibold flex items-center gap-1 transition-colors nav-link">
-                {link.label}
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {link.dropdown.map((item) => (
-                  <a
-                    href={item.href}
-                    class="block px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary text-sm font-medium transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <a
-              href={link.href}
-              class="text-white hover:text-primary font-semibold transition-colors nav-link"
-            >
-              {link.label}
-            </a>
-          )
-        )}
-        <a href="tel:+4589883453" class="btn-primary text-sm">
-          Ring nu: 89 88 34 53
+        <!-- Logo -->
+        <a href="/">
+          <img src="/img/logo-dark.webp" alt="Tækkemand Carlsen" class="h-10 w-auto" />
         </a>
+
+        <!-- Links (desktop) -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#saadan-arbejder-vi" class="text-brown hover:text-gold transition-colors">Sådan arbejder vi</a>
+          <a href="#billeder" class="text-brown hover:text-gold transition-colors">Billeder</a>
+          <a href="#anmeldelser" class="text-brown hover:text-gold transition-colors">Anmeldelser</a>
+        </div>
+
+        <!-- Telefon (desktop) -->
+        <a href="tel:+4589883453" class="hidden md:flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#936704">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </span>
+          <div>
+            <p class="text-xs text-brown-mid">Ring for hurtig kontakt</p>
+            <p class="font-bold text-brown">89 88 34 53</p>
+          </div>
+        </a>
+
+        <!-- Hamburger (mobil) -->
+        <button id="menu-btn" class="md:hidden p-2" aria-label="Menu">
+          <svg class="w-6 h-6 text-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path id="icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
-
-      <!-- Mobile hamburger -->
-      <button id="menu-btn" class="md:hidden text-white p-2" aria-label="Åbn menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          <path id="icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
     </div>
-  </div>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gray-700">
-    <div class="px-4 py-4 space-y-2">
-      {navLinks.map((link) =>
-        link.dropdown ? (
-          <details class="group">
-            <summary class="text-white font-semibold py-2 cursor-pointer list-none flex justify-between items-center">
-              {link.label}
-              <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <div class="pl-4 mt-1 space-y-1">
-              {link.dropdown.map((item) => (
-                <a href={item.href} class="block text-gray-300 hover:text-primary py-1.5 text-sm transition-colors">
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </details>
-        ) : (
-          <a href={link.href} class="block text-white font-semibold py-2 hover:text-primary transition-colors">
-            {link.label}
-          </a>
-        )
-      )}
-      <a href="tel:+4589883453" class="btn-primary block text-center mt-4">
-        Ring nu: 89 88 34 53
-      </a>
+    <!-- Google sub-bar -->
+    <div class="hidden md:flex items-center justify-center gap-2 py-1.5 border-t border-cream-dark" style="background:#FAF4EA">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      <span class="text-xs text-brown-mid">5,0</span>
+      <span class="flex text-gold text-xs">★★★★★</span>
+      <span class="text-xs text-brown-mid">(5 Google Anmeldelser)</span>
     </div>
-  </div>
-</nav>
+
+    <!-- Mobil menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-cream-dark px-4 py-4 space-y-3">
+      <a href="#saadan-arbejder-vi" class="block text-brown font-medium py-2 hover:text-gold">Sådan arbejder vi</a>
+      <a href="#billeder" class="block text-brown font-medium py-2 hover:text-gold">Billeder</a>
+      <a href="#anmeldelser" class="block text-brown font-medium py-2 hover:text-gold">Anmeldelser</a>
+      <a href="tel:+4589883453" class="block text-center bg-green text-white font-bold py-3 rounded-lg mt-2">Ring: 89 88 34 53</a>
+    </div>
+  </nav>
+</header>
 
 <script>
-  const navbar = document.getElementById('navbar')!
-  const logo = document.getElementById('nav-logo') as HTMLImageElement
-  const menuBtn = document.getElementById('menu-btn')!
-  const mobileMenu = document.getElementById('mobile-menu')!
-  const iconOpen = document.getElementById('icon-open')!
-  const iconClose = document.getElementById('icon-close')!
-
-  // Scroll: change navbar bg
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      navbar.style.background = 'rgba(30,32,34,0.97)'
-      navbar.style.boxShadow = '0 2px 12px rgba(0,0,0,0.3)'
-      logo.src = '/img/logo-dark.webp'
-    } else {
-      navbar.style.background = 'rgba(30,32,34,0)'
-      navbar.style.boxShadow = 'none'
-      logo.src = '/img/logo-light.webp'
-    }
-  })
-
-  // Mobile toggle
-  menuBtn.addEventListener('click', () => {
-    const isOpen = !mobileMenu.classList.contains('hidden')
-    mobileMenu.classList.toggle('hidden')
-    iconOpen.classList.toggle('hidden', !isOpen)
-    iconClose.classList.toggle('hidden', isOpen)
+  const btn = document.getElementById('menu-btn')!
+  const menu = document.getElementById('mobile-menu')!
+  const open = document.getElementById('icon-open')!
+  const close = document.getElementById('icon-close')!
+  btn.addEventListener('click', () => {
+    const hidden = menu.classList.toggle('hidden')
+    open.classList.toggle('hidden', !hidden)
+    close.classList.toggle('hidden', hidden)
   })
 </script>

@@ -1,13 +1,15 @@
 ---
 import { cities } from '../data/cities'
+import { services } from '../data/services'
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Hero from '../components/Hero.astro'
 import About from '../components/About.astro'
-import Services from '../components/Services.astro'
 import Pricing from '../components/Pricing.astro'
 import Testimonials from '../components/Testimonials.astro'
+import Gallery from '../components/Gallery.astro'
 import Contact from '../components/Contact.astro'
+import Services from '../components/Services.astro'
 import Footer from '../components/Footer.astro'
 
 export function getStaticPaths() {
@@ -18,24 +20,88 @@ export function getStaticPaths() {
 }
 
 const { city } = Astro.props
+
+// Top 6 services for this city page
+const topServices = services
+  .filter((s) => s.category === 'tagdaekning')
+  .slice(0, 6)
+
+// Nærliggende byer (andre byer i samme region)
+const nearbyCurrentCities = cities
+  .filter((c) => c.region === city.region && c.slug !== city.slug)
+  .slice(0, 4)
 ---
 
 <Layout
-  title={`Tækkemand i ${city.name} | Stråtag & Tagrenovering`}
+  title={`Tækkemand i ${city.name} | Stråtag & Tagdækning — Tækkemand Carlsen`}
   description={city.description}
   canonical={`https://taekkemandcarlsen.dk/${city.slug}`}
-  city={city.name}
 >
   <Nav />
   <Hero
-    heading={`Professionel tækkemand i ${city.name} — levering på under 90 dage`}
-    subheading={`Tækkemand Carlsen betjener ${city.region} og omegn. Med 15+ års erfaring leverer vi stråtag, reparation og vedligehold til konkurrencedygtige priser.`}
+    heading={`Professionel tækkemand i ${city.name} — <span class="text-gold">50 års</span> erfaring`}
+    subheading={`Tækkemand Carlsen betjener ${city.name}, ${city.region} og omegn. Vi tilbyder nyt stråtag, reparation og vedligehold til fair og gennemsigtige priser.`}
     city={city.name}
   />
   <About city={city.name} />
-  <Services />
   <Pricing />
   <Testimonials />
+  <Gallery />
+
+  <!-- Intern linking: services tilgængelige i denne by -->
+  <section class="py-14 bg-cream">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="font-serif text-2xl font-bold text-brown mb-2">
+        Vores tagdækningsydelser i {city.name}
+      </h2>
+      <p class="text-brown-mid text-sm mb-6">
+        Vi udfører alle former for tækkearbejde i {city.name} og {city.region} —
+        <a href="/tagdaekning/" class="text-gold font-semibold hover:underline">se alle ydelser</a>.
+      </p>
+
+      <!-- Service links med grønne knapper (Pat Quiro SOP) — linker til geo-specifikke sider -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+        {topServices.map((s) => (
+          <a
+            href={`/${s.slug}/${city.slug}`}
+            class="flex items-center gap-2 bg-green hover:bg-green-dark text-white font-semibold text-sm px-4 py-3 rounded-lg transition-colors"
+          >
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+            {s.title}
+          </a>
+        ))}
+      </div>
+
+      <!-- Nærliggende byer vi betjener -->
+      {nearbyCurrentCities.length > 0 && (
+        <div class="border-t border-cream-dark pt-6">
+          <p class="text-xs font-semibold text-brown-mid uppercase tracking-widest mb-3">
+            Vi betjener også
+          </p>
+          <div class="flex flex-wrap gap-3">
+            {nearbyCurrentCities.map((c) => (
+              <a
+                href={`/${c.slug}`}
+                class="text-sm text-brown font-semibold hover:text-gold transition-colors border border-cream-dark rounded-lg px-4 py-2 bg-white hover:bg-cream"
+              >
+                Tækkemand i {c.name}
+              </a>
+            ))}
+            <a
+              href="/"
+              class="text-sm text-gold font-semibold hover:underline px-4 py-2"
+            >
+              ← Tækkemand Carlsen — forside
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
   <Contact />
+  <Services />
   <Footer />
 </Layout>

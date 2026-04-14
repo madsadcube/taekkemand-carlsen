@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import { services } from '../../data/services'
+
+const tagServices = services.filter(s => s.category === 'tagdaekning')
+---
+
+<Layout
+  title="Tagdækning Helsinge | Stråtag & Tækning i Nordsjælland — Tækkemand Carlsen"
+  description="Professionel tagdækning i Nordsjælland. Vi tilbyder nyt stråtag, reparation, mønning, algebehandling, skorstensrenovering og meget mere. Uforpligtende tilbud."
+  canonical="https://taekkemandcarlsen.dk/tagdaekning/"
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="bg-cream pt-32 pb-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-gold font-bold uppercase tracking-widest text-sm mb-4">Silo: Tagdækning</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-bold text-brown mb-6 leading-tight">
+        Professionel Tagdækning i Nordsjælland
+      </h1>
+      <p class="text-brown-mid text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+        Tækkemand Carlsen er din lokale specialist i alle former for tagdækning i Nordsjælland.
+        Vi tilbyder alt fra nyt stråtag til reparation, mønning, algebehandling og skorstensrenovering.
+        Vores base er i Helsinge, og vi betjener hele Nordsjælland.
+      </p>
+      <a href="/#kontakt" class="btn-primary text-base px-8 py-4 inline-block rounded-lg">
+        Få gratis og uforpligtende tilbud
+      </a>
+    </div>
+  </section>
+
+  <!-- Services grid -->
+  <section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="font-serif text-3xl font-bold text-brown mb-3 text-center">
+        Vores tagdækningstjenester
+      </h2>
+      <p class="text-brown-mid text-center mb-12 max-w-xl mx-auto">
+        Klik på en service for at læse mere og se relevante priser og eksempler.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tagServices.map((service) => (
+          <a
+            href={`/tagdaekning/${service.slug}`}
+            class="group bg-cream hover:bg-cream-dark rounded-2xl p-6 border border-cream-dark transition-all duration-200 hover:shadow-md"
+          >
+            <div class="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-gold text-xl">✦</span>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-brown mb-2 group-hover:text-gold transition-colors">
+              {service.title}
+            </h3>
+            <p class="text-brown-mid text-sm leading-relaxed">
+              {service.teaser}
+            </p>
+            <span class="inline-block mt-4 text-gold font-semibold text-sm group-hover:underline">
+              Læs mere →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Silo intern linking: byer -->
+  <section class="bg-cream py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-serif text-3xl font-bold text-brown mb-4">
+        Vi dækker hele Nordsjælland
+      </h2>
+      <p class="text-brown-mid mb-8">
+        Tækkemand Carlsen er baseret i Helsinge og arbejder i hele Nordsjælland og Sjælland.
+        Find din by nedenfor og læs om vores ydelser i dit område.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {[
+          ['Helsinge', '/helsinge'],
+          ['Hillerød', '/hillerod'],
+          ['Frederiksværk', '/frederiksvaerk'],
+          ['Gilleleje', '/gilleleje'],
+          ['Hundested', '/hundested'],
+          ['Tisvildeleje', '/tisvildeleje'],
+          ['Frederikssund', '/frederikssund'],
+        ].map(([label, href]) => (
+          <a
+            href={href}
+            class="bg-white border border-cream-dark text-brown hover:bg-gold hover:text-white hover:border-gold font-semibold text-sm px-4 py-2 rounded-full transition-colors"
+          >
+            Tækkemand i {label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead-formular -->
+  <section id="kontakt" class="bg-brown py-16">
+    <div class="max-w-xl mx-auto px-6">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="font-serif text-2xl font-bold text-brown mb-2">Få uforpligtende tilbud</h2>
+        <p class="text-brown-mid text-sm mb-6">Beskriv din opgave og vi kontakter dig inden for 24 timer.</p>
+
+        <form
+          action="https://formsubmit.co/post@taekkemandcarlsen.dk"
+          method="POST"
+          class="space-y-4"
+        >
+          <input type="hidden" name="_subject" value="Ny forespørgsel fra /tagdaekning/" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://taekkemandcarlsen.dk/?tak=1" />
+
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Navn</label>
+            <input type="text" name="navn" required placeholder="Dit fulde navn"
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Telefon</label>
+            <input type="tel" name="telefon" required placeholder="Dit telefonnummer"
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Hvad skal laves?</label>
+            <select name="opgave" required
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold">
+              <option value="" disabled selected>Vælg opgavetype</option>
+              <option>Nyt stråtag</option>
+              <option>Reparation af stråtag</option>
+              <option>Mønning / rygning</option>
+              <option>Algebehandling</option>
+              <option>Vedligeholdelse</option>
+              <option>Skorstensrenovering</option>
+              <option>Taginspektion</option>
+              <option>Andet</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-brown mb-1">Besked (valgfri)</label>
+            <textarea name="besked" rows="3" placeholder="Beskriv din opgave..."
+              class="w-full border border-cream-dark rounded-lg px-4 py-2.5 bg-cream text-brown text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-green hover:bg-green-dark text-white font-bold py-3.5 rounded-lg transition-colors text-base">
+            Send forespørgsel
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
