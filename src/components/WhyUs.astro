@@ -1,0 +1,122 @@
+---
+const usps = [
+  {
+    titel: 'Stor erfaring & faglig stolthed',
+    tekst: 'Vi har mange års erfaring med nyt stråtag, renovering og vedligehold. Alt tækkearbejde udføres med respekt for det klassiske håndværk – hvilket giver løsninger, der både er smukke og holdbare.',
+  },
+  {
+    titel: 'Klar kommunikation hele vejen',
+    tekst: 'Du får ærlig rådgivning fra start til slut. Vi gennemgår opgaven grundigt, giver et tydeligt tilbud og holder dig opdateret under hele processen – uden overraskelser.',
+  },
+  {
+    titel: 'Fair priser – ingen skjulte tillæg',
+    tekst: 'Du får et gennemsigtigt tilbud med klare priser. Ingen overraskelser.',
+  },
+  {
+    titel: 'Hurtig udførsel',
+    tekst: 'Nye stråtage udføres inden 90 dage og ny mønning udføres inden otte uger.',
+  },
+]
+---
+
+<section class="py-24" style="background: linear-gradient(180deg, #fff 0%, rgba(235,207,162,0.50) 100%); position: relative; overflow: hidden;">
+
+  <div class="max-w-7xl mx-auto px-8">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+
+      <!-- LEFT: USPs -->
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-primary); font-family: var(--font-label); letter-spacing: 0.3em;">Hvorfor vælge os</span>
+        <h2 class="mt-3 mb-3 leading-tight" style="font-family: var(--font-headline); font-size: clamp(2rem, 3.5vw, 2.8rem); color: #431a06;">
+          Hvorfor vælge Tækkemand Carlsen?
+        </h2>
+        <p class="mb-3 font-bold" style="font-family: var(--font-body); font-size: 0.95rem; color: #6f4315;">
+          Professionelt håndværk. Uforpligtende overslag. Betaling først ved godkendt arbejde.
+        </p>
+        <p class="mb-10 text-sm leading-relaxed" style="color: var(--color-outline); font-family: var(--font-body);">
+          Fordi dit stråtag skal udføres ordentligt – fra start til slut.
+        </p>
+
+        <ul class="space-y-7">
+          {usps.map((u) => (
+            <li class="flex gap-5">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style="background: #6f4315;">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-bold mb-1" style="font-family: var(--font-headline); font-size: 1.05rem; color: #431a06;">{u.titel}</p>
+                <p class="text-sm leading-relaxed" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">{u.tekst}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-10">
+          <a
+            href="#kontakt"
+            class="inline-block px-8 py-4 rounded-lg font-bold transition-opacity hover:opacity-90"
+            style="background: var(--color-primary); color: #fff; font-family: var(--font-body);"
+          >
+            Få et tilbud
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Image + Featured review -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Photo -->
+        <div class="rounded-2xl overflow-hidden" style="height: 280px;">
+          <img
+            src="/img/jakob.jpg"
+            alt="Jakob Carlsen, tækkemand"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Review card -->
+        <div class="rounded-2xl p-8 relative overflow-hidden" style="background: var(--color-surface-container-low); border: 1px solid var(--color-outline-variant);">
+          <!-- Big decorative quote -->
+          <span class="absolute top-2 right-6 select-none" style="font-family: var(--font-headline); font-size: 120px; line-height: 1; color: rgba(111,67,21,0.07); pointer-events: none;">"</span>
+
+          <div class="flex gap-0.5 mb-4">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4" fill="#b8960c" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            ))}
+          </div>
+
+          <p class="mb-3" style="font-family: var(--font-headline); font-style: italic; font-size: 1.2rem; color: #431a06; line-height: 1.4;">"Vi får meget ros"</p>
+          <p class="text-sm leading-relaxed mb-6" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+            Vi har netop fået nyt stråtag på hovedhuset ved stranden (annekset 16 år gammelt). Jeg har fulgt arbejdet på tætteste hold og kan varmt anbefale Jacob og hans team. De har været effektive, dygtige og ordholdende hele vejen. Tusinde tak for et flot resultat.
+          </p>
+
+          <div class="flex items-center gap-3" style="border-top: 1px solid var(--color-outline-variant); padding-top: 1rem;">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shrink-0" style="background: var(--color-surface-container); color: #6f4315; font-family: var(--font-body);">PC</div>
+            <div>
+              <p class="font-bold text-sm" style="color: #431a06; font-family: var(--font-body);">Peter Christensen</p>
+              <p class="text-xs mt-0.5" style="color: var(--color-outline); font-family: var(--font-body);">Nyt stråtag · Facebook anmeldelse</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-xl p-5 text-center" style="background: var(--color-surface-container-low); border: 1px solid var(--color-outline-variant);">
+            <p class="font-bold text-2xl mb-1" style="font-family: var(--font-headline); color: #6f4315;">90 dage</p>
+            <p class="text-xs" style="color: var(--color-outline); font-family: var(--font-body);">Garanteret levering</p>
+          </div>
+          <div class="rounded-xl p-5 text-center" style="background: var(--color-surface-container-low); border: 1px solid var(--color-outline-variant);">
+            <p class="font-bold text-2xl mb-1" style="font-family: var(--font-headline); color: #6f4315;">12 mio.</p>
+            <p class="text-xs" style="color: var(--color-outline); font-family: var(--font-body);">kr. forsikringsdækning</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

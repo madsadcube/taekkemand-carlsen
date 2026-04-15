@@ -1,86 +1,54 @@
 ---
 ---
 
-<section id="saadan-arbejder-vi" class="py-20 bg-cream">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="saadan-arbejder-vi" class="py-24" style="background: linear-gradient(180deg, #fff 0%, rgba(235,207,162,0.50) 100%); position: relative; overflow: hidden;">
+  <div aria-hidden="true" class="grain-right"></div>
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
 
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <h2 class="font-serif text-3xl md:text-4xl font-bold text-brown mb-4">
-        Sådan arbejder vi
-      </h2>
-      <p class="text-brown-mid leading-relaxed">
-        Fra første kontakt til afleveret opgave — vi holder dig informeret hele vejen.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8 mb-16">
-      {[
-        {
-          trin: '1',
-          titel: 'Kontakt & besigtigelse',
-          tekst: 'Ring eller udfyld formularen. Vi besøger dig og ser på opgaven — helt uforpligtende.',
-        },
-        {
-          trin: '2',
-          titel: 'Klart tilbud',
-          tekst: 'Du modtager et detaljeret, gennemsigtigt tilbud. Ingen skjulte tillæg eller overraskelser.',
-        },
-        {
-          trin: '3',
-          titel: 'Professionel udførelse',
-          tekst: 'Opgaven udføres af erfarne fagfolk. Vi holder dig opdateret undervejs og rydder op bagefter.',
-        },
-      ].map((item) => (
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-cream-dark">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white mb-4 text-lg" style="background:#936704">
-            {item.trin}
-          </div>
-          <h3 class="font-serif text-xl font-bold text-brown mb-2">{item.titel}</h3>
-          <p class="text-brown-mid text-sm leading-relaxed">{item.tekst}</p>
-        </div>
-      ))}
-    </div>
-
-    <!-- Billede + tekst -->
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="rounded-2xl overflow-hidden shadow-xl">
+      <!-- Image with "15 years" badge -->
+      <div class="relative group">
+        <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-10" style="background: var(--color-primary-fixed);"></div>
         <img
+          class="rounded-lg shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 w-full"
+          style="height: 480px; object-fit: cover;"
           src="/img/rep_straatag4.webp"
-          alt="Tækkemand Carlsen udfører stråtag"
+          alt="Tækkemand Carlsen håndværker i gang med tækning"
           loading="lazy"
-          decoding="async"
-          class="w-full h-96 object-cover"
         />
+        <div class="absolute -bottom-6 -right-6 bg-white p-8 rounded-lg shadow-xl z-20 hidden md:block">
+          <span class="block text-4xl font-bold" style="font-family: var(--font-headline); color: var(--color-primary);">50+</span>
+          <span class="text-sm uppercase tracking-tighter" style="font-family: var(--font-label); color: var(--color-outline);">Års Erfaring</span>
+        </div>
       </div>
-      <div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-brown mb-4">
-          Hvorfor vælge <span class="text-gold">Tækkemand Carlsen?</span>
-        </h3>
-        <ul class="space-y-4 mb-8">
-          {[
-            { titel: 'Stor erfaring', tekst: 'Over 50 års erfaring med nyt stråtag, renovering og vedligehold.' },
-            { titel: 'Klar kommunikation', tekst: 'Ærlig rådgivning fra start til slut — ingen overraskelser.' },
-            { titel: 'Fair priser', tekst: 'Gennemsigtigt tilbud. Du betaler ikke mere end aftalt.' },
-            { titel: 'Hurtig udførelse', tekst: 'Nye opgaver udføres inden 90 dage, mønning inden seks uger.' },
-          ].map((item) => (
-            <li class="flex gap-4">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#53A316">
-                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
-                </svg>
-              </span>
-              <div>
-                <p class="font-bold text-brown text-sm">{item.titel}</p>
-                <p class="text-brown-mid text-sm leading-relaxed">{item.tekst}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <a href="#kontakt" class="inline-block bg-green hover:bg-green-dark text-white font-bold py-3 px-8 rounded-lg transition-colors">
-          Få et tilbud
-        </a>
-      </div>
-    </div>
 
+      <!-- Text content -->
+      <div class="space-y-8">
+        <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-primary); font-family: var(--font-label); letter-spacing: 0.3em;">Om Tækkemand Carlsen</span>
+        <h2 class="leading-tight" style="font-family: var(--font-headline); font-size: clamp(2rem, 4vw, 3.2rem); color: #431a06;">
+          Nordens største tækkeprojekt
+        </h2>
+        <div class="space-y-6 leading-loose text-sm" style="color: #51443a; font-family: var(--font-body);">
+          <p>
+            Med over 50 års specialiseret erfaring har vi opbygget en ekspertise, der rækker langt ud over det sædvanlige. Vi er stolte af at have stået bag Nordens største tækkeprojekt ved <strong>Sorø Storekro</strong>, et imponerende arbejde på hele 5.000 m².
+          </p>
+          <p>
+            Vi kombinerer denne store kapacitet med en kompromisløs tilgang til kvalitet og hastighed. Uanset opgavens størrelse leverer vi et færdigt resultat til aftalt tid – og maksimalt 90 dage fra projektstart.
+          </p>
+        </div>
+        <div class="pt-4">
+          <a
+            href="#kontakt"
+            class="inline-flex items-center gap-3 font-bold pb-1 transition-all"
+            style="color: var(--color-primary); border-bottom: 2px solid rgba(111,67,21,0.2); font-family: var(--font-body);"
+            onmouseover="this.style.borderBottomColor='#6f4315'" onmouseout="this.style.borderBottomColor='rgba(111,67,21,0.2)'"
+          >
+            Få et uforpligtende tilbud
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
