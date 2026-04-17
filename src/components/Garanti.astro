@@ -1,0 +1,57 @@
+---
+---
+
+<section id="garanti" class="relative overflow-hidden">
+  <div class="grid md:grid-cols-2 min-h-[560px]">
+
+    <!-- Left: image -->
+    <div class="relative min-h-[400px] md:min-h-0">
+      <img
+        src="/img/straatag1-hero.jpg"
+        alt="Tækkemand Carlsen håndværker i gang med stråtag"
+        class="absolute inset-0 w-full h-full object-cover"
+        style="object-position: 50% center;"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Right: content -->
+    <div class="flex items-center px-12 py-20" style="background: #3d2008;">
+      <div style="max-width: 480px;">
+
+        <span class="block text-xs uppercase tracking-widest font-bold mb-6" style="color: rgba(255,220,193,0.7); font-family: var(--font-label);">Vores løfte</span>
+
+        <h2 class="leading-tight mb-8" style="font-family: var(--font-headline); font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #fff;">
+          Mangeårig erfaring gør at vi kan garantere levering indenfor 90 dage
+        </h2>
+
+        <p class="leading-relaxed mb-8" style="font-family: var(--font-body); color: rgba(253,249,248,0.8); font-size: 1rem;">
+          Hos Tækkemand Carlsen kan du stole på vores omfattende erfaring og ekspertise som tækkefirma. Vi tilbyder en bred vifte af behandlinger til vedligeholdelse af stråtage.
+        </p>
+
+        <ul class="space-y-4 mb-8">
+          {[
+            'Alt arbejde udføres i henhold til Tækkelaugets vejledning "Veludført Stråtag"',
+            'God projektstyring giver leveringsgaranti',
+            'Materialer i den bedste kvalitet',
+          ].map((punkt) => (
+            <li class="flex items-start gap-3">
+              <span class="flex-shrink-0 mt-1 w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255,220,193,0.15);">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5l2.5 2.5L8 2.5" stroke="#ffdcc1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span style="font-family: var(--font-body); color: rgba(253,249,248,0.85); font-size: 0.95rem;">{punkt}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="leading-relaxed" style="font-family: var(--font-body); color: rgba(253,249,248,0.7); font-size: 0.9rem;">
+          Uanset om du har en stor eller lille opgave vedrørende dit stråtag, løser vi den med høj kvalitet. Vi lever af tilfredse kunder — og leverer altid et færdigt resultat til aftalt tid.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>

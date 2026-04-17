@@ -1,45 +1,52 @@
 ---
 ---
 
-<footer class="bg-brown text-white py-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-3 gap-8 mb-8">
+<footer class="w-full pt-16 pb-8 mt-0" style="background: #f0ede9;">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8">
 
-      <!-- Logo + info -->
-      <div>
-        <img src="/img/logo-light.webp" alt="Tækkemand Carlsen" class="h-10 w-auto mb-4 brightness-0 invert" />
-        <p class="text-sm opacity-70 leading-relaxed">
-          Professionel tækkemand på hele Sjælland.<br />
-          Over 50 års erfaring.
-        </p>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <p class="font-bold mb-3 text-sm uppercase tracking-widest opacity-50">Navigation</p>
-        <ul class="space-y-2 text-sm opacity-80">
-          <li><a href="#saadan-arbejder-vi" class="hover:opacity-100">Sådan arbejder vi</a></li>
-          <li><a href="#billeder" class="hover:opacity-100">Billeder</a></li>
-          <li><a href="#anmeldelser" class="hover:opacity-100">Anmeldelser</a></li>
-          <li><a href="#kontakt" class="hover:opacity-100">Kontakt</a></li>
-        </ul>
-      </div>
-
-      <!-- Kontakt -->
-      <div>
-        <p class="font-bold mb-3 text-sm uppercase tracking-widest opacity-50">Kontakt</p>
-        <ul class="space-y-2 text-sm opacity-80">
-          <li><a href="tel:+4589883453" class="hover:opacity-100">89 88 34 53</a></li>
-          <li><a href="mailto:post@taekkemandcarlsen.dk" class="hover:opacity-100">post@taekkemandcarlsen.dk</a></li>
-          <li class="opacity-70">Nellerødvej 39, 3200 Helsinge</li>
-        </ul>
-      </div>
-
+    <!-- Logo + description -->
+    <div class="space-y-6">
+      <a href="/"><img src="/img/logo-dark.png" alt="Tækkemand Carlsen" class="h-10 w-auto" /></a>
+      <p class="text-sm leading-relaxed tracking-wide" style="color: var(--color-outline); font-family: var(--font-body);">
+        Professionel tækning og vedligeholdelse i over 50 år. Vi kombinerer hastighed med det stolte tækkehåndværk.
+      </p>
     </div>
 
-    <div class="border-t border-white border-opacity-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs opacity-50">
-      <p>© {new Date().getFullYear()} Tækkemand Carlsen — Alle rettigheder forbeholdes</p>
-      <p>CVR: 12345678</p>
+    <!-- Services -->
+    <div class="space-y-4">
+      <h4 class="text-sm uppercase tracking-wide font-bold" style="color: #431a06; font-family: var(--font-label);">Services</h4>
+      <ul class="space-y-2">
+        {[
+          'Nyt stråtag',
+          'Algebehandling',
+          'Reparation af mønning',
+          'Vedligeholdelse',
+          'Skorstensrenovering',
+        ].map((s) => (
+          <li><a href="#kontakt" class="text-sm transition-all" style="color: var(--color-outline);"
+            onmouseover="this.style.color='#431a06'" onmouseout="this.style.color='#837469'">{s}</a></li>
+        ))}
+      </ul>
     </div>
+
+    <!-- Contact -->
+    <div class="space-y-4">
+      <h4 class="text-sm uppercase tracking-wide font-bold" style="color: #431a06; font-family: var(--font-label);">Kontakt</h4>
+      <ul class="space-y-2">
+        <li class="text-sm" style="color: var(--color-outline); font-family: var(--font-body);">Telefon: <a href="tel:+4589883453" class="hover:text-primary transition-colors">+45 89 88 34 53</a></li>
+        <li class="text-sm" style="color: var(--color-outline); font-family: var(--font-body);">E-mail: <a href="mailto:post@taekkemandcarlsen.dk" class="hover:text-primary transition-colors">post@taekkemandcarlsen.dk</a></li>
+      </ul>
+      <div class="pt-4 flex items-center gap-3" style="color: var(--color-outline);">
+        <span class="material-symbols-outlined text-base">location_on</span>
+        <span class="text-xs" style="font-family: var(--font-body);">Nellerødvej 39, 3200 Helsinge</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="max-w-7xl mx-auto px-8 mt-16 pt-8" style="border-top: 1px solid #d5c3b6;">
+    <p class="text-center text-left text-xs uppercase tracking-widest" style="color: var(--color-outline); font-family: var(--font-body);">
+      © {new Date().getFullYear()} Tækkemand Carlsen. CVR: 44410976. Alle rettigheder forbeholdes.
+    </p>
   </div>
 </footer>

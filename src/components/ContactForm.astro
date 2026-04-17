@@ -1,0 +1,267 @@
+---
+---
+
+<section id="kontakt" class="py-24 relative overflow-hidden" style="background: linear-gradient(180deg, rgba(235,207,162,0.3) 0%, #fbf9f8 100%);">
+  <div class="grain-left"></div>
+  <div class="grain-right"></div>
+
+  <div class="relative z-10 max-w-lg mx-auto px-6">
+
+    <div class="text-center mb-8">
+      <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-primary); font-family: var(--font-label); letter-spacing: 0.3em;">Kontakt os</span>
+      <h2 class="mt-3 leading-tight" style="font-family: var(--font-headline); font-size: clamp(2rem, 4vw, 2.8rem); color: #431a06;">
+        Få et uforpligtende tilbud
+      </h2>
+      <p class="mt-2 text-sm" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+        Fortæl os hvad du har brug for — vi vender tilbage med et gennemsigtigt tilbud
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="rounded-2xl p-8" style="background: #fff; border: 1px solid var(--color-outline-variant);">
+
+      <!-- Progress -->
+      <div class="flex items-center justify-center gap-2 mb-8">
+        <div id="step1-dot" class="w-8 h-8 rounded-full text-white text-sm font-bold flex items-center justify-center" style="background: var(--color-primary); font-family: var(--font-label);">1</div>
+        <div class="h-px w-16" style="background: var(--color-outline-variant);"></div>
+        <div id="step2-dot" class="w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center" style="background: var(--color-surface-container); color: var(--color-outline); font-family: var(--font-label);">2</div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div id="step1">
+        <h3 class="font-bold text-center mb-1" style="font-family: var(--font-headline); font-size: 1.4rem; color: #431a06;">
+          Hvad drejer det sig om?
+        </h3>
+        <p class="text-center text-sm mb-6" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+          Fortæl os hvad du har brug for hjælp til
+        </p>
+        <hr style="border-color: var(--color-outline-variant);" class="mb-6" />
+
+        <div class="space-y-5">
+          <div>
+            <label for="service" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Hvad skal du have lavet? <span style="color: #c0392b;">*</span>
+            </label>
+            <select
+              id="service"
+              name="service"
+              class="w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none"
+              style="border: 1px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body); background: #fff;"
+            >
+              <option value="">Vælg venligst</option>
+              <option>Nyt stråtag</option>
+              <option>Reparation af stråtag</option>
+              <option>Mønning / rygtning</option>
+              <option>Renovering af stråtag</option>
+              <option>Alge- og mosafrensning</option>
+              <option>Vurderingsrapport ifbm. huskøb eller salg</option>
+              <option>Andet</option>
+            </select>
+            <p id="service-error" class="text-xs mt-1 hidden" style="color: #c0392b; font-family: var(--font-body);">Vælg venligst en opgave</p>
+          </div>
+
+          <div>
+            <label for="timeline" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Hvornår skal opgaven udføres?
+            </label>
+            <select
+              id="timeline"
+              name="timeline"
+              class="w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none"
+              style="border: 1px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body); background: #fff;"
+            >
+              <option value="">Vælg venligst</option>
+              <option>Det haster – der er skade eller akut behov</option>
+              <option>Inden for 1 måned</option>
+              <option>Inden for 1–3 måneder</option>
+              <option>Inden for 3–6 måneder</option>
+              <option>Jeg indhenter blot tilbud</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="besked" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Evt. besked
+            </label>
+            <textarea
+              id="besked"
+              name="besked"
+              rows="3"
+              class="w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none"
+              style="border: 1px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body); resize: vertical;"
+              placeholder="Beskriv kort din opgave..."
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="billeder" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Upload billeder af din opgave
+            </label>
+            <input
+              type="file"
+              id="billeder"
+              name="billeder"
+              accept="image/*"
+              multiple
+              class="w-full text-sm"
+              style="color: var(--color-on-surface-variant); font-family: var(--font-body);"
+            />
+            <p class="text-xs mt-1" style="color: var(--color-outline); font-family: var(--font-body);">Maks. filstørrelse: 5 MB.</p>
+          </div>
+
+          <button
+            type="button"
+            id="to-step2"
+            class="w-full py-3 px-6 rounded-lg font-bold text-base transition-opacity hover:opacity-90"
+            style="background: var(--color-primary); color: #fff; font-family: var(--font-body);"
+          >
+            Hent tilbud
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="step2" class="hidden">
+        <h3 class="font-bold text-center mb-1" style="font-family: var(--font-headline); font-size: 1.4rem; color: #431a06;">
+          Hvordan kan vi kontakte dig?
+        </h3>
+        <p class="text-center text-sm mb-6" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+          Vi vender tilbage hurtigst muligt med et gennemsigtigt tilbud
+        </p>
+        <hr style="border-color: var(--color-outline-variant);" class="mb-6" />
+
+        <form method="POST" enctype="multipart/form-data" class="space-y-5">
+          <input type="hidden" id="h-service" name="service" />
+          <input type="hidden" id="h-timeline" name="timeline" />
+          <input type="hidden" id="h-besked" name="besked" />
+
+          <div>
+            <label for="navn" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Fulde navn <span style="color: #c0392b;">*</span>
+            </label>
+            <input
+              type="text"
+              id="navn"
+              name="navn"
+              required
+              placeholder="Indtast dit fulde navn"
+              class="w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none"
+              style="border: 1px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body);"
+            />
+          </div>
+
+          <div>
+            <label for="adresse" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Adresse <span style="color: #c0392b;">*</span>
+            </label>
+            <input
+              type="text"
+              id="adresse"
+              name="adresse"
+              required
+              placeholder="Indtast din adresse"
+              class="w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none"
+              style="border: 1px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body);"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Email <span style="color: #c0392b;">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Indtast din email"
+              class="w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none"
+              style="border: 1px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body);"
+            />
+          </div>
+
+          <div>
+            <label for="telefon" class="block text-sm font-semibold mb-1" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+              Telefonnummer <span style="color: #c0392b;">*</span>
+            </label>
+            <div class="flex rounded-lg overflow-hidden" style="border: 1px solid var(--color-outline-variant);">
+              <span class="flex items-center px-3 text-sm gap-1" style="background: var(--color-surface-container-low); border-right: 1px solid var(--color-outline-variant); color: var(--color-on-surface-variant); font-family: var(--font-body);">
+                🇩🇰 +45
+              </span>
+              <input
+                type="tel"
+                id="telefon"
+                name="telefon"
+                required
+                placeholder="Indtast dit telefonnummer"
+                class="flex-1 px-3 py-2.5 text-sm focus:outline-none"
+                style="color: var(--color-on-background); font-family: var(--font-body);"
+              />
+            </div>
+          </div>
+
+          <div class="flex gap-3 pt-2">
+            <button
+              type="button"
+              id="to-step1"
+              class="flex-1 py-3 px-4 rounded-lg font-bold text-base transition-opacity hover:opacity-80"
+              style="background: var(--color-surface-container-high); color: var(--color-on-surface-variant); font-family: var(--font-body);"
+            >
+              Tilbage
+            </button>
+            <button
+              type="submit"
+              class="flex-1 py-3 px-4 rounded-lg font-bold text-base transition-opacity hover:opacity-90"
+              style="background: var(--color-primary); color: #fff; font-family: var(--font-body);"
+            >
+              Modtag mit tilbud
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <p class="text-center text-xs mt-4" style="color: var(--color-outline); font-family: var(--font-body);">
+      100% uforpligtende · Svar inden for 24 timer
+    </p>
+  </div>
+</section>
+
+<script>
+  const step1El = document.getElementById('step1')!;
+  const step2El = document.getElementById('step2')!;
+  const dot1 = document.getElementById('step1-dot')!;
+  const dot2 = document.getElementById('step2-dot')!;
+
+  document.getElementById('to-step2')!.addEventListener('click', () => {
+    const service = (document.getElementById('service') as HTMLSelectElement).value;
+    if (!service) {
+      document.getElementById('service-error')!.classList.remove('hidden');
+      return;
+    }
+    document.getElementById('service-error')!.classList.add('hidden');
+
+    (document.getElementById('h-service') as HTMLInputElement).value = service;
+    (document.getElementById('h-timeline') as HTMLInputElement).value =
+      (document.getElementById('timeline') as HTMLSelectElement).value;
+    (document.getElementById('h-besked') as HTMLInputElement).value =
+      (document.getElementById('besked') as HTMLTextAreaElement).value;
+
+    step1El.classList.add('hidden');
+    step2El.classList.remove('hidden');
+
+    dot1.innerHTML = '✓';
+    dot2.style.background = 'var(--color-primary)';
+    dot2.style.color = '#fff';
+  });
+
+  document.getElementById('to-step1')!.addEventListener('click', () => {
+    step2El.classList.add('hidden');
+    step1El.classList.remove('hidden');
+
+    dot1.innerHTML = '1';
+    dot2.style.background = 'var(--color-surface-container)';
+    dot2.style.color = 'var(--color-outline)';
+  });
+</script>

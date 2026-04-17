@@ -1,0 +1,43 @@
+---
+const anmeldelser = [
+  { citat: 'De holder hvad de lover', tekst: 'Vi har netop fået nyt stråtag på hovedhuset ved stranden samt pudset annekset af (16 år gammelt). Jeg har fulgt arbejdet på tætteste hold og kan varmt anbefale Jacob og hans team. De har været effektive og dygtige.', navn: 'Peter Sonne Christensen', ydelse: 'Nyt stråtag' },
+  { citat: 'Super glade...', tekst: 'Vi har fået nyt tag og er super glade for det arbejde der er blevet lavet. Jacob og Matias er et par flinke fyre og holder hvad de lover. Vi vil helt sikkert anbefale tækkemand Carlsen.', navn: 'Christian Pfeil Bendtsen', ydelse: 'Nyt stråtag' },
+  { citat: 'Fantastisk stykke arbejde', tekst: 'Jakob har lavet et fantastisk stykke arbejde. Han er omhyggelig og man mærker at hans faglige stolthed betyder alt for ham. Meget regulær og til at stole på.', navn: 'Børge Jensen', ydelse: 'Mønning' },
+  { citat: 'Kan varmt anbefales...', tekst: 'Vi har fået nyt stråtag på vores gamle stuehus. Begge utrolig kompetente, samvittighedsfulde og dygtige til deres håndværk.', navn: 'Anne-mette Bøtting Bendtsen', ydelse: 'Nyt stråtag' },
+  { citat: 'Dedikerede tækkemænd', tekst: 'Samarbejdet med Jacob har været helt igennem positivt og fleksibelt, også selv om opgaven blev løst hen over en vinter med frost og sne.', navn: 'Thomas Brandt', ydelse: 'Nyt stråtag' },
+  { citat: 'Flot resultat', tekst: 'Vi er så glade for det fantastiske arbejde Jacob har udført.', navn: 'Vivi Stenberg', ydelse: 'Reparation af stråtag' },
+  { citat: 'Overskueligt tilbud', tekst: 'Tilbuddet var gennemskueligt og detaljeret. Arbejdet blev udført som aftalt, og vi blev løbende informeret undervejs. Det færdige resultat er virkelig flot.', navn: 'Kasper Andreasen', ydelse: 'Renovering af stråtag' },
+]
+---
+
+<section class="py-24" style="background: var(--color-surface-container-low);">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="text-center mb-4">
+      <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-primary); font-family: var(--font-label); letter-spacing: 0.3em;">Variant A</span>
+    </div>
+    <div class="text-center mb-16">
+      <h2 class="mt-2 mb-4" style="font-family: var(--font-headline); font-size: clamp(2rem, 4vw, 3.2rem); color: #431a06;">Vi samler på glade kunder</h2>
+      <div class="flex items-center justify-center gap-2">
+        <span style="color:#b8960c; font-size:1.1rem;">★★★★★</span>
+        <span class="font-bold text-sm" style="color: #431a06; font-family: var(--font-body);">5,0 · Google Anmeldelser</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {anmeldelser.map((a) => (
+        <div class="rounded-xl p-8 relative" style="background: white; border-left: 3px solid #b8960c;">
+          <span class="block leading-none mb-2" style="font-family: var(--font-headline); font-size: 72px; color: rgba(184,150,12,0.18); line-height: 0.8; margin-bottom: 16px;">"</span>
+          <div class="flex gap-0.5 mb-3">
+            {[1,2,3,4,5].map(() => <svg class="w-4 h-4" fill="#b8960c" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>)}
+          </div>
+          <p class="font-bold mb-2" style="font-family: var(--font-headline); font-style: italic; font-size: 1.05rem; color: #431a06;">"{a.citat}"</p>
+          <p class="text-sm leading-relaxed mb-5" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">{a.tekst}</p>
+          <div style="border-top: 1px solid var(--color-outline-variant); padding-top: 1rem;">
+            <p class="font-bold text-sm" style="color: #431a06; font-family: var(--font-body);">{a.navn}</p>
+            <p class="text-xs mt-0.5" style="color: var(--color-outline); font-family: var(--font-body);">{a.ydelse}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

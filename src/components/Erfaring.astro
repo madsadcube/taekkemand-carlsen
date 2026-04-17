@@ -1,0 +1,57 @@
+---
+const services = [
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/><circle cx="12" cy="7" r="1"/></svg>`,
+    titel: 'Algebehandling af tag',
+  },
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 6a2 2 0 000 4h18a2 2 0 000-4M3 6l2 13h14l2-13"/></svg>`,
+    titel: 'Rensning af tagrender',
+  },
+]
+---
+
+<section id="erfaring" class="py-24" style="background: #fff;">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: text -->
+      <div>
+        <span class="block text-xs uppercase tracking-widest font-bold mb-4" style="color: var(--color-primary); font-family: var(--font-label);">15 års erfaring</span>
+        <h2 class="leading-tight mb-8" style="font-family: var(--font-headline); font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--color-on-surface);">
+          15 års erfaring med stråtag og andre services
+        </h2>
+        <div class="space-y-5 leading-relaxed" style="font-family: var(--font-body); color: var(--color-outline);">
+          <p>
+            Har dit stråtag brug for professionel pleje? Tækkemand Carlsen kan hjælpe dig. Med 15 års erfaring tilbyder vi professionel reparation og vedligeholdelse af stråtage samt en række serviceydelser, der holder dit hjem pænt og velholdt.
+          </p>
+          <p>
+            Hvis dit stråtag trænger til reparation, eller du har brug for hjælp til at forlænge dets levetid, er du kommet til den rette tækker. Vi er baseret i Nordsjælland og betjener kunder i hele området, herunder Helsinge, Hillerød og Frederiksværk. Vi leverer flotte resultater med hurtig responstid, så du ikke skal vente længe på at få arbejdet udført.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: service cards + CTA -->
+      <div class="flex flex-col gap-6">
+        <div class="grid grid-cols-2 gap-4">
+          {services.map((s) => (
+            <div class="flex flex-col items-center gap-3 rounded-2xl p-8 text-center border" style="border-color: rgba(111,67,21,0.12); background: #fdf9f5;">
+              <span style="color: var(--color-primary);" set:html={s.icon} />
+              <span class="text-sm font-semibold" style="font-family: var(--font-body); color: var(--color-on-surface);">{s.titel}</span>
+            </div>
+          ))}
+        </div>
+        <div class="text-center">
+          <a
+            href="#priser"
+            class="inline-block px-10 py-4 rounded-lg font-bold tracking-wide transition-transform hover:scale-105"
+            style="background: #6f4315; color: #fff; font-family: var(--font-body); letter-spacing: 0.05em; font-size: 0.9rem;"
+          >
+            SE VORES PRISER
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+---
+const spoergsmaal = [
+  {
+    sp: 'Skal man rense sit stråtag for alger og mos?',
+    svar: 'Ja — et stråtag uden regelmæssig vedligehold begynder at kompostere. Alger og mos holder på fugt, som fremskynder nedbrydning og gør taget sårbart over for vand og sne. Regelmæssig rensning og behandling kan forlænge tagets levetid med op til 20% og udskyde en dyr renovering i årevis.',
+  },
+  {
+    sp: 'Hvad koster det at få genopfyldt sin mønning?',
+    svar: 'Genopfyldning af eksisterende halmrygsmønning starter fra 259 kr. pr. meter. Prisen varierer afhængigt af mønningens tilstand og adgangsveje. Alle opgaver inkluderer en gratis taginspektion med en detaljeret rapport over akutte opgaver (1 år), planlagte opgaver (2–5 år) og en vedligeholdelsesvejledning — så du altid ved, hvad der venter.',
+  },
+  {
+    sp: 'Hvad koster en tagrenovering?',
+    svar: 'En komplet renovering af stråtag koster ca. 388 kr. pr. m² inkl. arbejdsløn og materialer. Det svarer til ca. 1/3 af prisen på et nyt tag. Op til 70–80% af det eksisterende materiale genbruges, brandimprægnering bevares, og resultatet har typisk en levetid på 20–25 år.',
+  },
+  {
+    sp: 'Hvad koster algebehandling og mosrensning?',
+    svar: 'Manuel rensning starter fra 79 kr. pr. m² og inkluderer fjernelse af alger og mos, klipning og afslutning. Ønsker du en finpudsning som nivellerer hele tagfladen og forbedrer afvanding, koster det +89 kr. pr. m². Regelmæssig behandling forlænger tagets levetid med 8–10 år.',
+  },
+]
+---
+
+<section id="faq" class="py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-8">
+
+    <div class="text-center mb-16">
+      <span class="block text-xs uppercase tracking-widest font-bold mb-4" style="color: var(--color-primary); font-family: var(--font-label);">Ofte stillede spørgsmål</span>
+      <h2 class="leading-tight" style="font-family: var(--font-headline); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--color-on-surface);">
+        Svar på dine spørgsmål
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      {spoergsmaal.map((item, i) => (
+        <details class="group rounded-2xl border overflow-hidden" style="border-color: rgba(111,67,21,0.15);">
+          <summary class="flex items-center justify-between gap-4 px-8 py-6 cursor-pointer select-none" style="font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; color: var(--color-on-surface); background: #fdf9f5;">
+            {item.sp}
+            <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-transform group-open:rotate-45" style="background: rgba(111,67,21,0.1); color: var(--color-primary);">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="px-8 py-6 leading-relaxed" style="font-family: var(--font-body); color: var(--color-outline); background: #fff; border-top: 1px solid rgba(111,67,21,0.08);">
+            {item.svar}
+          </div>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>
