@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { ClientRouter } from 'astro:transitions'
 
 interface Props {
   title: string
@@ -15,36 +16,71 @@ const {
   city,
 } = Astro.props
 
-const schema = {
+const siteUrl = 'https://taekkemandcarlsen.dk'
+const businessId = `${siteUrl}/#business`
+const websiteId = `${siteUrl}/#website`
+
+const graph = {
   "@context": "https://schema.org",
-  "@type": "RoofingContractor",
-  "name": "Tækkemand Carlsen",
-  "url": "https://taekkemandcarlsen.dk/",
-  "logo": "https://taekkemandcarlsen.dk/img/logo.png",
-  "image": "https://taekkemandcarlsen.dk/img/og-image.jpg",
-  "description": "Professionel tækkemand i Nordsjælland med speciale i stråtag, tagrenovering og vedligehold. Betjener Helsinge, Hillerød, Frederiksværk og hele Nordsjælland.",
-  "telephone": "+45 8988 3455",
-  "email": "post@taekkemandcarlsen.dk",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Nellerødvej 39",
-    "addressLocality": "Helsinge",
-    "postalCode": "3200",
-    "addressCountry": "DK"
-  },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "08:00",
-    "closes": "18:00"
-  }],
-  "areaServed": city
-    ? { "@type": "City", "name": city }
-    : { "@type": "State", "name": "Sjælland" },
-  "sameAs": [
-    "https://www.facebook.com/taekkemandcarlsen",
-    "https://www.instagram.com/taekkemandcarlsen"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      "url": siteUrl,
+      "name": "Tækkemand Carlsen",
+      "publisher": { "@id": businessId },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": `${siteUrl}/?s={search_term_string}` },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": ["LocalBusiness", "RoofingContractor"],
+      "@id": businessId,
+      "name": "Tækkemand Carlsen",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/img/logo.png`,
+        "width": 200,
+        "height": 60
+      },
+      "image": `${siteUrl}/img/og-image.jpg`,
+      "description": "Professionel tækkemand på Sjælland med over 50 års erfaring. Speciale i nyt stråtag, renovering, mønning, algebehandling og vedligehold. Betjener hele Sjælland.",
+      "telephone": "+4524248080",
+      "email": "post@taekkemandcarlsen.dk",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nørretorv 30",
+        "addressLocality": "Ringsted",
+        "postalCode": "4100",
+        "addressCountry": "DK"
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "16:00"
+      }],
+      "areaServed": city
+        ? { "@type": "City", "name": city }
+        : { "@type": "AdministrativeArea", "name": "Sjælland" },
+      "sameAs": [
+        "https://www.facebook.com/taekkemandcarlsen",
+        "https://www.instagram.com/taekkemandcarlsen"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": title,
+      "description": description,
+      "isPartOf": { "@id": websiteId },
+      "about": { "@id": businessId }
+    }
   ]
 }
 ---
@@ -56,7 +92,7 @@ const schema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Preload LCP hero image — must be first so browser discovers it immediately -->
-    <link rel="preload" as="image" href="/img/straatag1.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/img/straatag1-hero.webp" fetchpriority="high" type="image/webp" />
 
     <!-- Fonts preconnect — early as possible -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,16 +109,29 @@ const schema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="https://taekkemandcarlsen.dk/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tækkemand Carlsen — professionelt stråtag på Sjælland" />
+    <meta property="og:site_name" content="Tækkemand Carlsen" />
     <meta property="og:locale" content="da_DK" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://taekkemandcarlsen.dk/img/og-image.jpg" />
+
+    <!-- Sitemap + llms.txt discovery -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <ClientRouter defaultTransition="fade" />
 
     <!-- Fonts — non-blocking load -->
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet" /></noscript>
-    <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-    <!-- Schema.org -->
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <!-- Schema.org JSON-LD @graph -->
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
 
     <!-- Google Tag Manager — deferred so it doesn't block LCP -->
     <script>
@@ -102,6 +151,8 @@ const schema = {
         height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
 
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

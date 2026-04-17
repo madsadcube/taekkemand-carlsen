@@ -15,13 +15,18 @@ const {
 <section class="relative flex items-center overflow-hidden" style="height: 85vh; min-height: 560px;">
   <!-- Background image -->
   <div class="absolute inset-0 z-0">
-    <img
-      class="w-full h-full object-cover" style="object-position: 50% center;"
-      src="/img/straatag1-hero.jpg"
-      alt="Smuk dansk ejendom med nylagt stråtag af Tækkemand Carlsen"
-      fetchpriority="high"
-      loading="eager"
-    />
+    <picture>
+      <source srcset="/img/straatag1-hero.webp" type="image/webp" />
+      <img
+        class="w-full h-full object-cover" style="object-position: 50% center;"
+        src="/img/straatag1-hero.jpg"
+        alt="Smuk dansk ejendom med nylagt stråtag af Tækkemand Carlsen"
+        fetchpriority="high"
+        loading="eager"
+        width="1920"
+        height="1080"
+      />
+    </picture>
     <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(15,10,4,0.82) 0%, rgba(15,10,4,0.60) 50%, rgba(15,10,4,0.20) 100%);"></div>
   </div>
 
