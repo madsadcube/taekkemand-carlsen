@@ -1,7 +1,16 @@
 ---
+const formspreeEndpoint = 'https://formspree.io/f/mzdkjneg';
 ---
 
-<section id="kontakt" class="py-24 relative overflow-hidden" style="background: linear-gradient(180deg, rgba(235,207,162,0.3) 0%, #fbf9f8 100%);" data-offer-form>
+<section
+  id="kontakt"
+  class="py-24 relative overflow-hidden"
+  style="background: linear-gradient(180deg, rgba(235,207,162,0.3) 0%, #fbf9f8 100%);"
+  data-offer-form
+  data-cloudinary-cloud-name={import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}
+  data-cloudinary-upload-preset={import.meta.env.PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+  data-formspree-endpoint={formspreeEndpoint}
+>
   <div class="relative z-10 max-w-lg mx-auto px-6">
 
     <div class="text-center mb-8">
@@ -21,7 +30,7 @@
         <div id="step2-dot" class="w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center" style="background: var(--color-surface-container); color: var(--color-outline); font-family: var(--font-label);">2</div>
       </div>
 
-      <form method="POST" enctype="multipart/form-data">
+      <form id="offer-form" method="POST" enctype="multipart/form-data">
         <div id="step1">
           <h3 class="font-bold text-center mb-1" style="font-family: var(--font-headline); font-size: 1.4rem; color: #431a06;">
             Hvad drejer det sig om?
@@ -106,6 +115,10 @@
               <p class="text-xs mt-1" style="color: var(--color-outline); font-family: var(--font-body);">Maks. filstørrelse: 5 MB.</p>
               <p class="text-xs mt-1" style="color: var(--color-outline); font-family: var(--font-body);">Du kan uploade op til 5 billeder ad gangen.</p>
               <p id="files-error" class="text-xs mt-1 hidden" style="color: #c0392b; font-family: var(--font-body);">Du kan kun vælge op til 5 billeder.</p>
+              <div id="selected-files-wrapper" class="mt-3 hidden">
+                <p class="text-xs font-semibold mb-2" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">Valgte filer</p>
+                <ul id="selected-files-list" class="space-y-2"></ul>
+              </div>
             </div>
 
             <button
@@ -210,12 +223,20 @@
               </button>
               <button
                 type="submit"
+                id="submit-offer"
                 class="flex-1 py-3 px-4 rounded-lg font-bold text-base transition-opacity hover:opacity-90"
                 style="background: var(--color-primary); color: #fff; font-family: var(--font-body);"
               >
                 Modtag mit tilbud
               </button>
             </div>
+            <p
+              id="submit-status"
+              class="hidden text-sm font-semibold text-center mt-2 px-3 py-2 rounded-md border"
+              style="font-family: var(--font-body);"
+              role="status"
+              aria-live="polite"
+            ></p>
           </div>
         </div>
       </form>
@@ -240,10 +261,18 @@
     const timelineError = formSection.querySelector('#timeline-error');
     const filesInput = formSection.querySelector('#billeder');
     const filesError = formSection.querySelector('#files-error');
+    const selectedFilesWrapper = formSection.querySelector('#selected-files-wrapper');
+    const selectedFilesList = formSection.querySelector('#selected-files-list');
     const step2Button = formSection.querySelector('#to-step2');
     const step1Button = formSection.querySelector('#to-step1');
     const addressInput = formSection.querySelector('#adresse');
     const phoneInput = formSection.querySelector('#telefon');
+    const formEl = formSection.querySelector('#offer-form');
+    const submitButton = formSection.querySelector('#submit-offer');
+    const submitStatus = formSection.querySelector('#submit-status');
+    const cloudName = formSection.dataset.cloudinaryCloudName;
+    const uploadPreset = formSection.dataset.cloudinaryUploadPreset;
+    const formspreeEndpoint = formSection.dataset.formspreeEndpoint;
 
     if (
       !step1El ||
@@ -256,14 +285,41 @@
       !timelineError ||
       !filesInput ||
       !filesError ||
+      !selectedFilesWrapper ||
+      !selectedFilesList ||
       !step2Button ||
       !step1Button ||
       !addressInput ||
-      !phoneInput
+      !phoneInput ||
+      !formEl ||
+      !submitButton ||
+      !submitStatus
     ) {
       console.warn('Offer form fields are not configured correctly.');
     } else {
       let filesAreValid = true;
+      let selectedFiles = [];
+      const defaultSubmitLabel = submitButton.textContent;
+
+      const showStatus = (message, type) => {
+        submitStatus.textContent = message;
+        submitStatus.classList.remove('hidden');
+        if (type === 'success') {
+          submitStatus.style.color = '#1f6b2a';
+          submitStatus.style.background = '#edf9f0';
+          submitStatus.style.borderColor = '#b9e4c0';
+        } else {
+          submitStatus.style.color = '#c0392b';
+          submitStatus.style.background = '#fff1ef';
+          submitStatus.style.borderColor = '#f2c2bc';
+        }
+      };
+
+      const setSubmittingState = (isSubmitting) => {
+        submitButton.disabled = isSubmitting;
+        submitButton.style.opacity = isSubmitting ? '0.7' : '1';
+        submitButton.textContent = isSubmitting ? 'Sender...' : defaultSubmitLabel;
+      };
 
       const validateStepOne = () => {
         const serviceIsValid = Boolean(service.value);
@@ -275,18 +331,68 @@
         return serviceIsValid && timelineIsValid && filesAreValid;
       };
 
+      const createFileKey = (file) => `${file.name}-${file.size}-${file.lastModified}`;
+
+      const renderSelectedFiles = () => {
+        selectedFilesList.innerHTML = '';
+        selectedFilesWrapper.classList.toggle('hidden', selectedFiles.length === 0);
+
+        selectedFiles.forEach((file) => {
+          const fileKey = createFileKey(file);
+          const fileItem = document.createElement('li');
+          fileItem.className = 'flex items-center justify-between gap-2 rounded-md px-3 py-2';
+          fileItem.style.border = '1px solid var(--color-outline-variant)';
+          fileItem.style.background = 'var(--color-surface-container-low)';
+
+          const fileLabel = document.createElement('span');
+          fileLabel.className = 'text-xs';
+          fileLabel.style.color = 'var(--color-on-surface-variant)';
+          fileLabel.style.fontFamily = 'var(--font-body)';
+          fileLabel.textContent = file.name;
+
+          const removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.className = 'text-xs font-semibold px-2 py-1 rounded';
+          removeBtn.style.color = '#c0392b';
+          removeBtn.style.fontFamily = 'var(--font-body)';
+          removeBtn.style.border = '1px solid #e8b8b2';
+          removeBtn.style.background = '#fff';
+          removeBtn.textContent = 'Fjern';
+
+          removeBtn.addEventListener('click', () => {
+            selectedFiles = selectedFiles.filter((item) => createFileKey(item) !== fileKey);
+            filesAreValid = selectedFiles.length <= 5;
+            filesError.classList.add('hidden');
+            renderSelectedFiles();
+          });
+
+          fileItem.appendChild(fileLabel);
+          fileItem.appendChild(removeBtn);
+          selectedFilesList.appendChild(fileItem);
+        });
+      };
+
       filesInput.addEventListener('change', () => {
-        const selectedFiles = filesInput.files ? filesInput.files.length : 0;
-        filesAreValid = selectedFiles <= 5;
+        const newlyPickedFiles = filesInput.files ? Array.from(filesInput.files) : [];
+        const uniqueNewFiles = newlyPickedFiles.filter((file) => {
+          const key = createFileKey(file);
+          return !selectedFiles.some((existingFile) => createFileKey(existingFile) === key);
+        });
+
+        const nextFiles = [...selectedFiles, ...uniqueNewFiles];
+        filesAreValid = nextFiles.length <= 5;
 
         if (!filesAreValid) {
           filesError.classList.remove('hidden');
+          filesAreValid = selectedFiles.length <= 5;
           filesInput.value = '';
-          filesAreValid = true;
           return;
         }
 
+        selectedFiles = nextFiles;
         filesError.classList.add('hidden');
+        filesInput.value = '';
+        renderSelectedFiles();
       });
 
       step2Button.addEventListener('click', () => {
@@ -325,6 +431,122 @@
 
       phoneInput.addEventListener('input', () => {
         phoneInput.value = phoneInput.value.replace(/\D/g, '');
+      });
+
+      formEl.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        submitStatus.classList.add('hidden');
+
+        if (!cloudName || !uploadPreset) {
+          showStatus('Cloudinary mangler opsætning. Tjek miljøvariablerne.', 'error');
+          return;
+        }
+
+        if (!formspreeEndpoint) {
+          showStatus('Formspree endpoint mangler. Kontakt support.', 'error');
+          return;
+        }
+
+        if (!formEl.reportValidity()) {
+          return;
+        }
+
+        if (selectedFiles.length > 5) {
+          showStatus('Du kan kun vælge op til 5 billeder.', 'error');
+          return;
+        }
+
+        const maxFileSizeInBytes = 5 * 1024 * 1024;
+        const oversizedFile = selectedFiles.find((file) => file.size > maxFileSizeInBytes);
+        if (oversizedFile) {
+          showStatus(`Filen "${oversizedFile.name}" er for stor. Maksimum er 5 MB pr. fil.`, 'error');
+          return;
+        }
+
+        setSubmittingState(true);
+
+        try {
+          const uploadTasks = selectedFiles.map(async (file) => {
+            const uploadData = new FormData();
+            uploadData.append('file', file);
+            uploadData.append('upload_preset', uploadPreset);
+
+            const cloudinaryResponse = await fetch(
+              `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+              {
+                method: 'POST',
+                body: uploadData,
+              }
+            );
+
+            if (!cloudinaryResponse.ok) {
+              const cloudinaryErrorData = await cloudinaryResponse.json().catch(() => null);
+              const errorMessage =
+                cloudinaryErrorData &&
+                cloudinaryErrorData.error &&
+                cloudinaryErrorData.error.message
+                  ? cloudinaryErrorData.error.message
+                  : 'Cloudinary upload failed.';
+              throw new Error(errorMessage);
+            }
+
+            const cloudinaryResult = await cloudinaryResponse.json();
+            if (!cloudinaryResult.secure_url) {
+              throw new Error('Cloudinary did not return an image URL.');
+            }
+
+            return cloudinaryResult.secure_url;
+          });
+
+          const uploadedImageUrls = await Promise.all(uploadTasks);
+          const formPayload = new FormData(formEl);
+          formPayload.delete('billeder[]');
+          formPayload.delete('billeder_links');
+
+          if (uploadedImageUrls.length > 0) {
+            uploadedImageUrls.forEach((url, index) => {
+              formPayload.append(`billede_link_${index + 1}`, url);
+            });
+
+            formPayload.append(
+              'billeder_links',
+              uploadedImageUrls.map((url, index) => `${index + 1}. ${url}`).join('\n')
+            );
+          } else {
+            formPayload.append('billeder_links', 'Ingen billeder uploadet');
+          }
+
+          const formspreeResponse = await fetch(formspreeEndpoint, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+            },
+            body: formPayload,
+          });
+
+          if (!formspreeResponse.ok) {
+            throw new Error('Formspree submission failed.');
+          }
+
+          formEl.reset();
+          selectedFiles = [];
+          renderSelectedFiles();
+          filesError.classList.add('hidden');
+          serviceError.classList.add('hidden');
+          timelineError.classList.add('hidden');
+          step2El.classList.add('hidden');
+          step1El.classList.remove('hidden');
+          dot1.textContent = '1';
+          dot2.style.background = 'var(--color-surface-container)';
+          dot2.style.color = 'var(--color-outline)';
+
+          showStatus('Tak for din henvendelse! Vi har modtaget din formular og vender tilbage inden for 24 timer.', 'success');
+        } catch (error) {
+          console.error(error);
+          showStatus('Der opstod en fejl ved afsendelse. Prøv igen om et øjeblik.', 'error');
+        } finally {
+          setSubmittingState(false);
+        }
       });
 
       const initializeAddressAutocomplete = () => {
