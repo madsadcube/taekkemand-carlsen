@@ -1,72 +1,4 @@
 ---
-const portfolioItems = [
-  {
-    img: '/img/fb_straatag1.jpg',
-    alt: 'Nyt stråtag på stor ejendom',
-    desktopSpan: 'md:col-span-8',
-    desktopHeight: 'md:h-[500px]',
-    label: 'Større Ejendom · Helsinge',
-    title: 'Nyt stråtag på herskabsvilla',
-    titleSize: 'md:text-[1.8rem]',
-    paddingClass: 'md:p-8',
-  },
-  {
-    img: '/img/reparation3.webp',
-    alt: 'Klassisk stråtag reparation',
-    desktopSpan: 'md:col-span-4',
-    desktopHeight: 'md:h-[500px]',
-    label: 'Reparation · Hillerød',
-    title: 'Klassisk stråtag',
-    titleSize: 'md:text-[1.8rem]',
-    paddingClass: 'md:p-8',
-  },
-  {
-    img: '/img/fb_projekt1.jpg',
-    alt: 'Stråtag projekt',
-    desktopSpan: 'md:col-span-4',
-    desktopHeight: 'md:h-[360px]',
-    title: 'Nyt stråtag',
-    titleSize: 'md:text-[1.4rem]',
-    paddingClass: 'md:p-6',
-  },
-  {
-    img: '/img/fb_projekt2.jpg',
-    alt: 'Stråtag projekt',
-    desktopSpan: 'md:col-span-4',
-    desktopHeight: 'md:h-[360px]',
-    title: 'Mønning',
-    titleSize: 'md:text-[1.4rem]',
-    paddingClass: 'md:p-6',
-  },
-  {
-    img: '/img/fb_projekt3.jpg',
-    alt: 'Stråtag projekt',
-    desktopSpan: 'md:col-span-4',
-    desktopHeight: 'md:h-[360px]',
-    title: 'Renovering',
-    titleSize: 'md:text-[1.4rem]',
-    paddingClass: 'md:p-6',
-  },
-  {
-    img: '/img/fb_projekt4.jpg',
-    alt: 'Stråtag projekt',
-    desktopSpan: 'md:col-span-4',
-    desktopHeight: 'md:h-[400px]',
-    title: 'Rygning',
-    titleSize: 'md:text-[1.4rem]',
-    paddingClass: 'md:p-6',
-  },
-  {
-    img: '/img/fb_projekt5.jpg',
-    alt: 'Stråtag projekt',
-    desktopSpan: 'md:col-span-8',
-    desktopHeight: 'md:h-[400px]',
-    label: 'Renovering · Nordsjælland',
-    title: 'Fuld tagrenovering',
-    titleSize: 'md:text-[1.8rem]',
-    paddingClass: 'md:p-8',
-  },
-]
 ---
 
 <section id="billeder" class="py-24" style="background: linear-gradient(180deg, #fff 0%, rgba(235,207,162,0.50) 100%); position: relative; overflow: hidden;">
@@ -86,28 +18,33 @@ const portfolioItems = [
       </div>
     </div>
 
-    <div class="relative">
-      <div id="gallery-mobile-slider" class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-2 px-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-12 md:gap-6 md:overflow-visible">
-        {portfolioItems.map((item) => (
-          <div class={`w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg md:w-auto md:max-w-none md:shrink md:snap-none ${item.desktopSpan}`}>
-            <img
-              class={`w-full h-[380px] object-cover transition-transform duration-1000 group-hover:scale-105 ${item.desktopHeight}`}
-              src={item.img}
-              alt={item.alt}
-              loading="lazy"
-              decoding="async"
-            />
-            <div class={`hidden md:flex absolute inset-0 flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${item.paddingClass}`} style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
-              {item.label && (
-                <span class="text-sm uppercase tracking-widest mb-2" style="color: #ffdcc1; font-family: var(--font-label);">{item.label}</span>
-              )}
-              <h3 class={`text-white ${item.titleSize}`} style="font-family: var(--font-headline);">{item.title}</h3>
-            </div>
-          </div>
-        ))}
+    <!-- Mobile slider -->
+    <div class="relative md:hidden">
+      <div id="gallery-mobile-slider" class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-2 px-2">
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_straatag1.jpg" alt="Nyt stråtag på stor ejendom" loading="lazy" decoding="async" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/reparation3.webp" alt="Klassisk stråtag reparation" loading="lazy" decoding="async" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt1.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt2.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt3.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt4.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt5.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        </div>
       </div>
 
-      <div class="flex justify-center gap-3 mt-4 md:hidden">
+      <div class="flex justify-center gap-3 mt-4">
         <button type="button" data-slider-target="gallery-mobile-slider" data-direction="prev" class="w-10 h-10 rounded-full flex items-center justify-center" style="background: #fff; border: 1px solid var(--color-outline-variant); color: #431a06;" aria-label="Forrige">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -119,6 +56,64 @@ const portfolioItems = [
           </svg>
         </button>
       </div>
+    </div>
+
+    <!-- Desktop grid -->
+    <div class="hidden md:grid md:grid-cols-12 gap-6">
+
+      <!-- Large image -->
+      <div class="md:col-span-8 group cursor-pointer relative overflow-hidden rounded-lg">
+        <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 500px;" src="/img/fb_straatag1.jpg" alt="Nyt stråtag på stor ejendom" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
+          <span class="text-sm uppercase tracking-widest mb-2" style="color: #ffdcc1; font-family: var(--font-label);">Større Ejendom · Helsinge</span>
+          <h3 class="text-white" style="font-family: var(--font-headline); font-size: 1.8rem;">Nyt stråtag på herskabsvilla</h3>
+        </div>
+      </div>
+
+      <!-- Small image top-right -->
+      <div class="md:col-span-4 group cursor-pointer relative overflow-hidden rounded-lg">
+        <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 500px;" src="/img/reparation3.webp" alt="Klassisk stråtag reparation" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
+          <span class="text-sm uppercase tracking-widest mb-2" style="color: #ffdcc1; font-family: var(--font-label);">Reparation · Hillerød</span>
+          <h3 class="text-white" style="font-family: var(--font-headline); font-size: 1.8rem;">Klassisk stråtag</h3>
+        </div>
+      </div>
+
+      <!-- Row 2: 3 equal columns -->
+      <div class="md:col-span-4 group cursor-pointer relative overflow-hidden rounded-lg">
+        <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 360px;" src="/img/fb_projekt1.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
+          <h3 class="text-white" style="font-family: var(--font-headline); font-size: 1.4rem;">Nyt stråtag</h3>
+        </div>
+      </div>
+      <div class="md:col-span-4 group cursor-pointer relative overflow-hidden rounded-lg">
+        <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 360px;" src="/img/fb_projekt2.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
+          <h3 class="text-white" style="font-family: var(--font-headline); font-size: 1.4rem;">Mønning</h3>
+        </div>
+      </div>
+      <div class="md:col-span-4 group cursor-pointer relative overflow-hidden rounded-lg">
+        <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 360px;" src="/img/fb_projekt3.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
+          <h3 class="text-white" style="font-family: var(--font-headline); font-size: 1.4rem;">Renovering</h3>
+        </div>
+      </div>
+
+      <!-- Row 3: small + large -->
+      <div class="md:col-span-4 group cursor-pointer relative overflow-hidden rounded-lg">
+        <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 400px;" src="/img/fb_projekt4.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
+          <h3 class="text-white" style="font-family: var(--font-headline); font-size: 1.4rem;">Rygning</h3>
+        </div>
+      </div>
+      <div class="md:col-span-8 group cursor-pointer relative overflow-hidden rounded-lg">
+        <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 400px;" src="/img/fb_projekt5.jpg" alt="Stråtag projekt" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);">
+          <span class="text-sm uppercase tracking-widest mb-2" style="color: #ffdcc1; font-family: var(--font-label);">Renovering · Nordsjælland</span>
+          <h3 class="text-white" style="font-family: var(--font-headline); font-size: 1.8rem;">Fuld tagrenovering</h3>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
