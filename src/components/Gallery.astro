@@ -18,8 +18,48 @@
       </div>
     </div>
 
-    <!-- Portfolio grid -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+    <!-- Mobile slider -->
+    <div class="relative md:hidden">
+      <div id="gallery-mobile-slider" class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-2 px-2">
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_straatag1.jpg" alt="Nyt stråtag på stor ejendom" loading="lazy" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/reparation3.webp" alt="Klassisk stråtag reparation" loading="lazy" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt1.jpg" alt="Stråtag projekt" loading="lazy" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt2.jpg" alt="Stråtag projekt" loading="lazy" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt3.jpg" alt="Stråtag projekt" loading="lazy" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt4.jpg" alt="Stråtag projekt" loading="lazy" />
+        </div>
+        <div class="w-[86vw] max-w-[420px] shrink-0 snap-start group cursor-pointer relative overflow-hidden rounded-lg">
+          <img class="w-full object-cover transition-transform duration-1000 group-hover:scale-105" style="height: 380px;" src="/img/fb_projekt5.jpg" alt="Stråtag projekt" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="flex justify-center gap-3 mt-4">
+        <button type="button" data-slider-target="gallery-mobile-slider" data-direction="prev" class="w-10 h-10 rounded-full flex items-center justify-center" style="background: #fff; border: 1px solid var(--color-outline-variant); color: #431a06;" aria-label="Forrige">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button type="button" data-slider-target="gallery-mobile-slider" data-direction="next" class="w-10 h-10 rounded-full flex items-center justify-center" style="background: #fff; border: 1px solid var(--color-outline-variant); color: #431a06;" aria-label="Næste">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop grid -->
+    <div class="hidden md:grid md:grid-cols-12 gap-6">
 
       <!-- Large image -->
       <div class="md:col-span-8 group cursor-pointer relative overflow-hidden rounded-lg">
@@ -77,3 +117,25 @@
     </div>
   </div>
 </section>
+
+<script is:inline>
+  const gallerySlider = document.getElementById('gallery-mobile-slider');
+  const galleryButtons = document.querySelectorAll('[data-slider-target="gallery-mobile-slider"]');
+
+  if (gallerySlider && galleryButtons.length > 0) {
+    const getScrollStep = () => {
+      const firstCard = gallerySlider.children[0];
+      if (!firstCard) return 320;
+      const styles = window.getComputedStyle(gallerySlider);
+      const gap = parseFloat(styles.columnGap || styles.gap || '16');
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+
+    galleryButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
+        gallerySlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+      });
+    });
+  }
+</script>

@@ -43,23 +43,38 @@ const services = [
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      {services.map((s) => (
-        <div class="rounded-lg overflow-hidden group hover:shadow-lg transition-shadow" style="background: var(--color-surface-bright); border: 1px solid var(--color-outline-variant);">
-          <div class="overflow-hidden" style="height: 200px;">
-            <img
-              src={s.img}
-              alt={s.title}
-              loading="lazy"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+    <div class="relative">
+      <div id="services-mobile-slider" class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-2 px-2 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-8 sm:overflow-visible">
+        {services.map((s) => (
+          <div class="w-[82vw] max-w-[360px] shrink-0 snap-start rounded-lg overflow-hidden group hover:shadow-lg transition-shadow sm:w-auto sm:max-w-none sm:shrink sm:snap-none" style="background: var(--color-surface-bright); border: 1px solid var(--color-outline-variant);">
+            <div class="overflow-hidden" style="height: 200px;">
+              <img
+                src={s.img}
+                alt={s.title}
+                loading="lazy"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="mb-2" style="font-family: var(--font-headline); font-size: 1.3rem; color: #431a06;">{s.title}</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--color-outline); font-family: var(--font-body);">{s.desc}</p>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="mb-2" style="font-family: var(--font-headline); font-size: 1.3rem; color: #431a06;">{s.title}</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--color-outline); font-family: var(--font-body);">{s.desc}</p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div class="sm:hidden flex justify-center gap-3 mt-4">
+        <button type="button" data-slider-target="services-mobile-slider" data-direction="prev" class="w-10 h-10 rounded-full flex items-center justify-center" style="background: #fff; border: 1px solid var(--color-outline-variant); color: #431a06;" aria-label="Forrige">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button type="button" data-slider-target="services-mobile-slider" data-direction="next" class="w-10 h-10 rounded-full flex items-center justify-center" style="background: #fff; border: 1px solid var(--color-outline-variant); color: #431a06;" aria-label="Næste">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <div class="text-center mt-12">
@@ -74,3 +89,25 @@ const services = [
 
   </div>
 </section>
+
+<script is:inline>
+  const servicesSlider = document.getElementById('services-mobile-slider');
+  const servicesButtons = document.querySelectorAll('[data-slider-target="services-mobile-slider"]');
+
+  if (servicesSlider && servicesButtons.length > 0) {
+    const getScrollStep = () => {
+      const firstCard = servicesSlider.children[0];
+      if (!firstCard) return 280;
+      const styles = window.getComputedStyle(servicesSlider);
+      const gap = parseFloat(styles.columnGap || styles.gap || '16');
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+
+    servicesButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
+        servicesSlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+      });
+    });
+  }
+</script>

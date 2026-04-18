@@ -33,9 +33,10 @@ html {
 }
 
 body {
+  margin: 0;
   font-family: var(--font-body);
   color: var(--color-on-background);
-  background: #fff;
+  background: #f0ede9;
 }
 
 h1, h2, h3 {
