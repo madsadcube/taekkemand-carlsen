@@ -109,9 +109,19 @@ const formspreeEndpoint = 'https://formspree.io/f/mzdkjneg';
                 name="billeder[]"
                 accept="image/*"
                 multiple
-                class="w-full text-sm"
-                style="color: var(--color-on-surface-variant); font-family: var(--font-body);"
+                class="sr-only"
               />
+              <button
+                type="button"
+                id="choose-files-trigger"
+                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-md text-xs font-semibold transition-opacity hover:opacity-90"
+                style="background: #fff; border: 1px solid var(--color-outline-variant); color: #431a06; font-family: var(--font-body);"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0l-4 4m4-4l4 4M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1" />
+                </svg>
+                Vælg billeder
+              </button>
               <p class="text-xs mt-1" style="color: var(--color-outline); font-family: var(--font-body);">Maks. filstørrelse: 5 MB.</p>
               <p class="text-xs mt-1" style="color: var(--color-outline); font-family: var(--font-body);">Du kan uploade op til 5 billeder ad gangen.</p>
               <p id="files-error" class="text-xs mt-1 hidden" style="color: #c0392b; font-family: var(--font-body);">Du kan kun vælge op til 5 billeder.</p>
@@ -260,6 +270,7 @@ const formspreeEndpoint = 'https://formspree.io/f/mzdkjneg';
     const serviceError = formSection.querySelector('#service-error');
     const timelineError = formSection.querySelector('#timeline-error');
     const filesInput = formSection.querySelector('#billeder');
+    const chooseFilesButton = formSection.querySelector('#choose-files-trigger');
     const filesError = formSection.querySelector('#files-error');
     const selectedFilesWrapper = formSection.querySelector('#selected-files-wrapper');
     const selectedFilesList = formSection.querySelector('#selected-files-list');
@@ -284,6 +295,7 @@ const formspreeEndpoint = 'https://formspree.io/f/mzdkjneg';
       !serviceError ||
       !timelineError ||
       !filesInput ||
+      !chooseFilesButton ||
       !filesError ||
       !selectedFilesWrapper ||
       !selectedFilesList ||
@@ -332,6 +344,10 @@ const formspreeEndpoint = 'https://formspree.io/f/mzdkjneg';
       };
 
       const createFileKey = (file) => `${file.name}-${file.size}-${file.lastModified}`;
+
+      chooseFilesButton.addEventListener('click', () => {
+        filesInput.click();
+      });
 
       const renderSelectedFiles = () => {
         selectedFilesList.innerHTML = '';
