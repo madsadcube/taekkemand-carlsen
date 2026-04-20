@@ -1,7 +1,7 @@
 ---
 const services = [
   {
-    img: '/img/straatag1.jpg',
+    img: '/img/straatag1.webp',
     title: 'Nyt stråtag',
     desc: 'Komplet opsætning af nyt stråtag fra bund til top — leveret inden for 90 dage.',
   },
@@ -105,23 +105,35 @@ const services = [
 </section>
 
 <script is:inline>
-  const servicesSlider = document.getElementById('services-mobile-slider');
-  const servicesButtons = document.querySelectorAll('[data-slider-target="services-mobile-slider"]');
+  requestAnimationFrame(() => {
+    const servicesSlider = document.getElementById('services-mobile-slider');
+    const servicesButtons = document.querySelectorAll('[data-slider-target="services-mobile-slider"]');
 
-  if (servicesSlider && servicesButtons.length > 0) {
-    const getScrollStep = () => {
-      const firstCard = servicesSlider.children[0];
-      if (!firstCard) return 280;
-      const styles = window.getComputedStyle(servicesSlider);
-      const gap = parseFloat(styles.columnGap || styles.gap || '16');
-      return firstCard.getBoundingClientRect().width + gap;
-    };
+    if (servicesSlider && servicesButtons.length > 0) {
+      const getScrollStep = () => {
+        const firstCard = servicesSlider.children[0];
+        if (!firstCard) return 280;
+        const styles = window.getComputedStyle(servicesSlider);
+        const gap = parseFloat(styles.columnGap || styles.gap || '16');
+        return firstCard.getBoundingClientRect().width + gap;
+      };
 
-    servicesButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
-        servicesSlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+      servicesButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
+          const step = getScrollStep();
+          const maxScroll = servicesSlider.scrollWidth - servicesSlider.clientWidth;
+          if (direction === 1 && servicesSlider.scrollLeft >= maxScroll - 4) {
+            servicesSlider.scrollTo({ left: 0, behavior: 'instant' });
+            servicesSlider.scrollBy({ left: step, behavior: 'smooth' });
+          } else if (direction === -1 && servicesSlider.scrollLeft <= 4) {
+            servicesSlider.scrollTo({ left: maxScroll, behavior: 'instant' });
+            servicesSlider.scrollBy({ left: -step, behavior: 'smooth' });
+          } else {
+            servicesSlider.scrollBy({ left: direction * step, behavior: 'smooth' });
+          }
+        });
       });
-    });
-  }
+    }
+  });
 </script>
