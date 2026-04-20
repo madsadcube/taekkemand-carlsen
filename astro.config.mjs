@@ -14,6 +14,9 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/helsinge') || true,
+      serialize(item) {
+        return { ...item, lastmod: new Date().toISOString() };
+      },
     })
   ]
 });
