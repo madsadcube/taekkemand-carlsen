@@ -84,23 +84,25 @@ const stars = [1,2,3,4,5]
 </section>
 
 <script is:inline>
-  const testimonialsSlider = document.getElementById('testimonials-mobile-slider');
-  const testimonialsButtons = document.querySelectorAll('[data-slider-target="testimonials-mobile-slider"]');
+  requestAnimationFrame(() => {
+    const testimonialsSlider = document.getElementById('testimonials-mobile-slider');
+    const testimonialsButtons = document.querySelectorAll('[data-slider-target="testimonials-mobile-slider"]');
 
-  if (testimonialsSlider && testimonialsButtons.length > 0) {
-    const getScrollStep = () => {
-      const firstCard = testimonialsSlider.children[0];
-      if (!firstCard) return 300;
-      const styles = window.getComputedStyle(testimonialsSlider);
-      const gap = parseFloat(styles.columnGap || styles.gap || '16');
-      return firstCard.getBoundingClientRect().width + gap;
-    };
+    if (testimonialsSlider && testimonialsButtons.length > 0) {
+      const getScrollStep = () => {
+        const firstCard = testimonialsSlider.children[0];
+        if (!firstCard) return 300;
+        const styles = window.getComputedStyle(testimonialsSlider);
+        const gap = parseFloat(styles.columnGap || styles.gap || '16');
+        return firstCard.getBoundingClientRect().width + gap;
+      };
 
-    testimonialsButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
-        testimonialsSlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+      testimonialsButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
+          testimonialsSlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+        });
       });
-    });
-  }
+    }
+  });
 </script>

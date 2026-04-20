@@ -119,23 +119,25 @@
 </section>
 
 <script is:inline>
-  const gallerySlider = document.getElementById('gallery-mobile-slider');
-  const galleryButtons = document.querySelectorAll('[data-slider-target="gallery-mobile-slider"]');
+  requestAnimationFrame(() => {
+    const gallerySlider = document.getElementById('gallery-mobile-slider');
+    const galleryButtons = document.querySelectorAll('[data-slider-target="gallery-mobile-slider"]');
 
-  if (gallerySlider && galleryButtons.length > 0) {
-    const getScrollStep = () => {
-      const firstCard = gallerySlider.children[0];
-      if (!firstCard) return 320;
-      const styles = window.getComputedStyle(gallerySlider);
-      const gap = parseFloat(styles.columnGap || styles.gap || '16');
-      return firstCard.getBoundingClientRect().width + gap;
-    };
+    if (gallerySlider && galleryButtons.length > 0) {
+      const getScrollStep = () => {
+        const firstCard = gallerySlider.children[0];
+        if (!firstCard) return 320;
+        const styles = window.getComputedStyle(gallerySlider);
+        const gap = parseFloat(styles.columnGap || styles.gap || '16');
+        return firstCard.getBoundingClientRect().width + gap;
+      };
 
-    galleryButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
-        gallerySlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+      galleryButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
+          gallerySlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+        });
       });
-    });
-  }
+    }
+  });
 </script>
