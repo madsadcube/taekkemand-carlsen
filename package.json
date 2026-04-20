@@ -9,10 +9,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "node scripts/validate.mjs && node scripts/indexnow.mjs",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "npm run build && wrangler dev",
+    "astro": "astro",
+    "generate-types": "wrangler types",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.1.10",
     "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.4",
@@ -20,6 +23,10 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "wrangler": "^4.84.0"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
