@@ -3,14 +3,19 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   site: 'https://taekkemandcarlsen.dk',
+
   vite: {
     plugins: [tailwindcss()]
   },
+
   build: {
     inlineStylesheets: 'always'
   },
+
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/helsinge') || true,
@@ -18,5 +23,7 @@ export default defineConfig({
         return { ...item, lastmod: new Date().toISOString() };
       },
     })
-  ]
+  ],
+
+  adapter: cloudflare()
 });
