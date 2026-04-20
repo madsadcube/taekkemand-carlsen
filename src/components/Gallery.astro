@@ -135,7 +135,15 @@
       galleryButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
-          gallerySlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+          const step = getScrollStep();
+          const maxScroll = gallerySlider.scrollWidth - gallerySlider.clientWidth;
+          if (direction === 1 && gallerySlider.scrollLeft >= maxScroll - 4) {
+            gallerySlider.scrollTo({ left: 0, behavior: 'smooth' });
+          } else if (direction === -1 && gallerySlider.scrollLeft <= 4) {
+            gallerySlider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+          } else {
+            gallerySlider.scrollBy({ left: direction * step, behavior: 'smooth' });
+          }
         });
       });
     }

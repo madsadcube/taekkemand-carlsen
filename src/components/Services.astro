@@ -108,7 +108,15 @@ const services = [
       servicesButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
-          servicesSlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+          const step = getScrollStep();
+          const maxScroll = servicesSlider.scrollWidth - servicesSlider.clientWidth;
+          if (direction === 1 && servicesSlider.scrollLeft >= maxScroll - 4) {
+            servicesSlider.scrollTo({ left: 0, behavior: 'smooth' });
+          } else if (direction === -1 && servicesSlider.scrollLeft <= 4) {
+            servicesSlider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+          } else {
+            servicesSlider.scrollBy({ left: direction * step, behavior: 'smooth' });
+          }
         });
       });
     }

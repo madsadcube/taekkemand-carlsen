@@ -100,7 +100,15 @@ const stars = [1,2,3,4,5]
       testimonialsButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const direction = button.getAttribute('data-direction') === 'prev' ? -1 : 1;
-          testimonialsSlider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+          const step = getScrollStep();
+          const maxScroll = testimonialsSlider.scrollWidth - testimonialsSlider.clientWidth;
+          if (direction === 1 && testimonialsSlider.scrollLeft >= maxScroll - 4) {
+            testimonialsSlider.scrollTo({ left: 0, behavior: 'smooth' });
+          } else if (direction === -1 && testimonialsSlider.scrollLeft <= 4) {
+            testimonialsSlider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+          } else {
+            testimonialsSlider.scrollBy({ left: direction * step, behavior: 'smooth' });
+          }
         });
       });
     }
