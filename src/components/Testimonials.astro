@@ -103,9 +103,11 @@ const stars = [1,2,3,4,5]
           const step = getScrollStep();
           const maxScroll = testimonialsSlider.scrollWidth - testimonialsSlider.clientWidth;
           if (direction === 1 && testimonialsSlider.scrollLeft >= maxScroll - 4) {
-            testimonialsSlider.scrollTo({ left: 0, behavior: 'smooth' });
+            testimonialsSlider.scrollTo({ left: 0, behavior: 'instant' });
+            testimonialsSlider.scrollBy({ left: step, behavior: 'smooth' });
           } else if (direction === -1 && testimonialsSlider.scrollLeft <= 4) {
-            testimonialsSlider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            testimonialsSlider.scrollTo({ left: maxScroll, behavior: 'instant' });
+            testimonialsSlider.scrollBy({ left: -step, behavior: 'smooth' });
           } else {
             testimonialsSlider.scrollBy({ left: direction * step, behavior: 'smooth' });
           }

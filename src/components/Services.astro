@@ -111,9 +111,11 @@ const services = [
           const step = getScrollStep();
           const maxScroll = servicesSlider.scrollWidth - servicesSlider.clientWidth;
           if (direction === 1 && servicesSlider.scrollLeft >= maxScroll - 4) {
-            servicesSlider.scrollTo({ left: 0, behavior: 'smooth' });
+            servicesSlider.scrollTo({ left: 0, behavior: 'instant' });
+            servicesSlider.scrollBy({ left: step, behavior: 'smooth' });
           } else if (direction === -1 && servicesSlider.scrollLeft <= 4) {
-            servicesSlider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            servicesSlider.scrollTo({ left: maxScroll, behavior: 'instant' });
+            servicesSlider.scrollBy({ left: -step, behavior: 'smooth' });
           } else {
             servicesSlider.scrollBy({ left: direction * step, behavior: 'smooth' });
           }

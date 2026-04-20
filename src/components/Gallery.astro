@@ -138,9 +138,11 @@
           const step = getScrollStep();
           const maxScroll = gallerySlider.scrollWidth - gallerySlider.clientWidth;
           if (direction === 1 && gallerySlider.scrollLeft >= maxScroll - 4) {
-            gallerySlider.scrollTo({ left: 0, behavior: 'smooth' });
+            gallerySlider.scrollTo({ left: 0, behavior: 'instant' });
+            gallerySlider.scrollBy({ left: step, behavior: 'smooth' });
           } else if (direction === -1 && gallerySlider.scrollLeft <= 4) {
-            gallerySlider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            gallerySlider.scrollTo({ left: maxScroll, behavior: 'instant' });
+            gallerySlider.scrollBy({ left: -step, behavior: 'smooth' });
           } else {
             gallerySlider.scrollBy({ left: direction * step, behavior: 'smooth' });
           }
