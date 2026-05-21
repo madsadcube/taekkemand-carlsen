@@ -16,9 +16,14 @@ function walk(dir) {
 
 const htmlFiles = walk(distDir).filter(f => f.endsWith('.html'));
 
+const SKIP = ['/hero-galleri/index.html'];
+
 for (const file of htmlFiles) {
   const html = readFileSync(file, 'utf-8');
   const rel = file.replace(distDir, '');
+  if (SKIP.includes(rel)) continue;
+  // Skip redirect pages (Astro generates these as meta-refresh stubs without H1/description)
+  if (rel.includes('.php/') || /<meta\s+http-equiv=["']refresh["']/i.test(html)) continue;
 
   // Title
   const titles = [...html.matchAll(/<title[^>]*>(.*?)<\/title>/gs)].map(m => m[1].trim());

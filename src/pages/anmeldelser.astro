@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Testimonials from '../components/Testimonials.astro'
+import TestimonialsA from '../components/TestimonialsA.astro'
+import TestimonialsB from '../components/TestimonialsB.astro'
+import TestimonialsC from '../components/TestimonialsC.astro'
+import Contact from '../components/Contact.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Anmeldelser & kundeudtalelser | Tækkemand Carlsen"
+  description="Læs hvad vores kunder siger om Tækkemand Carlsen. Anmeldelser fra rigtige stråtagskunder i Nordsjælland, Midtsjælland og Sydsjælland."
+  canonical="https://taekkemandcarlsen.dk/anmeldelser/"
+>
+  <Nav />
+  <div class="pt-32 pb-16 px-8 max-w-4xl mx-auto text-center" style="background: #faf6f1;">
+    <p style="font-family: var(--font-headline); font-style: italic; color: #6f4315; font-size: 1rem; letter-spacing: 0.05em;">Det siger vores kunder</p>
+    <h1 class="text-5xl md:text-6xl mt-3" style="font-family: var(--font-headline); color: #1b1c1c;">Anmeldelser</h1>
+  </div>
+  <Testimonials />
+  <TestimonialsA />
+  <TestimonialsB />
+  <TestimonialsC />
+  <Contact />
+  <Footer />
+</Layout>

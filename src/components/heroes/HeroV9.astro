@@ -1,0 +1,255 @@
+---
+// Variant 9: Material — vævet stråtag-tekstur som baggrund, animerede strå
+// der "falder", varm beige palette, taktilt og natur-baseret. Headline opbrudt
+// over flere skala-niveauer som typografisk komposition.
+---
+
+<section class="hero-v9">
+  <!-- Animated straws -->
+  <div class="v9-straws" aria-hidden="true">
+    <span class="v9-straw v9-s1"></span>
+    <span class="v9-straw v9-s2"></span>
+    <span class="v9-straw v9-s3"></span>
+    <span class="v9-straw v9-s4"></span>
+    <span class="v9-straw v9-s5"></span>
+    <span class="v9-straw v9-s6"></span>
+    <span class="v9-straw v9-s7"></span>
+    <span class="v9-straw v9-s8"></span>
+  </div>
+
+  <!-- Texture layer -->
+  <div class="v9-texture"></div>
+
+  <div class="v9-content">
+    <!-- Eyebrow with mini icon -->
+    <div class="v9-eyebrow">
+      <span class="v9-dot"></span>
+      <span>Et håndværk i 1972 — og nu</span>
+    </div>
+
+    <!-- Composed headline -->
+    <h1 class="v9-h1">
+      <span class="v9-word v9-w1">Stråtag</span>
+      <span class="v9-word v9-w2">der <em>holder</em></span>
+      <span class="v9-word v9-w3">i</span>
+      <span class="v9-word v9-w4"><em>generationer</em></span>
+    </h1>
+
+    <!-- Sub line as ribbon -->
+    <div class="v9-ribbon">
+      <span>Fra mark til tag · Hver strå håndlagt · 50 års specialisering</span>
+    </div>
+
+    <div class="v9-cta">
+      <a href="#kontakt" class="v9-btn-primary">
+        <span class="v9-btn-text">Få et tilbud</span>
+        <span class="v9-btn-arrow">→</span>
+      </a>
+      <a href="tel:+4524248080" class="v9-btn-text-only">
+        <span class="v9-phone-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </span>
+        24 24 80 80
+      </a>
+    </div>
+
+    <!-- Bottom strip with materials -->
+    <div class="v9-materials">
+      <div class="v9-mat">
+        <div class="v9-mat-icon" style="background: #c8a45e;"></div>
+        <div class="v9-mat-text">
+          <div class="v9-mat-name">Vandrør</div>
+          <div class="v9-mat-meta">Fra Polen, EU-certificeret</div>
+        </div>
+      </div>
+      <div class="v9-mat">
+        <div class="v9-mat-icon" style="background: #6f4315;"></div>
+        <div class="v9-mat-text">
+          <div class="v9-mat-name">Egetræ</div>
+          <div class="v9-mat-meta">Lokalt, Nordsjælland</div>
+        </div>
+      </div>
+      <div class="v9-mat">
+        <div class="v9-mat-icon" style="background: #2a3a26;"></div>
+        <div class="v9-mat-text">
+          <div class="v9-mat-name">Mosafrensning</div>
+          <div class="v9-mat-meta">100 % økologisk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-v9 {
+    position: relative;
+    min-height: 100svh;
+    background:
+      radial-gradient(ellipse at 70% 30%, #d9b079 0%, #b88746 50%, #6f4315 100%);
+    color: #fdf8ee;
+    overflow: hidden;
+    padding-top: 96px;
+  }
+  .v9-texture {
+    position: absolute; inset: 0; z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg stroke='%23fdf8ee' stroke-width='0.5' opacity='0.08'%3E%3Cline x1='10' y1='0' x2='15' y2='80'/%3E%3Cline x1='25' y1='0' x2='28' y2='80'/%3E%3Cline x1='40' y1='0' x2='44' y2='80'/%3E%3Cline x1='55' y1='0' x2='58' y2='80'/%3E%3Cline x1='70' y1='0' x2='73' y2='80'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .v9-straws {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .v9-straw {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, #fdf8ee 50%, transparent 100%);
+    opacity: 0.5;
+    animation: v9-fall 14s linear infinite;
+  }
+  .v9-s1 { left: 8%; height: 80px; animation-delay: 0s; }
+  .v9-s2 { left: 19%; height: 60px; animation-delay: -2s; opacity: 0.3; }
+  .v9-s3 { left: 32%; height: 100px; animation-delay: -5s; }
+  .v9-s4 { left: 47%; height: 70px; animation-delay: -8s; opacity: 0.4; }
+  .v9-s5 { left: 61%; height: 90px; animation-delay: -3s; }
+  .v9-s6 { left: 73%; height: 65px; animation-delay: -10s; opacity: 0.3; }
+  .v9-s7 { left: 84%; height: 80px; animation-delay: -6s; }
+  .v9-s8 { left: 92%; height: 50px; animation-delay: -1s; opacity: 0.4; }
+  @keyframes v9-fall {
+    0%   { transform: translateY(-15vh) rotate(8deg); }
+    100% { transform: translateY(115vh) rotate(8deg); }
+  }
+
+  .v9-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  .v9-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(253,248,238,0.12);
+    border: 1px solid rgba(253,248,238,0.2);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #fdf8ee;
+    backdrop-filter: blur(8px);
+    margin-bottom: 40px;
+  }
+  .v9-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #ffdcc1;
+    animation: v9-pulse 2s ease-in-out infinite;
+  }
+  @keyframes v9-pulse { 50% { opacity: 0.3; } }
+
+  .v9-h1 {
+    font-family: var(--font-headline);
+    color: #fdf8ee;
+    font-weight: 500;
+    margin: 0 0 32px;
+    line-height: 0.92;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .v9-word { display: block; }
+  .v9-w1 { font-size: clamp(3rem, 11vw, 6rem); }
+  .v9-w2 {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    padding-left: clamp(2rem, 8vw, 6rem);
+    color: rgba(253,248,238,0.85);
+  }
+  .v9-w2 em, .v9-w4 em { font-style: italic; color: #ffdcc1; }
+  .v9-w3 {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    padding-left: clamp(2rem, 8vw, 6rem);
+    color: rgba(253,248,238,0.6);
+    font-family: var(--font-label);
+  }
+  .v9-w4 {
+    font-size: clamp(2.75rem, 10vw, 5.5rem);
+    font-style: italic;
+    color: #ffdcc1;
+  }
+
+  .v9-ribbon {
+    display: inline-block;
+    background: #1b1c1c;
+    color: #fdf8ee;
+    padding: 10px 24px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transform: rotate(-1deg);
+    margin: 32px 0 40px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  }
+
+  .v9-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .v9-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: #fdf8ee;
+    color: #1b1c1c;
+    padding: 18px 32px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transition: gap 0.3s, transform 0.3s;
+  }
+  .v9-btn-primary:hover { gap: 24px; transform: translateY(-2px); }
+  .v9-btn-arrow { font-size: 1.25rem; }
+  .v9-btn-text-only {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: #fdf8ee;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: underline;
+    text-decoration-color: rgba(253,248,238,0.4);
+    text-underline-offset: 4px;
+  }
+
+  .v9-materials {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(253,248,238,0.2);
+    max-width: 720px;
+  }
+  .v9-mat { display: flex; align-items: center; gap: 12px; }
+  .v9-mat-icon { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15); }
+  .v9-mat-name { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; color: #fdf8ee; }
+  .v9-mat-meta { font-family: var(--font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(253,248,238,0.6); }
+
+  @media (min-width: 768px) {
+    .v9-content { padding: 80px 56px 96px; }
+    .v9-materials { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  }
+</style>
+</content>
+</invoke>

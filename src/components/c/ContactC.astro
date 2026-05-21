@@ -1,0 +1,846 @@
+---
+const formspreeEndpoint = 'https://formspree.io/f/mzdkjneg';
+---
+
+<section
+  class="c-contact c-section"
+  id="kontakt"
+  data-offer-form
+  data-cloudinary-cloud-name={import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}
+  data-cloudinary-upload-preset={import.meta.env.PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+  data-formspree-endpoint={formspreeEndpoint}
+>
+  <div class="c-container">
+    <div class="c-c-grid">
+
+      <div class="c-c-text">
+        <span class="c-eyebrow">Skriv til os</span>
+        <h2 class="c-h2">
+          Få et <span class="c-h2-italic">uforpligtende tilbud</span>.
+        </h2>
+        <p class="c-c-sub">
+          Beskriv dit projekt — så vender vi tilbage med næste skridt. Du forpligter dig til ingenting.
+        </p>
+
+        <div class="c-c-promises">
+          <div class="c-c-promise">
+            <div class="c-c-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <div class="c-c-promise-t">Hurtigt prisoverslag</div>
+              <div class="c-c-promise-m">Ofte ud fra skråfoto — uforpligtende.</div>
+            </div>
+          </div>
+          <div class="c-c-promise">
+            <div class="c-c-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <div class="c-c-promise-t">Skriftligt tilbud</div>
+              <div class="c-c-promise-m">Klart overblik over hvad arbejdet koster.</div>
+            </div>
+          </div>
+          <div class="c-c-promise">
+            <div class="c-c-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <div class="c-c-promise-t">Levering inden 90 dage</div>
+              <div class="c-c-promise-m">Fra projektstart til færdigt tag.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-c-direct">
+          <a href="tel:+4524248080" class="c-c-direct-link">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <div>
+              <div class="c-c-direct-num">24 24 80 80</div>
+              <div class="c-c-direct-meta">Hverdage 8–16</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="c-c-form-card">
+        <div class="c-c-steps">
+          <div id="step1-dot" class="c-c-dot c-c-dot--active">1</div>
+          <div class="c-c-dot-line"></div>
+          <div id="step2-dot" class="c-c-dot">2</div>
+        </div>
+
+        <form id="offer-form" method="POST" enctype="multipart/form-data">
+          <div id="step1">
+            <h3 class="c-c-step-title">Hvad drejer det sig om?</h3>
+            <p class="c-c-step-sub">Fortæl os hvad du har brug for hjælp til</p>
+
+            <div class="c-c-fields">
+              <div class="c-c-field">
+                <label for="service">Hvad skal du have lavet? <span class="c-c-req">*</span></label>
+                <select id="service" name="service" required>
+                  <option value="">Vælg venligst</option>
+                  <option>Nyt stråtag</option>
+                  <option>Reparation af stråtag</option>
+                  <option>Mønning / rygning</option>
+                  <option>Renovering af stråtag</option>
+                  <option>Alge- og mosafrensning</option>
+                  <option>Vurderingsrapport ifbm. huskøb eller salg</option>
+                  <option>Andet</option>
+                </select>
+                <p id="service-error" class="c-c-error hidden">Vælg venligst en opgave</p>
+              </div>
+
+              <div class="c-c-field">
+                <label for="timeline">Hvornår skal opgaven udføres? <span class="c-c-req">*</span></label>
+                <select id="timeline" name="timeline" required>
+                  <option value="">Vælg venligst</option>
+                  <option>Det haster - der er skade eller akut behov</option>
+                  <option>Inden for 1 måned</option>
+                  <option>Inden for 1-3 måneder</option>
+                  <option>Inden for 3-6 måneder</option>
+                  <option>Jeg indhenter blot tilbud</option>
+                </select>
+                <p id="timeline-error" class="c-c-error hidden">Vælg venligst hvornår opgaven skal udføres</p>
+              </div>
+
+              <div class="c-c-field">
+                <label for="besked">Evt. besked</label>
+                <textarea id="besked" name="besked" rows="3" placeholder="Beskriv kort din opgave..."></textarea>
+              </div>
+
+              <div class="c-c-field">
+                <label for="billeder">Upload billeder af din opgave</label>
+                <div class="c-c-dropzone">
+                  <input type="file" id="billeder" name="billeder[]" accept="image/*" multiple class="c-c-file-input"/>
+                  <svg class="c-c-dropzone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5V18a2 2 0 002 2h14a2 2 0 002-2v-1.5M16 8l-4-4m0 0L8 8m4-4v12"/></svg>
+                  <span class="c-c-dropzone-text"><strong>Vælg billeder</strong> — eller træk hertil</span>
+                </div>
+                <p class="c-c-hint">Maks. filstørrelse: 5 MB. Op til 5 billeder ad gangen.</p>
+                <p id="files-error" class="c-c-error hidden">Du kan kun vælge op til 5 billeder.</p>
+                <div id="selected-files-wrapper" class="c-c-files-wrap hidden">
+                  <p class="c-c-files-title">Valgte filer</p>
+                  <ul id="selected-files-list" class="c-c-files-list"></ul>
+                </div>
+              </div>
+
+              <button type="button" id="to-step2" class="c-btn c-btn--primary c-c-submit">
+                Hent tilbud
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="step2" class="hidden">
+            <h3 class="c-c-step-title">Hvordan kan vi kontakte dig?</h3>
+            <p class="c-c-step-sub">Vi vender tilbage hurtigst muligt med et gennemsigtigt tilbud</p>
+
+            <div class="c-c-fields">
+              <div class="c-c-field">
+                <label for="navn">Fulde navn <span class="c-c-req">*</span></label>
+                <input type="text" id="navn" name="navn" required placeholder="Indtast dit fulde navn"/>
+              </div>
+
+              <div class="c-c-field">
+                <label for="adresse">Adresse <span class="c-c-req">*</span></label>
+                <div class="autocomplete-container">
+                  <input type="text" id="adresse" name="adresse" required placeholder="Indtast din adresse"/>
+                </div>
+              </div>
+
+              <div class="c-c-field">
+                <label for="email">Email <span class="c-c-req">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="Indtast din email"/>
+              </div>
+
+              <div class="c-c-field">
+                <label for="telefon">Telefonnummer <span class="c-c-req">*</span></label>
+                <div class="c-c-phone-wrap">
+                  <span class="c-c-phone-prefix">DK +45</span>
+                  <input type="tel" id="telefon" name="telefon" required inputmode="numeric" pattern="[0-9]*" maxlength="8" placeholder="Indtast dit telefonnummer"/>
+                </div>
+              </div>
+
+              <div class="c-c-actions">
+                <button type="button" id="to-step1" class="c-btn c-btn--outline c-c-back">Tilbage</button>
+                <button type="submit" id="submit-offer" class="c-btn c-btn--primary c-c-submit-final">Modtag mit tilbud</button>
+              </div>
+              <p id="submit-status" class="c-c-status hidden" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </form>
+
+        <p class="c-c-privacy">100% uforpligtende · Svar inden for 24 timer</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  const formSection = document.querySelector('[data-offer-form]');
+  if (formSection) {
+    const step1El = formSection.querySelector('#step1');
+    const step2El = formSection.querySelector('#step2');
+    const dot1 = formSection.querySelector('#step1-dot');
+    const dot2 = formSection.querySelector('#step2-dot');
+    const service = formSection.querySelector('#service');
+    const timeline = formSection.querySelector('#timeline');
+    const serviceError = formSection.querySelector('#service-error');
+    const timelineError = formSection.querySelector('#timeline-error');
+    const filesInput = formSection.querySelector('#billeder');
+    const filesError = formSection.querySelector('#files-error');
+    const selectedFilesWrapper = formSection.querySelector('#selected-files-wrapper');
+    const selectedFilesList = formSection.querySelector('#selected-files-list');
+    const step2Button = formSection.querySelector('#to-step2');
+    const step1Button = formSection.querySelector('#to-step1');
+    const addressInput = formSection.querySelector('#adresse');
+    const phoneInput = formSection.querySelector('#telefon');
+    const formEl = formSection.querySelector('#offer-form');
+    const submitButton = formSection.querySelector('#submit-offer');
+    const submitStatus = formSection.querySelector('#submit-status');
+    const cloudName = formSection.dataset.cloudinaryCloudName;
+    const uploadPreset = formSection.dataset.cloudinaryUploadPreset;
+    const formspreeEndpoint = formSection.dataset.formspreeEndpoint;
+
+    if (
+      !step1El ||
+      !step2El ||
+      !dot1 ||
+      !dot2 ||
+      !service ||
+      !timeline ||
+      !serviceError ||
+      !timelineError ||
+      !filesInput ||
+      !filesError ||
+      !selectedFilesWrapper ||
+      !selectedFilesList ||
+      !step2Button ||
+      !step1Button ||
+      !addressInput ||
+      !phoneInput ||
+      !formEl ||
+      !submitButton ||
+      !submitStatus
+    ) {
+      console.warn('Offer form fields are not configured correctly.');
+    } else {
+      let filesAreValid = true;
+      let selectedFiles = [];
+      const defaultSubmitLabel = submitButton.textContent;
+
+      const showStatus = (message, type) => {
+        submitStatus.textContent = message;
+        submitStatus.classList.remove('hidden');
+        if (type === 'success') {
+          submitStatus.style.color = '#1f6b2a';
+          submitStatus.style.background = '#edf9f0';
+          submitStatus.style.borderColor = '#b9e4c0';
+        } else {
+          submitStatus.style.color = '#c0392b';
+          submitStatus.style.background = '#fff1ef';
+          submitStatus.style.borderColor = '#f2c2bc';
+        }
+      };
+
+      const setSubmittingState = (isSubmitting) => {
+        submitButton.disabled = isSubmitting;
+        submitButton.style.opacity = isSubmitting ? '0.7' : '1';
+        submitButton.textContent = isSubmitting ? 'Sender...' : defaultSubmitLabel;
+      };
+
+      const validateStepOne = () => {
+        const serviceIsValid = Boolean(service.value);
+        const timelineIsValid = Boolean(timeline.value);
+
+        serviceError.classList.toggle('hidden', serviceIsValid);
+        timelineError.classList.toggle('hidden', timelineIsValid);
+
+        return serviceIsValid && timelineIsValid && filesAreValid;
+      };
+
+      const createFileKey = (file) => `${file.name}-${file.size}-${file.lastModified}`;
+
+      const renderSelectedFiles = () => {
+        selectedFilesList.innerHTML = '';
+        selectedFilesWrapper.classList.toggle('hidden', selectedFiles.length === 0);
+
+        selectedFiles.forEach((file) => {
+          const fileKey = createFileKey(file);
+          const fileItem = document.createElement('li');
+          fileItem.className = 'c-c-file-item';
+
+          const fileLabel = document.createElement('span');
+          fileLabel.className = 'c-c-file-name';
+          fileLabel.textContent = file.name;
+
+          const removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.className = 'c-c-file-remove';
+          removeBtn.textContent = 'Fjern';
+
+          removeBtn.addEventListener('click', () => {
+            selectedFiles = selectedFiles.filter((item) => createFileKey(item) !== fileKey);
+            filesAreValid = selectedFiles.length <= 5;
+            filesError.classList.add('hidden');
+            renderSelectedFiles();
+          });
+
+          fileItem.appendChild(fileLabel);
+          fileItem.appendChild(removeBtn);
+          selectedFilesList.appendChild(fileItem);
+        });
+      };
+
+      filesInput.addEventListener('change', () => {
+        const newlyPickedFiles = filesInput.files ? Array.from(filesInput.files) : [];
+        const uniqueNewFiles = newlyPickedFiles.filter((file) => {
+          const key = createFileKey(file);
+          return !selectedFiles.some((existingFile) => createFileKey(existingFile) === key);
+        });
+
+        const nextFiles = [...selectedFiles, ...uniqueNewFiles];
+        filesAreValid = nextFiles.length <= 5;
+
+        if (!filesAreValid) {
+          filesError.classList.remove('hidden');
+          filesAreValid = selectedFiles.length <= 5;
+          filesInput.value = '';
+          return;
+        }
+
+        selectedFiles = nextFiles;
+        filesError.classList.add('hidden');
+        filesInput.value = '';
+        renderSelectedFiles();
+      });
+
+      step2Button.addEventListener('click', () => {
+        if (!validateStepOne()) {
+          return;
+        }
+
+        step1El.classList.add('hidden');
+        step2El.classList.remove('hidden');
+
+        dot1.textContent = '✓';
+        dot2.style.background = 'var(--c-brand)';
+        dot2.style.color = '#fff';
+        dot2.style.borderColor = 'var(--c-brand)';
+      });
+
+      step1Button.addEventListener('click', () => {
+        step2El.classList.add('hidden');
+        step1El.classList.remove('hidden');
+
+        dot1.textContent = '1';
+        dot2.style.background = '';
+        dot2.style.color = '';
+        dot2.style.borderColor = '';
+      });
+
+      service.addEventListener('change', () => {
+        if (service.value) {
+          serviceError.classList.add('hidden');
+        }
+      });
+
+      timeline.addEventListener('change', () => {
+        if (timeline.value) {
+          timelineError.classList.add('hidden');
+        }
+      });
+
+      phoneInput.addEventListener('input', () => {
+        phoneInput.value = phoneInput.value.replace(/\D/g, '');
+      });
+
+      formEl.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        submitStatus.classList.add('hidden');
+
+        if (!cloudName || !uploadPreset) {
+          showStatus('Cloudinary mangler opsætning. Tjek miljøvariablerne.', 'error');
+          return;
+        }
+
+        if (!formspreeEndpoint) {
+          showStatus('Formspree endpoint mangler. Kontakt support.', 'error');
+          return;
+        }
+
+        if (!formEl.reportValidity()) {
+          return;
+        }
+
+        if (selectedFiles.length > 5) {
+          showStatus('Du kan kun vælge op til 5 billeder.', 'error');
+          return;
+        }
+
+        const maxFileSizeInBytes = 5 * 1024 * 1024;
+        const oversizedFile = selectedFiles.find((file) => file.size > maxFileSizeInBytes);
+        if (oversizedFile) {
+          showStatus(`Filen "${oversizedFile.name}" er for stor. Maksimum er 5 MB pr. fil.`, 'error');
+          return;
+        }
+
+        setSubmittingState(true);
+
+        try {
+          const uploadTasks = selectedFiles.map(async (file) => {
+            const uploadData = new FormData();
+            uploadData.append('file', file);
+            uploadData.append('upload_preset', uploadPreset);
+
+            const cloudinaryResponse = await fetch(
+              `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+              {
+                method: 'POST',
+                body: uploadData,
+              }
+            );
+
+            if (!cloudinaryResponse.ok) {
+              const cloudinaryErrorData = await cloudinaryResponse.json().catch(() => null);
+              const errorMessage =
+                cloudinaryErrorData &&
+                cloudinaryErrorData.error &&
+                cloudinaryErrorData.error.message
+                  ? cloudinaryErrorData.error.message
+                  : 'Cloudinary upload failed.';
+              throw new Error(errorMessage);
+            }
+
+            const cloudinaryResult = await cloudinaryResponse.json();
+            if (!cloudinaryResult.secure_url) {
+              throw new Error('Cloudinary did not return an image URL.');
+            }
+
+            return cloudinaryResult.secure_url;
+          });
+
+          const uploadedImageUrls = await Promise.all(uploadTasks);
+          const formPayload = new FormData(formEl);
+          formPayload.delete('billeder[]');
+          formPayload.delete('billeder_links');
+
+          if (uploadedImageUrls.length > 0) {
+            uploadedImageUrls.forEach((url, index) => {
+              formPayload.append(`billede_link_${index + 1}`, url);
+            });
+
+            formPayload.append(
+              'billeder_links',
+              uploadedImageUrls.map((url, index) => `${index + 1}. ${url}`).join('\n')
+            );
+          } else {
+            formPayload.append('billeder_links', 'Ingen billeder uploadet');
+          }
+
+          const formspreeResponse = await fetch(formspreeEndpoint, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+            },
+            body: formPayload,
+          });
+
+          if (!formspreeResponse.ok) {
+            throw new Error('Formspree submission failed.');
+          }
+
+          formEl.reset();
+          selectedFiles = [];
+          renderSelectedFiles();
+          filesError.classList.add('hidden');
+          serviceError.classList.add('hidden');
+          timelineError.classList.add('hidden');
+          step2El.classList.add('hidden');
+          step1El.classList.remove('hidden');
+          dot1.textContent = '1';
+          dot2.style.background = '';
+          dot2.style.color = '';
+          dot2.style.borderColor = '';
+
+          showStatus('Tak for din henvendelse! Vi har modtaget din formular og vender tilbage inden for 24 timer.', 'success');
+        } catch (error) {
+          console.error(error);
+          showStatus('Der opstod en fejl ved afsendelse. Prøv igen om et øjeblik.', 'error');
+        } finally {
+          setSubmittingState(false);
+        }
+      });
+
+      const initializeAddressAutocomplete = () => {
+        if (!window.dawaAutocomplete || !window.dawaAutocomplete.dawaAutocomplete) {
+          return;
+        }
+
+        window.dawaAutocomplete.dawaAutocomplete(addressInput, {
+          minLength: 2,
+          select: (selected) => {
+            addressInput.value = selected.tekst;
+          },
+        });
+      };
+
+      const dawaScript = document.createElement('script');
+      dawaScript.src = 'https://cdn.dataforsyningen.dk/dawa/assets/dawa-autocomplete2/1.0.2/dawa-autocomplete2.min.js';
+      dawaScript.onload = initializeAddressAutocomplete;
+      dawaScript.onerror = () => {
+        console.warn('DAWA autocomplete failed to load. Address field will remain manual.');
+      };
+      document.head.appendChild(dawaScript);
+    }
+  }
+</script>
+
+<style>
+  .c-contact { background: var(--c-bg-surface); }
+  .c-contact .hidden { display: none !important; }
+  .c-c-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .c-c-sub {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--c-ink-soft);
+    margin: 0 0 32px;
+  }
+
+  .c-c-promises {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .c-c-promise {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .c-c-check {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--c-brand);
+    color: var(--c-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .c-c-promise-t {
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--c-ink);
+    font-size: 1rem;
+  }
+  .c-c-promise-m {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--c-ink-soft);
+    margin-top: 2px;
+  }
+
+  .c-c-direct {
+    padding-top: 24px;
+    border-top: 1px solid var(--c-brand-soft);
+  }
+  .c-c-direct-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--c-ink);
+    text-decoration: none;
+  }
+  .c-c-direct-link svg { color: var(--c-brand); flex-shrink: 0; }
+  .c-c-direct-num {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--c-ink);
+  }
+  .c-c-direct-meta {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--c-ink-soft);
+    margin-top: 4px;
+  }
+
+  /* ── Form card ── */
+  .c-c-form-card {
+    background: var(--c-white);
+    padding: 32px;
+    border-radius: var(--c-r-lg);
+    border: 1px solid var(--c-brand-soft);
+    box-shadow: var(--c-shadow-md);
+  }
+
+  /* Trin-indikator */
+  .c-c-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .c-c-dot {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: var(--c-bg-cream);
+    color: var(--c-ink-faint);
+    border: 1px solid var(--c-brand-soft);
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .c-c-dot--active {
+    background: var(--c-brand);
+    color: var(--c-white);
+    border-color: var(--c-brand);
+  }
+  .c-c-dot-line {
+    width: 60px;
+    height: 1px;
+    background: var(--c-brand-soft);
+  }
+
+  .c-c-step-title {
+    font-family: var(--font-headline);
+    font-size: 1.4rem;
+    color: var(--c-ink);
+    text-align: center;
+    margin: 0 0 4px;
+    font-weight: 500;
+  }
+  .c-c-step-sub {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--c-ink-soft);
+    text-align: center;
+    margin: 0 0 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--c-brand-soft);
+  }
+
+  .c-c-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .c-c-field { display: flex; flex-direction: column; gap: 6px; }
+  .c-c-field label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-ink);
+  }
+  .c-c-req { color: #c0392b; }
+  .c-c-field input, .c-c-field textarea, .c-c-field select {
+    background: var(--c-bg-surface);
+    border: 1px solid rgba(111, 67, 21, 0.2);
+    padding: 12px 14px;
+    border-radius: var(--c-r-sm);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--c-ink);
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  .c-c-field input:focus, .c-c-field textarea:focus, .c-c-field select:focus {
+    border-color: var(--c-brand);
+  }
+  .c-c-field textarea { resize: vertical; }
+
+  /* Upload-zone — tydeligt klikbar, kompakt */
+  .c-c-dropzone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    text-align: center;
+    padding: 13px 16px;
+    border: 1.5px dashed rgba(111, 67, 21, 0.4);
+    border-radius: var(--c-r-sm);
+    background: var(--c-bg-cream);
+    color: var(--c-ink-soft);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  .c-c-dropzone:hover {
+    border-color: var(--c-brand);
+    background: #f0e6d6;
+  }
+  .c-c-dropzone:focus-within {
+    border-color: var(--c-brand);
+    box-shadow: 0 0 0 3px var(--c-brand-soft);
+  }
+  /* Det rigtige input ligger som usynligt overlay → klik rammer altid det */
+  .c-c-file-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .c-c-dropzone-icon { color: var(--c-brand); flex-shrink: 0; }
+  .c-c-dropzone-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--c-ink);
+  }
+  .c-c-dropzone-text strong { color: var(--c-brand); font-weight: 700; }
+  .c-c-hint {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--c-ink-faint);
+    margin: 2px 0 0;
+  }
+  .c-c-error {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: #c0392b;
+    margin: 2px 0 0;
+  }
+
+  /* Telefon med prefix */
+  .c-c-phone-wrap {
+    display: flex;
+    border: 1px solid rgba(111, 67, 21, 0.2);
+    border-radius: var(--c-r-sm);
+    overflow: hidden;
+  }
+  .c-c-phone-wrap:focus-within { border-color: var(--c-brand); }
+  .c-c-phone-prefix {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: var(--c-bg-cream);
+    border-right: 1px solid rgba(111, 67, 21, 0.2);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--c-ink-soft);
+    white-space: nowrap;
+  }
+  .c-c-phone-wrap input {
+    border: none !important;
+    border-radius: 0 !important;
+    background: var(--c-white) !important;
+  }
+
+  /* Valgte filer */
+  .c-c-files-wrap { margin-top: 6px; }
+  .c-c-files-title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--c-ink-soft);
+    margin: 0 0 8px;
+  }
+  .c-c-files-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .c-c-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--c-brand-soft);
+    border-radius: var(--c-r-sm);
+    background: var(--c-bg-cream);
+  }
+  .c-c-file-name {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--c-ink-soft);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .c-c-file-remove {
+    flex-shrink: 0;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #c0392b;
+    border: 1px solid #e8b8b2;
+    background: var(--c-white);
+    border-radius: var(--c-r-sm);
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+
+  .c-c-submit { margin-top: 8px; width: 100%; }
+  .c-c-actions { display: flex; gap: 12px; padding-top: 8px; }
+  .c-c-back { flex: 1; }
+  .c-c-submit-final { flex: 1; }
+
+  .c-c-status {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 8px 0 0;
+    padding: 10px 14px;
+    border-radius: var(--c-r-sm);
+    border: 1px solid transparent;
+  }
+  .c-c-privacy {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--c-ink-faint);
+    margin: 16px 0 0;
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    .c-c-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  }
+
+  /* ── DAWA adresse-autocomplete ──
+     Forslagene oprettes af JS ved runtime og får ikke Astros scope-attribut,
+     så disse regler SKAL være :global() for at ramme dem. */
+  .autocomplete-container { position: relative; width: 100%; }
+  :global(.dawa-autocomplete-suggestions) {
+    margin: 0.4rem 0 0 0;
+    padding: 0;
+    text-align: left;
+    border-radius: var(--c-r-sm);
+    border: 1px solid var(--c-brand-soft);
+    background: var(--c-white);
+    box-shadow: var(--c-shadow-md);
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  :global(.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion) {
+    margin: 0;
+    list-style: none;
+    cursor: pointer;
+    padding: 0.6rem 0.75rem;
+    color: var(--c-ink);
+    border-bottom: 1px solid var(--c-brand-soft);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+  :global(.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion:last-child) { border-bottom: 0; }
+  :global(.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion.dawa-selected),
+  :global(.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion:hover) {
+    background: var(--c-bg-cream);
+  }
+</style>

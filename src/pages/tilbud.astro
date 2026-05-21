@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Beregner from '../components/Beregner.astro'
+import ContactForm from '../components/ContactForm.astro'
+import Faq from '../components/Faq.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Beregn pris på nyt stråtag | Tækkemand Carlsen"
+  description="Beregn et vejledende overslag på dit nye stråtag. Prøv tilvalg som stillads, mønning og brandsikring — og se prisen med det samme. Uforpligtende."
+  canonical="https://taekkemandcarlsen.dk/tilbud/"
+>
+  <Nav />
+  <div class="pt-32 pb-10 px-8 max-w-4xl mx-auto text-center" style="background: #faf6f1;">
+    <p style="font-family: var(--font-headline); font-style: italic; color: #6f4315; font-size: 1rem; letter-spacing: 0.05em;">Gennemsigtige priser</p>
+    <h1 class="text-5xl md:text-6xl mt-3" style="font-family: var(--font-headline); color: #1b1c1c;">Beregn din pris</h1>
+    <p class="mt-4 text-lg" style="color: #51443a; font-family: var(--font-body);">Leg med tilvalgene og se hvad et nyt stråtag koster — før du beder om et bindende tilbud.</p>
+  </div>
+  <Beregner />
+  <div id="tilbud-form"></div>
+  <ContactForm />
+  <Faq />
+  <Footer />
+</Layout>

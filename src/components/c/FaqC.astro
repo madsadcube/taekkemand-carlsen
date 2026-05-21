@@ -1,0 +1,146 @@
+---
+// C FAQ — udvidet med info-indhold der i B-varianten ligger i en separat InfoB-sektion.
+// Forslag: drop redundans, hold alt på ÉN side ved at folde "godt at vide"-blokke ind her.
+const faqs = [
+  // Proces
+  { q: 'Hvordan får jeg et tilbud?', a: 'Du starter med et prisoverslag online — vi tjekker dit tag via skråfoto.dk og giver dig et prisindblik med det samme. Hvis projektet er stort nok, kommer vi ud til en besigtigelse på adressen, hvor vi gennemgår taget i detaljer og giver et endeligt, uforpligtende tilbud.' },
+  { q: 'Hvor lang tid tager et nyt stråtag?', a: 'Vi garanterer levering af nyt stråtag inden 90 dage fra projektstart til færdigt tag. Mønning kan typisk udføres inden for otte uger.' },
+  { q: 'Hvor lang tid holder et nyt stråtag?', a: 'Et velvedligeholdt stråtag holder 30–40 år, og rygningen 8–10 år hvis den er af lyng eller tang. Med løbende vedligehold kan tagets levetid forlænges yderligere.' },
+
+  // Renovering vs nyt
+  { q: 'Hvorfor vælge renovering frem for nyt tag?', a: 'En stråtagsrenovering forlænger tagets levetid med 20-25 år — typisk for omkring 1/3 af prisen for et helt nyt tag. Ved en renovering genbruger vi 70-80% af det eksisterende strå, og brandsikringen kan ofte beholdes (den holder op til 60 år). Hvis taget derimod har omfattende skader eller er nedslidt på de fleste flader, giver et helt nyt stråtag bedre mening. Vi vurderer det ærligt — ud fra skråfoto eller en besigtigelse.' },
+
+  // Pris
+  { q: 'Hvad koster et nyt stråtag?', a: 'Prisen afhænger af tagets størrelse, taghældning, rygningsmateriale og kompleksitet (skorstene, kviste, valm m.v.). Vi giver altid et uforpligtende prisoverslag efter opmåling.' },
+  { q: 'Hvad koster algebehandling?', a: 'Algebehandling koster fra 2.500 kr (+moms) for tage på 0–200 m². For 201–300 m² er prisen 2.700 kr, for 301–400 m² er den 2.900 kr, og for 401–500 m² er den 3.100 kr.' },
+  { q: 'Hvad koster vedligeholdelse?', a: 'Grundpakke (manuel rensning) koster 79 kr/m² og inkluderer fjernelse af alger, mos og mug + trimning og fin klapning af stråtaget. Tillæg (finpudsning) koster +89 kr/m². Vedligeholdelse forbedrer levetiden med 8-10 år.' },
+  { q: 'Hvad koster reparation af mønning?', a: 'Mønning udskiftes fra 450 kr/m (ekskl. moms). Halmrygning holder typisk 3–5 år, lyng- og tangmønning 8–10 år. Der kan tilkomme tillæg for stillads og stige.' },
+
+  // Vedligehold
+  { q: 'Hvor ofte skal stråtaget vedligeholdes?', a: 'Stråtaget bør efterses mindst én gang om året. Hvert femte år er det en god idé at få en tækkemand til at kontrollere taget for begyndende skader, mos eller alger. Løbende vedligehold forlænger levetiden markant.' },
+  { q: 'Hvorfor er rensning af alger og mos vigtig?', a: 'Et stråtag komposterer langsomt til muld pga. mug, alger og mos hvis det ikke vedligeholdes. Når stråtaget tørrer dårligt, accelererer nedbrydningen og kan efterlade huller ("lunker") som fyldes med vand. Typisk holder et stråtag op til 20% længere ved jævnlig vedligeholdelse.' },
+
+  // Lokalt – Nordsjælland
+  { q: 'Hvordan påvirker Nordsjællands klima et stråtag?', a: 'Nordsjælland har høj luftfugtighed og saltvind fra kysten, hvilket kan fremskynde algevækst og mos. Derfor anbefaler vi algebehandling hvert 2-3 år og altid brug af materialer der modstår fugt. Vores lokale erfaring sikrer, at vi vælger de rette produkter til netop din ejendom.' },
+  { q: 'Er der særlige regler for stråtage i bevaringsområder i Gilleleje?', a: 'Ja, mange huse i Gilleleje og Tisvildeleje er omfattet af lokale bevaringsplaner der stiller krav til tagmateriale og udseende. Vi rådgiver om kommunens regler og sikrer at arbejdet opfylder alle krav.' },
+  { q: 'Hvor hurtigt kan I rykke ud til et akut problem efter en storm?', a: 'Vi prioriterer akutte skader i Nordsjælland og vil normalt besigtige taget inden 24 timer. Ring direkte på 24 24 80 80, så laver vi en midlertidig sikring indtil en permanent løsning er på plads.' },
+
+  // Tillid
+  { q: 'Er I forsikrede?', a: 'Ja. Tækkemand Carlsen er forsikret hos Alm. Brand Forsikring med en dækning på op til 12.000.000 kroner. Police-nummer fremvises gerne.' },
+  { q: 'Hvilke områder dækker I?', a: 'Vi servicerer hele Nordsjælland — fx Helsinge, Hillerød, Gilleleje, Frederiksværk, Tisvildeleje og Hundested. Ring eller skriv, så afklarer vi om vi kan tage dit projekt.' },
+]
+
+// FAQPage-schema genereres ud fra faqs ovenfor → matcher altid det synlige indhold (Google-krav)
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://taekkemandcarlsen.dk/c#faq',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section class="c-faq c-section" id="faq">
+  <div class="c-container-narrow">
+    <div class="c-head-center">
+      <span class="c-eyebrow">Spørgsmål & svar</span>
+      <h2 class="c-h2">
+        Ofte stillede spørgsmål om <span class="c-h2-italic">tækkearbejde i Nordsjælland</span>
+      </h2>
+    </div>
+
+    <div class="c-faq-list">
+      {faqs.map((f) => (
+        <details class="c-faq-item">
+          <summary>
+            <span>{f.q}</span>
+            <span class="c-faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="c-faq-a">{f.a}</div>
+        </details>
+      ))}
+    </div>
+
+    <div class="c-faq-foot">
+      <p>Spørgsmål, vi ikke har svaret på her?</p>
+      <a href="#kontakt" class="c-faq-link">Skriv til os →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .c-faq { background: var(--c-bg-surface); }
+
+  .c-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .c-faq-item {
+    background: var(--c-white);
+    border: 1px solid var(--c-brand-soft);
+    border-radius: var(--c-r-md);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .c-faq-item[open] { box-shadow: var(--c-shadow-sm); }
+  .c-faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--c-ink);
+  }
+  .c-faq-item summary::-webkit-details-marker { display: none; }
+  .c-faq-icon {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--c-brand-soft);
+    color: var(--c-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 400;
+    transition: transform 0.3s, background 0.3s, color 0.3s;
+  }
+  .c-faq-item[open] .c-faq-icon {
+    transform: rotate(45deg);
+    background: var(--c-brand);
+    color: var(--c-white);
+  }
+  .c-faq-a {
+    padding: 0 24px 24px;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--c-ink-soft);
+  }
+
+  .c-faq-foot { text-align: center; }
+  .c-faq-foot p {
+    font-family: var(--font-body);
+    color: var(--c-ink-soft);
+    margin: 0 0 8px;
+  }
+  .c-faq-link {
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--c-brand);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+</style>

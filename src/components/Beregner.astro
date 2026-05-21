@@ -1,0 +1,300 @@
+---
+// Guidet prisberegner for nyt stråtag — multi-step wizard.
+// UX-mønster inspireret af tagmembranguide.dk/indhent-tilbud.
+// Prislogik 1:1 fra taekkemandcarlsen.dk/tilbud/ — alle priser ekskl. moms.
+---
+
+<section
+  id="beregner"
+  class="py-16 md:py-20"
+  style="background: linear-gradient(180deg, #faf6f1 0%, #fbf9f8 100%);"
+  data-beregner
+>
+  <div class="max-w-2xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center max-w-xl mx-auto mb-8">
+      <span class="text-xs font-bold uppercase" style="color: var(--color-primary); font-family: var(--font-label); letter-spacing: 0.3em;">Prisberegner</span>
+      <h2 class="mt-3 leading-tight" style="font-family: var(--font-headline); font-size: clamp(1.9rem, 5vw, 2.8rem); color: #1b1c1c;">
+        Beregn prisen på dit nye stråtag
+      </h2>
+      <p class="mt-3 text-base" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+        Svar på et par hurtige spørgsmål — så ser du et vejledende overslag med det samme. Helt uforpligtende.
+      </p>
+      <div class="flex items-center justify-center gap-5 mt-4 text-sm" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">
+        <span class="inline-flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-primary);"><path d="M20 6 9 17l-5-5"/></svg> Ingen binding</span>
+        <span class="inline-flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-primary);"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Svar inden for 24 timer</span>
+      </div>
+    </div>
+
+    <!-- WIZARD CARD -->
+    <div class="rounded-2xl overflow-hidden" style="background:#fff; border: 1px solid var(--color-outline-variant); box-shadow: 0 18px 48px rgba(0,0,0,0.07);">
+
+      <!-- progress -->
+      <div class="px-6 md:px-8 pt-6 flex items-center gap-4">
+        <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background: var(--color-surface-container);">
+          <div id="b-progress" class="h-full rounded-full transition-all duration-300" style="background: var(--color-primary); width: 25%;"></div>
+        </div>
+        <span id="b-steplabel" class="text-xs font-bold uppercase whitespace-nowrap" style="color: var(--color-on-surface-variant); font-family: var(--font-label); letter-spacing: 0.15em;">Trin 1 / 4</span>
+      </div>
+
+      <div class="px-6 md:px-8 py-7">
+
+        <!-- STEP 1 — Huset -->
+        <div class="b-step" data-step="1">
+          <h3 class="font-bold mb-1" style="font-family: var(--font-headline); font-size: 1.5rem; color: #431a06;">Fortæl om dit hus</h3>
+          <p class="text-sm mb-6" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">Vi beregner selve tagarealet ud fra husets grundareal.</p>
+
+          <label for="b-m2" class="block text-sm font-semibold mb-2" style="color: #431a06; font-family: var(--font-body);">Husets/ejendommens areal <span style="color:#c0392b;">*</span></label>
+          <div class="flex items-center gap-3 mb-7">
+            <input type="number" id="b-m2" name="m2" min="0" placeholder="fx 120"
+              class="w-44 rounded-xl px-4 py-3 text-lg font-semibold focus:outline-none"
+              style="border: 1.5px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body);" />
+            <span class="text-sm" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">m²</span>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div data-stepper>
+              <span class="text-sm font-semibold block mb-2" style="color:#431a06; font-family: var(--font-body);">Skorstene</span>
+              <div class="flex items-center rounded-xl overflow-hidden" style="border: 1.5px solid var(--color-outline-variant);">
+                <button type="button" class="step-dn px-3.5 py-2.5 text-lg font-bold" aria-label="Færre" style="background: var(--color-surface-container-low); color: var(--color-on-surface-variant);">−</button>
+                <input type="number" id="b-skorstene" name="skorstene" value="0" min="0" max="20" class="flex-1 w-full text-center py-2.5 font-semibold focus:outline-none" style="color: var(--color-on-background); font-family: var(--font-body); border:0;" />
+                <button type="button" class="step-up px-3.5 py-2.5 text-lg font-bold" aria-label="Flere" style="background: var(--color-surface-container-low); color: var(--color-on-surface-variant);">+</button>
+              </div>
+            </div>
+            <div data-stepper>
+              <span class="text-sm font-semibold block mb-2" style="color:#431a06; font-family: var(--font-body);">Kviste / vinduer</span>
+              <div class="flex items-center rounded-xl overflow-hidden" style="border: 1.5px solid var(--color-outline-variant);">
+                <button type="button" class="step-dn px-3.5 py-2.5 text-lg font-bold" aria-label="Færre" style="background: var(--color-surface-container-low); color: var(--color-on-surface-variant);">−</button>
+                <input type="number" id="b-kviste" name="kvistevinduer" value="0" min="0" max="20" class="flex-1 w-full text-center py-2.5 font-semibold focus:outline-none" style="color: var(--color-on-background); font-family: var(--font-body); border:0;" />
+                <button type="button" class="step-up px-3.5 py-2.5 text-lg font-bold" aria-label="Flere" style="background: var(--color-surface-container-low); color: var(--color-on-surface-variant);">+</button>
+              </div>
+            </div>
+            <div data-stepper>
+              <span class="text-sm font-semibold block mb-2" style="color:#431a06; font-family: var(--font-body);">Vindskeder</span>
+              <div class="flex items-center rounded-xl overflow-hidden" style="border: 1.5px solid var(--color-outline-variant);">
+                <button type="button" class="step-dn px-3.5 py-2.5 text-lg font-bold" aria-label="Færre" style="background: var(--color-surface-container-low); color: var(--color-on-surface-variant);">−</button>
+                <input type="number" id="b-vindskeder" name="vindskeder" value="0" min="0" max="20" class="flex-1 w-full text-center py-2.5 font-semibold focus:outline-none" style="color: var(--color-on-background); font-family: var(--font-body); border:0;" />
+                <button type="button" class="step-up px-3.5 py-2.5 text-lg font-bold" aria-label="Flere" style="background: var(--color-surface-container-low); color: var(--color-on-surface-variant);">+</button>
+              </div>
+            </div>
+          </div>
+          <p id="b-m2-error" class="hidden text-sm mt-4" style="color:#c0392b; font-family: var(--font-body);">Udfyld husets areal for at gå videre.</p>
+        </div>
+
+        <!-- STEP 2 — Forberedelse -->
+        <div class="b-step hidden" data-step="2">
+          <h3 class="font-bold mb-1" style="font-family: var(--font-headline); font-size: 1.5rem; color: #431a06;">Hvad skal med i opgaven?</h3>
+          <p class="text-sm mb-6" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">Vælg det der er relevant — du kan altid ændre det senere.</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <label class="opt"><input type="checkbox" name="stilladsopstilling" hidden /><span class="opt-box"><span class="opt-title">Opstilling af stillads</span><span class="opt-sub">Lovpligtigt stillads til tagarbejdet</span></span></label>
+            <label class="opt"><input type="checkbox" name="stilladsleje" hidden /><span class="opt-box"><span class="opt-title">Leje af stillads</span><span class="opt-sub">I hele byggeperioden</span></span></label>
+            <label class="opt"><input type="checkbox" name="nedtagelse" hidden /><span class="opt-box"><span class="opt-title">Nedtagelse</span><span class="opt-sub">Af gammel mønning og stråtag</span></span></label>
+            <label class="opt"><input type="checkbox" name="bortkorsel" hidden /><span class="opt-box"><span class="opt-title">Bortkørsel</span><span class="opt-sub">Af gammelt stråtag og byggeaffald</span></span></label>
+            <label class="opt"><input type="checkbox" name="udskiftningtaglaegter" hidden /><span class="opt-box"><span class="opt-title">Udskiftning af taglægter T1</span><span class="opt-sub">Kun hvis det er nødvendigt</span></span></label>
+            <label class="opt"><input type="checkbox" name="brandsikring" hidden /><span class="opt-box"><span class="opt-title">Brandsikring</span><span class="opt-sub">Brandsikring af stråtaget</span></span></label>
+          </div>
+        </div>
+
+        <!-- STEP 3 — Detaljer + mønning -->
+        <div class="b-step hidden" data-step="3">
+          <h3 class="font-bold mb-1" style="font-family: var(--font-headline); font-size: 1.5rem; color: #431a06;">Afsluttende detaljer</h3>
+          <p class="text-sm mb-6" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">Træ- og vandbrædder samt valg af mønning.</p>
+          <div class="grid sm:grid-cols-2 gap-3 mb-6">
+            <label class="opt"><input type="checkbox" name="vindskeder_checkbox" hidden /><span class="opt-box"><span class="opt-title">Vindskeder i trykimpr. træ</span><span class="opt-sub">Op til 6 m, inkl. montering · ganges med antal vindskeder</span></span></label>
+            <label class="opt"><input type="checkbox" name="vandbraedderkvist" hidden /><span class="opt-box"><span class="opt-title">Vandbrædder under kvist</span><span class="opt-sub">Op til 150 cm bred · ganges med antal kviste</span></span></label>
+            <label class="opt"><input type="checkbox" name="vandbraedderskorsten" hidden /><span class="opt-box"><span class="opt-title">Vandbrædder under skorsten</span><span class="opt-sub">Begge sider · ganges med antal skorstene</span></span></label>
+          </div>
+
+          <span class="block text-sm font-semibold mb-2" style="color:#431a06; font-family: var(--font-body);">Mønning med påsyet metalnet</span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+            <label class="opt-r"><input type="radio" name="moenning_valg" value="Ingen" hidden /><span class="opt-box opt-box-center"><span class="opt-title">Ingen</span></span></label>
+            <label class="opt-r"><input type="radio" name="moenning_valg" value="Havrehalm" hidden /><span class="opt-box opt-box-center"><span class="opt-title">Havrehalm</span><span class="opt-sub">369 kr/m</span></span></label>
+            <label class="opt-r"><input type="radio" name="moenning_valg" value="Lyng" hidden /><span class="opt-box opt-box-center"><span class="opt-title">Lyng</span><span class="opt-sub">639 kr/m</span></span></label>
+            <label class="opt-r"><input type="radio" name="moenning_valg" value="Kobber" hidden /><span class="opt-box opt-box-center"><span class="opt-title">Kobber</span><span class="opt-sub">3.950 kr/m</span></span></label>
+          </div>
+          <div id="b-moenning-m-wrap" class="hidden items-center gap-2 flex">
+            <span class="text-sm" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">Antal meter mønning:</span>
+            <input type="number" id="b-moenning-m" name="moenning_m" value="0" min="0" class="w-24 rounded-xl px-3 py-2.5 text-sm font-semibold focus:outline-none text-center" style="border: 1.5px solid var(--color-outline-variant); color: var(--color-on-background); font-family: var(--font-body);" />
+            <span class="text-sm" style="color: var(--color-on-surface-variant); font-family: var(--font-body);">m</span>
+          </div>
+        </div>
+
+        <!-- STEP 4 — Resultat -->
+        <div class="b-step hidden" data-step="4">
+          <h3 class="font-bold mb-1" style="font-family: var(--font-headline); font-size: 1.5rem; color: #431a06;">Dit vejledende overslag</h3>
+          <p id="b-summary-line" class="text-sm mb-5" style="color: var(--color-on-surface-variant); font-family: var(--font-body);"></p>
+
+          <div class="rounded-xl overflow-hidden" style="border: 1px solid var(--color-outline-variant);">
+            <table class="w-full text-sm" style="font-family: var(--font-body); color: var(--color-on-background);">
+              <tbody id="b-rows"></tbody>
+              <tfoot>
+                <tr><td colspan="2" class="px-4"><hr class="my-1" style="border-color: var(--color-outline-variant);" /></td></tr>
+                <tr><td class="px-4 py-1.5" style="color: var(--color-on-surface-variant);">Subtotal</td><td class="px-4 py-1.5 text-right font-semibold" id="b-subtotal">0 kr.</td></tr>
+                <tr><td class="px-4 py-1.5" style="color: var(--color-on-surface-variant);">25% moms</td><td class="px-4 py-1.5 text-right" id="b-moms">0 kr.</td></tr>
+                <tr style="background: rgba(111, 67, 21, 0.07);"><td class="px-4 py-3 font-bold" style="font-family: var(--font-headline); color:#431a06;">Total inkl. moms</td><td class="px-4 py-3 text-right font-bold" id="b-total" style="font-family: var(--font-headline); font-size:1.3rem; color: var(--color-primary);">0 kr.</td></tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <a href="#tilbud-form" id="b-cta" class="block w-full text-center mt-5 py-3.5 px-6 rounded-xl font-bold transition-opacity hover:opacity-90" style="background: var(--color-primary); color:#fff; font-family: var(--font-body);">
+            Få et bindende tilbud →
+          </a>
+          <p class="text-xs mt-4 leading-relaxed" style="color: var(--color-outline); font-family: var(--font-body);">
+            Alle priser er ekskl. moms og angives som et vejledende overslag. Den endelige pris fastsættes efter en besigtigelse af dit hus og tag. Vi genanvender dine eksisterende rygtræer, medmindre de skal udskiftes.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- nav footer -->
+      <div class="px-6 md:px-8 py-5 flex items-center justify-between gap-4" style="border-top: 1px solid var(--color-outline-variant); background: var(--color-surface-container-low);">
+        <button type="button" id="b-back" class="py-2.5 px-5 rounded-xl font-bold text-sm transition-opacity hover:opacity-80 invisible" style="background: var(--color-surface-container-high); color: var(--color-on-surface-variant); font-family: var(--font-body);">← Tilbage</button>
+        <div id="b-price-chip" class="hidden text-sm font-semibold" style="color:#431a06; font-family: var(--font-body);">Overslag: <span id="b-chip-total" style="color: var(--color-primary);">0 kr.</span></div>
+        <button type="button" id="b-next" class="py-2.5 px-6 rounded-xl font-bold text-sm transition-opacity hover:opacity-90" style="background: var(--color-primary); color:#fff; font-family: var(--font-body);">Næste →</button>
+      </div>
+    </div>
+
+    <p class="text-center text-xs mt-4" style="color: var(--color-outline); font-family: var(--font-body);">
+      100% uforpligtende · Vi kontakter dig kun, hvis du beder om et tilbud
+    </p>
+  </div>
+</section>
+
+<style>
+  [data-beregner] .opt, [data-beregner] .opt-r { display:block; cursor:pointer; }
+  [data-beregner] .opt-box {
+    display:flex; flex-direction:column; gap:2px;
+    height:100%; padding: 0.85rem 1rem;
+    border: 1.5px solid var(--color-outline-variant); border-radius: 0.75rem;
+    transition: border-color .15s, background .15s;
+  }
+  [data-beregner] .opt-box-center { align-items:center; text-align:center; justify-content:center; }
+  [data-beregner] .opt-title { font-family: var(--font-body); font-weight:700; font-size:0.92rem; color: var(--color-on-background); }
+  [data-beregner] .opt-sub { font-family: var(--font-body); font-size:0.78rem; color: var(--color-on-surface-variant); line-height:1.3; }
+  [data-beregner] .opt:hover .opt-box, [data-beregner] .opt-r:hover .opt-box { border-color: var(--color-primary); }
+  [data-beregner] input:checked + .opt-box {
+    border-color: var(--color-primary);
+    background: rgba(111, 67, 21, 0.07);
+    box-shadow: inset 0 0 0 1px var(--color-primary);
+  }
+  [data-beregner] input:checked + .opt-box .opt-title { color: var(--color-primary); }
+  [data-beregner] input[type=number]::-webkit-outer-spin-button,
+  [data-beregner] input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  [data-beregner] input[type=number] { -moz-appearance: textfield; }
+</style>
+
+<script is:inline>
+  (function () {
+    const root = document.querySelector('[data-beregner]');
+    if (!root) return;
+
+    const ROOF_FACTOR = 1.41;
+    const TOTAL_STEPS = 4;
+    let step = 1;
+
+    const fmt = (n) => Math.round(n).toLocaleString('da-DK') + ' kr.';
+    const num = (sel) => parseFloat(root.querySelector(sel)?.value) || 0;
+    const checked = (name) => !!root.querySelector(`input[name="${name}"]`)?.checked;
+
+    const progress = root.querySelector('#b-progress');
+    const stepLabel = root.querySelector('#b-steplabel');
+    const backBtn = root.querySelector('#b-back');
+    const nextBtn = root.querySelector('#b-next');
+    const chip = root.querySelector('#b-price-chip');
+    const m2Error = root.querySelector('#b-m2-error');
+
+    // Steppere
+    root.querySelectorAll('[data-stepper]').forEach((wrap) => {
+      const input = wrap.querySelector('input');
+      const min = parseFloat(input.min) || 0;
+      const max = parseFloat(input.max) || Infinity;
+      wrap.querySelector('.step-up')?.addEventListener('click', () => { input.value = Math.min(max, (parseFloat(input.value)||0)+1); calc(); });
+      wrap.querySelector('.step-dn')?.addEventListener('click', () => { input.value = Math.max(min, (parseFloat(input.value)||0)-1); calc(); });
+    });
+
+    // Mønning meter-felt vises kun ved valgt materiale (ikke "Ingen")
+    function syncMoenningField() {
+      const sel = root.querySelector('input[name="moenning_valg"]:checked')?.value;
+      const wrap = root.querySelector('#b-moenning-m-wrap');
+      const show = sel && sel !== 'Ingen';
+      wrap.classList.toggle('hidden', !show);
+      wrap.classList.toggle('flex', !!show);
+    }
+
+    function compute() {
+      const house = num('#b-m2');
+      const roof = house * ROOF_FACTOR;
+      const skorsten = num('#b-skorstene');
+      const kviste = num('#b-kviste');
+      const vindskeder = num('#b-vindskeder');
+      const moenningValg = root.querySelector('input[name="moenning_valg"]:checked')?.value || 'Default';
+      const moenningM = num('#b-moenning-m');
+
+      const items = [];
+      const add = (l, v) => { if (v > 0) items.push([l, v]); };
+
+      add(`Tagareal (${roof.toFixed(0)} m²)`, roof * 760);
+      if (checked('stilladsopstilling')) add('Opstilling af stillads', roof * 29);
+      if (checked('stilladsleje')) add('Leje af stillads', roof * 19);
+      if (checked('nedtagelse')) add('Nedtagelse mønning/stråtag', roof * 88);
+      if (checked('bortkorsel')) add('Bortkørsel stråtag/affald', roof * 88);
+      if (checked('udskiftningtaglaegter')) add('Udskiftning af taglægter T1', roof * 138);
+      if (checked('brandsikring')) add('Brandsikring af stråtag', roof * 165);
+      if (checked('vindskeder_checkbox')) add('Vindskeder i trykimpr. træ', vindskeder * 1888);
+      if (checked('vandbraedderkvist')) add('Vandbrædder under kvist', kviste * 2200);
+      if (checked('vandbraedderskorsten')) add('Vandbrædder under skorsten', skorsten * 1288);
+      let mp = 0;
+      if (moenningValg === 'Havrehalm') mp = moenningM * 369;
+      else if (moenningValg === 'Lyng') mp = moenningM * 639;
+      else if (moenningValg === 'Kobber') mp = moenningM * 3950;
+      if (mp > 0) add(`Mønning i ${moenningValg} (${moenningM} m)`, mp);
+
+      const subtotal = items.reduce((s, [, v]) => s + v, 0);
+      const moms = subtotal * 0.25;
+      return { house, roof, skorsten, kviste, items, subtotal, moms, total: subtotal + moms };
+    }
+
+    function calc() {
+      syncMoenningField();
+      const r = compute();
+
+      const rows = root.querySelector('#b-rows');
+      rows.innerHTML = r.items.length
+        ? r.items.map(([l, v]) => `<tr><td class="px-4 py-1.5 pr-2">${l}</td><td class="px-4 py-1.5 text-right whitespace-nowrap">${fmt(v)}</td></tr>`).join('')
+        : `<tr><td class="px-4 py-3" style="color: var(--color-outline);">Udfyld husets m² for at se prisen</td></tr>`;
+      root.querySelector('#b-subtotal').textContent = fmt(r.subtotal);
+      root.querySelector('#b-moms').textContent = fmt(r.moms);
+      root.querySelector('#b-total').textContent = fmt(r.total);
+      root.querySelector('#b-chip-total').textContent = fmt(r.total);
+      root.querySelector('#b-summary-line').textContent =
+        `${r.house.toFixed(0)} m² hus · ${r.roof.toFixed(0)} m² tagareal · ${r.skorsten} skorsten(e) · ${r.kviste} kvist(e)`;
+
+      chip.classList.toggle('hidden', !(r.house > 0 && step < TOTAL_STEPS));
+    }
+
+    function render() {
+      root.querySelectorAll('.b-step').forEach((el) => {
+        el.classList.toggle('hidden', parseInt(el.dataset.step, 10) !== step);
+      });
+      progress.style.width = (step / TOTAL_STEPS * 100) + '%';
+      stepLabel.textContent = `Trin ${step} / ${TOTAL_STEPS}`;
+      backBtn.classList.toggle('invisible', step === 1);
+      nextBtn.textContent = step === TOTAL_STEPS - 1 ? 'Se min pris →' : (step === TOTAL_STEPS ? 'Færdig' : 'Næste →');
+      nextBtn.style.display = step === TOTAL_STEPS ? 'none' : '';
+      calc();
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (step === 1 && num('#b-m2') <= 0) { m2Error.classList.remove('hidden'); return; }
+      m2Error.classList.add('hidden');
+      if (step < TOTAL_STEPS) { step++; render(); }
+    });
+    backBtn.addEventListener('click', () => { if (step > 1) { step--; render(); } });
+
+    root.addEventListener('input', calc);
+    root.addEventListener('change', calc);
+    root.querySelector('#b-m2').addEventListener('input', () => { if (num('#b-m2') > 0) m2Error.classList.add('hidden'); });
+
+    render();
+  })();
+</script>

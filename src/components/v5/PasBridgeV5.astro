@@ -1,0 +1,116 @@
+---
+// PAS-bridge mellem hero og resten — emotionel bro a la Arsh Sanwarwala
+// Tre kort: Problem (kender du den?) → Agitate (smerten) → Solve (vores løfte)
+---
+
+<section class="v5-pas" aria-label="Den almindelige tækker-historie">
+  <div class="v5-pas-container">
+    <div class="v5-pas-head">
+      <span class="v5-eyebrow">Den almindelige historie</span>
+      <h2 class="v5-pas-h2">Et stråtag burde være <em>én beslutning</em> — ikke en lang opvågnen.</h2>
+    </div>
+
+    <div class="v5-pas-grid">
+      <div class="v5-pas-card v5-pas-problem">
+        <div class="v5-pas-label">Problem</div>
+        <p class="v5-pas-text">
+          Du har hørt historierne. Tækkemanden der ikke svarer telefonen efter første betaling.
+          Den "faste pris" der pludselig blev til en ekstraregning. De 90 dage der blev til seks måneder.
+        </p>
+      </div>
+
+      <div class="v5-pas-arrow" aria-hidden="true">→</div>
+
+      <div class="v5-pas-card v5-pas-agitate">
+        <div class="v5-pas-label">Det værste</div>
+        <p class="v5-pas-text">
+          Et stråtag er måske den største investering du laver i dit hjem. Du har sparet op,
+          tænkt på det i årevis, og glædet dig til ro mange år frem.
+          Hvis det går galt, ser du det først om fem år — når lækagerne starter.
+        </p>
+      </div>
+
+      <div class="v5-pas-arrow" aria-hidden="true">→</div>
+
+      <div class="v5-pas-card v5-pas-solve">
+        <div class="v5-pas-label">Sådan gør vi det</div>
+        <p class="v5-pas-text">
+          Hos Tækkemand Carlsen får du <strong>én tækkemand der svarer telefonen</strong>,
+          <strong>én fast pris du kan stole på</strong>, og <strong>levering inden 90 dage</strong>.
+          Vi har gjort det tusind gange — og laver kun stråtag.
+        </p>
+        <a href="#kontakt" class="v5-pas-cta">Få et uforpligtende tilbud →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v5-pas { background: #1b1c1c; color: #fdf8ee; padding: 80px 0; position: relative; }
+  .v5-pas::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 5%; right: 5%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(255,220,193,0.4) 0 8px, transparent 8px 16px);
+  }
+  .v5-pas-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .v5-pas-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .v5-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #ffdcc1; display: block; margin-bottom: 16px; }
+  .v5-pas-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #fff; margin: 0; font-weight: 500; }
+  .v5-pas-h2 em { font-style: italic; color: #ffdcc1; font-weight: 400; }
+
+  .v5-pas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+  .v5-pas-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,220,193,0.15);
+    border-radius: 10px;
+    padding: 32px 28px;
+    display: flex; flex-direction: column;
+  }
+  .v5-pas-solve { background: rgba(111,67,21,0.18); border-color: rgba(255,220,193,0.35); }
+  .v5-pas-label {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #ffdcc1;
+    margin-bottom: 16px;
+  }
+  .v5-pas-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: rgba(253,248,238,0.92); margin: 0; flex: 1; }
+  .v5-pas-text strong { color: #fff; font-weight: 700; }
+  .v5-pas-arrow {
+    display: none;
+    align-items: center; justify-content: center;
+    color: rgba(255,220,193,0.4);
+    font-size: 1.6rem;
+    font-family: var(--font-headline);
+    font-style: italic;
+  }
+  .v5-pas-cta {
+    display: inline-flex; align-items: center;
+    margin-top: 20px;
+    color: #ffdcc1;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #ffdcc1;
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .v5-pas-cta:hover { color: #fff; border-color: #fff; }
+
+  @media (min-width: 1024px) {
+    .v5-pas-grid {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 24px;
+    }
+    .v5-pas-arrow { display: flex; }
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Pricing from '../components/Pricing.astro'
+import Faq from '../components/Faq.astro'
+import Contact from '../components/Contact.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Priser på stråtag & tækkearbejde | Tækkemand Carlsen"
+  description="Hvad koster et nyt stråtag, mønning, algebehandling eller reparation? Se vejledende priser og få et uforpligtende tilbud fra Tækkemand Carlsen."
+  canonical="https://taekkemandcarlsen.dk/priser/"
+>
+  <Nav />
+  <div class="pt-32 pb-16 px-8 max-w-4xl mx-auto text-center" style="background: #faf6f1;">
+    <p style="font-family: var(--font-headline); font-style: italic; color: #6f4315; font-size: 1rem; letter-spacing: 0.05em;">Gennemsigtige priser</p>
+    <h1 class="text-5xl md:text-6xl mt-3" style="font-family: var(--font-headline); color: #1b1c1c;">Priser</h1>
+    <p class="mt-4 text-lg" style="color: #51443a; font-family: var(--font-body);">Vejledende priser på vores ydelser. Få et præcist tilbud baseret på dit tag.</p>
+  </div>
+  <Pricing />
+  <Faq />
+  <Contact />
+  <Footer />
+</Layout>

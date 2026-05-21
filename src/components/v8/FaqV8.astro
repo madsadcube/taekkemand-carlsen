@@ -1,0 +1,77 @@
+---
+// V8 FAQ — som side i en bog
+const faqs = [
+  { q: 'Hvor lang tid holder et stråtag?', a: 'Et veludført stråtag holder 60–80 år. Mønningen skal typisk fornys efter 25–35 år. Med årlig tilsyn og algebehandling kan levetiden forlænges yderligere.' },
+  { q: 'Hvad koster et nyt stråtag?', a: 'Det afhænger af kvadratmeter, taghældning og kompleksitet. Som tommelfingerregel ligger prisen mellem 2.500 og 4.500 kr/m² for nyt tag inkl. materialer. Vi giver altid fastpris efter opmåling — ingen ekstra-regninger.' },
+  { q: 'Hvor lang tid tager det?', a: 'Fra opmåling til færdigt tag tager det typisk 6–12 uger afhængigt af projektets størrelse. Vi garanterer levering inden 90 dage — har ikke overskredet det de sidste 10 år.' },
+  { q: 'Kan I lave akut reparation efter storm?', a: 'Ja. Vi har normalt en mand i området der kan komme indenfor 24–48 timer ved akut skade. Ring direkte på 24 24 80 80.' },
+  { q: 'Bruger I kemikalier på taget?', a: 'Vores algebehandling er økologisk og 100 % biologisk nedbrydelig. Vi bruger ikke biocider eller klorholdige produkter, der skader taget eller miljøet.' },
+]
+---
+
+<section class="v8-faq" id="faq">
+  <div class="v8-faq-container">
+    <div class="v8-faq-head">
+      <div class="v8-chapter">
+        <div class="v8-chapter-num">Kap. 06</div>
+        <div class="v8-chapter-title">Spørgsmål & svar</div>
+      </div>
+      <h2 class="v8-h2">
+        Det folk <em>plejer at spørge om.</em>
+      </h2>
+    </div>
+
+    <div class="v8-faq-list">
+      {faqs.map((f, i) => (
+        <details class="v8-faq-item">
+          <summary>
+            <span class="v8-faq-num">№0{i + 1}</span>
+            <span class="v8-faq-q">{f.q}</span>
+            <span class="v8-faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="v8-faq-a">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .v8-faq { background: #faf5eb; padding: 96px 0; }
+  .v8-faq-container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .v8-faq-head { margin-bottom: 56px; }
+  .v8-chapter { display: inline-flex; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(111,67,21,0.2); margin-bottom: 24px; }
+  .v8-chapter-num { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v8-chapter-title { font-family: var(--font-headline); font-style: italic; font-size: 1.25rem; color: #1b1c1c; }
+  .v8-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4.5vw, 2.75rem); line-height: 1.15; color: #1b1c1c; margin: 0; font-weight: 500; }
+  .v8-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+
+  .v8-faq-list { display: flex; flex-direction: column; }
+  .v8-faq-item {
+    border-top: 1px solid rgba(111,67,21,0.2);
+  }
+  .v8-faq-item:last-child { border-bottom: 1px solid rgba(111,67,21,0.2); }
+  .v8-faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 24px 0;
+    display: grid;
+    grid-template-columns: 60px 1fr 32px;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .v8-faq-item summary::-webkit-details-marker { display: none; }
+  .v8-faq-num { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: #6f4315; }
+  .v8-faq-q { font-family: var(--font-headline); font-size: 1.25rem; color: #1b1c1c; line-height: 1.4; }
+  .v8-faq-icon { font-family: var(--font-headline); font-size: 1.5rem; color: #6f4315; transition: transform 0.3s; }
+  .v8-faq-item[open] .v8-faq-icon { transform: rotate(45deg); }
+  .v8-faq-a {
+    padding: 0 0 24px 76px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #51443a;
+  }
+</style>
+</content>
+</invoke>

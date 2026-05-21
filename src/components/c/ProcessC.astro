@@ -1,0 +1,97 @@
+---
+const steps = [
+  { n: '01', t: 'Du sender en forespørgsel', b: 'Udfyld formularen eller ring. Vi vender tilbage på hverdage — gratis og uforpligtende.' },
+  { n: '02', t: 'Vi vurderer dit tag', b: 'Ofte laver vi et prisoverslag ud fra skråfoto fra Datastyrelsen, så du hurtigt får et indblik. Ved større projekter — eller fredede og bevaringsværdige ejendomme i Nordsjælland — kommer vi ud og ser taget og tager højde for lokale bevaringskrav.' },
+  { n: '03', t: 'Du får et tilbud', b: 'Et gennemskueligt og uforpligtende prisoverslag. Du forpligter dig til ingenting før du skriver under.' },
+  { n: '04', t: 'Vi går i gang', b: 'Nyt stråtag leveres inden for 90 dage fra projektstart — mønning typisk inden for 8 uger. Du ved altid hvor vi er, ingen overraskelser undervejs.' },
+  { n: '05', t: 'Aflevering', b: 'Du betaler først når arbejdet er godkendt. Vi gennemgår taget og udleverer dokumentation.' },
+]
+---
+
+<section class="c-process c-section" id="proces">
+  <div class="c-container-narrow">
+    <div class="c-head-center">
+      <span class="c-eyebrow">Sådan kører det</span>
+      <h2 class="c-h2">
+        Fra forespørgsel til <span class="c-h2-italic">færdigt tag</span> — 5 enkle trin.
+      </h2>
+      <p class="c-lede">
+        Uforpligtende prisoverslag — ofte ud fra skråfoto — og du betaler først når arbejdet er godkendt.
+      </p>
+    </div>
+
+    <ol class="c-proc-list">
+      {steps.map((s, i) => (
+        <li class="c-proc-step">
+          <div class="c-proc-num">{s.n}</div>
+          <div class="c-proc-card">
+            <h3 class="c-proc-t">{s.t}</h3>
+            <p class="c-proc-b">{s.b}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .c-process { background: var(--c-bg-surface); }
+
+  .c-proc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    position: relative;
+  }
+  .c-proc-step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: start;
+    position: relative;
+  }
+  .c-proc-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 31px;
+    top: 64px;
+    bottom: -16px;
+    width: 2px;
+    background: rgba(111, 67, 21, 0.2);
+  }
+  .c-proc-num {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--c-brand);
+    color: var(--c-white);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 24px rgba(111, 67, 21, 0.25);
+  }
+  .c-proc-card {
+    background: var(--c-white);
+    padding: 22px 26px;
+    border-radius: var(--c-r-md);
+    border: 1px solid var(--c-brand-soft);
+    box-shadow: var(--c-shadow-sm);
+  }
+  .c-proc-t {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--c-ink);
+    margin: 0 0 8px;
+  }
+  .c-proc-b {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--c-ink-soft);
+    margin: 0;
+  }
+</style>

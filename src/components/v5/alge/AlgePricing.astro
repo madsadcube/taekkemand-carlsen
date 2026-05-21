@@ -1,0 +1,85 @@
+---
+const pricing = [
+  { name: 'Mindre tag', size: 'Op til 150 m²', price: 'Fra 8.000 kr', what: ['Komplet inspektion', 'Mekanisk fjernelse af mos', 'Sprøjtning med økologisk middel', 'Småreparationer inkluderet'] },
+  { name: 'Standard tag', size: '150–250 m²', price: 'Fra 12.000 kr', what: ['Som mindre tag', 'Eftersyn af mønning', 'Foto-dokumentation før/efter', '3 års virkningsgaranti'], featured: true },
+  { name: 'Stort tag', size: 'Over 250 m²', price: 'Fra 16.000 kr', what: ['Som standard tag', 'Detaljeret tilstandsrapport', 'Plan for fremtidig vedligeholdelse', 'Prioritet ved akut behov'] },
+]
+---
+
+<section class="alge-pricing">
+  <div class="alge-pr-container">
+    <div class="alge-pr-head">
+      <span class="alge-eyebrow">Vejledende priser</span>
+      <h2 class="alge-h2">
+        <span class="alge-h2-italic">Klare priser</span> efter tagstørrelse.
+      </h2>
+      <p class="alge-pr-sub">
+        Endelig pris afhænger af tagets størrelse, hældning, angrebsgrad og adgangsforhold.
+        Vi giver fastpris efter inspektion — ingen overraskelser.
+      </p>
+    </div>
+
+    <div class="alge-pr-grid">
+      {pricing.map((p) => (
+        <div class={`alge-pr-card ${p.featured ? 'alge-pr-featured' : ''}`}>
+          {p.featured && <div class="alge-pr-badge">Mest valgt</div>}
+          <h3 class="alge-pr-name">{p.name}</h3>
+          <div class="alge-pr-size">{p.size}</div>
+          <div class="alge-pr-price">{p.price}</div>
+          <ul class="alge-pr-what">
+            {p.what.map((w) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                {w}
+              </li>
+            ))}
+          </ul>
+          <a href="#kontakt" class={`alge-pr-cta ${p.featured ? 'alge-pr-cta-primary' : ''}`}>Få fastpris →</a>
+        </div>
+      ))}
+    </div>
+
+    <div class="alge-pr-note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>Alle priser er inkl. moms. Ved akut behov eller meget kraftige angreb kan prisen blive højere — det vurderes ved inspektion og fastsættes inden vi går i gang.</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .alge-pricing { background: #f4ede2; padding: 96px 0; }
+  .alge-pr-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .alge-pr-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .alge-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .alge-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .alge-h2-italic { font-style: italic; color: #6f4315; }
+  .alge-pr-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .alge-pr-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
+  .alge-pr-card { background: #fff; padding: 32px 28px; border-radius: 16px; border: 1px solid rgba(111,67,21,0.12); box-shadow: 0 4px 16px rgba(0,0,0,0.04); display: flex; flex-direction: column; position: relative; }
+  .alge-pr-featured { border: 2px solid #6f4315; transform: scale(1.02); box-shadow: 0 16px 40px rgba(111,67,21,0.15); }
+  .alge-pr-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #6f4315; color: #fff; padding: 6px 16px; border-radius: 999px; font-family: var(--font-body); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.05em; }
+  .alge-pr-name { font-family: var(--font-body); font-weight: 700; font-size: 1.25rem; color: #1b1c1c; margin: 0 0 4px; }
+  .alge-pr-size { font-family: var(--font-body); font-size: 0.85rem; color: #51443a; margin-bottom: 16px; }
+  .alge-pr-price { font-family: var(--font-headline); font-style: italic; font-size: 2rem; color: #6f4315; margin-bottom: 24px; line-height: 1; }
+  .alge-pr-what { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .alge-pr-what li { display: flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 0.95rem; color: #1b1c1c; }
+  .alge-pr-what svg { color: #6f4315; flex-shrink: 0; }
+
+  .alge-pr-cta { text-align: center; padding: 14px 24px; border-radius: 10px; border: 1px solid rgba(27,28,28,0.2); color: #1b1c1c; font-family: var(--font-body); font-weight: 700; transition: all 0.3s; }
+  .alge-pr-cta:hover { background: #1b1c1c; color: #fff; }
+  .alge-pr-cta-primary { background: #6f4315; color: #fff; border-color: #6f4315; }
+  .alge-pr-cta-primary:hover { background: #8b5a2b; border-color: #8b5a2b; color: #fff; }
+
+  .alge-pr-note {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-top: 32px; padding: 16px 20px;
+    background: rgba(111,67,21,0.06); border-left: 3px solid #6f4315; border-radius: 4px;
+    font-family: var(--font-body); font-size: 0.9rem; color: #51443a; line-height: 1.5;
+  }
+  .alge-pr-note svg { color: #6f4315; flex-shrink: 0; margin-top: 2px; }
+
+  @media (min-width: 768px) { .alge-pr-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+</style>
+</content>
+</invoke>

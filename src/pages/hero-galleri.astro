@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import HeroV1 from '../components/heroes/HeroV1.astro'
+import HeroV2 from '../components/heroes/HeroV2.astro'
+import HeroV3 from '../components/heroes/HeroV3.astro'
+import HeroV4 from '../components/heroes/HeroV4.astro'
+import HeroV5 from '../components/heroes/HeroV5.astro'
+import HeroV6 from '../components/heroes/HeroV6.astro'
+import HeroV7 from '../components/heroes/HeroV7.astro'
+import HeroV8 from '../components/heroes/HeroV8.astro'
+import HeroV9 from '../components/heroes/HeroV9.astro'
+import HeroV10 from '../components/heroes/HeroV10.astro'
+---
+
+<Layout
+  title="Hero-galleri — Tækkemand Carlsen"
+  description="Sammenlign 10 hero-versioner"
+  canonical="https://taekkemandcarlsen.dk/hero-galleri"
+>
+  <Nav />
+
+  <div class="variant-label"><span class="variant-num">01</span><span class="variant-name">Cinematisk</span><span class="variant-desc">Den nuværende — fuld-bleed billede, mørk gradient, italic serif</span></div>
+  <HeroV1 />
+
+  <div class="variant-label"><span class="variant-num">02</span><span class="variant-name">Split editorial</span><span class="variant-desc">Tekst på cream venstre, billede højre, stats-rækker</span></div>
+  <HeroV2 />
+
+  <div class="variant-label"><span class="variant-num">03</span><span class="variant-name">Centreret ceremoniel</span><span class="variant-desc">Centreret tekst, smal kolonne, tre tillids-checkmarks</span></div>
+  <HeroV3 />
+
+  <div class="variant-label"><span class="variant-num">04</span><span class="variant-name">Magazine cover</span><span class="variant-desc">Headline overlapper bunden, stats-bar med 4 nøgletal</span></div>
+  <HeroV4 />
+
+  <div class="variant-label"><span class="variant-num">05</span><span class="variant-name">Trust-first</span><span class="variant-desc">Stjerner øverst, lys baggrund, tre tillidssøjler, fastpris-fokus</span></div>
+  <HeroV5 />
+
+  <div class="variant-label"><span class="variant-num">06</span><span class="variant-name">Brutalist editorial</span><span class="variant-desc">Outline-typografi, sidekolonne med metadata, modemagasin-look</span></div>
+  <HeroV6 />
+
+  <div class="variant-label"><span class="variant-num">07</span><span class="variant-name">Cinematic scope</span><span class="variant-desc">Filmisk letterbox med corner-brackets, GPS-koordinater og scene-progress</span></div>
+  <HeroV7 />
+
+  <div class="variant-label"><span class="variant-num">08</span><span class="variant-name">Photo journal</span><span class="variant-desc">Polaroid-collage med tape, signatur, "Skriv til Jakob" — personligt og varmt</span></div>
+  <HeroV8 />
+
+  <div class="variant-label"><span class="variant-num">09</span><span class="variant-name">Material</span><span class="variant-desc">Vævet stråtekstur, animerede strå der falder, materialepalette nederst</span></div>
+  <HeroV9 />
+
+  <div class="variant-label"><span class="variant-num">10</span><span class="variant-name">Auction house</span><span class="variant-desc">Lot-tag, "katalog forår 2026", anslået levetid — Sotheby's-luksus-stemning</span></div>
+  <HeroV10 />
+
+  <div class="footer-note" style="background: #1b1c1c; color: #fff; padding: 60px 32px; text-align: center;">
+    <p style="font-family: var(--font-body); font-size: 1rem; opacity: 0.8;">
+      Skriv hvilken version du vil have som forside (01–10).
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .variant-label {
+    background: #1b1c1c;
+    color: #fff;
+    padding: 32px 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    border-top: 1px solid rgba(255,220,193,0.15);
+  }
+  .variant-num {
+    font-family: var(--font-headline);
+    font-size: 2rem;
+    font-style: italic;
+    color: #ffdcc1;
+    font-weight: 300;
+  }
+  .variant-name {
+    font-family: var(--font-headline);
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 500;
+  }
+  .variant-desc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    flex: 1;
+  }
+  @media (max-width: 640px) {
+    .variant-label { flex-direction: column; align-items: flex-start; gap: 4px; padding: 24px 20px; }
+    .variant-num { font-size: 1.5rem; }
+    .variant-name { font-size: 1.15rem; }
+    .variant-desc { font-size: 0.85rem; }
+  }
+</style>
+</content>
+</invoke>

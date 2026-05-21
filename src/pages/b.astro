@@ -1,0 +1,40 @@
+---
+// B-version af forsiden — uafhængig kopi af / (samme komponenter, b-prefix)
+// Brug denne som sandkasse for eksperimenter uden at ramme A (live forside)
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import HeroB from '../components/b/HeroB.astro'
+import SocialProofB from '../components/b/SocialProofB.astro'
+import ServicesB from '../components/b/ServicesB.astro'
+import ProcessB from '../components/b/ProcessB.astro'
+import Garanti from '../components/Garanti.astro'
+import Gallery from '../components/Gallery.astro'
+import TestimonialsB from '../components/b/TestimonialsB.astro'
+import PricingB from '../components/b/PricingB.astro'
+import InfoB from '../components/b/InfoB.astro'
+import FaqB from '../components/b/FaqB.astro'
+import CtaBandB from '../components/b/CtaBandB.astro'
+import ContactB from '../components/b/ContactB.astro'
+import FooterB from '../components/b/FooterB.astro'
+---
+
+<Layout
+  title="Tækkemand i Nordsjælland — Hurtigt, professionelt og lokalt | Tækkemand Carlsen"
+  description="Tækkemand i Nordsjælland med 15+ års erfaring. Nyt stråtag, mønning, reparation og algebehandling — leveret inden 90 dage. Forsikret hos Alm. Brand op til 12 mio. kr. Få et uforpligtende tilbud."
+  canonical="https://taekkemandcarlsen.dk/b"
+>
+  <Nav />
+  <HeroB />
+  <SocialProofB />
+  <ServicesB />
+  <Garanti />
+  <ProcessB />
+  <Gallery />
+  <TestimonialsB />
+  <PricingB />
+  <InfoB />
+  <FaqB />
+  <CtaBandB />
+  <ContactB />
+  <FooterB />
+</Layout>

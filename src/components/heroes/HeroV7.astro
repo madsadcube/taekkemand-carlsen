@@ -1,0 +1,187 @@
+---
+// Variant 7: Cinematic full-bleed med "scope frame" — bredbillede over og under,
+// sort matte-bjælker som biograf, tekst i midten med dimensioner. Filmisk drama.
+---
+
+<section class="hero-v7">
+  <div class="v7-letterbox v7-letterbox-top">
+    <div class="v7-marker">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1"/><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>
+      <span>REC · 2026</span>
+    </div>
+    <div class="v7-coords">N 56°00'30" · E 12°12'15"</div>
+    <div class="v7-marker">
+      <span>NORDSJÆLLAND</span>
+    </div>
+  </div>
+
+  <div class="v7-frame">
+    <picture>
+      <source srcset="/img/straatag1-hero.webp" type="image/webp" />
+      <img src="/img/straatag1-hero.jpg" alt="Tækkemand Carlsen — stråtag i Nordsjælland"
+        fetchpriority="high" loading="eager" width="1920" height="1080" />
+    </picture>
+    <div class="v7-overlay"></div>
+
+    <!-- Corner brackets -->
+    <span class="v7-bracket v7-tl"></span>
+    <span class="v7-bracket v7-tr"></span>
+    <span class="v7-bracket v7-bl"></span>
+    <span class="v7-bracket v7-br"></span>
+
+    <!-- Caption -->
+    <div class="v7-caption">
+      <div class="v7-caption-num">001</div>
+      <div class="v7-caption-text">
+        <div class="v7-caption-loc">Helsinge / DK</div>
+        <div class="v7-caption-meta">Nyt stråtag · 380 m² · Levering 67 dage</div>
+      </div>
+    </div>
+
+    <!-- Center content -->
+    <div class="v7-center">
+      <div class="v7-pre">— Et håndværk i 4. generation</div>
+      <h1 class="v7-h1">
+        Stråtag der<br/>
+        <em>holder i generationer</em>
+      </h1>
+      <div class="v7-cta">
+        <a href="#kontakt" class="v7-btn-primary">Få et tilbud</a>
+        <a href="tel:+4524248080" class="v7-btn-ghost">24 24 80 80</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="v7-letterbox v7-letterbox-bot">
+    <span>Scene 01</span>
+    <div class="v7-bar-fill">
+      <span class="v7-bar-progress"></span>
+    </div>
+    <span>50+ År · 5.000 m² · 90 Dage</span>
+  </div>
+</section>
+
+<style>
+  .hero-v7 {
+    background: #050505;
+    color: #fff;
+    min-height: 100svh;
+    padding-top: 84px;
+    display: flex;
+    flex-direction: column;
+  }
+  .v7-letterbox {
+    background: #050505;
+    color: #ffdcc1;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    border-top: 1px solid rgba(255,220,193,0.2);
+    border-bottom: 1px solid rgba(255,220,193,0.2);
+  }
+  .v7-letterbox-top { justify-content: space-between; flex-wrap: wrap; }
+  .v7-letterbox-bot { justify-content: space-between; }
+  .v7-marker { display: inline-flex; align-items: center; gap: 8px; }
+  .v7-coords { font-variant-numeric: tabular-nums; opacity: 0.6; }
+  .v7-bar-fill { flex: 1; height: 2px; background: rgba(255,220,193,0.15); position: relative; max-width: 320px; }
+  .v7-bar-progress { position: absolute; left: 0; top: 0; bottom: 0; width: 14%; background: #ffdcc1; }
+
+  .v7-frame {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+  }
+  .v7-frame img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .v7-overlay {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.85) 100%),
+      linear-gradient(180deg, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0) 30%, rgba(5,5,5,0) 70%, rgba(5,5,5,0.6) 100%);
+  }
+
+  .v7-bracket {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: rgba(255,220,193,0.7);
+    border-style: solid;
+    border-width: 0;
+  }
+  .v7-tl { top: 24px; left: 24px; border-top-width: 1px; border-left-width: 1px; }
+  .v7-tr { top: 24px; right: 24px; border-top-width: 1px; border-right-width: 1px; }
+  .v7-bl { bottom: 24px; left: 24px; border-bottom-width: 1px; border-left-width: 1px; }
+  .v7-br { bottom: 24px; right: 24px; border-bottom-width: 1px; border-right-width: 1px; }
+
+  .v7-caption {
+    position: absolute;
+    left: 56px;
+    top: 56px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    color: rgba(255,255,255,0.85);
+    font-family: var(--font-label);
+  }
+  .v7-caption-num { font-family: var(--font-headline); font-size: 2.25rem; font-style: italic; color: #ffdcc1; line-height: 1; }
+  .v7-caption-loc { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; color: #ffdcc1; margin-bottom: 4px; }
+  .v7-caption-meta { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.7; }
+
+  .v7-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .v7-pre {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #ffdcc1;
+    margin-bottom: 24px;
+  }
+  .v7-h1 {
+    font-family: var(--font-headline);
+    font-size: clamp(2.75rem, 9vw, 6rem);
+    line-height: 1;
+    color: #fff;
+    margin: 0 0 40px;
+    font-weight: 500;
+  }
+  .v7-h1 em { font-style: italic; color: #ffdcc1; font-weight: 400; }
+  .v7-cta { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .v7-btn-primary {
+    background: #ffdcc1; color: #1b1c1c;
+    padding: 16px 36px; font-family: var(--font-body); font-weight: 700;
+    font-size: 1rem; letter-spacing: 0.05em;
+    transition: transform 0.3s;
+  }
+  .v7-btn-primary:hover { transform: translateY(-2px); }
+  .v7-btn-ghost {
+    border: 1px solid rgba(255,220,193,0.5);
+    color: #fff;
+    padding: 16px 36px; font-family: var(--font-body); font-weight: 700;
+    font-size: 1rem; letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .v7-caption { left: 16px; top: 16px; gap: 8px; }
+    .v7-caption-num { font-size: 1.5rem; }
+    .v7-tl, .v7-tr { top: 12px; }
+    .v7-bl, .v7-br { bottom: 12px; }
+    .v7-tl, .v7-bl { left: 12px; }
+    .v7-tr, .v7-br { right: 12px; }
+    .v7-letterbox-top .v7-coords { display: none; }
+  }
+</style>
+</content>
+</invoke>

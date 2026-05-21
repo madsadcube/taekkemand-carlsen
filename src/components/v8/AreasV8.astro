@@ -1,0 +1,93 @@
+---
+// V8 Areas — kortagtig liste over byer i Nordsjælland
+const areas = [
+  { name: 'Helsinge', href: '/helsinge/' },
+  { name: 'Hillerød', href: '/hillerod/' },
+  { name: 'Frederiksværk', href: '/frederiksvaerk/' },
+  { name: 'Gilleleje', href: '/gilleleje/' },
+  { name: 'Tisvildeleje', href: '/tisvildeleje/' },
+  { name: 'Hundested', href: '/hundested/' },
+  { name: 'Frederikssund', href: '/frederikssund/' },
+  { name: 'Næstved', href: '/naestved/' },
+  { name: 'Ringsted', href: '/ringsted/' },
+  { name: 'Sorø', href: '/soroe/' },
+]
+---
+
+<section class="v8-areas" id="omraader">
+  <div class="v8-areas-container">
+    <div class="v8-areas-head">
+      <div class="v8-chapter">
+        <div class="v8-chapter-num">Kap. 05</div>
+        <div class="v8-chapter-title">Områder</div>
+      </div>
+      <h2 class="v8-h2">
+        Vores hjemmebane: <em>hele Sjælland</em> — med base i Helsinge.
+      </h2>
+      <p class="v8-areas-sub">
+        Vi kender de lokale tag-traditioner, kommunens regler om bevaringsværdige bygninger,
+        og hvilke gårde der har hvilke spær. Klik dig ind på et område for at se priser og specifikke detaljer.
+      </p>
+    </div>
+
+    <div class="v8-areas-list">
+      {areas.map((a) => (
+        <a href={a.href} class="v8-area-pin">
+          <svg class="v8-pin-icon" width="14" height="18" viewBox="0 0 14 18" fill="none">
+            <path d="M7 1C3.7 1 1 3.7 1 7c0 4.5 6 10 6 10s6-5.5 6-10c0-3.3-2.7-6-6-6z" stroke="currentColor" stroke-width="1.4"/>
+            <circle cx="7" cy="7" r="2" fill="currentColor"/>
+          </svg>
+          <span>{a.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .v8-areas { background: #f4ede2; padding: 96px 0; position: relative; }
+  .v8-areas::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 5%; right: 5%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(111,67,21,0.4) 0 8px, transparent 8px 16px);
+  }
+  .v8-areas-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .v8-areas-head { max-width: 640px; margin-bottom: 56px; }
+  .v8-chapter { display: inline-flex; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(111,67,21,0.2); margin-bottom: 24px; }
+  .v8-chapter-num { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v8-chapter-title { font-family: var(--font-headline); font-style: italic; font-size: 1.25rem; color: #1b1c1c; }
+  .v8-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4.5vw, 2.75rem); line-height: 1.15; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .v8-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+  .v8-areas-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .v8-areas-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .v8-area-pin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: #1b1c1c;
+    padding: 12px 20px;
+    border: 1px solid rgba(111,67,21,0.2);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  .v8-area-pin:hover {
+    background: #1b1c1c;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+  .v8-pin-icon { color: #6f4315; transition: color 0.3s; }
+  .v8-area-pin:hover .v8-pin-icon { color: #ffdcc1; }
+</style>
+</content>
+</invoke>

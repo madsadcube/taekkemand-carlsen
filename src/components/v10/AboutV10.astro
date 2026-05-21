@@ -1,0 +1,129 @@
+---
+// V10 About — Carlsen-arven + stats-boks (lånt fra V8, strammet copy)
+---
+
+<section class="v10-about" id="om-os">
+  <div class="v10-about-container">
+    <div class="v10-about-body">
+      <span class="v10-eyebrow-italic">Hvem vi er</span>
+      <h2 class="v10-h2">
+        Et håndværk i <em>Carlsens fodspor</em> — videreført med samme krav til hvert eneste strå.
+      </h2>
+
+      <div class="v10-about-text">
+        <p>
+          I 1972 grundlagde tækkemand Carlsen sit værksted i Helsinge. I over 50 år lagde
+          han stråtag på sjællandske gårde, sommerhuse og kirker — og opbyggede ry for
+          et håndværk, der ikke gik på kompromis.
+        </p>
+        <p>
+          <em>Den ånd lever videre.</em> Vi har overtaget værkstedet og bruger samme metoder,
+          samme leverandører af vandrør, og samme princip om at et tag skal holde i to
+          generationer — ellers er det ikke godt nok.
+        </p>
+        <p>
+          Vi har stået bag <strong>Nordens største tækkeprojekt på 5.000 m²</strong> ved Sorø Storekro,
+          og vi tager både det store og det lille projekt med samme kompromisløse tilgang.
+        </p>
+      </div>
+
+      <div class="v10-pull">
+        <svg class="v10-pull-quote" viewBox="0 0 24 24" fill="none"><path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v2a2 2 0 01-2 2H4M21 7h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v2a2 2 0 01-2 2h-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="v10-pull-text">
+          Et godt stråtag spørger man ikke om prisen på i 60 år.
+          Det betaler det selv tilbage hver vinter, det holder.
+        </div>
+        <div class="v10-pull-attr">— Sådan sagde Carlsen, og sådan arbejder vi videre.</div>
+      </div>
+    </div>
+
+    <div class="v10-about-side">
+      <div class="v10-side-stats">
+        <div class="v10-stat">
+          <div class="v10-stat-num">50+</div>
+          <div class="v10-stat-label">Års erfaring i værkstedet</div>
+        </div>
+        <div class="v10-stat-divider"></div>
+        <div class="v10-stat">
+          <div class="v10-stat-num">5.000 m²</div>
+          <div class="v10-stat-label">Nordens største tækkeprojekt</div>
+        </div>
+        <div class="v10-stat-divider"></div>
+        <div class="v10-stat">
+          <div class="v10-stat-num">90 dage</div>
+          <div class="v10-stat-label">Garanteret leveringstid</div>
+        </div>
+        <div class="v10-stat-divider"></div>
+        <div class="v10-stat">
+          <div class="v10-stat-num">12 mio.</div>
+          <div class="v10-stat-label">Forsikret hos Alm. Brand</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v10-about {
+    background: #fbf9f8;
+    color: #1b1c1c;
+    padding: 96px 0;
+    position: relative;
+  }
+  .v10-about::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 5%; right: 5%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(111,67,21,0.4) 0 8px, transparent 8px 16px);
+  }
+  .v10-about-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .v10-eyebrow-italic { font-family: var(--font-headline); font-style: italic; font-size: 1.1rem; color: #6f4315; display: block; margin-bottom: 16px; }
+  .v10-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4.5vw, 2.75rem); line-height: 1.15; color: #1b1c1c; margin: 0 0 32px; max-width: 700px; font-weight: 500; }
+  .v10-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+
+  .v10-about-text { display: flex; flex-direction: column; gap: 18px; max-width: 640px; }
+  .v10-about-text p { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #51443a; margin: 0; }
+  .v10-about-text em { font-style: italic; color: #1b1c1c; font-family: var(--font-headline); font-size: 1.1em; }
+  .v10-about-text strong { color: #1b1c1c; }
+
+  .v10-pull {
+    margin-top: 40px;
+    padding: 32px;
+    border-left: 3px solid #6f4315;
+    background: #f4ede2;
+    position: relative;
+    max-width: 600px;
+  }
+  .v10-pull-quote { width: 24px; height: 24px; color: #6f4315; opacity: 0.5; margin-bottom: 12px; }
+  .v10-pull-text { font-family: var(--font-headline); font-style: italic; font-size: 1.25rem; line-height: 1.5; color: #1b1c1c; margin-bottom: 12px; }
+  .v10-pull-attr { font-family: var(--font-body); font-size: 0.85rem; color: #51443a; }
+
+  .v10-about-side { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 32px; }
+  .v10-side-stats {
+    display: flex; flex-direction: column; gap: 16px;
+    padding: 32px;
+    background: #fff;
+    border: 1px dashed rgba(111,67,21,0.4);
+  }
+  .v10-stat-num { font-family: var(--font-headline); font-size: 2.5rem; font-style: italic; color: #6f4315; line-height: 1; }
+  .v10-stat-label { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #51443a; margin-top: 6px; }
+  .v10-stat-divider { height: 1px; background: rgba(111,67,21,0.2); }
+
+  @media (min-width: 1024px) {
+    .v10-about-container {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 80px;
+      padding: 0 56px;
+    }
+  }
+</style>

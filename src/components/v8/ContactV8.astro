@@ -1,0 +1,206 @@
+---
+// V8 Contact — som et brev / postkort
+---
+
+<section class="v8-contact" id="kontakt">
+  <div class="v8-contact-container">
+    <div class="v8-contact-head">
+      <div class="v8-chapter">
+        <div class="v8-chapter-num">Kap. 07</div>
+        <div class="v8-chapter-title">Skriv til os</div>
+      </div>
+      <h2 class="v8-h2">
+        Få et fastpris-tilbud — <em>uden at binde dig til noget.</em>
+      </h2>
+      <p class="v8-contact-sub">
+        Skriv et par ord om dit projekt. Du hører fra os indenfor 24 timer på hverdage —
+        eller ring direkte på <a href="tel:+4524248080"><strong>24 24 80 80</strong></a>.
+      </p>
+    </div>
+
+    <div class="v8-contact-grid">
+      <div class="v8-letter">
+        <span class="v8-tape v8-tape-corner-1"></span>
+        <span class="v8-tape v8-tape-corner-2"></span>
+
+        <div class="v8-letter-head">
+          <div class="v8-letter-from">Fra:</div>
+          <div class="v8-letter-fromline"></div>
+        </div>
+
+        <form class="v8-form" action="https://formspree.io/f/your-id" method="POST">
+          <div class="v8-field">
+            <label for="v8-name">Dit navn</label>
+            <input id="v8-name" name="name" type="text" required placeholder="Navn"/>
+          </div>
+          <div class="v8-field-row">
+            <div class="v8-field">
+              <label for="v8-tlf">Telefon</label>
+              <input id="v8-tlf" name="phone" type="tel" placeholder="+45 ..."/>
+            </div>
+            <div class="v8-field">
+              <label for="v8-email">Email</label>
+              <input id="v8-email" name="email" type="email" required placeholder="dig@email.dk"/>
+            </div>
+          </div>
+          <div class="v8-field">
+            <label for="v8-addr">Adresse på taget</label>
+            <input id="v8-addr" name="address" type="text" placeholder="Vej, by"/>
+          </div>
+          <div class="v8-field">
+            <label for="v8-msg">Hvad drejer det sig om?</label>
+            <textarea id="v8-msg" name="message" rows="5" placeholder="Beskriv dit projekt — størrelse, hvad du har af problemer, hvad du gerne vil have lavet ..."></textarea>
+          </div>
+
+          <button type="submit" class="v8-submit">
+            Send beskeden
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <aside class="v8-contact-info">
+        <div class="v8-info-card">
+          <div class="v8-info-label">Værkstedet</div>
+          <address class="v8-info-text">
+            Tækkemand Carlsen<br/>
+            Helsinge<br/>
+            Nordsjælland
+          </address>
+        </div>
+
+        <div class="v8-info-card">
+          <div class="v8-info-label">Direkte linje</div>
+          <a href="tel:+4524248080" class="v8-info-phone">24 24 80 80</a>
+          <div class="v8-info-meta">Hverdage 8–16</div>
+        </div>
+
+        <div class="v8-info-card">
+          <div class="v8-info-label">Email</div>
+          <a href="mailto:post@taekkemandcarlsen.dk" class="v8-info-email">post@taekkemandcarlsen.dk</a>
+        </div>
+
+        <div class="v8-stamp-square">
+          <div class="v8-stamp-square-line">SVAR</div>
+          <div class="v8-stamp-square-line">INDEN</div>
+          <div class="v8-stamp-square-big">24t</div>
+          <div class="v8-stamp-square-line">PÅ HVERDAGE</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v8-contact { background: #f4ede2; padding: 96px 0; position: relative; }
+  .v8-contact::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 5%; right: 5%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(111,67,21,0.4) 0 8px, transparent 8px 16px);
+  }
+  .v8-contact-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .v8-contact-head { max-width: 720px; margin-bottom: 56px; }
+  .v8-chapter { display: inline-flex; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(111,67,21,0.2); margin-bottom: 24px; }
+  .v8-chapter-num { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v8-chapter-title { font-family: var(--font-headline); font-style: italic; font-size: 1.25rem; color: #1b1c1c; }
+  .v8-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4.5vw, 2.75rem); line-height: 1.15; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .v8-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+  .v8-contact-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+  .v8-contact-sub a { color: #1b1c1c; }
+
+  .v8-contact-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+
+  .v8-letter {
+    background: #fff;
+    padding: 40px 32px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    position: relative;
+  }
+  .v8-tape {
+    position: absolute;
+    width: 100px;
+    height: 24px;
+    background: rgba(255,220,193,0.7);
+  }
+  .v8-tape-corner-1 { top: -12px; left: 24px; transform: rotate(-6deg); }
+  .v8-tape-corner-2 { top: -12px; right: 24px; transform: rotate(8deg); }
+
+  .v8-letter-head { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid rgba(111,67,21,0.2); }
+  .v8-letter-from { font-family: var(--font-headline); font-style: italic; font-size: 1.15rem; color: #6f4315; }
+  .v8-letter-fromline { flex: 1; height: 1px; background: rgba(111,67,21,0.3); }
+
+  .v8-form { display: flex; flex-direction: column; gap: 20px; }
+  .v8-field-row { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .v8-field { display: flex; flex-direction: column; gap: 6px; }
+  .v8-field label { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: #6f4315; }
+  .v8-field input, .v8-field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(111,67,21,0.4);
+    padding: 8px 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #1b1c1c;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .v8-field input:focus, .v8-field textarea:focus { border-bottom-color: #6f4315; }
+  .v8-field textarea { resize: vertical; }
+
+  .v8-submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #1b1c1c;
+    color: #fff;
+    padding: 16px 28px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: transform 0.3s;
+  }
+  .v8-submit:hover { transform: translateY(-2px); }
+
+  .v8-contact-info { display: flex; flex-direction: column; gap: 24px; }
+  .v8-info-card {
+    background: #fff;
+    padding: 24px;
+    border-left: 3px solid #6f4315;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .v8-info-label { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: #6f4315; margin-bottom: 8px; }
+  .v8-info-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: #1b1c1c; font-style: normal; }
+  .v8-info-phone { display: block; font-family: var(--font-headline); font-style: italic; font-size: 1.75rem; color: #1b1c1c; }
+  .v8-info-meta { font-family: var(--font-body); font-size: 0.85rem; color: #51443a; margin-top: 4px; }
+  .v8-info-email { font-family: var(--font-body); color: #1b1c1c; text-decoration: underline; text-decoration-color: rgba(111,67,21,0.4); }
+
+  .v8-stamp-square {
+    align-self: flex-end;
+    width: 140px; height: 140px;
+    border: 2px solid #6f4315;
+    color: #6f4315;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    transform: rotate(4deg);
+    background: rgba(255,220,193,0.3);
+  }
+  .v8-stamp-square-line { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.25em; }
+  .v8-stamp-square-big { font-family: var(--font-headline); font-style: italic; font-size: 2.75rem; line-height: 1; margin: 4px 0; }
+
+  @media (min-width: 768px) {
+    .v8-field-row { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
+  @media (min-width: 1024px) {
+    .v8-contact-grid { grid-template-columns: 2fr 1fr; gap: 56px; }
+    .v8-letter { padding: 48px; }
+  }
+</style>
+</content>
+</invoke>

@@ -14,10 +14,12 @@ import Services from '../components/Services.astro'
 import Footer from '../components/Footer.astro'
 
 export function getStaticPaths() {
-  return cities.map((city) => ({
-    params: { city: city.slug },
-    props: { city },
-  }))
+  return cities
+    .filter((city) => city.slug !== 'helsinge') // Helsinge har dedikeret landingsside i src/pages/helsinge/
+    .map((city) => ({
+      params: { city: city.slug },
+      props: { city },
+    }))
 }
 
 const { city } = Astro.props

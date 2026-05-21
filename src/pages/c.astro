@@ -1,0 +1,78 @@
+---
+// C-version af forsiden — bygger på B men fixer:
+//   1. Farve-drift (én brun: #6f4315, drop #a04f1b)
+//   2. Baggrunds-drift (kun cream #f4ede2 eller surface #fbf9f8 — drop #fdf9f5)
+//   3. Knap-system (én primary, én outline, én ghost-on-dark)
+//   4. Border-radius-system (kort=12px, knap=8px, badge=999px)
+//   5. Indhold: drop InfoB (foldes ind i FAQ), trim trust-redundans
+//   6. Flow: Hero → Stats → Services → Process → Garanti → Pricing → Testimonials → Gallery → FAQ → CTA → Contact
+//
+// Alt scopes via <main class="c"> + import af _tokens.css.
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import HeroC from '../components/c/HeroC.astro'
+import StatsC from '../components/c/StatsC.astro'
+import ServicesC from '../components/c/ServicesC.astro'
+import ProcessC from '../components/c/ProcessC.astro'
+import GuaranteeC from '../components/c/GuaranteeC.astro'
+import PricingC from '../components/c/PricingC.astro'
+import TestimonialsCNew from '../components/c/TestimonialsCNew.astro'
+import Gallery from '../components/Gallery.astro'
+import AreasC from '../components/c/AreasC.astro'
+import WhyNordsjaellandC from '../components/c/WhyNordsjaellandC.astro'
+import FaqC from '../components/c/FaqC.astro'
+import CtaBandC from '../components/c/CtaBandC.astro'
+import ContactC from '../components/c/ContactC.astro'
+import FooterB from '../components/b/FooterB.astro'
+
+import '../components/c/_tokens.css'
+
+// Service-schema (manglede iflg. SEO-audit). Refererer den eksisterende business-node fra Layout.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://taekkemandcarlsen.dk/c#service',
+  name: 'Tækkearbejde i Nordsjælland',
+  serviceType: 'Tækkearbejde',
+  provider: { '@id': 'https://taekkemandcarlsen.dk/#business' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Nordsjælland' },
+  description:
+    'Professionel opsætning af nyt stråtag, mønning, reparation, algebehandling og vedligehold i Nordsjælland. Levering inden 90 dage, forsikret op til 12 mio. kr.',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Tækkearbejde services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Nyt stråtag', description: 'Komplet opsætning af nyt stråtag med vandrør, halm, lyng eller kobber' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Renovering', description: 'Fuld renovering af eksisterende stråtag med genbrug af 70-80% af materialerne' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Mønning', description: 'Udskiftning af mønning og rygning med halm, lyng eller tang' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Algebehandling', description: 'Effektiv fjernelse af alger og mos for at forlænge tagets levetid' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Vedligehold', description: 'Løbende eftersyn og vedligehold af stråtag' } },
+    ],
+  },
+}
+---
+
+<Layout
+  title="Tækkemand i Nordsjælland — Hurtigt, professionelt og lokalt | Tækkemand Carlsen"
+  description="Tækkemand i Nordsjælland med 15+ års erfaring. Nyt stråtag, mønning, reparation og algebehandling — leveret inden 90 dage. Forsikret hos Alm. Brand op til 12 mio. kr."
+  canonical="https://taekkemandcarlsen.dk/c"
+>
+  <Nav />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <div class="c">
+    <HeroC />
+    <StatsC />
+    <ServicesC />
+    <ProcessC />
+    <GuaranteeC />
+    <PricingC />
+    <TestimonialsCNew />
+    <Gallery />
+    <AreasC />
+    <WhyNordsjaellandC />
+    <FaqC />
+    <CtaBandC />
+    <ContactC />
+    <FooterB />
+  </div>
+</Layout>

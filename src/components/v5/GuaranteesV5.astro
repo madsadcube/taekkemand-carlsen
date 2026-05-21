@@ -1,0 +1,90 @@
+---
+// V5 Guarantees — fire eksplicitte løfter, hver med icon-card
+---
+
+<section class="v5-guarantees" id="garanti">
+  <div class="v5-g-container">
+    <div class="v5-g-head">
+      <span class="v5-eyebrow">Hvad du kan regne med</span>
+      <h2 class="v5-h2">
+        Fire ting <span class="v5-h2-italic">vi står for</span>.
+      </h2>
+      <p class="v5-g-sub">
+        Et stråtag er en stor investering. Det skal man ikke gætte sig til.
+        Det her er hvad vi leverer, hver gang.
+      </p>
+    </div>
+
+    <div class="v5-g-grid">
+      <div class="v5-g-card">
+        <div class="v5-g-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 class="v5-g-title">Forsikret op til 12 mio. kr</h3>
+        <p class="v5-g-body">Tækkemand Carlsen er forsikret hos Alm. Brand Forsikring med en dækning på op til 12.000.000 kroner — så du står ikke alene, hvis noget går galt.</p>
+      </div>
+
+      <div class="v5-g-card">
+        <div class="v5-g-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="v5-g-title">Levering inden 90 dage</h3>
+        <p class="v5-g-body">Mangeårig erfaring gør at vi kan garantere levering af nyt stråtag indenfor 90 dage fra projektstart til færdigt tag.</p>
+      </div>
+
+      <div class="v5-g-card">
+        <div class="v5-g-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <h3 class="v5-g-title">15+ års tækkeerfaring</h3>
+        <p class="v5-g-body">Vi har arbejdet med tækkefaget i mere end 15 år og servicerer primært private kunder på Sjælland. Vores erfaring er din sikkerhed for et tag der holder.</p>
+      </div>
+
+      <div class="v5-g-card">
+        <div class="v5-g-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
+        </div>
+        <h3 class="v5-g-title">Uforpligtende tilbud</h3>
+        <p class="v5-g-body">Vi udarbejder gerne et uforpligtende tilbud efter at have set taget. Du forpligter dig til ingenting før du har skrevet under på en aftale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v5-guarantees { background: #fbf9f8; padding: 96px 0; }
+  .v5-g-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .v5-g-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .v5-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .v5-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .v5-h2-italic { font-style: italic; color: #6f4315; }
+  .v5-g-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .v5-g-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .v5-g-card {
+    background: #fff;
+    padding: 32px 28px;
+    border-radius: 10px;
+    border: 1px solid rgba(111,67,21,0.12);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .v5-g-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .v5-g-icon {
+    width: 56px; height: 56px; border-radius: 10px;
+    background: rgba(111,67,21,0.1);
+    color: #6f4315;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .v5-g-title { font-family: var(--font-body); font-weight: 700; font-size: 1.15rem; color: #1b1c1c; margin: 0 0 12px; }
+  .v5-g-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.65; color: #51443a; margin: 0; }
+
+  @media (min-width: 768px) { .v5-g-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; } }
+</style>
+</content>
+</invoke>

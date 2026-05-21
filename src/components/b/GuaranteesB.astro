@@ -1,0 +1,143 @@
+---
+// B Guarantees — behold titel-blokken Mads kan lide, skift kort-design til magasin (1 stor + 3 mindre)
+---
+
+<section class="b-guarantees" id="garanti">
+  <div class="b-g-container">
+    <div class="b-g-head">
+      <span class="b-eyebrow">Hvad du kan regne med</span>
+      <h2 class="b-h2">
+        Fire ting <span class="b-h2-italic">vi står for</span>.
+      </h2>
+      <p class="b-g-sub">
+        Et stråtag er en stor investering. Det skal man ikke gætte sig til.
+        Det her er hvad vi leverer, hver gang.
+      </p>
+    </div>
+
+    <div class="b-g-grid">
+      <!-- Hero card: forsikringen (mørk, fanger opmærksomhed) -->
+      <article class="b-g-hero-card">
+        <div class="b-g-hero-badge">Vigtigst</div>
+        <div class="b-g-hero-num">12<span>mio.</span></div>
+        <h3 class="b-g-hero-title">Forsikret op til 12 mio. kr</h3>
+        <p class="b-g-hero-body">
+          Tækkemand Carlsen er forsikret hos <strong>Alm. Brand Forsikring</strong> med en
+          dækning på op til <em>12.000.000 kroner</em>. Det er din sikkerhedsnet, hvis
+          noget mod forventning skulle gå galt.
+        </p>
+        <div class="b-g-hero-foot">
+          <span>Police-nr. fremvises gerne</span>
+        </div>
+      </article>
+
+      <!-- 3 mindre kort -->
+      <div class="b-g-small-stack">
+        <article class="b-g-small">
+          <div class="b-g-small-num">90<span>dage</span></div>
+          <div class="b-g-small-body">
+            <h3 class="b-g-small-title">Levering inden 90 dage</h3>
+            <p>Mangeårig erfaring gør, at vi kan garantere levering af nyt stråtag indenfor 90 dage fra projektstart.</p>
+          </div>
+        </article>
+        <article class="b-g-small">
+          <div class="b-g-small-num">15<span>+ år</span></div>
+          <div class="b-g-small-body">
+            <h3 class="b-g-small-title">15+ års tækkeerfaring</h3>
+            <p>Mere end 15 års arbejde med tækkefaget for private kunder på Nordsjælland. Erfaring er din sikkerhed.</p>
+          </div>
+        </article>
+        <article class="b-g-small">
+          <div class="b-g-small-num">0<span>kr.</span></div>
+          <div class="b-g-small-body">
+            <h3 class="b-g-small-title">Uforpligtende tilbud</h3>
+            <p>Vi udarbejder gerne et tilbud efter at have set taget. Du forpligter dig til ingenting før du har skrevet under.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .b-guarantees { background: #fbf9f8; padding: 96px 0; }
+  .b-g-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .b-g-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .b-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .b-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .b-h2-italic { font-style: italic; color: #6f4315; }
+  .b-g-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .b-g-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+
+  /* Hero card */
+  .b-g-hero-card {
+    background: #1b1c1c;
+    color: #fdf8ee;
+    padding: 48px 40px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  }
+  .b-g-hero-badge {
+    display: inline-block;
+    background: #6f4315;
+    color: #fff;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .b-g-hero-num {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 5.5rem;
+    line-height: 1;
+    color: #ffdcc1;
+    margin-bottom: 16px;
+  }
+  .b-g-hero-num span { font-size: 2rem; margin-left: 8px; }
+  .b-g-hero-title { font-family: var(--font-headline); font-size: 1.6rem; color: #fff; margin: 0 0 16px; font-weight: 500; line-height: 1.2; }
+  .b-g-hero-body { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: rgba(253,248,238,0.85); margin: 0 0 24px; max-width: 480px; }
+  .b-g-hero-body strong { color: #fff; }
+  .b-g-hero-body em { font-style: italic; color: #ffdcc1; font-family: var(--font-headline); font-size: 1.1em; }
+  .b-g-hero-foot {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,220,193,0.6);
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,220,193,0.2);
+  }
+
+  /* Small cards */
+  .b-g-small-stack { display: grid; gap: 16px; }
+  .b-g-small {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    align-items: center;
+    background: #fff;
+    padding: 28px;
+    border-radius: 10px;
+    border: 1px solid rgba(111,67,21,0.1);
+  }
+  .b-g-small-num {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: #6f4315;
+  }
+  .b-g-small-num span { font-size: 0.85rem; display: block; margin-top: 4px; font-style: italic; }
+  .b-g-small-title { font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; color: #1b1c1c; margin: 0 0 6px; }
+  .b-g-small-body p { font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: #51443a; margin: 0; }
+
+  @media (min-width: 1024px) {
+    .b-g-grid { grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: stretch; }
+  }
+</style>

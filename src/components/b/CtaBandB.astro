@@ -1,0 +1,43 @@
+---
+// V5 CTA band — full-width orange-brun blok før kontakt
+---
+
+<section class="b-band">
+  <div class="b-band-container">
+    <div class="b-band-content">
+      <h2 class="b-band-h2">
+        Klar til at få <span class="b-band-italic">styr på taget?</span>
+      </h2>
+      <p class="b-band-sub">
+        Vi kører ud og besigter taget. Du får et uforpligtende tilbud — du forpligter dig til ingenting.
+      </p>
+      <div class="b-band-cta">
+        <a href="#kontakt" class="b-band-btn">Få et uforpligtende tilbud</a>
+        <a href="tel:+4524248080" class="b-band-phone">eller ring direkte: <strong>24 24 80 80</strong></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .b-band { background: linear-gradient(135deg, #6f4315 0%, #51331a 100%); padding: 80px 0; position: relative; overflow: hidden; }
+  .b-band::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,220,193,0.15) 0%, transparent 70%);
+  }
+  .b-band-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; }
+  .b-band-content { text-align: center; max-width: 720px; margin: 0 auto; }
+  .b-band-h2 { font-family: var(--font-headline); font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.15; color: #fff; margin: 0 0 16px; font-weight: 500; }
+  .b-band-italic { font-style: italic; color: #ffdcc1; }
+  .b-band-sub { font-family: var(--font-body); font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0 0 32px; }
+  .b-band-cta { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center; }
+  .b-band-btn { background: #fff; color: #6f4315; padding: 18px 36px; border-radius: 10px; font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; box-shadow: 0 8px 24px rgba(0,0,0,0.2); transition: transform 0.3s; }
+  .b-band-btn:hover { transform: translateY(-2px); }
+  .b-band-phone { color: #ffdcc1; font-family: var(--font-body); font-size: 1rem; }
+  .b-band-phone strong { color: #fff; }
+</style>
+</content>
+</invoke>

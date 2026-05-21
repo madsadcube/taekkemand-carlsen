@@ -1,0 +1,645 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import CtaBandV5 from '../../components/v5/CtaBandV5.astro'
+import ContactV5 from '../../components/v5/ContactV5.astro'
+import FooterV5 from '../../components/v5/FooterV5.astro'
+import ProcessV5 from '../../components/v5/ProcessV5.astro'
+
+const services = [
+  { title: 'Nyt stråtag', body: 'Skal din bolig have et nyt stråtag fra bunden? Vi tager os af hele forløbet — tømrerarbejde, lægning af tækkerør, mønning og afslutning. På Helsinge-egnens ældre gårde med stejle taghældninger anbefaler vi typisk tagrør, der både holder længst og passer den klassiske byggestil. For bevaringsværdige bygninger i Gribskov Kommune kender vi kravene fra lokalplanerne.', href: '/tagdaekning/nyt-straatag/', base: '/img/straatag1', ext: 'jpg', alt: 'Nyt stråtag lagt af Tækkemand Carlsen' },
+  { title: 'Reparation og renovering', body: 'Trænger stråtaget til hjælp, men er det ikke slidt helt ned? Vi udbedrer utætheder, beskadigede partier og slidt mønning — en målrettet renovering kan forlænge levetiden med op til 20 år til typisk kun en tredjedel af prisen for et helt nyt tag.', href: '/tagdaekning/reparation-af-straatag/', base: '/img/reparation3', ext: 'jpeg', alt: 'Reparation af stråtag' },
+  { title: 'Rygning og mønning', body: 'Rygningen udsættes mest for vejr og vind og kræver typisk udskiftning hvert 5–10 år. Vi lægger ny rygning i halm, lyng, kobber eller tegl — alt efter hvad der passer til dit hus og den lokale byggestil i Helsinge og Gribskov.', href: '/tagdaekning/monning-til-straatag/', base: '/img/rygning', ext: 'jpg', alt: 'Ny rygning på stråtag' },
+  { title: 'Professionel brandsikring', body: 'Brandsikring er et lovkrav for stråtage — og en investering, der betaler sig. Vi arbejder bl.a. med Sepatex brandsikringsdug, som reducerer risikoen markant og i mange tilfælde giver nedslag i forsikringspræmien.', href: '#kontakt', base: '/img/rep_straatag4', ext: 'jpeg', alt: 'Brandsikring af stråtag' },
+  { title: 'Vedligeholdelse & algebehandling', body: 'Et stråtag kræver løbende omsorg. Vi tilbyder algebehandling, mosfjernelse og eftersyn af tagskæg, vindskeder og kviste — vi sørger for at dit tag er i god stand inden vintervejret sætter ind.', href: '/tagdaekning/aldebehandling-af-straatag/', base: '/img/algebehandling2', ext: 'jpeg', alt: 'Algebehandling og vedligehold af stråtag' },
+  { title: 'Kviste og ovenlysvinduer', body: 'Vil du have mere lys og luft ind i dit stråtækte hus? Vi monterer kviste og ovenlysvinduer der passer til stråtagets form og husets arkitektur. Det kræver præcist håndværk at skære i et stråtag og sikre tæt inddækning.', href: '#kontakt', base: '/img/vedligehold1', ext: 'jpeg', alt: 'Kviste i stråtag' },
+  { title: 'Tømrerarbejde og stillads', body: 'Mange stråtagsopgaver kræver også tømrerarbejde med lægter, spær og underlag. Vi udfører det hele og sætter stillads op, så du slipper for at koordinere mellem flere håndværkere. Én kontaktperson, én aftale.', href: '#kontakt', base: '/img/skorsten3', ext: 'jpeg', alt: 'Tømrerarbejde under stråtag' },
+  { title: 'Fredede og bevaringsværdige bygninger', body: 'Helsinge og Gribskov Kommune rummer mange bevaringsværdige ejendomme. Vi har bred erfaring med at arbejde på netop den type bygninger, og vi kender kravene til bevaringsværdige tagmaterialer. Vi kommunikerer gerne med kommunen på dine vegne.', href: '#kontakt', base: '/img/rep_straatag4', ext: 'jpeg', alt: 'Fredet bygning med stråtag i Gribskov' },
+]
+
+const heroBullets = [
+  '15+ års erfaring og bred ekspertise inden for stråtage',
+  'Garanti på alt udført arbejde — vi holder hvad vi lover',
+  'Din lokale tækkemand med kendskab til Helsinge og Gribskov',
+  'Dansk arbejdskraft i høj kvalitet — efter Tækkelaugets retningslinjer',
+  'Gratis besigtigelse og ærligt tilbud uden skjulte overraskelser',
+]
+
+const promises = [
+  'Vi møder op til aftalt tid — ingen ventetid eller usikkerhed',
+  'Ny rygning og mønning typisk inden for 5–10 år — vi rådgiver om det rette tidspunkt',
+  'Garanti på alt udført arbejde',
+  'Vi vender hurtigt tilbage på din henvendelse',
+  'Ærlig rådgivning — kan dit tag renoveres frem for udskiftes, siger vi det',
+]
+
+const reviews = [
+  { text: 'Super glade for det arbejde der er blevet lavet. Jacob og Matias er et par flinke fyre og holder hvad de lover. Vi vil helt sikkert anbefale Tækkemand Carlsen.', name: 'Kunde i Helsinge-området' },
+  { text: 'Jakob har lavet et fantastisk stykke arbejde. Han er omhyggelig og man mærker at hans faglige stolthed betyder alt for ham. Det kan man tydeligt se på det udførte arbejde.', name: 'Børge Jensen' },
+]
+
+const faqs = [
+  { q: 'Arbejder I til aftalt tid?', a: 'Ja. Vi møder op når vi har aftalt det, og vi holder dig orienteret undervejs. Vi ved at det er vigtigt for dig som husejer at vide, hvornår vi kommer og hvornår vi er færdige — det respekterer vi.' },
+  { q: 'Hvad koster et nyt stråtag i Helsinge?', a: 'Selve tækkearbejdet ligger typisk på 936 kr. pr. m² inkl. materialer (ekskl. moms). Den endelige pris afhænger af tagets areal, hældning, materialetype og rygningstype. Vi giver altid et uforpligtende tilbud efter en konkret besigtigelse — ingen overraskelser.' },
+  { q: 'Hvor lang levetid kan jeg forvente af mit stråtag?', a: 'Et velholdt stråtag holder typisk mellem 30 og 60 år, afhængigt af materialer, udførelse og placering. Sydvendte tagflader slides hurtigere på grund af solens påvirkning, mens nordvendte sider ofte holder længere. Rygningen skal løbende vedligeholdes og udskiftes — typisk hvert 5–15 år afhængigt af type og materialer.' },
+  { q: 'Hvilket tagmateriale passer bedst til gårde og landsbyhuse i Helsinge?', a: 'Til de fleste gårde og ældre landsbyhuse i Gribskov anbefaler vi tagrør — det er det mest holdbare materiale og giver det klassiske, tætte udtryk der passer til den lokale byggestil. Langhalm er billigere, men holder omtrent halvt så lang tid. Lyng bruges primært til rygning og mønning og giver et flot, traditionelt udtryk der særligt klæder bindingsværkshuse og fredede ejendomme. Vi rådgiver dig om det rette valg til netop din bygning.' },
+  { q: 'Har vi brug for særlig tilladelse til stråtag i Gribskov Kommune?', a: 'Det afhænger af ejendommens status og lokalplanen for området. Fredede og bevaringsværdige bygninger kan være underlagt krav til tagmaterialer. Vi kender reglerne og rådgiver dig gerne — ring til os, så gennemgår vi situationen for netop din ejendom.' },
+  { q: 'Kan mit stråtag renoveres i stedet for at udskiftes helt?', a: 'Ja, det kan det i mange tilfælde. En god renovering kan forlænge levetiden med op til 20 år og koster typisk kun en tredjedel af et nyt tag. Vi vurderer altid tagets reelle tilstand og er ærlige om, hvad der bedst kan betale sig.' },
+  { q: 'Hvad gør jeg, hvis mit stråtag er skadet efter storm?', a: 'Ring til os med det samme. Vi rykker hurtigt ud og sørger for, at dit hus er beskyttet — mod et mindre tillæg. Stormskader dækkes som regel af din husforsikring, så længe taget er ordentligt vedligeholdt.' },
+  { q: 'Er brandsikring et krav?', a: 'Ja, brandsikring er et lovkrav for stråtage. Med professionel brandsikring — fx Sepatex brandsikringsdug — reduceres risikoen markant, og det kan give nedslag i din forsikringspræmie. Vi rådgiver dig om de gældende krav.' },
+  { q: 'Hvordan vedligeholder jeg bedst mit stråtag?', a: 'Vi anbefaler et årligt eftersyn, algebehandling og hurtig udbedring af småskader. Et regelmæssigt vedligeholdt tag lever altid længere og koster langt mindre i det lange løb. Giv os et ring — vi lægger gerne en vedligeholdelsesplan sammen med dig.' },
+]
+
+const gallery = [
+  { src: '/img/fb_projekt1.jpg', alt: 'Nyt stråtag på bindingsværkshus i Helsinge, Gribskov' },
+  { src: '/img/fb_projekt2.jpg', alt: 'Stråtækning på gård i Gribskov-egnen' },
+  { src: '/img/fb_projekt3.jpg', alt: 'Nyt stråtag på landejendom i Nordsjælland' },
+  { src: '/img/fb_projekt4.jpg', alt: 'Halmrygning og mønning på stråtag i Gribskov' },
+  { src: '/img/fb_projekt5.jpg', alt: 'Reparation af stråtag på dansk landejendom' },
+  { src: '/img/fb_projekt6.jpg', alt: 'Færdigt stråtag på bevaringsværdig ejendom i Nordsjælland' },
+]
+
+// Service area positions (procent — relativ til Helsinge i centrum)
+const areaCities = [
+  { name: 'Annisse', top: '22%', left: '32%' },
+  { name: 'Blistrup', top: '18%', left: '72%' },
+  { name: 'Ramløse', top: '52%', left: '18%' },
+  { name: 'Helsinge', top: '50%', left: '50%', main: true },
+  { name: 'Kagerup', top: '52%', left: '78%' },
+  { name: 'Valby', top: '78%', left: '42%' },
+]
+
+const pageUrl = 'https://taekkemandcarlsen.dk/helsinge/'
+const businessId = 'https://taekkemandcarlsen.dk/#business'
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Forside', item: 'https://taekkemandcarlsen.dk/' },
+        { '@type': 'ListItem', position: 2, name: 'Områder', item: 'https://taekkemandcarlsen.dk/omraader/' },
+        { '@type': 'ListItem', position: 3, name: 'Helsinge', item: pageUrl },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service-nyt-straatag`,
+      serviceType: 'Tækkearbejde — nyt stråtag',
+      name: 'Nyt stråtag i Helsinge',
+      description: 'Komplet tækning fra spær til mønning — vi udfører tømrerarbejde, lægger tækkerør og afslutter med valgfri rygning. Pris fra 936 kr/m² ekskl. moms.',
+      provider: { '@id': businessId },
+      areaServed: { '@type': 'City', name: 'Helsinge', containedInPlace: { '@type': 'AdministrativeArea', name: 'Gribskov Kommune' } },
+      offers: {
+        '@type': 'Offer',
+        price: '936',
+        priceCurrency: 'DKK',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '936', priceCurrency: 'DKK', unitCode: 'MTK', valueAddedTaxIncluded: false },
+        availability: 'https://schema.org/InStock',
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service-reparation`,
+      serviceType: 'Reparation og renovering af stråtag',
+      name: 'Reparation af stråtag i Helsinge',
+      description: 'Vi udbedrer utætheder, slidte partier og mønning. En målrettet renovering kan forlænge tagets levetid med op til 20 år til ca. en tredjedel af prisen for nyt tag.',
+      provider: { '@id': businessId },
+      areaServed: { '@type': 'City', name: 'Helsinge' },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service-rygning`,
+      serviceType: 'Rygning og mønning',
+      name: 'Ny rygning og mønning',
+      description: 'Ny rygning i halm, lyng, kobber eller tegl. Halmrygning holder typisk 3–5 år, lyng- og tangmønning 8–10 år.',
+      provider: { '@id': businessId },
+      areaServed: { '@type': 'City', name: 'Helsinge' },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service-brandsikring`,
+      serviceType: 'Brandsikring af stråtag',
+      name: 'Brandsikring med Sepatex',
+      description: 'Brandsikring er et lovkrav. Vi monterer bl.a. Sepatex brandsikringsdug — reducerer risikoen markant og kan give nedslag i forsikringspræmien.',
+      provider: { '@id': businessId },
+      areaServed: { '@type': 'City', name: 'Helsinge' },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service-algebehandling`,
+      serviceType: 'Algebehandling og vedligehold',
+      name: 'Algebehandling af stråtag i Helsinge',
+      description: 'Mekanisk afrensning af mos efterfulgt af godkendt middel mod alger og svampesporer. Forlænger tagets levetid.',
+      provider: { '@id': businessId },
+      areaServed: { '@type': 'City', name: 'Helsinge' },
+      offers: { '@type': 'Offer', price: '2500', priceCurrency: 'DKK', priceSpecification: { '@type': 'PriceSpecification', price: '2500', priceCurrency: 'DKK', valueAddedTaxIncluded: false } },
+    },
+    {
+      '@type': 'Place',
+      '@id': `${pageUrl}#area-helsinge`,
+      name: 'Helsinge og Gribskov Kommune',
+      address: { '@type': 'PostalAddress', addressLocality: 'Helsinge', postalCode: '3200', addressRegion: 'Nordsjælland', addressCountry: 'DK' },
+      containedInPlace: { '@type': 'AdministrativeArea', name: 'Gribskov Kommune' },
+      geo: { '@type': 'GeoCoordinates', latitude: 56.0250, longitude: 12.1937 },
+    },
+  ],
+}
+---
+
+<Layout
+  title="Tækkemand Helsinge | Nyt Stråtag & Reparation i Gribskov"
+  description="Tækkemand i Helsinge med 15+ års erfaring. Nyt stråtag, reparation, rygning og brandsikring til huse i Gribskov. Gratis besigtigelse — ring i dag."
+  canonical={pageUrl}
+  city="Helsinge"
+>
+  <!-- AAA+ schema: BreadcrumbList + FAQPage + Services + Place -->
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="hh-hero">
+    <div class="hh-hero-bg">
+      <picture>
+        <source srcset="/img/straatag1-hero.webp" type="image/webp" />
+        <img src="/img/straatag1-hero.jpg" alt="Stråtag i Helsinge lagt af Tækkemand Carlsen" fetchpriority="high" loading="eager" width="1920" height="1080" />
+      </picture>
+      <div class="hh-hero-overlay"></div>
+    </div>
+    <div class="hh-hero-content">
+      <span class="hh-eyebrow">Tækkemand i Helsinge & Gribskov</span>
+      <h1 class="hh-h1">Tækkemand Helsinge — <span class="hh-italic">stråtag med rødder i Gribskov</span></h1>
+      <p class="hh-hero-lead">
+        Helsinge og hele Gribskov-egnen er fuld af stråtækte gårde, bindingsværkshuse og gamle landsbybygninger,
+        der fortjener ordentlig håndværksmæssig behandling. Det er den slags opgaver, vi brænder for hos Tækkemand Carlsen.
+        Når du vælger os, kan du forvente et 100 % gennemsigtigt tilbud — alt udspecificeret, ingen skjulte overraskelser.
+      </p>
+      <ul class="hh-hero-bullets">
+        {heroBullets.map((b) => (
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="hh-hero-cta">
+        <a href="#kontakt" class="hh-btn-primary">Få et uforpligtende tilbud</a>
+        <a href="tel:+4524248080" class="hh-btn-phone">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          Ring direkte
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MØD OS — split layout med Jakob portrait -->
+  <section class="hh-section" style="background:#fbf9f8;">
+    <div class="hh-container">
+      <div class="hh-about-grid">
+        <div class="hh-about-photo">
+          <img src="/img/jakob.jpg" alt="Jacob Kærholdt Carlsen — stiftede Tækkemand Carlsen i 2009" loading="lazy" width="800" height="1000" />
+          <div class="hh-about-caption">
+            <span class="hh-about-name">Jacob Kærholdt Carlsen</span>
+            <span class="hh-about-role">Indehaver · stiftede firmaet i 2009</span>
+          </div>
+        </div>
+        <div class="hh-about-text">
+          <span class="hh-eyebrow">Mød os</span>
+          <h2 class="hh-h2">Stor erfaring og <span class="hh-italic">lang levetid på arbejdet</span></h2>
+          <p class="hh-body">
+            Jacob Kærholdt Carlsen stiftede firmaet i 2009 med en drøm om at levere stråtage der følger den
+            stolte danske tradition — samtidig med at det er prissat så alle kan være med. Gribskov-egnens
+            bindingsværksgårde og stråtækte landsbyhuse er præcis den slags arkitektur han er opvokset med,
+            og det er stadig der vores hjerte ligger.
+          </p>
+          <p class="hh-body">
+            I dag drives firmaet videre af uddannede tækkemænd med over 50 års samlet erfaring.
+            Vi har lagt tag på alt fra stuehuse i Helsinge og bindingsværksgårde i Ramløse til bevaringsværdige
+            ejendomme tæt på Gribskov-skoven — og vi kender de materialer og taghældninger der holder længst
+            i det nordsjællandske klima.
+          </p>
+          <a href="/om-os/" class="hh-link">Læs mere om os som tækkemand i Nordsjælland →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YDELSER -->
+  <section class="hh-section" style="background:#f4ede2;">
+    <div class="hh-container">
+      <div class="hh-head">
+        <span class="hh-eyebrow">Det tilbyder vi</span>
+        <h2 class="hh-h2">Stråtagsarbejde <span class="hh-italic">i Helsinge</span></h2>
+        <p class="hh-body" style="max-width:720px;margin:0 auto;">
+          Vi udfører alle typer tækkearbejde, så du kun skal bruge én håndværker til opgaven — fra begyndelse til afslutning.
+        </p>
+      </div>
+      <div class="hh-svc-grid">
+        {services.map((s) => (
+          <article class="hh-svc-card">
+            <div class="hh-svc-img">
+              <picture>
+                <source srcset={`${s.base}.webp`} type="image/webp" />
+                <img src={`${s.base}.${s.ext}`} alt={s.alt} loading="lazy" width="600" height="450"/>
+              </picture>
+            </div>
+            <div class="hh-svc-body-wrap">
+              <h3 class="hh-svc-title">{s.title}</h3>
+              <p class="hh-svc-body">{s.body}</p>
+              <a href={s.href} class="hh-svc-link">Læs mere →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCES — sådan kører et projekt -->
+  <ProcessV5 />
+
+  <!-- PRIS -->
+  <section class="hh-section" style="background:#fbf9f8;">
+    <div class="hh-container hh-narrow">
+      <span class="hh-eyebrow">Priser</span>
+      <h2 class="hh-h2">Hvad koster et stråtag <span class="hh-italic">i Helsinge?</span></h2>
+      <p class="hh-body">
+        Prisen på <a href="/tagdaekning/nyt-straatag/" class="hh-inline-link">et nyt stråtag i Helsinge</a> afhænger af tagets størrelse og hældning, valg af materialer og typen af rygning.
+        Som tommelfingerregel ligger selve tækkearbejdet inkl. materialer typisk på <strong>936 kr. pr. m² ekskl. moms</strong>.
+        Skal der tømrer, stillads og brandsikring til, vil den samlede pris naturligvis variere herefter.
+      </p>
+      <p class="hh-body">
+        Vi giver altid en gennemskuelig pris uden skjulte overraskelser. Har du brug for et hurtigt prisoverslag,
+        er du velkommen til at ringe — og vi kommer gerne forbi til en gratis besigtigelse, ser på dit tag og giver dig et
+        konkret, uforpligtende tilbud.
+      </p>
+      <div class="hh-price-highlight">
+        <div class="hh-price-num">936 kr/m²</div>
+        <div class="hh-price-meta">Ekskl. moms · tækkearbejde inkl. materialer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY — rigtigt projekt -->
+  <section class="hh-section" style="background:#f4ede2; padding-top:64px; padding-bottom:64px;">
+    <div class="hh-container hh-narrow">
+      <div class="hh-case">
+        <div class="hh-case-tag">Projekt-eksempel</div>
+        <h2 class="hh-h2" style="margin-bottom:16px;">Et stråtag der <span class="hh-italic">tog 3 måneder</span> fra start til mål</h2>
+        <div class="hh-case-grid">
+          <div>
+            <p class="hh-body">
+              I efteråret 2018 påtog vi os et komplet stråtagsprojekt. Vi gik i gang i <strong>oktober 2018</strong>
+              og afsluttede arbejdet i <strong>januar 2019</strong> — inden for det rammeløfte om 90 dage som
+              vi giver alle vores kunder.
+            </p>
+            <p class="hh-body" style="font-style: italic; color: #1b1c1c; padding: 16px 20px; background: rgba(255,255,255,0.6); border-left: 3px solid #6f4315; border-radius: 4px;">
+              "Vi har fået nyt tag fra oktober 2018 til januar 2019. Og er super glade for det arbejde der er blevet lavet."
+              <br/><span style="font-style:normal; font-weight:700; font-size:0.9rem; color:#6f4315; margin-top:8px; display:inline-block;">— Christian Pfeil Bendtsen</span>
+            </p>
+          </div>
+          <div class="hh-case-stats">
+            <div class="hh-case-stat">
+              <div class="hh-case-stat-num">3 mdr</div>
+              <div class="hh-case-stat-label">Total varighed</div>
+            </div>
+            <div class="hh-case-stat">
+              <div class="hh-case-stat-num">90 dage</div>
+              <div class="hh-case-stat-label">Aftalt rammeløfte</div>
+            </div>
+            <div class="hh-case-stat">
+              <div class="hh-case-stat-num">★★★★★</div>
+              <div class="hh-case-stat-label">Kundens vurdering</div>
+            </div>
+            <div class="hh-case-stat">
+              <div class="hh-case-stat-num">2018–19</div>
+              <div class="hh-case-stat-label">Periode</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VORES ARBEJDE / GALLERI -->
+  <section class="hh-section" style="background:#1b1c1c; color:#fff; padding-bottom:96px;">
+    <div class="hh-container">
+      <div class="hh-head">
+        <span class="hh-eyebrow" style="color:#ffdcc1;">Vores arbejde</span>
+        <h2 class="hh-h2" style="color:#fff;">Stråtage <span class="hh-italic" style="color:#ffdcc1;">vi har lagt</span></h2>
+        <p class="hh-body" style="color:rgba(255,255,255,0.75); max-width:680px; margin:0 auto;">
+          Et udvalg af projekter i Nordsjælland. Vi er stolte af hvert tag vi har lagt — og det er ofte vores referencer der overbeviser nye kunder.
+        </p>
+      </div>
+      <div class="hh-gallery">
+        {gallery.map((g) => (
+          <figure class="hh-gallery-item">
+            <img src={g.src} alt={g.alt} loading="lazy" width="600" height="600" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LOKAL CONTEXT -->
+  <section class="hh-section" style="background:#f4ede2;">
+    <div class="hh-container hh-narrow">
+      <span class="hh-eyebrow">Hvorfor stråtag i Gribskov</span>
+      <h2 class="hh-h2">Derfor passer stråtag perfekt <span class="hh-italic">til Helsinge og Gribskov</span></h2>
+      <p class="hh-body">
+        Gribskov Kommune er et af de områder i Danmark, hvor stråtaget stadig er en naturlig del af landskabet.
+        Fra bindingsværksgårde i de gamle landsbyer til herregårde og skovridergårde rundt om i kommunen — stråtaget
+        hører hjemme her, og det giver ejendommen karakter og historisk tyngde.
+      </p>
+      <p class="hh-body">
+        Mange af de bevaringsværdige ejendomme i området har desuden krav om bevaringsværdige tagmaterialer,
+        og vi kender lokalplanerne i Gribskov Kommune og rådgiver dig gerne om, hvad der gælder for netop din ejendom.
+      </p>
+      <p class="hh-body">
+        Tækkerør er fornybare materialer, der optager store mængder CO₂ under væksten — og taget fungerer
+        som en naturlig klimaskærm, der holder huset køligt om sommeren og varmt om vinteren.
+      </p>
+      <div class="hh-areas">
+        <span class="hh-areas-label">Vores arbejdsområde</span>
+        <h3 class="hh-areas-title">Vi betjener husejere i disse områder omkring Helsinge</h3>
+        <p class="hh-areas-sub">
+          Tækkemand Carlsen kører til private husejere, landmænd og erhvervsejendomme i hele Gribskov-egnen.
+          Bor du i en af nedenstående byer eller landsbyer? Så kommer vi gerne forbi til en uforpligtende besigtigelse.
+        </p>
+        <div class="hh-areas-chips">
+          <span>Helsinge</span><span>Valby</span><span>Kagerup</span><span>Ramløse</span><span>Annisse</span><span>Blistrup</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KORT + SERVICEOMRÅDE -->
+  <section class="hh-section" style="background:#fbf9f8; padding-bottom: 32px;">
+    <div class="hh-container hh-narrow">
+      <span class="hh-eyebrow">Vores område</span>
+      <h2 class="hh-h2">Tækkemand i <span class="hh-italic">Helsinge & omegn</span></h2>
+    </div>
+
+    <div class="hh-map-grid">
+      <div class="hh-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d87838.31710543646!2d12.153675075659823!3d56.024998550783586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46521590f37cf4cb%3A0x3c665ea4573f4d5c!2sHelsinge!5e1!3m2!1sen!2sdk!4v1774966616553!5m2!1sen!2sdk"
+          width="100%"
+          height="450"
+          style="border:0; display:block;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kort over Helsinge og Gribskov"
+        ></iframe>
+      </div>
+
+      <!-- Service area visualization -->
+      <figure class="hh-area-map" role="img" aria-label="Serviceområde-kort: Helsinge i centrum med omkringliggende byer Annisse, Blistrup, Ramløse, Kagerup og Valby">
+        <div class="hh-area-label">
+          <span class="hh-area-eyebrow">Serviceområde</span>
+          <h3 class="hh-area-title">Gribskov Kommune</h3>
+        </div>
+        <svg class="hh-area-lines" viewBox="0 0 400 400" aria-hidden="true">
+          <line x1="200" y1="200" x2="128" y2="88" stroke="rgba(111,67,21,.25)" stroke-width="1.5" stroke-dasharray="3 4" />
+          <line x1="200" y1="200" x2="288" y2="72" stroke="rgba(111,67,21,.25)" stroke-width="1.5" stroke-dasharray="3 4" />
+          <line x1="200" y1="200" x2="72" y2="208" stroke="rgba(111,67,21,.25)" stroke-width="1.5" stroke-dasharray="3 4" />
+          <line x1="200" y1="200" x2="312" y2="208" stroke="rgba(111,67,21,.25)" stroke-width="1.5" stroke-dasharray="3 4" />
+          <line x1="200" y1="200" x2="168" y2="312" stroke="rgba(111,67,21,.25)" stroke-width="1.5" stroke-dasharray="3 4" />
+        </svg>
+        {areaCities.map((c) => (
+          <div class={`hh-area-pin ${c.main ? 'hh-area-pin-main' : ''}`} style={`top:${c.top}; left:${c.left};`}>
+            <span class="hh-pin-dot"></span>
+            <span class="hh-pin-label">{c.name}</span>
+          </div>
+        ))}
+      </figure>
+    </div>
+
+    <p class="hh-map-foot">
+      Vi servicerer husejere i <strong>Helsinge, Valby, Kagerup, Ramløse, Annisse og Blistrup</strong>
+      samt alle øvrige landsbyer i Gribskov Kommune.
+    </p>
+  </section>
+
+  <!-- LØFTER & TRUST -->
+  <section class="hh-section" style="background:#f4ede2;">
+    <div class="hh-container hh-narrow">
+      <span class="hh-eyebrow">Det lover vi dig</span>
+      <h2 class="hh-h2">Godt håndværk <span class="hh-italic">du kan stole på</span></h2>
+      <p class="hh-body">
+        Når du vælger Tækkemand Carlsen, får du et professionelt tækkefirma med solid erfaring, faglig stolthed og et team,
+        der holder hvad det lover. Vi har bygget vores ry i Helsinge og Gribskov gennem mere end 15 år med lokale kunder
+        der anbefaler os videre til naboer i Valby, Kagerup og Annisse. Vi udfører arbejde efter
+        <strong>Dansk Tækkemandslaugs forskrifter</strong>. Kan dit tag renoveres frem for at skiftes, siger vi det
+        altid ærligt — og der kan tit være mange penge at spare.
+      </p>
+      <ul class="hh-promises">
+        {promises.map((p) => (
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="hh-reviews">
+        <h3 class="hh-h3" style="text-align:center;">Hvad vores kunder siger</h3>
+        <div class="hh-reviews-grid">
+          {reviews.map((r) => (
+            <blockquote class="hh-review">
+              <div class="hh-review-stars">★★★★★</div>
+              <p class="hh-review-text">"{r.text}"</p>
+              <cite class="hh-review-name">— {r.name}</cite>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="hh-section" style="background:#fbf9f8;">
+    <div class="hh-container hh-narrow">
+      <span class="hh-eyebrow">FAQ</span>
+      <h2 class="hh-h2">Spørgsmål om stråtag <span class="hh-italic">i Helsinge</span></h2>
+      <div class="hh-faq-list">
+        {faqs.map((f) => (
+          <details class="hh-faq">
+            <summary>
+              <span>{f.q}</span>
+              <span class="hh-faq-icon">+</span>
+            </summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBandV5 />
+  <ContactV5 />
+  <FooterV5 />
+</Layout>
+
+<style>
+  /* Hero */
+  .hh-hero { position: relative; min-height: 75vh; padding-top: 96px; overflow: hidden; }
+  .hh-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hh-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% center; }
+  .hh-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(251,249,248,0.90) 0%, rgba(251,249,248,0.80) 55%, rgba(251,249,248,0.32) 100%);
+  }
+  .hh-hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 56px 24px 80px; }
+  .hh-h1 { font-family: var(--font-headline); font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.1; color: #1b1c1c; margin: 12px 0 24px; font-weight: 500; max-width: 760px; }
+  .hh-hero-lead { font-family: var(--font-body); font-size: clamp(1rem, 1.25vw, 1.1rem); line-height: 1.7; color: #51443a; margin: 0 0 28px; max-width: 720px; }
+  .hh-hero-bullets { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 10px; max-width: 680px; }
+  .hh-hero-bullets li { display: flex; gap: 12px; align-items: flex-start; font-family: var(--font-body); font-size: 0.98rem; line-height: 1.5; color: #1b1c1c; }
+  .hh-hero-bullets svg { color: #6f4315; flex-shrink: 0; margin-top: 4px; }
+  .hh-hero-cta { display: flex; flex-wrap: wrap; gap: 16px; }
+  .hh-btn-primary { background: #6f4315; color: #fff; padding: 16px 28px; border-radius: 10px; font-family: var(--font-body); font-weight: 700; font-size: 1rem; transition: transform .3s, background .3s; box-shadow: 0 8px 24px rgba(111,67,21,.25); }
+  .hh-btn-primary:hover { transform: translateY(-2px); background: #8b5a2b; }
+  .hh-btn-phone { display: inline-flex; align-items: center; gap: 8px; color: #1b1c1c; padding: 16px 24px; font-family: var(--font-body); font-weight: 700; font-size: 1rem; border-radius: 10px; border: 1px solid rgba(27,28,28,.2); }
+  .hh-btn-phone svg { color: #6f4315; }
+
+  /* Section base */
+  .hh-section { padding: 88px 0; }
+  .hh-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .hh-narrow { max-width: 880px; }
+  .hh-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+  .hh-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .hh-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 24px; font-weight: 500; }
+  .hh-italic { font-style: italic; color: #6f4315; }
+  .hh-h3 { font-family: var(--font-headline); font-size: 1.5rem; color: #1b1c1c; margin: 0 0 24px; font-weight: 500; }
+  .hh-body { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.75; color: #51443a; margin: 0 0 20px; }
+  .hh-link { font-family: var(--font-body); font-weight: 700; color: #6f4315; }
+  .hh-inline-link { color: #6f4315; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: color .2s; }
+  .hh-inline-link:hover { color: #1b1c1c; text-decoration-color: #1b1c1c; }
+
+  /* About section — Jakob portrait */
+  .hh-about-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  .hh-about-photo { position: relative; }
+  .hh-about-photo img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.15); display: block; max-height: 600px; object-fit: cover; }
+  .hh-about-caption { margin-top: 16px; display: flex; flex-direction: column; gap: 2px; padding-left: 4px; }
+  .hh-about-name { font-family: var(--font-headline); font-style: italic; font-size: 1.25rem; color: #1b1c1c; }
+  .hh-about-role { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6f4315; }
+  @media (min-width: 900px) {
+    .hh-about-grid { grid-template-columns: 0.85fr 1fr; gap: 80px; }
+  }
+
+  /* Service cards med billede */
+  .hh-svc-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .hh-svc-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(111,67,21,.12); box-shadow: 0 4px 16px rgba(0,0,0,.04); transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
+  .hh-svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+  .hh-svc-img { aspect-ratio: 16 / 10; overflow: hidden; background: #f4ede2; }
+  .hh-svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .hh-svc-card:hover .hh-svc-img img { transform: scale(1.05); }
+  .hh-svc-body-wrap { padding: 24px 24px 28px; display: flex; flex-direction: column; flex: 1; }
+  .hh-svc-title { font-family: var(--font-body); font-weight: 700; font-size: 1.2rem; color: #1b1c1c; margin: 0 0 12px; }
+  .hh-svc-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.65; color: #51443a; margin: 0 0 16px; flex: 1; }
+  .hh-svc-link { font-family: var(--font-body); font-weight: 700; color: #6f4315; font-size: 0.9rem; }
+  @media (min-width: 700px) { .hh-svc-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+
+  /* Case study */
+  .hh-case { background: #fff; border-radius: 20px; padding: 40px 32px; border: 1px solid rgba(111,67,21,.15); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
+  .hh-case-tag { display: inline-block; background: #6f4315; color: #fff; padding: 6px 14px; border-radius: 999px; font-family: var(--font-label); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 16px; }
+  .hh-case-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
+  .hh-case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-self: start; }
+  .hh-case-stat { background: linear-gradient(135deg, #6f4315 0%, #51331a 100%); color: #fff; padding: 20px 16px; border-radius: 12px; text-align: center; }
+  .hh-case-stat-num { font-family: var(--font-headline); font-style: italic; font-size: 1.5rem; color: #ffdcc1; line-height: 1; margin-bottom: 6px; }
+  .hh-case-stat-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  @media (min-width: 700px) { .hh-case-grid { grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: start; } }
+
+  /* Pricing highlight */
+  .hh-price-highlight { background: linear-gradient(135deg, #6f4315 0%, #51331a 100%); color: #fff; padding: 32px; border-radius: 16px; text-align: center; margin-top: 32px; }
+  .hh-price-num { font-family: var(--font-headline); font-style: italic; font-size: clamp(2.25rem, 5vw, 3rem); color: #ffdcc1; line-height: 1; margin-bottom: 8px; }
+  .hh-price-meta { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,220,193,.85); }
+
+  /* Galleri */
+  .hh-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hh-gallery-item { margin: 0; overflow: hidden; border-radius: 12px; aspect-ratio: 1 / 1; }
+  .hh-gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s, filter .3s; filter: brightness(0.95); }
+  .hh-gallery-item:hover img { transform: scale(1.05); filter: brightness(1.05); }
+  @media (min-width: 700px) { .hh-gallery { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+  @media (min-width: 1100px) { .hh-gallery { grid-template-columns: repeat(6, 1fr); } }
+
+  /* Areas chips */
+  .hh-areas { margin-top: 40px; padding: 32px 28px; background: rgba(255,255,255,0.7); border-radius: 16px; border: 1px solid rgba(111,67,21,.18); }
+  .hh-areas-label { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 12px; }
+  .hh-areas-title { font-family: var(--font-headline); font-size: clamp(1.25rem, 2.5vw, 1.5rem); color: #1b1c1c; margin: 0 0 12px; font-weight: 500; line-height: 1.3; }
+  .hh-areas-sub { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.65; color: #51443a; margin: 0 0 20px; }
+  .hh-areas-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hh-areas-chips span { display: inline-flex; align-items: center; padding: 8px 16px; background: #fff; border: 1px solid rgba(111,67,21,.15); border-radius: 999px; font-family: var(--font-body); font-size: 0.92rem; font-weight: 600; color: #1b1c1c; }
+
+  /* Map + Service Area */
+  .hh-map-grid { max-width: 1200px; margin: 24px auto 0; padding: 0 24px; display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .hh-map iframe { border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,.1); width: 100%; }
+  .hh-map-foot { max-width: 880px; margin: 32px auto 0; padding: 0 24px; text-align: center; font-family: var(--font-body); font-size: 1rem; color: #51443a; line-height: 1.65; }
+
+  /* Service area illustration map */
+  .hh-area-map {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 450px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f4ede2 0%, #fbf9f8 100%);
+    border: 1px solid rgba(111,67,21,.18);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.06);
+    overflow: hidden;
+  }
+  .hh-area-label { position: absolute; top: 16px; left: 16px; z-index: 2; pointer-events: none; }
+  .hh-area-eyebrow { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #6f4315; display: block; }
+  .hh-area-title { font-family: var(--font-headline); font-style: italic; font-size: 1.15rem; color: #1b1c1c; margin: 2px 0 0; font-weight: 500; }
+  .hh-area-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hh-area-pin { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .hh-pin-dot { width: 12px; height: 12px; border-radius: 50%; background: #6f4315; box-shadow: 0 0 0 4px rgba(111,67,21,.15); }
+  .hh-pin-label { font-family: var(--font-body); font-size: 0.78rem; font-weight: 700; color: #51443a; background: rgba(255,255,255,0.85); padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+  .hh-area-pin-main .hh-pin-dot { width: 18px; height: 18px; background: #1b1c1c; box-shadow: 0 0 0 6px rgba(111,67,21,.25), 0 0 0 12px rgba(111,67,21,.1); }
+  .hh-area-pin-main .hh-pin-label { font-size: 0.92rem; color: #1b1c1c; background: #ffdcc1; }
+
+  @media (min-width: 900px) {
+    .hh-map-grid { grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: stretch; }
+    .hh-map iframe { height: 100%; min-height: 480px; }
+    .hh-area-map { max-width: 100%; aspect-ratio: auto; min-height: 480px; }
+  }
+
+  /* Promises */
+  .hh-promises { list-style: none; padding: 0; margin: 24px 0 48px; display: flex; flex-direction: column; gap: 12px; }
+  .hh-promises li { display: flex; gap: 12px; align-items: flex-start; font-family: var(--font-body); font-size: 1rem; line-height: 1.55; color: #1b1c1c; }
+  .hh-promises svg { color: #6f4315; flex-shrink: 0; margin-top: 4px; }
+
+  /* Reviews */
+  .hh-reviews { margin-top: 48px; padding-top: 48px; border-top: 1px solid rgba(111,67,21,.15); }
+  .hh-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .hh-review { background: #fff; padding: 28px; border-radius: 16px; border: 1px solid rgba(111,67,21,.1); margin: 0; }
+  .hh-review-stars { color: #d4a017; font-size: 1.05rem; letter-spacing: 2px; margin-bottom: 14px; }
+  .hh-review-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: #1b1c1c; margin: 0 0 16px; }
+  .hh-review-name { font-family: var(--font-body); font-style: normal; font-weight: 700; font-size: 0.9rem; color: #6f4315; }
+
+  /* FAQ */
+  .hh-faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  .hh-faq { background: #fff; border: 1px solid rgba(111,67,21,.12); border-radius: 12px; overflow: hidden; }
+  .hh-faq[open] { box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+  .hh-faq summary { list-style: none; cursor: pointer; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: var(--font-body); font-weight: 700; font-size: 1.02rem; color: #1b1c1c; }
+  .hh-faq summary::-webkit-details-marker { display: none; }
+  .hh-faq-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(111,67,21,.1); color: #6f4315; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; transition: transform .3s; }
+  .hh-faq[open] .hh-faq-icon { transform: rotate(45deg); }
+  .hh-faq p { padding: 0 24px 20px; margin: 0; font-family: var(--font-body); font-size: 0.98rem; line-height: 1.7; color: #51443a; }
+
+  @media (min-width: 640px) {
+    .hh-reviews-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

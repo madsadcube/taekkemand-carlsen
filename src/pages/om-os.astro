@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import About from '../components/About.astro'
+import Erfaring from '../components/Erfaring.astro'
+import WhyUs from '../components/WhyUs.astro'
+import Testimonials from '../components/Testimonials.astro'
+import Contact from '../components/Contact.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Om Tækkemand Carlsen | 50 års håndværk i Helsinge"
+  description="Tækkemand Carlsen — et håndværk i Helsinge siden 1972. Læs om vores erfaring, vores tækkemænd og hvorfor over 50 års stråtagserfaring gør en forskel."
+  canonical="https://taekkemandcarlsen.dk/om-os/"
+>
+  <Nav />
+  <div class="pt-32 pb-16 px-8 max-w-4xl mx-auto text-center" style="background: #faf6f1;">
+    <p style="font-family: var(--font-headline); font-style: italic; color: #6f4315; font-size: 1rem; letter-spacing: 0.05em;">Et håndværk i Helsinge siden 1972</p>
+    <h1 class="text-5xl md:text-6xl mt-3" style="font-family: var(--font-headline); color: #1b1c1c;">Om Tækkemand Carlsen</h1>
+  </div>
+  <About />
+  <Erfaring />
+  <WhyUs />
+  <Testimonials />
+  <Contact />
+  <Footer />
+</Layout>

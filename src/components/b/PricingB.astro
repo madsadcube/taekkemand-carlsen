@@ -1,0 +1,124 @@
+---
+const pricing = [
+  { name: 'Nyt stråtag', price: 'Efter opmåling', what: ['Pris afhænger af m², taghældning og kompleksitet', 'Vandrør, halm, lyng eller kobber til rygning', 'Levering inden 90 dage', 'Uforpligtende tilbud'] },
+  { name: 'Renovering af stråtag', price: 'Ca. 388 kr/m²', what: ['Koster ca. 1/3 af et nyt stråtag', 'Brandsikringen kan genbruges (holder op til 60 år)', 'Bæredygtigt: 70-80% af strået genbruges', 'Nyt slidlag på 20-22 cm forlænger levetiden 20-25 år'], featured: true },
+  { name: 'Mønning (rygning)', price: 'Fra 450 kr/m', what: ['Halmrygning: 450 kr/m (ekskl. moms)', 'Lyngmønning: 900 kr/m (ekskl. moms)', 'Tangmønning: 900 kr/m (ekskl. moms)', 'Inkl. rugtræer og kragetræer'] },
+  { name: 'Algebehandling', price: 'Fra 2.500 kr', what: ['0–200 m²: 2.500 kr (+moms)', '201–300 m²: 2.700 kr (+moms)', '301–400 m²: 2.900 kr (+moms)', '401–500 m²: 3.100 kr (+moms)'] },
+  { name: 'Vedligeholdelse', price: 'Fra 79 kr/m²', what: ['Grundpakke (manuel rensning): 79 kr/m²', 'Tillæg (finpudsning): +89 kr/m²', 'Forlænger tagets levetid op til 8-10 år', 'Faste vedligeholdelses-aftaler mulige'] },
+]
+---
+
+<section class="b-pricing" id="priser">
+  <div class="b-pr-container">
+    <div class="b-pr-head">
+      <span class="b-eyebrow">Vejledende priser</span>
+      <h2 class="b-h2">
+        <span class="b-h2-italic">Klare priser</span> — ingen overraskelser.
+      </h2>
+      <p class="b-pr-sub">
+        Her er vores vejledende priser. Hvert projekt får et uforpligtende tilbud efter besigtigelse,
+        så du har et præcist tal at forholde dig til før du beslutter dig.
+      </p>
+    </div>
+
+    <div class="b-pr-grid">
+      {pricing.map((p) => (
+        <div class={`b-pr-card ${p.featured ? 'b-pr-featured' : ''}`}>
+          {p.featured && <div class="b-pr-badge">Mest valgt</div>}
+          <h3 class="b-pr-name">{p.name}</h3>
+          <div class="b-pr-price">{p.price}</div>
+          <ul class="b-pr-what">
+            {p.what.map((w) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                {w}
+              </li>
+            ))}
+          </ul>
+          <a href="#kontakt" class={`b-pr-cta ${p.featured ? 'b-pr-cta-primary' : ''}`}>Få fastpris →</a>
+        </div>
+      ))}
+    </div>
+
+    <div class="b-pr-note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>Algebehandling-priser er inkl. moms (+moms). Mønning er ekskl. moms. Nyt stråtag prissættes efter opmåling. Alle priser opdateres jævnligt.</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .b-pricing { background: #fbf9f8; padding: 96px 0; }
+  .b-pr-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .b-pr-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .b-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .b-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .b-h2-italic { font-style: italic; color: #6f4315; }
+  .b-pr-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .b-pr-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
+  .b-pr-card {
+    background: #fff;
+    padding: 32px 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(111,67,21,0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .b-pr-featured {
+    border: 2px solid #6f4315;
+    transform: scale(1.02);
+    box-shadow: 0 16px 40px rgba(111,67,21,0.15);
+  }
+  .b-pr-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #6f4315;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+  .b-pr-name { font-family: var(--font-body); font-weight: 700; font-size: 1.25rem; color: #1b1c1c; margin: 0 0 8px; }
+  .b-pr-price { font-family: var(--font-headline); font-style: italic; font-size: 2rem; color: #6f4315; margin-bottom: 24px; line-height: 1; }
+  .b-pr-what { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .b-pr-what li { display: flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 0.95rem; color: #1b1c1c; }
+  .b-pr-what svg { color: #6f4315; flex-shrink: 0; }
+
+  .b-pr-cta {
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 10px;
+    border: 1px solid rgba(27,28,28,0.2);
+    color: #1b1c1c;
+    font-family: var(--font-body);
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+  .b-pr-cta:hover { background: #1b1c1c; color: #fff; }
+  .b-pr-cta-primary { background: #6f4315; color: #fff; border-color: #6f4315; }
+  .b-pr-cta-primary:hover { background: #8b5a2b; border-color: #8b5a2b; color: #fff; }
+
+  .b-pr-note {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-top: 32px;
+    padding: 16px 20px;
+    background: rgba(111,67,21,0.06);
+    border-left: 3px solid #6f4315;
+    border-radius: 4px;
+    font-family: var(--font-body); font-size: 0.9rem; color: #51443a;
+    line-height: 1.5;
+  }
+  .b-pr-note svg { color: #6f4315; flex-shrink: 0; margin-top: 2px; }
+
+  @media (min-width: 768px) { .b-pr-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+  @media (min-width: 1100px) { .b-pr-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>
+</content>
+</invoke>

@@ -1,0 +1,146 @@
+---
+import { cities } from '../../data/cities.ts'
+
+const nord = cities.filter((c) => c.region === 'Nordsjælland')
+const ovrige = cities.filter((c) => c.region !== 'Nordsjælland')
+---
+
+<section class="c-areas c-section" id="omraader">
+  <div class="c-container">
+    <div class="c-head-center">
+      <span class="c-eyebrow">Vores område</span>
+      <h2 class="c-h2">
+        Vi dækker <span class="c-h2-italic">hele Nordsjælland</span>.
+      </h2>
+      <p class="c-lede">
+        Tækkemand Carlsen kører til private husejere, landmænd og erhverv i hele Nordsjælland —
+        fra Tisvildeleje og Gilleleje på Nordkysten til Hillerød, Frederiksværk og Helsinge.
+        Bor du i området? Så får du hurtigt et uforpligtende tilbud — ofte ud fra skråfoto — eller
+        <a href="https://share.google/1J5mUdTdojwZNALzR" target="_blank" rel="noopener noreferrer" class="c-areas-gbp">se vores anmeldelser på Google</a>.
+      </p>
+    </div>
+
+    <p class="c-areas-label">Vi dækker hele Nordsjælland — bl.a. disse byer:</p>
+    <ul class="c-areas-list">
+      {nord.map((c) => (
+        <li>
+          <a href={`/${c.slug}`} class="c-areas-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="2.5"/></svg>
+            Tækkemand {c.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="c-areas-extra">
+      Vi løser også opgaver i resten af Sjælland — bl.a.{' '}
+      {ovrige.map((c, i) => (
+        <>
+          <a href={`/${c.slug}`}>{c.name}</a>{i < ovrige.length - 2 ? ', ' : i === ovrige.length - 2 ? ' og ' : ''}
+        </>
+      ))}
+      {' '}— og i hele landet efter aftale.
+    </p>
+
+    <div class="c-areas-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d352545.40315034345!2d12.114340133540201!3d55.873361789784944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465248b697dec2cf%3A0x7d9082193fed1c1f!2sNordsj%C3%A6lland!5e1!3m2!1sda!2sdk!4v1779263504393!5m2!1sda!2sdk"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Tækkemand Carlsen — arbejdsområde i Nordsjælland"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .c-areas { background: var(--c-bg-surface); }
+
+  .c-areas-label {
+    text-align: center;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--c-brand);
+    margin: 0 0 24px;
+  }
+  .c-areas-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 760px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .c-areas-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    background: var(--c-white);
+    border: 1px solid var(--c-brand-soft);
+    border-radius: var(--c-r-pill);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--c-ink);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .c-areas-chip svg { color: var(--c-brand); flex-shrink: 0; }
+  .c-areas-chip:hover {
+    border-color: var(--c-brand);
+    color: var(--c-brand);
+    transform: translateY(-2px);
+    box-shadow: var(--c-shadow-sm);
+  }
+
+  .c-areas-extra {
+    text-align: center;
+    margin: 32px auto 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--c-ink-soft);
+  }
+  .c-areas-extra a {
+    color: var(--c-brand);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-brand-soft);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+  .c-areas-extra a:hover { border-color: var(--c-brand); }
+
+  .c-areas-gbp {
+    color: var(--c-brand);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-brand);
+    padding-bottom: 1px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .c-areas-gbp:hover { opacity: 0.75; }
+
+  .c-areas-map {
+    margin: 48px auto 0;
+    max-width: 920px;
+    border-radius: var(--c-r-md);
+    overflow: hidden;
+    border: 1px solid var(--c-brand-soft);
+    box-shadow: var(--c-shadow-sm);
+    line-height: 0;
+  }
+  .c-areas-map iframe {
+    width: 100%;
+    height: 380px;
+    border: 0;
+    display: block;
+    filter: saturate(0.92);
+  }
+  @media (max-width: 640px) {
+    .c-areas-map iframe { height: 300px; }
+  }
+</style>

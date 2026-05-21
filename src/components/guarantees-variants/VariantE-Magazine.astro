@@ -1,0 +1,134 @@
+---
+// Variant E — Asymmetrisk magasin-layout, ét hero-løfte + tre mindre
+---
+
+<section class="ge-section">
+  <div class="ge-container">
+    <div class="ge-head">
+      <span class="ge-eyebrow">Hvad du kan regne med</span>
+      <h2 class="ge-h2">Fire ting <em>vi står for</em>.</h2>
+    </div>
+
+    <div class="ge-grid">
+      <!-- Hero card -->
+      <article class="ge-hero-card">
+        <div class="ge-hero-badge">Vigtigst</div>
+        <div class="ge-hero-num">12<span>mio.</span></div>
+        <h3 class="ge-hero-title">Forsikret op til 12 mio. kr</h3>
+        <p class="ge-hero-body">
+          Tækkemand Carlsen er forsikret hos <strong>Alm. Brand Forsikring</strong> med en
+          dækning på op til <em>12.000.000 kroner</em>. Det er din sikkerhedsnet, hvis
+          noget mod forventning skulle gå galt.
+        </p>
+        <div class="ge-hero-foot">
+          <span>Police-nr. fremvises gerne</span>
+        </div>
+      </article>
+
+      <!-- 3 mindre kort -->
+      <div class="ge-small-stack">
+        <article class="ge-small">
+          <div class="ge-small-num">90<span>dage</span></div>
+          <div class="ge-small-body">
+            <h3 class="ge-small-title">Levering inden 90 dage</h3>
+            <p>Mangeårig erfaring gør, at vi kan garantere levering af nyt stråtag indenfor 90 dage fra projektstart til færdigt tag.</p>
+          </div>
+        </article>
+        <article class="ge-small">
+          <div class="ge-small-num">15<span>+ år</span></div>
+          <div class="ge-small-body">
+            <h3 class="ge-small-title">15+ års tækkeerfaring</h3>
+            <p>Mere end 15 års arbejde med tækkefaget for private kunder på Sjælland. Vores erfaring er din sikkerhed for et tag, der holder.</p>
+          </div>
+        </article>
+        <article class="ge-small">
+          <div class="ge-small-num">0<span>kr.</span></div>
+          <div class="ge-small-body">
+            <h3 class="ge-small-title">Uforpligtende tilbud</h3>
+            <p>Vi udarbejder gerne et uforpligtende tilbud efter at have set taget. Du forpligter dig til ingenting før du har skrevet under.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ge-section { background: #fbf9f8; padding: 96px 0; }
+  .ge-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .ge-head { text-align: center; margin-bottom: 64px; }
+  .ge-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .ge-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); color: #1b1c1c; margin: 0; font-weight: 500; }
+  .ge-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+
+  .ge-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+
+  .ge-hero-card {
+    background: #1b1c1c;
+    color: #fdf8ee;
+    padding: 48px 40px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  }
+  .ge-hero-badge {
+    display: inline-block;
+    background: #6f4315;
+    color: #fff;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .ge-hero-num {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 5.5rem;
+    line-height: 1;
+    color: #ffdcc1;
+    margin-bottom: 16px;
+  }
+  .ge-hero-num span { font-size: 2rem; margin-left: 8px; }
+  .ge-hero-title { font-family: var(--font-headline); font-size: 1.6rem; color: #fff; margin: 0 0 16px; font-weight: 500; line-height: 1.2; }
+  .ge-hero-body { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: rgba(253,248,238,0.85); margin: 0 0 24px; max-width: 480px; }
+  .ge-hero-body strong { color: #fff; }
+  .ge-hero-body em { font-style: italic; color: #ffdcc1; font-family: var(--font-headline); font-size: 1.1em; }
+  .ge-hero-foot {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,220,193,0.6);
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,220,193,0.2);
+  }
+
+  .ge-small-stack { display: grid; gap: 16px; }
+  .ge-small {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    align-items: center;
+    background: #fff;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(111,67,21,0.1);
+  }
+  .ge-small-num {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: #6f4315;
+  }
+  .ge-small-num span { font-size: 0.85rem; display: block; margin-top: 4px; font-style: italic; }
+  .ge-small-title { font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; color: #1b1c1c; margin: 0 0 6px; }
+  .ge-small-body p { font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: #51443a; margin: 0; }
+
+  @media (min-width: 1024px) {
+    .ge-grid { grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: stretch; }
+  }
+</style>

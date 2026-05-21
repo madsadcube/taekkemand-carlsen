@@ -1,0 +1,197 @@
+---
+// V4 — STAT PULL
+// Kæmpe italic terracotta stat-tal trækker øjet — "1/3" og "20%"
+// som hero-stats inde i hvert kort. Editorial highlight-look.
+---
+
+<section class="b-info-v4" id="info-v4">
+  <div class="b-info-v4-container">
+    <div class="b-info-v4-head">
+      <span class="b-eyebrow">Godt at vide</span>
+      <h2 class="b-h2">
+        Sådan får du <span class="b-h2-italic">mest ud af</span> dit stråtag.
+      </h2>
+    </div>
+
+    <div class="b-info-v4-grid">
+
+      <article class="b-info-v4-card">
+        <div class="b-info-v4-stat">
+          <span class="b-info-v4-stat-num"><em>1/3</em></span>
+          <span class="b-info-v4-stat-label">af prisen for et nyt tag</span>
+        </div>
+        <div class="b-info-v4-content">
+          <span class="b-info-v4-kicker">Renovering vs. nyt tag</span>
+          <h3 class="b-info-v4-title">
+            Renovering eller nyt stråtag — <em>hvad skal du vælge?</em>
+          </h3>
+          <p>
+            En stråtagsrenovering forlænger tagets levetid med 20-25 år — typisk for omkring
+            <strong>1/3 af prisen for et helt nyt tag</strong>. Vi genbruger 70-80% af det
+            eksisterende strå, og brandsikringen kan ofte beholdes (den holder op til 60 år).
+            Et nyt slidlag på 20-22 cm sætter taget i topform igen.
+          </p>
+          <p>
+            Hvis taget har omfattende skader eller er nedslidt på de fleste flader, anbefaler
+            vi i stedet et helt nyt stråtag. Vores tækkemænd er uddannet i renoveringsteknik
+            fra Holland, og vi vurderer ærligt ved besigtigelse, hvad der er det rigtige valg
+            for dit hus.
+          </p>
+          <div class="b-info-v4-foot">
+            <span>Renovering fra ca. 388 kr/m²</span>
+            <span class="b-info-v4-foot-sep">·</span>
+            <span>Nyt stråtag efter opmåling</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="b-info-v4-card">
+        <div class="b-info-v4-stat">
+          <span class="b-info-v4-stat-num"><em>20<span class="b-info-v4-pct">%</span></em></span>
+          <span class="b-info-v4-stat-label">længere levetid med algebehandling</span>
+        </div>
+        <div class="b-info-v4-content">
+          <span class="b-info-v4-kicker">Vedligehold</span>
+          <h3 class="b-info-v4-title">
+            Hvorfor er regelmæssig <em>algebehandling</em> vigtig?
+          </h3>
+          <p>
+            Et stråtag komposterer langsomt til muld hvis det ikke vedligeholdes. <strong>Mug,
+            alger og mos holder fugt</strong> i stråtaget — og når taget tørrer dårligt,
+            accelererer nedbrydningen. Det kan efterlade store huller som fyldes med vand
+            eller sne.
+          </p>
+          <p>
+            Dit stråtag har brug for jævne flader, så vand og sne nemt kan glide af. Kun solen
+            og vinden kan tørre stråtaget. Jo hurtigere det tørrer, jo længere holder det —
+            typisk <strong>op til 20% længere</strong> med jævnlig algebehandling.
+          </p>
+          <div class="b-info-v4-foot">
+            <span>Algebehandling fra 2.500 kr</span>
+            <span class="b-info-v4-foot-sep">·</span>
+            <span>Vedligeholdelse fra 79 kr/m²</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .b-info-v4 { background: #fbf9f8; padding: 112px 0; }
+  .b-info-v4-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .b-info-v4-head { text-align: center; max-width: 720px; margin: 0 auto 72px; }
+  .b-eyebrow {
+    font-family: var(--font-label); font-size: 11px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: #a04f1b; display: block; margin-bottom: 16px;
+  }
+  .b-h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.2; color: #1a1310;
+    margin: 0; font-weight: 500;
+  }
+  .b-h2-italic { font-style: italic; color: #a04f1b; }
+
+  .b-info-v4-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .b-info-v4-card {
+    background: #f4ede2;
+    border-radius: 10px;
+    padding: 48px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .b-info-v4-stat {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid rgba(160,79,27,0.22);
+    border-bottom: 1px solid rgba(160,79,27,0.22);
+  }
+  .b-info-v4-stat-num {
+    font-family: var(--font-headline);
+    font-size: clamp(4.5rem, 9vw, 7rem);
+    line-height: 1;
+    color: #a04f1b;
+    display: block;
+    font-weight: 500;
+  }
+  .b-info-v4-stat-num em {
+    font-style: italic;
+    font-weight: 500;
+  }
+  .b-info-v4-pct {
+    font-size: 0.6em;
+    vertical-align: 0.2em;
+  }
+  .b-info-v4-stat-label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #6b5a4d;
+    display: block;
+    margin-top: 8px;
+  }
+  .b-info-v4-content { min-width: 0; }
+  .b-info-v4-kicker {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #a04f1b;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .b-info-v4-title {
+    font-family: var(--font-headline);
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    line-height: 1.25;
+    color: #1a1310;
+    margin: 0 0 24px;
+    font-weight: 500;
+  }
+  .b-info-v4-title em { font-style: italic; color: #a04f1b; }
+  .b-info-v4-content p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #51443a;
+    margin: 0 0 16px;
+  }
+  .b-info-v4-content strong { color: #1a1310; font-weight: 700; }
+  .b-info-v4-foot {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(160,79,27,0.2);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: #6b5a4d;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .b-info-v4-foot-sep { color: #a04f1b; }
+
+  @media (min-width: 768px) {
+    .b-info-v4-card {
+      grid-template-columns: 280px 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .b-info-v4-stat {
+      padding: 0;
+      border: none;
+      border-right: 1px solid rgba(160,79,27,0.22);
+      padding-right: 32px;
+    }
+  }
+  /* Stacked vertikalt — én artikel per række */
+</style>

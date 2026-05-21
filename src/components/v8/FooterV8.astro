@@ -1,0 +1,104 @@
+---
+// V8 Footer — papir-tekstur, sidetal-stil
+---
+
+<footer class="v8-footer">
+  <div class="v8-footer-container">
+    <div class="v8-footer-grid">
+      <div class="v8-footer-brand">
+        <div class="v8-footer-mark">
+          <span class="v8-footer-mark-pre">Tækkemand</span>
+          <span class="v8-footer-mark-name">Carlsen</span>
+        </div>
+        <p class="v8-footer-tag">Stråtag der holder i generationer.<br/>Et håndværk siden 1972.</p>
+      </div>
+
+      <div class="v8-footer-col">
+        <div class="v8-footer-h">Håndværk</div>
+        <ul>
+          <li><a href="/tagdaekning/nyt-straatag/">Nyt stråtag</a></li>
+          <li><a href="/tagdaekning/renovering-af-straatag/">Renovering</a></li>
+          <li><a href="/tagdaekning/monning-til-straatag/">Mønning</a></li>
+          <li><a href="/tagdaekning/aldebehandling-af-straatag/">Algebehandling</a></li>
+          <li><a href="/tagdaekning/skorstensrenovering/">Skorstensrenovering</a></li>
+        </ul>
+      </div>
+
+      <div class="v8-footer-col">
+        <div class="v8-footer-h">Områder</div>
+        <ul>
+          <li><a href="/helsinge/">Helsinge</a></li>
+          <li><a href="/hillerod/">Hillerød</a></li>
+          <li><a href="/frederiksvaerk/">Frederiksværk</a></li>
+          <li><a href="/gilleleje/">Gilleleje</a></li>
+          <li><a href="/tisvildeleje/">Tisvildeleje</a></li>
+          <li><a href="/hundested/">Hundested</a></li>
+        </ul>
+      </div>
+
+      <div class="v8-footer-col">
+        <div class="v8-footer-h">Direkte</div>
+        <a href="tel:+4524248080" class="v8-footer-phone">24 24 80 80</a>
+        <a href="mailto:post@taekkemandcarlsen.dk" class="v8-footer-email">post@taekkemandcarlsen.dk</a>
+        <div class="v8-footer-hours">Hverdage 8–16</div>
+      </div>
+    </div>
+
+    <div class="v8-footer-foot">
+      <span>© 2026 Tækkemand Carlsen</span>
+      <span class="v8-footer-divider"></span>
+      <span>Et håndværk i Carlsens fodspor</span>
+      <span class="v8-footer-divider"></span>
+      <span>Side 14 / 14 — Slut.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .v8-footer { background: #1b1c1c; color: #fdf8ee; padding: 80px 0 32px; position: relative; }
+  .v8-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 5%; right: 5%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(255,220,193,0.4) 0 8px, transparent 8px 16px);
+  }
+  .v8-footer-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .v8-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .v8-footer-brand {  }
+  .v8-footer-mark { display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px; }
+  .v8-footer-mark-pre { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #ffdcc1; }
+  .v8-footer-mark-name { font-family: var(--font-headline); font-style: italic; font-size: 2.25rem; color: #fff; line-height: 1; }
+  .v8-footer-tag { font-family: var(--font-headline); font-style: italic; font-size: 1.05rem; line-height: 1.5; color: rgba(253,248,238,0.7); margin: 0; max-width: 320px; }
+
+  .v8-footer-h { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #ffdcc1; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,220,193,0.2); }
+  .v8-footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .v8-footer-col a { font-family: var(--font-body); font-size: 0.95rem; color: rgba(253,248,238,0.8); transition: color 0.3s; }
+  .v8-footer-col a:hover { color: #fff; }
+  .v8-footer-phone { display: block; font-family: var(--font-headline); font-style: italic; font-size: 1.75rem; color: #fff !important; margin-bottom: 8px; }
+  .v8-footer-email { display: block; font-family: var(--font-body); font-size: 0.95rem; color: rgba(253,248,238,0.8) !important; margin-bottom: 8px; }
+  .v8-footer-hours { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #ffdcc1; }
+
+  .v8-footer-foot {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,220,193,0.15);
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,220,193,0.6);
+  }
+  .v8-footer-divider { width: 4px; height: 4px; border-radius: 50%; background: #6f4315; }
+
+  @media (min-width: 768px) {
+    .v8-footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+  }
+</style>
+</content>
+</invoke>

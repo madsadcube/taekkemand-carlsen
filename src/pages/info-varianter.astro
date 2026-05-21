@@ -1,0 +1,173 @@
+---
+// Preview-side: alle 5 varianter af InfoB-sektionen side-om-side.
+// Brug til at vælge hvilken variant der skal ind i b.astro.
+import Layout from '../layouts/Layout.astro'
+import InfoBv1 from '../components/b/InfoB-v1.astro'
+import InfoBv2 from '../components/b/InfoB-v2.astro'
+import InfoBv3 from '../components/b/InfoB-v3.astro'
+import InfoBv4 from '../components/b/InfoB-v4.astro'
+import InfoBv5 from '../components/b/InfoB-v5.astro'
+import InfoBv6 from '../components/b/InfoB-v6.astro'
+import InfoBv7 from '../components/b/InfoB-v7.astro'
+import InfoBv8 from '../components/b/InfoB-v8.astro'
+import InfoBv9 from '../components/b/InfoB-v9.astro'
+import InfoBv10 from '../components/b/InfoB-v10.astro'
+import InfoBv11 from '../components/b/InfoB-v11.astro'
+import InfoB from '../components/b/InfoB.astro'
+---
+
+<Layout
+  title="Info-sektion varianter — Tækkemand Carlsen"
+  description="Preview af 5 designvarianter til 'Sådan får du mest ud af dit stråtag'."
+  canonical="https://taekkemandcarlsen.dk/info-varianter"
+>
+  <nav class="vp-nav">
+    <a href="#nuv">Nuværende</a>
+    <a href="#v1">V1 — Editorial Drop Cap</a>
+    <a href="#v2">V2 — Q&amp;A</a>
+    <a href="#v3">V3 — Split Photo</a>
+    <a href="#v4">V4 — Stat Pull</a>
+    <a href="#v5">V5 — Newspaper</a>
+    <a href="#v6">V6 — Classic /forside</a>
+    <a href="#v7">V7 — Versus</a>
+    <a href="#v8">V8 — Handcrafted</a>
+    <a href="#v9">V9 — Insider's Guide</a>
+    <a href="#v10">V10 — Cinematic Dark</a>
+    <a href="#v11">V11 — Encyclopedia</a>
+  </nav>
+
+  <div class="vp-label" id="nuv">
+    <span class="vp-tag">NUVÆRENDE</span>
+    <p class="vp-label-headline">Sådan er den lige nu på <code>/b/</code></p>
+  </div>
+  <InfoB />
+
+  <div class="vp-label" id="v1">
+    <span class="vp-tag">V1</span>
+    <p class="vp-label-headline">Editorial Drop Cap — nummererede artikler med stort italic dropcap-bogstav.</p>
+  </div>
+  <InfoBv1 />
+
+  <div class="vp-label" id="v2">
+    <span class="vp-tag">V2</span>
+    <p class="vp-label-headline">Q&amp;A — spørgsmålene som store italic citater, svar som body.</p>
+  </div>
+  <InfoBv2 />
+
+  <div class="vp-label" id="v3">
+    <span class="vp-tag">V3</span>
+    <p class="vp-label-headline">Split Photo — billede i toppen + editorial tekst-blok nedenunder.</p>
+  </div>
+  <InfoBv3 />
+
+  <div class="vp-label" id="v4">
+    <span class="vp-tag">V4</span>
+    <p class="vp-label-headline">Stat Pull — kæmpe italic terracotta stat-tal trækker øjet (1/3 og 20%).</p>
+  </div>
+  <InfoBv4 />
+
+  <div class="vp-label" id="v5">
+    <span class="vp-tag">V5</span>
+    <p class="vp-label-headline">Newspaper Column — to-spalte tekst, italic dropcap og pull quote.</p>
+  </div>
+  <InfoBv5 />
+
+  <div class="vp-label" id="v6">
+    <span class="vp-tag">V6 ✨</span>
+    <p class="vp-label-headline">Classic /forside — genskabt fra april-versionen: hvide kort på cream, brun border, pris-blokke med dividers.</p>
+  </div>
+  <InfoBv6 />
+
+  <div class="vp-label" id="v7">
+    <span class="vp-tag">V7 — VERSUS</span>
+    <p class="vp-label-headline">Head-to-head sammenligning: Renovering vs Nyt tag med stor "vs" i midten + algebehandling-aside nedenunder.</p>
+  </div>
+  <InfoBv7 />
+
+  <div class="vp-label" id="v8">
+    <span class="vp-tag">V8 — HANDCRAFTED</span>
+    <p class="vp-label-headline">Sketchy editorial: hand-drawn ornamenter, scribble dividers, dashed circle-tal — passer til håndværk-brand.</p>
+  </div>
+  <InfoBv8 />
+
+  <div class="vp-label" id="v9">
+    <span class="vp-tag">V9 — INSIDER'S GUIDE</span>
+    <p class="vp-label-headline">Long-form magazine article: én flydende artikel med H3-mellemoverskrifter, pull quotes og inline fact-bokse.</p>
+  </div>
+  <InfoBv9 />
+
+  <div class="vp-label" id="v10">
+    <span class="vp-tag">V10 — CINEMATIC DARK</span>
+    <p class="vp-label-headline">Mørk premium poster: cinematic title, gold/terracotta accent, stat-rows og elegant typography.</p>
+  </div>
+  <InfoBv10 />
+
+  <div class="vp-label" id="v11">
+    <span class="vp-tag">V11 — ENCYCLOPEDIA</span>
+    <p class="vp-label-headline">Opslagsværk-format: § paragrafer, italic headwords med fonetik, marginalier og krydsreferencer.</p>
+  </div>
+  <InfoBv11 />
+</Layout>
+
+<style>
+  .vp-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1a1310;
+    padding: 14px 24px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 1px solid rgba(160,79,27,0.4);
+  }
+  .vp-nav a {
+    font-family: "Manrope", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #f4ede2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .vp-nav a:hover { color: #a04f1b; }
+
+  .vp-label {
+    background: #1a1310;
+    color: #f4ede2;
+    padding: 56px 24px 40px;
+    text-align: center;
+  }
+  .vp-tag {
+    font-family: "Manrope", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #a04f1b;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    border: 1px solid rgba(160,79,27,0.5);
+    border-radius: 4px;
+  }
+  .vp-label .vp-label-headline {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    color: #f4ede2;
+    margin: 0 auto;
+    max-width: 720px;
+    font-weight: 400;
+  }
+  .vp-label code {
+    background: rgba(160,79,27,0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #f4ede2;
+  }
+</style>

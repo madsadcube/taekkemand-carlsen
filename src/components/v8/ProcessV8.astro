@@ -1,0 +1,114 @@
+---
+// V8 Process — fem trin som dagbogs-noter
+const steps = [
+  { num: '01', day: 'Dag 1', title: 'Opmåling', body: 'Vi kører ud, klatrer op, måler, fotograferer. Du får et fastpris-tilbud — ingen ekstra-regninger senere.' },
+  { num: '02', day: 'Uge 1–2', title: 'Bestilling af materiale', body: 'Vandrør fra vores faste leverandør i Polen, eg fra Nordsjælland. Vi kender historikken bag hvert læs.' },
+  { num: '03', day: 'Dag 1 på taget', title: 'Spær & undertag', body: 'Gammelt tag rives af, spær efterses. Råd udskiftes. Undertag og lægter lagt rigtigt — det er her tagets levetid afgøres.' },
+  { num: '04', day: 'Dag 2–N', title: 'Tækning', body: 'Hvert strå håndlagt. Kæmmet, bundet, presset. Det er ren håndværk — ingen genvej findes.' },
+  { num: '05', day: 'Sidste dag', title: 'Mønning & overdragelse', body: 'Mønning bundet i halmlæg. Vi gennemgår taget med dig, viser hvad du skal kigge efter, og afleverer skriftlig garanti.' },
+]
+---
+
+<section class="v8-process" id="proces">
+  <div class="v8-process-container">
+    <div class="v8-process-head">
+      <div class="v8-chapter">
+        <div class="v8-chapter-num">Kap. 03</div>
+        <div class="v8-chapter-title">Sådan arbejder vi</div>
+      </div>
+      <h2 class="v8-h2">
+        Fra opmåling til <em>færdigt tag</em> — i fem trin.
+      </h2>
+      <p class="v8-process-sub">
+        Hele processen tager typisk 6–12 uger fra første opmåling til vi forlader pladsen.
+        90 dage er det maksimale — vi har ikke overskredet det de sidste 10 år.
+      </p>
+    </div>
+
+    <ol class="v8-steps">
+      {steps.map((s) => (
+        <li class="v8-step">
+          <div class="v8-step-num">{s.num}</div>
+          <div class="v8-step-card">
+            <div class="v8-step-day">{s.day}</div>
+            <h3 class="v8-step-title">{s.title}</h3>
+            <p class="v8-step-body">{s.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .v8-process { background: #f4ede2; padding: 96px 0; position: relative; }
+  .v8-process::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 5%; right: 5%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(111,67,21,0.4) 0 8px, transparent 8px 16px);
+  }
+  .v8-process-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .v8-process-head { margin-bottom: 64px; max-width: 640px; }
+  .v8-chapter { display: inline-flex; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(111,67,21,0.2); margin-bottom: 24px; }
+  .v8-chapter-num { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v8-chapter-title { font-family: var(--font-headline); font-style: italic; font-size: 1.25rem; color: #1b1c1c; }
+  .v8-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4.5vw, 2.75rem); line-height: 1.15; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .v8-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+  .v8-process-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .v8-steps {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+  }
+  .v8-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: start;
+    position: relative;
+  }
+  .v8-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 39px;
+    top: 80px;
+    bottom: -32px;
+    width: 1px;
+    background: repeating-linear-gradient(180deg, #6f4315 0 6px, transparent 6px 12px);
+    opacity: 0.4;
+  }
+  .v8-step-num {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: #6f4315;
+    text-align: center;
+    border-bottom: 2px solid #6f4315;
+    padding-bottom: 8px;
+    width: 80px;
+  }
+  .v8-step-card {
+    background: #fff;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-left: 3px solid #6f4315;
+  }
+  .v8-step-day { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; margin-bottom: 6px; }
+  .v8-step-title { font-family: var(--font-headline); font-style: italic; font-size: 1.5rem; color: #1b1c1c; margin: 0 0 12px; }
+  .v8-step-body { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.7; color: #51443a; margin: 0; }
+
+  @media (min-width: 768px) {
+    .v8-step { grid-template-columns: 100px 1fr; gap: 32px; }
+    .v8-step-num { width: 100px; font-size: 4rem; }
+    .v8-step:not(:last-child)::after { left: 49px; }
+  }
+</style>
+</content>
+</invoke>

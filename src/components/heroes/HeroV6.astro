@@ -1,0 +1,200 @@
+---
+// Variant 6: Brutalist editorial — kæmpe outline-typografi, asymmetrisk grid,
+// indeks-numre, sidekolonne med metadata. Inspireret af modemagasiner.
+---
+
+<section class="hero-v6">
+  <!-- Top meta strip -->
+  <div class="v6-strip">
+    <span class="v6-strip-label">Issue Nº 01</span>
+    <span class="v6-strip-divider"></span>
+    <span class="v6-strip-label">Tækkemand Carlsen</span>
+    <span class="v6-strip-divider"></span>
+    <span class="v6-strip-label">Helsinge / Nordsjælland</span>
+    <span class="v6-strip-divider"></span>
+    <span class="v6-strip-label">EST. 1972</span>
+    <span class="v6-strip-spacer"></span>
+    <span class="v6-strip-label">Kapitel 01 — Stråtag</span>
+  </div>
+
+  <div class="v6-grid">
+    <!-- Side index -->
+    <aside class="v6-aside">
+      <div class="v6-aside-num">01</div>
+      <div class="v6-aside-meta">
+        <div class="v6-aside-label">Specialitet</div>
+        <div class="v6-aside-value">Nyt stråtag. Mønning. Algebehandling. Reparation.</div>
+      </div>
+      <div class="v6-aside-meta">
+        <div class="v6-aside-label">Område</div>
+        <div class="v6-aside-value">Helsinge · Hillerød · Frederiksværk · Gilleleje · Tisvilde · Hundested</div>
+      </div>
+      <div class="v6-aside-meta">
+        <div class="v6-aside-label">Garanti</div>
+        <div class="v6-aside-value">Levering inden 90 dage</div>
+      </div>
+    </aside>
+
+    <!-- Main typography -->
+    <div class="v6-main">
+      <h1 class="v6-h1">
+        <span class="v6-line v6-line-fill">STRÅTAG</span>
+        <span class="v6-line v6-line-outline">DER</span>
+        <span class="v6-line v6-line-fill">HOLDER</span>
+        <span class="v6-line v6-line-italic">i&nbsp;generationer</span>
+      </h1>
+
+      <div class="v6-cta-row">
+        <a href="#kontakt" class="v6-btn">
+          <span>Få et tilbud</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="tel:+4524248080" class="v6-phone">
+          <span class="v6-phone-prefix">Direkte ·</span>
+          <span class="v6-phone-num">24 24 80 80</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Foot strip -->
+  <div class="v6-foot">
+    <span class="v6-foot-label">Scroll for kapitler →</span>
+    <span class="v6-foot-pages">001 / 014</span>
+  </div>
+</section>
+
+<style>
+  .hero-v6 {
+    background: #fbf9f8;
+    color: #1b1c1c;
+    min-height: 100svh;
+    padding-top: 92px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .v6-strip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 32px;
+    border-top: 1px solid #1b1c1c;
+    border-bottom: 1px solid #1b1c1c;
+    font-family: var(--font-label);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #1b1c1c;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .v6-strip-divider { width: 4px; height: 4px; border-radius: 50%; background: #6f4315; flex-shrink: 0; }
+  .v6-strip-spacer { flex: 1; }
+  .v6-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 40px 24px 0;
+  }
+  .v6-aside { display: none; }
+  .v6-main { position: relative; }
+  .v6-h1 {
+    font-family: var(--font-headline);
+    line-height: 0.85;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .v6-line {
+    display: block;
+    font-weight: 600;
+  }
+  .v6-line-fill { color: #1b1c1c; font-size: clamp(3rem, 18vw, 6rem); letter-spacing: -0.02em; }
+  .v6-line-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #1b1c1c;
+    font-size: clamp(3rem, 18vw, 6rem);
+    letter-spacing: -0.02em;
+    padding-left: clamp(0.5rem, 4vw, 2rem);
+  }
+  .v6-line-italic {
+    font-style: italic;
+    font-weight: 400;
+    color: #6f4315;
+    font-size: clamp(2.5rem, 13vw, 4.5rem);
+    padding-left: clamp(1rem, 6vw, 4rem);
+    margin-top: -0.05em;
+  }
+  .v6-cta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    padding-top: 40px;
+    border-top: 1px solid rgba(27,28,28,0.15);
+  }
+  .v6-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    background: #1b1c1c;
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0;
+    transition: gap 0.3s;
+  }
+  .v6-btn:hover { gap: 20px; }
+  .v6-phone {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--font-body);
+  }
+  .v6-phone-prefix { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #6f4315; }
+  .v6-phone-num { font-size: 1.25rem; font-weight: 700; color: #1b1c1c; }
+  .v6-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    border-top: 1px solid #1b1c1c;
+    font-family: var(--font-label);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #6f4315;
+  }
+
+  @media (min-width: 1024px) {
+    .v6-grid {
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      padding: 56px 56px 0;
+    }
+    .v6-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border-right: 1px solid rgba(27,28,28,0.15);
+      padding-right: 32px;
+    }
+    .v6-aside-num {
+      font-family: var(--font-headline);
+      font-size: 5rem;
+      line-height: 0.9;
+      color: #6f4315;
+      font-style: italic;
+    }
+    .v6-aside-label { font-family: var(--font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: #6f4315; margin-bottom: 6px; }
+    .v6-aside-value { font-family: var(--font-body); font-size: 0.95rem; color: #1b1c1c; line-height: 1.5; }
+    .v6-cta-row { flex-direction: row; align-items: center; gap: 32px; }
+  }
+</style>
+</content>
+</invoke>

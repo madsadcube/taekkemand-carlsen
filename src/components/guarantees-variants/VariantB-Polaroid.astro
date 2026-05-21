@@ -1,0 +1,86 @@
+---
+// Variant B — Polaroid/note-stil kort med tape og let rotation
+---
+
+<section class="gb-section">
+  <div class="gb-container">
+    <div class="gb-head">
+      <span class="gb-eyebrow">Hvad du kan regne med</span>
+      <h2 class="gb-h2">Fire ting <em>vi står for</em>.</h2>
+    </div>
+
+    <div class="gb-grid">
+      <article class="gb-card gb-r1">
+        <span class="gb-tape"></span>
+        <div class="gb-stamp">№01</div>
+        <h3 class="gb-title">Forsikret op til 12 mio. kr</h3>
+        <p class="gb-body">Tækkemand Carlsen er forsikret hos Alm. Brand Forsikring med en dækning på op til 12.000.000 kroner — så du står ikke alene, hvis noget går galt.</p>
+      </article>
+
+      <article class="gb-card gb-r2">
+        <span class="gb-tape"></span>
+        <div class="gb-stamp">№02</div>
+        <h3 class="gb-title">Levering inden 90 dage</h3>
+        <p class="gb-body">Mangeårig erfaring gør at vi kan garantere levering af nyt stråtag indenfor 90 dage fra projektstart til færdigt tag.</p>
+      </article>
+
+      <article class="gb-card gb-r3">
+        <span class="gb-tape"></span>
+        <div class="gb-stamp">№03</div>
+        <h3 class="gb-title">15+ års tækkeerfaring</h3>
+        <p class="gb-body">Vi har arbejdet med tækkefaget i mere end 15 år og servicerer primært private kunder på Sjælland. Vores erfaring er din sikkerhed.</p>
+      </article>
+
+      <article class="gb-card gb-r4">
+        <span class="gb-tape"></span>
+        <div class="gb-stamp">№04</div>
+        <h3 class="gb-title">Uforpligtende tilbud</h3>
+        <p class="gb-body">Vi udarbejder gerne et uforpligtende tilbud efter at have set taget. Du forpligter dig til ingenting før du har skrevet under på en aftale.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gb-section { background: #f4ede2; padding: 96px 0; }
+  .gb-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .gb-head { text-align: center; margin-bottom: 64px; }
+  .gb-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .gb-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); color: #1b1c1c; margin: 0; font-weight: 500; }
+  .gb-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+
+  .gb-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+
+  .gb-card {
+    position: relative;
+    background: #fff;
+    padding: 40px 28px 28px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .gb-r1 { transform: rotate(-1.2deg); }
+  .gb-r2 { transform: rotate(0.8deg); }
+  .gb-r3 { transform: rotate(-0.6deg); }
+  .gb-r4 { transform: rotate(1.4deg); }
+
+  .gb-tape {
+    position: absolute;
+    top: -10px; left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 90px; height: 22px;
+    background: rgba(255,220,193,0.85);
+    backdrop-filter: blur(2px);
+  }
+  .gb-stamp {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #6f4315;
+    margin-bottom: 16px;
+  }
+  .gb-title { font-family: var(--font-headline); font-style: italic; font-size: 1.4rem; color: #1b1c1c; margin: 0 0 14px; font-weight: 500; line-height: 1.25; }
+  .gb-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.65; color: #51443a; margin: 0; }
+
+  @media (min-width: 768px) { .gb-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; } }
+  @media (min-width: 1100px) { .gb-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
+</style>

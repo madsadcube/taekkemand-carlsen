@@ -1,0 +1,84 @@
+---
+// Variant C — Horisontal tidslinje/strip, minimal, typografi-fokuseret
+---
+
+<section class="gc-section">
+  <div class="gc-container">
+    <div class="gc-head">
+      <span class="gc-eyebrow">Fire løfter</span>
+      <h2 class="gc-h2">Hvad du kan <em>regne med</em>.</h2>
+    </div>
+
+    <div class="gc-strip">
+      <div class="gc-item">
+        <div class="gc-marker">01</div>
+        <h3 class="gc-title">Forsikret op til <em>12 mio. kr</em></h3>
+        <p class="gc-body">Forsikret hos Alm. Brand med dækning op til 12 millioner — du står ikke alene.</p>
+      </div>
+      <div class="gc-divider" aria-hidden="true"></div>
+      <div class="gc-item">
+        <div class="gc-marker">02</div>
+        <h3 class="gc-title">Levering inden <em>90 dage</em></h3>
+        <p class="gc-body">Vi garanterer levering af nyt stråtag indenfor 90 dage fra projektstart.</p>
+      </div>
+      <div class="gc-divider" aria-hidden="true"></div>
+      <div class="gc-item">
+        <div class="gc-marker">03</div>
+        <h3 class="gc-title"><em>15+ års</em> tækkeerfaring</h3>
+        <p class="gc-body">Mere end 15 års arbejde med tækkefaget. Vores erfaring er din sikkerhed.</p>
+      </div>
+      <div class="gc-divider" aria-hidden="true"></div>
+      <div class="gc-item">
+        <div class="gc-marker">04</div>
+        <h3 class="gc-title"><em>Uforpligtende</em> tilbud</h3>
+        <p class="gc-body">Vi ser taget og laver et tilbud. Du forpligter dig ikke, før du har skrevet under.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gc-section { background: #fbf9f8; padding: 96px 0; }
+  .gc-container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
+  .gc-head { text-align: center; margin-bottom: 72px; }
+  .gc-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .gc-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); color: #1b1c1c; margin: 0; font-weight: 500; }
+  .gc-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+
+  .gc-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    position: relative;
+  }
+  .gc-item { padding: 24px 0; max-width: 280px; margin: 0 auto; text-align: center; }
+  .gc-marker {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: #6f4315;
+    margin-bottom: 16px;
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid rgba(111,67,21,0.3);
+    border-radius: 999px;
+  }
+  .gc-title { font-family: var(--font-headline); font-size: 1.3rem; color: #1b1c1c; margin: 0 0 14px; font-weight: 500; line-height: 1.3; }
+  .gc-title em { font-style: italic; color: #6f4315; font-weight: 400; }
+  .gc-body { font-family: var(--font-body); font-size: 0.92rem; line-height: 1.65; color: #51443a; margin: 0; }
+  .gc-divider {
+    width: 100%; max-width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(111,67,21,0.4), transparent);
+    margin: 12px auto;
+  }
+
+  @media (min-width: 1024px) {
+    .gc-strip { grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr; gap: 0; align-items: stretch; }
+    .gc-item { padding: 0 16px; max-width: none; }
+    .gc-divider {
+      width: 1px; height: 100%; max-width: none;
+      background: linear-gradient(180deg, transparent, rgba(111,67,21,0.3), transparent);
+      margin: 0 auto;
+    }
+  }
+</style>

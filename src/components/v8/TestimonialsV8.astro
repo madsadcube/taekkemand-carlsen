@@ -1,0 +1,121 @@
+---
+// V8 Testimonials — anmeldelser som breve med tape og signaturer
+const reviews = [
+  {
+    text: 'Carlsen-folkene leverede præcis som lovet — fra opmåling til mønning. Hele projektet kørte uden en eneste ekstra-regning. Tag, der er lavet til at holde i 60 år.',
+    name: 'Margrethe & Per',
+    place: 'Tisvildeleje',
+    project: 'Nyt stråtag, 320 m²',
+    when: 'Efterår 2025',
+  },
+  {
+    text: 'Vi havde fået tilbud fra to andre, der virkede billige. Carlsen var ikke billigst, men eneste der kom og målte op grundigt og sagde fra på det vi havde misforstået. Endte med fastpris og leverede 14 dage før tid.',
+    name: 'Jacob L.',
+    place: 'Hillerød',
+    project: 'Renovering af stråtag',
+    when: 'Sommer 2025',
+  },
+  {
+    text: 'Algebehandlingen har gjort en kæmpe forskel — taget ser ud som nyt igen. Og de var her bare en formiddag. Roligt arbejde, ren plads bagefter.',
+    name: 'Henning S.',
+    place: 'Frederiksværk',
+    project: 'Algebehandling',
+    when: 'Forår 2026',
+  },
+]
+---
+
+<section class="v8-testimonials" id="anmeldelser">
+  <div class="v8-test-container">
+    <div class="v8-test-head">
+      <div class="v8-chapter">
+        <div class="v8-chapter-num">Kap. 04</div>
+        <div class="v8-chapter-title">Anmeldelser</div>
+      </div>
+      <h2 class="v8-h2">
+        Sådan har <em>200+ kunder</em> oplevet os.
+      </h2>
+      <div class="v8-rating">
+        <div class="v8-stars">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <div class="v8-rating-text">4.9 / 5 — på Trustpilot og Google</div>
+      </div>
+    </div>
+
+    <div class="v8-test-grid">
+      {reviews.map((r, i) => (
+        <article class={`v8-test-card v8-test-${i + 1}`}>
+          <span class="v8-test-tape"></span>
+          <div class="v8-test-mark">"</div>
+          <p class="v8-test-text">{r.text}</p>
+          <div class="v8-test-divider"></div>
+          <div class="v8-test-attr">
+            <div class="v8-test-name">— {r.name}</div>
+            <div class="v8-test-meta">{r.place} · {r.project} · {r.when}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .v8-testimonials { background: #faf5eb; padding: 96px 0; }
+  .v8-test-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .v8-test-head { text-align: center; margin-bottom: 64px; }
+  .v8-chapter { display: inline-flex; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(111,67,21,0.2); margin-bottom: 24px; }
+  .v8-chapter-num { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v8-chapter-title { font-family: var(--font-headline); font-style: italic; font-size: 1.25rem; color: #1b1c1c; }
+  .v8-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4.5vw, 2.75rem); line-height: 1.15; color: #1b1c1c; margin: 0 0 24px; font-weight: 500; }
+  .v8-h2 em { font-style: italic; color: #6f4315; font-weight: 400; }
+
+  .v8-rating { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; }
+  .v8-stars { display: flex; gap: 2px; color: #d4a017; }
+  .v8-rating-text { font-family: var(--font-body); font-size: 0.95rem; color: #51443a; font-style: italic; }
+
+  .v8-test-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .v8-test-card {
+    background: #fff;
+    padding: 32px 28px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.4s;
+  }
+  .v8-test-1 { transform: rotate(-1deg); }
+  .v8-test-2 { transform: rotate(1.5deg); }
+  .v8-test-3 { transform: rotate(-1.5deg); }
+  .v8-test-card:hover { transform: rotate(0deg) translateY(-4px); }
+
+  .v8-test-tape {
+    position: absolute;
+    top: -10px;
+    left: 32%;
+    width: 80px;
+    height: 24px;
+    background: rgba(255,220,193,0.7);
+    transform: rotate(-6deg);
+  }
+  .v8-test-2 .v8-test-tape { left: 38%; transform: rotate(8deg); }
+  .v8-test-3 .v8-test-tape { left: 28%; transform: rotate(-10deg); }
+
+  .v8-test-mark { font-family: var(--font-headline); font-style: italic; font-size: 4rem; line-height: 0.5; color: #6f4315; opacity: 0.3; margin-bottom: 8px; }
+  .v8-test-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: #1b1c1c; margin: 0 0 24px; }
+  .v8-test-divider { height: 1px; background: repeating-linear-gradient(90deg, rgba(111,67,21,0.3) 0 4px, transparent 4px 8px); margin-bottom: 16px; }
+  .v8-test-name { font-family: var(--font-headline); font-style: italic; font-size: 1.05rem; color: #1b1c1c; margin-bottom: 4px; }
+  .v8-test-meta { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #6f4315; }
+
+  @media (min-width: 768px) {
+    .v8-test-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  }
+</style>
+</content>
+</invoke>

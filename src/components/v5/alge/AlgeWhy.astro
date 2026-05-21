@@ -1,0 +1,79 @@
+---
+---
+
+<section class="alge-why">
+  <div class="alge-why-container">
+    <div class="alge-why-head">
+      <span class="alge-eyebrow">Hvorfor algebehandling</span>
+      <h2 class="alge-h2">
+        Mos og alger er <span class="alge-h2-italic">gift for stråtag.</span>
+      </h2>
+      <p class="alge-why-sub">
+        Stråtag er lavet af organisk materiale. Det er smukt — men også sårbart over for fugt,
+        alger og råd. Ubehandlet mos forkorter taglevetiden med 15–20 år. Behandlet i tide
+        er det den billigste forsikring du kan tegne for dit tag.
+      </p>
+    </div>
+
+    <div class="alge-why-grid">
+      <div class="alge-why-card">
+        <div class="alge-why-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <h3 class="alge-why-title">Mos holder fugten i taget</h3>
+        <p class="alge-why-body">Mos virker som en svamp — det suger vand til sig og holder taget vådt i timer efter regn. Det er præcis hvad svampe og bakterier elsker.</p>
+      </div>
+
+      <div class="alge-why-card">
+        <div class="alge-why-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+        <h3 class="alge-why-title">Alger nedbryder strået</h3>
+        <p class="alge-why-body">Alger og svampe lever af tagets organiske materiale. De spiser sig langsomt ind i strået — først farveændring, så blødt strå, så råd.</p>
+      </div>
+
+      <div class="alge-why-card">
+        <div class="alge-why-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="alge-why-title">15–20 år kortere levetid</h3>
+        <p class="alge-why-body">Et stråtag med uhindret algevækst holder typisk 40–50 år. Et velbehandlet tag holder 60–80 år. Behandlingen koster en brøkdel af et nyt tag.</p>
+      </div>
+
+      <div class="alge-why-card">
+        <div class="alge-why-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="alge-why-title">Visuelt — taget ser nyt ud</h3>
+        <p class="alge-why-body">Efter behandling er taget igen jævnt gyldent. Mange kunder bliver overraskede over hvor stor forskel det gør visuelt — som et nyt tag, til en brøkdel af prisen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .alge-why { background: #f4ede2; padding: 96px 0; }
+  .alge-why-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .alge-why-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .alge-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .alge-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .alge-h2-italic { font-style: italic; color: #6f4315; }
+  .alge-why-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .alge-why-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .alge-why-card {
+    background: #fff; padding: 32px 28px;
+    border-radius: 16px; border: 1px solid rgba(111,67,21,0.12);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .alge-why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .alge-why-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(111,67,21,0.1); color: #6f4315; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .alge-why-title { font-family: var(--font-body); font-weight: 700; font-size: 1.15rem; color: #1b1c1c; margin: 0 0 12px; }
+  .alge-why-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.65; color: #51443a; margin: 0; }
+
+  @media (min-width: 768px) { .alge-why-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+  @media (min-width: 1100px) { .alge-why-grid { grid-template-columns: repeat(4, 1fr); } }
+</style>
+</content>
+</invoke>

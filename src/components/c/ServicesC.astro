@@ -1,0 +1,160 @@
+---
+const services = [
+  { title: 'Nyt stråtag i Nordsjælland', desc: 'Komplet opsætning fra bund til top — vandrør, halm, lyng eller kobber til rygning. Leveret inden 90 dage.', img: '/img/straatag1.jpg', href: '/tagdaekning/nyt-straatag/' },
+  { title: 'Reparation af stråtag', desc: 'Er dit stråtag slidt? Vi udfører punktreparationer og fuld renovering af stråtage i hele Nordsjælland og forlænger tagets levetid.', img: '/img/rep_straatag4.jpeg', href: '/tagdaekning/reparation-af-straatag/' },
+  { title: 'Mønning i Nordsjælland', desc: 'Udskiftning af mønning og rygning for et tæt og holdbart stråtag — typisk udført inden for 8 uger.', img: '/img/rygning.jpg', href: '/tagdaekning/monning-til-straatag/' },
+  { title: 'Algebehandling af tag', desc: 'Alger og mos er skadeligt for stråtaget. Vi fjerner det effektivt og forlænger tagets levetid — på stråtage i hele Nordsjælland.', img: '/img/algebehandling2.jpeg', href: '/tagdaekning/aldebehandling-af-straatag/' },
+  { title: 'Vedligehold af stråtag', desc: 'Et stråtag bør efterses mindst én gang om året. Vi tilbyder løbende vedligehold i Nordsjælland, så taget holder i generationer.', img: '/img/vedligehold1.jpeg', href: '/tagdaekning/vedligeholdelse-af-straatag/' },
+  { title: 'Skorstensrenovering', desc: 'Skorstenen er tagets kritiske punkt. Vi tilbyder professionel skorstensrenovering i Nordsjælland til konkurrencedygtige priser.', img: '/img/skorsten3.jpeg', href: '/tagdaekning/skorstensrenovering/' },
+]
+
+const extras = [
+  { name: 'Rensning af tagrender', href: '/tagdaekning/rensning-af-tagrender/' },
+  { name: 'Vinduespolering', href: '/tagdaekning/vinduespolering/' },
+  { name: 'Rengøring af solceller', href: '/tagdaekning/rengoring-af-solceller/' },
+]
+---
+
+<section class="c-services c-section" id="ydelser">
+  <div class="c-container">
+    <div class="c-head-center">
+      <span class="c-eyebrow">Hvad vi laver</span>
+      <h2 class="c-h2">
+        <span class="c-h2-italic">Stråtag-specialister i Nordsjælland</span> — kun stråtag.
+      </h2>
+      <p class="c-lede">
+        Vi har lagt vandrør, halm og lyng på stråtage i hele Nordsjælland — fra de bevaringsværdige
+        bindingsværksgårde omkring Gribskov til kystejendommene langs Nordkysten.
+      </p>
+    </div>
+
+    <div class="c-svc-grid">
+      {services.map((s) => (
+        <a href={s.href} class="c-svc-card">
+          <div class="c-svc-img">
+            <img src={s.img} alt={s.title} loading="lazy"/>
+          </div>
+          <div class="c-svc-body">
+            <h3 class="c-svc-name">{s.title}</h3>
+            <p class="c-svc-desc">{s.desc}</p>
+            <span class="c-svc-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="c-svc-extras">
+      <span class="c-svc-extras-label">Vi tilbyder også</span>
+      <ul class="c-svc-extras-list">
+        {extras.map((e) => (
+          <li><a href={e.href}>{e.name}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .c-services { background: var(--c-bg-cream); }
+
+  .c-svc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .c-svc-card {
+    background: var(--c-white);
+    border-radius: var(--c-r-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--c-brand-soft);
+    display: flex; flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .c-svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--c-shadow-md);
+  }
+
+  .c-svc-img { aspect-ratio: 16/10; overflow: hidden; }
+  .c-svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+  .c-svc-card:hover .c-svc-img img { transform: scale(1.05); }
+
+  .c-svc-body {
+    padding: 28px 28px 32px;
+    flex: 1;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .c-svc-name {
+    font-family: var(--font-headline);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--c-ink);
+    margin: 0 0 14px;
+    letter-spacing: -0.005em;
+  }
+  .c-svc-desc {
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: var(--c-ink-soft);
+    margin: 0 0 20px;
+    flex: 1;
+  }
+  .c-svc-arrow {
+    align-self: flex-start;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--c-brand-faint);
+    color: var(--c-brand);
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background 0.25s, color 0.25s, transform 0.25s;
+  }
+  .c-svc-card:hover .c-svc-arrow {
+    background: var(--c-brand);
+    color: var(--c-white);
+    transform: translateX(4px);
+  }
+
+  .c-svc-extras {
+    margin-top: 56px;
+    padding: 24px 32px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--c-brand-soft);
+    border-radius: var(--c-r-md);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
+    justify-content: center;
+  }
+  .c-svc-extras-label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--c-brand);
+  }
+  .c-svc-extras-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-wrap: wrap; gap: 8px 20px;
+  }
+  .c-svc-extras-list a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--c-ink);
+    border-bottom: 1px solid rgba(111, 67, 21, 0.35);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .c-svc-extras-list a:hover { color: var(--c-brand); border-color: var(--c-brand); }
+
+  @media (min-width: 640px) {
+    .c-svc-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  }
+  @media (min-width: 1024px) {
+    .c-svc-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

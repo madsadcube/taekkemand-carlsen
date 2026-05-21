@@ -1,0 +1,71 @@
+---
+const reviews = [
+  { text: 'Vi har fået nyt tag fra oktober 2018 til januar 2019. Og er super glade for det arbejde der er blevet lavet.', name: 'Christian Pfeil Bendtsen', meta: 'Nyt stråtag', rating: 5 },
+  { text: 'Jakob har lavet et fantastisk stykke arbejde. Han er omhyggelig og man mærker at hans faglige stolthed betyder alt.', name: 'Børge Jensen', meta: 'Kunde', rating: 5 },
+  { text: 'Vi har fået nyt stråtag på vores gamle stuehus, og det har Tækkemand Carlsen stået for. Vi har fået et super flot resultat.', name: 'Anne-mette Bøtting Bendtsen', meta: 'Nyt stråtag på stuehus', rating: 5 },
+  { text: 'Vi har netop fået nyt stråtag på hovedhuset ved stranden samt pudset annekset. Jeg kan varmt anbefale Jacob og hans team.', name: 'Peter Sonne Christensen', meta: 'Nyt stråtag + anneks', rating: 5 },
+]
+---
+
+<section class="v5-test" id="anmeldelser">
+  <div class="v5-t-container">
+    <div class="v5-t-head">
+      <span class="v5-eyebrow">Hvad kunderne siger</span>
+      <h2 class="v5-h2">
+        Anmeldelser fra <span class="v5-h2-italic">tidligere kunder</span>.
+      </h2>
+    </div>
+
+    <div class="v5-t-grid">
+      {reviews.map((r) => (
+        <article class="v5-t-card">
+          <div class="v5-t-stars">{'★'.repeat(r.rating)}</div>
+          <p class="v5-t-text">{r.text}</p>
+          <div class="v5-t-attr">
+            <div class="v5-t-name">{r.name}</div>
+            <div class="v5-t-meta">{r.meta}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .v5-test { background: #f4ede2; padding: 96px 0; }
+  .v5-t-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .v5-t-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .v5-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .v5-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 24px; font-weight: 500; }
+  .v5-h2-italic { font-style: italic; color: #6f4315; }
+
+  .v5-t-platforms { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 16px 24px; background: #fff; border-radius: 999px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .v5-platform { text-align: center; }
+  .v5-stars { color: #d4a017; font-size: 1rem; letter-spacing: 1px; line-height: 1; }
+  .v5-platform-name { font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; color: #1b1c1c; margin-top: 4px; }
+  .v5-platform-divider { width: 1px; height: 28px; background: rgba(111,67,21,0.2); }
+
+  .v5-t-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .v5-t-card {
+    background: #fff;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(111,67,21,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .v5-t-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .v5-t-stars { color: #d4a017; font-size: 1.05rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .v5-t-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: #1b1c1c; margin: 0 0 20px; }
+  .v5-t-attr { padding-top: 16px; border-top: 1px solid rgba(111,67,21,0.15); }
+  .v5-t-name { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; color: #1b1c1c; }
+  .v5-t-meta { font-family: var(--font-body); font-size: 0.82rem; color: #51443a; margin-top: 2px; }
+
+  @media (min-width: 640px) { .v5-t-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .v5-t-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+</style>
+</content>
+</invoke>

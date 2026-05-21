@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Garanti from '../components/Garanti.astro'
+import WhyUs from '../components/WhyUs.astro'
+import Contact from '../components/Contact.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Garanti på stråtag | Tækkemand Carlsen"
+  description="Levering inden 90 dage — garanteret. Læs om Tækkemand Carlsens garanti, garanteret håndværk og 50 års erfaring der står bag hvert tag."
+  canonical="https://taekkemandcarlsen.dk/garanti/"
+>
+  <Nav />
+  <div class="pt-32 pb-16 px-8 max-w-4xl mx-auto text-center" style="background: #faf6f1;">
+    <p style="font-family: var(--font-headline); font-style: italic; color: #6f4315; font-size: 1rem; letter-spacing: 0.05em;">Levering inden 90 dage — garanteret</p>
+    <h1 class="text-5xl md:text-6xl mt-3" style="font-family: var(--font-headline); color: #1b1c1c;">Vores garanti</h1>
+  </div>
+  <Garanti />
+  <WhyUs />
+  <Contact />
+  <Footer />
+</Layout>

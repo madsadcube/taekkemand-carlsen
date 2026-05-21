@@ -2,22 +2,20 @@
 import Layout from '../../layouts/Layout.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
-import { services } from '../../data/services'
+import { services, extraServices } from '../../data/services'
 
 export function getStaticPaths() {
-  return services
-    .filter((s) => s.category === 'tagdaekning')
-    .map((service) => ({
-      params: { service: service.slug },
-      props: { service },
-    }))
+  return [...services, ...extraServices].map((service) => ({
+    params: { service: service.slug },
+    props: { service },
+  }))
 }
 
 const { service } = Astro.props
 
-// Find 2-3 relaterede services (andre i samme kategori, eksklusive den aktuelle)
-const relatedServices = services
-  .filter((s) => s.category === 'tagdaekning' && s.slug !== service.slug)
+// Find 2-3 relaterede services — samme kategori først
+const relatedServices = [...services, ...extraServices]
+  .filter((s) => s.category === service.category && s.slug !== service.slug)
   .slice(0, 3)
 
 // PAA-spørgsmål baseret på slug (fallback til generiske)
@@ -112,8 +110,8 @@ const lsiHeading = lsiMap[service.slug] ?? `${service.title} — lokal ekspert i
         <a href="#kontakt" class="btn-primary px-8 py-4 rounded-lg inline-block text-center">
           Få gratis og uforpligtende tilbud
         </a>
-        <a href="tel:+4589883455" class="btn-outline px-8 py-4 rounded-lg inline-block text-center">
-          Ring: 89 88 34 55
+        <a href="tel:+4524248080" class="btn-outline px-8 py-4 rounded-lg inline-block text-center">
+          Ring: 24 24 80 80
         </a>
       </div>
     </div>
@@ -174,7 +172,7 @@ const lsiHeading = lsiMap[service.slug] ?? `${service.title} — lokal ekspert i
                 <p>Prisen afhænger af tagets størrelse, alder og tilstand. Kontakt os for en gratis besigtigelse og uforpligtende tilbud — vi giver dig et præcist prisoverslag uden forpligtelse.</p>
               )}
               {i === 1 && (
-                <p>Det varierer fra opgave til opgave. Vi kan i de fleste tilfælde påbegynde arbejdet inden for 90 dage og vurderer tidsplanen ved besigtigelsen. Ring til os på 89 88 34 55 for at høre mere.</p>
+                <p>Det varierer fra opgave til opgave. Vi kan i de fleste tilfælde påbegynde arbejdet inden for 90 dage og vurderer tidsplanen ved besigtigelsen. Ring til os på 24 24 80 80 for at høre mere.</p>
               )}
               {i === 2 && (
                 <p>Ja — Tækkemand Carlsen er dine lokale specialister i {service.title.toLowerCase()} i Nordsjælland. Vi betjener Helsinge, Hillerød, Frederiksværk og alle omkringliggende kommuner. Kontakt os i dag for et uforpligtende tilbud.</p>

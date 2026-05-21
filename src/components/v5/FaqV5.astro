@@ -1,0 +1,95 @@
+---
+const faqs = [
+  { q: 'Hvor ofte skal stråtaget vedligeholdes?', a: 'Stråtaget bør efterses mindst én gang om året. Hvert femte år er det en god idé at få en tækkemand til at kontrollere stråtaget. Med løbende vedligehold forlænger du levetiden markant.' },
+  { q: 'Hvor lang tid holder mønningen?', a: 'Det afhænger af materialet: Halmrygning holder cirka 3–5 år. Lyng- og tangmønning holder cirka 8–10 år. Når mønningen er slidt, kan den fornyes uden at hele taget skal udskiftes.' },
+  { q: 'Hvad koster algebehandling?', a: 'Algebehandling koster fra 2.500 kr (+moms) for tage på 0–200 m². For 201–300 m² er prisen 2.700 kr, for 301–400 m² er den 2.900 kr, og for 401–500 m² er den 3.100 kr.' },
+  { q: 'Hvor lang tid tager et nyt stråtag?', a: 'Vi garanterer levering af nyt stråtag inden 90 dage fra projektstart til færdigt tag.' },
+  { q: 'Er I forsikrede?', a: 'Ja. Tækkemand Carlsen er forsikret hos Alm. Brand Forsikring med en dækning på op til 12.000.000 kroner.' },
+  { q: 'Hvilke områder dækker I?', a: 'Vi servicerer primært private kunder på Sjælland. Ring eller skriv, så afklarer vi om vi kan tage dit projekt.' },
+]
+---
+
+<section class="v5-faq" id="faq">
+  <div class="v5-faq-container">
+    <div class="v5-faq-head">
+      <span class="v5-eyebrow">Spørgsmål & svar</span>
+      <h2 class="v5-h2">
+        Det <span class="v5-h2-italic">vi får mest spurgt om.</span>
+      </h2>
+    </div>
+
+    <div class="v5-faq-list">
+      {faqs.map((f) => (
+        <details class="v5-faq-item">
+          <summary>
+            <span>{f.q}</span>
+            <span class="v5-faq-icon">+</span>
+          </summary>
+          <div class="v5-faq-a">{f.a}</div>
+        </details>
+      ))}
+    </div>
+
+    <div class="v5-faq-foot">
+      <p>Spørgsmål, vi ikke har svaret på her?</p>
+      <a href="#kontakt">Skriv til os →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v5-faq { background: #f4ede2; padding: 96px 0; }
+  .v5-faq-container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .v5-faq-head { text-align: center; margin-bottom: 56px; }
+  .v5-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .v5-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0; font-weight: 500; }
+  .v5-h2-italic { font-style: italic; color: #6f4315; }
+
+  .v5-faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+  .v5-faq-item {
+    background: #fff;
+    border: 1px solid rgba(111,67,21,0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .v5-faq-item[open] { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+  .v5-faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1b1c1c;
+  }
+  .v5-faq-item summary::-webkit-details-marker { display: none; }
+  .v5-faq-icon {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(111,67,21,0.1);
+    color: #6f4315;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; font-weight: 400;
+    transition: transform 0.3s;
+  }
+  .v5-faq-item[open] .v5-faq-icon { transform: rotate(45deg); }
+  .v5-faq-a {
+    padding: 0 24px 20px;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #51443a;
+  }
+
+  .v5-faq-foot { text-align: center; }
+  .v5-faq-foot p { font-family: var(--font-body); color: #51443a; margin: 0 0 8px; }
+  .v5-faq-foot a { font-family: var(--font-body); font-weight: 700; color: #6f4315; }
+</style>
+</content>
+</invoke>

@@ -1,0 +1,108 @@
+---
+const faqs = [
+  // Proces & start
+  { q: 'Hvordan får jeg et tilbud?', a: 'Du starter med et prisoverslag online — vi tjekker dit tag via skråfoto.dk og giver dig et prisindblik med det samme. Hvis projektet er stort nok, kommer vi ud til en besigtigelse på adressen, hvor vi gennemgår taget i detaljer og giver et endeligt, uforpligtende tilbud.' },
+  { q: 'Hvor lang tid tager et nyt stråtag?', a: 'Vi garanterer levering af nyt stråtag inden 90 dage fra projektstart til færdigt tag. Mønning kan typisk udføres inden for otte uger.' },
+  { q: 'Hvor lang tid holder et nyt stråtag?', a: 'Et velvedligeholdt stråtag holder 30–40 år, og rygningen 8–10 år hvis den er af lyng eller tang. Med løbende vedligehold kan tagets levetid forlænges yderligere.' },
+
+  // Pris
+  { q: 'Hvad koster et nyt stråtag?', a: 'Prisen afhænger af tagets størrelse, taghældning, rygningsmateriale og kompleksitet (skorstene, kviste, valm m.v.). Vi giver altid et uforpligtende prisoverslag efter opmåling — start med et online prisoverslag, så vender vi tilbage hurtigt.' },
+  { q: 'Hvad koster algebehandling?', a: 'Algebehandling koster fra 2.500 kr (+moms) for tage på 0–200 m². For 201–300 m² er prisen 2.700 kr, for 301–400 m² er den 2.900 kr, og for 401–500 m² er den 3.100 kr.' },
+  { q: 'Hvad koster vedligeholdelse af stråtag?', a: 'Grundpakke (manuel rensning) koster 79 kr/m² og inkluderer fjernelse af alger, mos og mug + trimning og fin klapning af stråtaget. Tillæg (finpudsning) koster +89 kr/m² — her gøres hele taget jævnt så vand og sne løber perfekt af. Vedligeholdelse forbedrer levetiden med 8-10 år.' },
+  { q: 'Hvad koster reparation af mønning?', a: 'Mønning udskiftes fra 450 kr/m. Halmrygning holder typisk 3–5 år, lyng- og tangmønning 8–10 år. Inkl. rugtræer og kragetræer.' },
+
+  // Vedligehold & alger
+  { q: 'Hvor ofte skal stråtaget vedligeholdes?', a: 'Stråtaget bør efterses mindst én gang om året. Hvert femte år er det en god idé at få en tækkemand til at kontrollere taget for begyndende skader, mos eller alger. Løbende vedligehold forlænger levetiden markant.' },
+  { q: 'Hvorfor er rensning af alger og mos vigtig?', a: 'Alger og mos holder fugt i stråtaget, hvilket gradvist nedbryder tagmaterialet indefra. Ubehandlet kan det forkorte tagets levetid med flere år. Behandling er forholdsvis billig og forebygger større skader.' },
+  { q: 'Hvorfor vælge renovering frem for nyt tag?', a: 'Hvis dit stråtag har punktskader eller slid på enkelte områder, kan en renovering ofte forlænge tagets levetid med 10–15 år for en brøkdel af prisen for et helt nyt tag. Vi vurderer altid ærligt ved besigtigelse om renovering eller nyt tag er det rigtige.' },
+
+  // Tillid
+  { q: 'Er I forsikrede?', a: 'Ja. Tækkemand Carlsen er forsikret hos Alm. Brand Forsikring med en dækning på op til 12.000.000 kroner. Police-nummer fremvises gerne.' },
+  { q: 'Hvilke områder dækker I?', a: 'Vi servicerer hele Nordsjælland — fx Helsinge, Hillerød, Gilleleje, Frederiksværk, Tisvildeleje og Hundested. Ring eller skriv, så afklarer vi om vi kan tage dit projekt.' },
+]
+---
+
+<section class="b-faq" id="faq">
+  <div class="b-faq-container">
+    <div class="b-faq-head">
+      <span class="b-eyebrow">Spørgsmål & svar</span>
+      <h2 class="b-h2">
+        Det <span class="b-h2-italic">vi får mest spurgt om.</span>
+      </h2>
+    </div>
+
+    <div class="b-faq-list">
+      {faqs.map((f) => (
+        <details class="b-faq-item">
+          <summary>
+            <span>{f.q}</span>
+            <span class="b-faq-icon">+</span>
+          </summary>
+          <div class="b-faq-a">{f.a}</div>
+        </details>
+      ))}
+    </div>
+
+    <div class="b-faq-foot">
+      <p>Spørgsmål, vi ikke har svaret på her?</p>
+      <a href="#kontakt">Skriv til os →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .b-faq { background: #f4ede2; padding: 96px 0; }
+  .b-faq-container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .b-faq-head { text-align: center; margin-bottom: 56px; }
+  .b-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .b-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0; font-weight: 500; }
+  .b-h2-italic { font-style: italic; color: #6f4315; }
+
+  .b-faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+  .b-faq-item {
+    background: #fff;
+    border: 1px solid rgba(111,67,21,0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .b-faq-item[open] { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+  .b-faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1b1c1c;
+  }
+  .b-faq-item summary::-webkit-details-marker { display: none; }
+  .b-faq-icon {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(111,67,21,0.1);
+    color: #6f4315;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; font-weight: 400;
+    transition: transform 0.3s;
+  }
+  .b-faq-item[open] .b-faq-icon { transform: rotate(45deg); }
+  .b-faq-a {
+    padding: 0 24px 20px;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #51443a;
+  }
+
+  .b-faq-foot { text-align: center; }
+  .b-faq-foot p { font-family: var(--font-body); color: #51443a; margin: 0 0 8px; }
+  .b-faq-foot a { font-family: var(--font-body); font-weight: 700; color: #6f4315; }
+</style>
+</content>
+</invoke>

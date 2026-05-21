@@ -1,0 +1,142 @@
+---
+// B Gallery — bento-layout portfolio, baseret på April-version
+---
+
+<section class="b-gal" id="galleri">
+  <div class="b-gal-container">
+    <div class="b-gal-head">
+      <div>
+        <span class="b-eyebrow">Portefølje</span>
+        <h2 class="b-h2">Kvalitet i alle <span class="b-h2-italic">detaljer</span>.</h2>
+      </div>
+      <p class="b-gal-sub">Vi servicerer kunder i hele Nordsjælland med fokus på holdbarhed og æstetik.</p>
+    </div>
+
+    <div class="b-gal-grid">
+
+      <!-- Row 1: large + small -->
+      <a href="#kontakt" class="b-gal-item b-gal-l1">
+        <img src="/img/fb_straatag1.jpg" alt="Nyt stråtag på herskabsvilla" loading="lazy"/>
+        <div class="b-gal-caption">
+          <span class="b-gal-meta">Større Ejendom · Helsinge</span>
+          <h3>Nyt stråtag på herskabsvilla</h3>
+        </div>
+      </a>
+      <a href="#kontakt" class="b-gal-item b-gal-l2">
+        <img src="/img/reparation3.webp" alt="Klassisk stråtag reparation" loading="lazy"/>
+        <div class="b-gal-caption">
+          <span class="b-gal-meta">Reparation · Hillerød</span>
+          <h3>Klassisk stråtag</h3>
+        </div>
+      </a>
+
+      <!-- Row 2: 3 equal -->
+      <a href="#kontakt" class="b-gal-item b-gal-m1">
+        <img src="/img/fb_projekt1.jpg" alt="Nyt stråtag" loading="lazy"/>
+        <div class="b-gal-caption b-gal-caption-sm"><h3>Nyt stråtag</h3></div>
+      </a>
+      <a href="#kontakt" class="b-gal-item b-gal-m2">
+        <img src="/img/fb_projekt2.jpg" alt="Mønning" loading="lazy"/>
+        <div class="b-gal-caption b-gal-caption-sm"><h3>Mønning</h3></div>
+      </a>
+      <a href="#kontakt" class="b-gal-item b-gal-m3">
+        <img src="/img/fb_projekt3.jpg" alt="Renovering" loading="lazy"/>
+        <div class="b-gal-caption b-gal-caption-sm"><h3>Renovering</h3></div>
+      </a>
+
+      <!-- Row 3: small + large -->
+      <a href="#kontakt" class="b-gal-item b-gal-b1">
+        <img src="/img/fb_projekt4.jpg" alt="Rygning" loading="lazy"/>
+        <div class="b-gal-caption b-gal-caption-sm"><h3>Rygning</h3></div>
+      </a>
+      <a href="#kontakt" class="b-gal-item b-gal-b2">
+        <img src="/img/fb_projekt5.jpg" alt="Fuld tagrenovering" loading="lazy"/>
+        <div class="b-gal-caption">
+          <span class="b-gal-meta">Renovering · Nordsjælland</span>
+          <h3>Fuld tagrenovering</h3>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .b-gal { background: #f4ede2; padding: 96px 0; }
+  .b-gal-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .b-gal-head {
+    display: flex; flex-direction: column;
+    align-items: flex-start; gap: 16px;
+    margin-bottom: 48px;
+  }
+  .b-eyebrow {
+    font-family: var(--font-label); font-size: 11px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: #a04f1b; display: block; margin-bottom: 12px;
+  }
+  .b-h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.2; color: #1a1310;
+    margin: 0; font-weight: 500;
+  }
+  .b-h2-italic { font-style: italic; color: #a04f1b; }
+  .b-gal-sub {
+    font-family: var(--font-body); font-size: 0.95rem;
+    color: #51443a; max-width: 320px; margin: 0; line-height: 1.5;
+  }
+
+  .b-gal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .b-gal-item {
+    position: relative; display: block; overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+  }
+  .b-gal-item img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s;
+  }
+  .b-gal-item:hover img { transform: scale(1.05); }
+  .b-gal-caption {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 28px;
+    background: linear-gradient(to top, rgba(26,19,16,0.82) 0%, rgba(26,19,16,0) 55%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .b-gal-item:hover .b-gal-caption { opacity: 1; }
+  .b-gal-caption-sm { padding: 20px; }
+  .b-gal-meta {
+    font-family: var(--font-label); font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: #ffdcc1; margin-bottom: 8px;
+  }
+  .b-gal-caption h3 {
+    font-family: var(--font-headline);
+    font-size: 1.5rem; color: #fff;
+    margin: 0; font-weight: 500;
+  }
+  .b-gal-caption-sm h3 { font-size: 1.15rem; }
+
+  @media (min-width: 768px) {
+    .b-gal-head { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 32px; }
+    .b-gal-sub { text-align: right; }
+
+    .b-gal-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+    .b-gal-l1 { grid-column: span 8; aspect-ratio: 16/10; }
+    .b-gal-l2 { grid-column: span 4; aspect-ratio: 4/5; }
+    .b-gal-m1, .b-gal-m2, .b-gal-m3 { grid-column: span 4; aspect-ratio: 4/3; }
+    .b-gal-b1 { grid-column: span 4; aspect-ratio: 4/3; }
+    .b-gal-b2 { grid-column: span 8; aspect-ratio: 16/9; }
+  }
+</style>

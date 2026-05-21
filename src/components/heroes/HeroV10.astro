@@ -1,0 +1,256 @@
+---
+// Variant 10: Auction house — kæmpe headline med katalog-nummer som priskort,
+// tre auktionsbillet-blokke nederst (Lot 01/02/03), serif med dramatisk
+// kontrast. Sotheby's / Christie's / luksus-galleri-stemning.
+---
+
+<section class="hero-v10">
+  <!-- Top header bar -->
+  <header class="v10-top">
+    <div class="v10-mark">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="2" y="2" width="16" height="16" stroke="currentColor" stroke-width="0.75"/>
+        <path d="M5 7h10M5 10h10M5 13h7" stroke="currentColor" stroke-width="0.75"/>
+      </svg>
+      <span>Tækkemand Carlsen — Helsinge</span>
+    </div>
+    <div class="v10-collection">Katalog · Forår 2026</div>
+  </header>
+
+  <!-- Hairline -->
+  <div class="v10-hairline"></div>
+
+  <div class="v10-frame">
+    <!-- Lot card -->
+    <div class="v10-lot-tag">
+      <div class="v10-lot-label">Lot</div>
+      <div class="v10-lot-num">001</div>
+      <div class="v10-lot-divider"></div>
+      <div class="v10-lot-prov">Provenance</div>
+      <div class="v10-lot-prov-text">Carlsen-familien<br/>1972 — i dag</div>
+    </div>
+
+    <!-- Main statement -->
+    <div class="v10-main">
+      <div class="v10-pre">Et tag som arvegods —</div>
+
+      <h1 class="v10-h1">
+        <span class="v10-h-line v10-h-line-1">STRÅTAG</span>
+        <span class="v10-h-line v10-h-line-script">der holder</span>
+        <span class="v10-h-line v10-h-line-2">I&nbsp;GENERATIONER</span>
+      </h1>
+
+      <div class="v10-est">
+        <span class="v10-est-label">Anslået levetid</span>
+        <span class="v10-est-value">DKK 0 / 60–80 år</span>
+      </div>
+
+      <p class="v10-desc">
+        Dansk håndværkstradition i sin reneste form. Hvert strå håndlagt, hver mønning
+        bundet i fletværk efter samme metode, der har dækket danske gårde i fire århundreder.
+        50+ års specialisering i Nordsjælland.
+      </p>
+
+      <!-- Action row -->
+      <div class="v10-action">
+        <a href="#kontakt" class="v10-bid">
+          <span class="v10-bid-label">Anmod</span>
+          <span class="v10-bid-text">Få et tilbud</span>
+        </a>
+        <a href="tel:+4524248080" class="v10-call-link">
+          <span class="v10-call-label">Direkte linje</span>
+          <span class="v10-call-num">24 24 80 80</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lot grid bottom -->
+  <div class="v10-lots">
+    <div class="v10-lot-card">
+      <div class="v10-lot-card-num">Lot 02</div>
+      <div class="v10-lot-card-name">Mønning</div>
+      <div class="v10-lot-card-meta">Bunden i halmlæg, 50–60 års levetid</div>
+    </div>
+    <div class="v10-lot-card">
+      <div class="v10-lot-card-num">Lot 03</div>
+      <div class="v10-lot-card-name">Algebehandling</div>
+      <div class="v10-lot-card-meta">Økologisk, forlænger taglevetid med 10–15 år</div>
+    </div>
+    <div class="v10-lot-card">
+      <div class="v10-lot-card-num">Lot 04</div>
+      <div class="v10-lot-card-name">Skorstensrenovering</div>
+      <div class="v10-lot-card-meta">Murværk og inddækning, full restoration</div>
+    </div>
+  </div>
+
+  <!-- Foot -->
+  <footer class="v10-foot">
+    <span>© 2026 Tækkemand Carlsen</span>
+    <span class="v10-foot-mid">Helsinge · Hillerød · Frederiksværk · Gilleleje · Tisvilde · Hundested</span>
+    <span>Side 01 / 14</span>
+  </footer>
+</section>
+
+<style>
+  .hero-v10 {
+    background: #f6f3ed;
+    color: #1b1c1c;
+    min-height: 100svh;
+    padding-top: 84px;
+    display: flex;
+    flex-direction: column;
+    font-feature-settings: "ss01", "kern";
+  }
+
+  .v10-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 32px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #6f4315;
+  }
+  .v10-mark { display: inline-flex; align-items: center; gap: 12px; }
+  .v10-hairline { height: 1px; background: #1b1c1c; margin: 0 32px; }
+
+  .v10-frame {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .v10-lot-tag {
+    border: 1px solid #1b1c1c;
+    background: #fff;
+    padding: 24px;
+    align-self: flex-start;
+    max-width: 280px;
+  }
+  .v10-lot-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v10-lot-num { font-family: var(--font-headline); font-size: 4rem; line-height: 0.9; font-style: italic; color: #1b1c1c; margin: 4px 0 16px; }
+  .v10-lot-divider { height: 1px; background: rgba(27,28,28,0.2); margin: 0 0 16px; }
+  .v10-lot-prov { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v10-lot-prov-text { font-family: var(--font-headline); font-style: italic; font-size: 1rem; line-height: 1.4; color: #1b1c1c; margin-top: 4px; }
+
+  .v10-main { max-width: 880px; }
+  .v10-pre {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #6f4315;
+    margin-bottom: 16px;
+  }
+  .v10-h1 {
+    font-family: var(--font-headline);
+    margin: 0 0 32px;
+    line-height: 0.92;
+    color: #1b1c1c;
+    font-weight: 500;
+  }
+  .v10-h-line { display: block; }
+  .v10-h-line-1, .v10-h-line-2 {
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .v10-h-line-script {
+    font-style: italic;
+    font-weight: 400;
+    color: #6f4315;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    padding-left: clamp(2rem, 8vw, 5rem);
+    margin: -0.05em 0;
+  }
+
+  .v10-est {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 16px;
+    border-top: 1px solid #1b1c1c;
+    border-bottom: 1px solid #1b1c1c;
+    padding: 14px 0;
+    margin-bottom: 24px;
+  }
+  .v10-est-label { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: #6f4315; }
+  .v10-est-value { font-family: var(--font-headline); font-style: italic; font-size: 1.2rem; color: #1b1c1c; }
+
+  .v10-desc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #51443a;
+    max-width: 560px;
+    margin: 0 0 32px;
+  }
+
+  .v10-action { display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch; }
+  .v10-bid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 32px;
+    background: #1b1c1c;
+    color: #fff;
+    border: 1px solid #1b1c1c;
+    transition: background 0.3s, color 0.3s;
+  }
+  .v10-bid:hover { background: #6f4315; }
+  .v10-bid-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.7; }
+  .v10-bid-text { font-family: var(--font-headline); font-size: 1.4rem; line-height: 1; font-style: italic; }
+  .v10-call-link {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 18px 32px;
+    border: 1px solid #1b1c1c;
+    color: #1b1c1c;
+  }
+  .v10-call-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v10-call-num { font-family: var(--font-headline); font-size: 1.4rem; line-height: 1; font-style: italic; }
+
+  .v10-lots {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid #1b1c1c;
+  }
+  .v10-lot-card {
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(27,28,28,0.15);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .v10-lot-card-num { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; }
+  .v10-lot-card-name { font-family: var(--font-headline); font-size: 1.5rem; font-style: italic; color: #1b1c1c; }
+  .v10-lot-card-meta { font-family: var(--font-body); font-size: 0.85rem; color: #51443a; grid-column: 2; }
+
+  .v10-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    border-top: 1px solid #1b1c1c;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6f4315;
+  }
+  .v10-foot-mid { display: none; }
+
+  @media (min-width: 1024px) {
+    .v10-frame { grid-template-columns: 280px 1fr; gap: 56px; padding: 56px; }
+    .v10-lots { grid-template-columns: repeat(3, 1fr); }
+    .v10-lot-card { border-bottom: none; border-right: 1px solid rgba(27,28,28,0.15); }
+    .v10-lot-card:last-child { border-right: none; }
+    .v10-foot-mid { display: block; }
+  }
+</style>
+</content>
+</invoke>

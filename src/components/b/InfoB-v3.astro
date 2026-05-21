@@ -1,0 +1,182 @@
+---
+// V3 — SPLIT PHOTO
+// Hvert kort har et stort billede i toppen (16:9) og editorial
+// tekstblok nedenunder — magasin-artikel-look.
+---
+
+<section class="b-info-v3" id="info-v3">
+  <div class="b-info-v3-container">
+    <div class="b-info-v3-head">
+      <span class="b-eyebrow">Godt at vide</span>
+      <h2 class="b-h2">
+        Sådan får du <span class="b-h2-italic">mest ud af</span> dit stråtag.
+      </h2>
+    </div>
+
+    <div class="b-info-v3-grid">
+
+      <article class="b-info-v3-card">
+        <figure class="b-info-v3-figure">
+          <img src="/img/rep_straatag4.webp" alt="Renovering af stråtag — Tækkemand Carlsen" />
+          <figcaption>Renovering — typisk 1/3 af prisen for et nyt tag.</figcaption>
+        </figure>
+        <div class="b-info-v3-body">
+          <span class="b-info-v3-kicker">Renovering vs. nyt tag</span>
+          <h3 class="b-info-v3-title">
+            Renovering eller nyt stråtag — <em>hvad skal du vælge?</em>
+          </h3>
+          <p>
+            En stråtagsrenovering er en omkostningseffektiv og bæredygtig løsning der forlænger
+            tagets levetid med 20-25 år — typisk for omkring <strong>1/3 af prisen for et helt
+            nyt tag</strong>. Ved en renovering genbruger vi 70-80% af det eksisterende strå,
+            og brandsikringen kan ofte beholdes (den holder op til 60 år).
+          </p>
+          <p>
+            Hvis taget har omfattende skader, lækager eller er nedslidt på de fleste flader,
+            giver det bedre mening at investere i et helt nyt stråtag. Vores tækkemænd er
+            uddannet i renoveringsteknik fra Holland — og vi vurderer ærligt ved besigtigelse,
+            hvad der er det rigtige valg for dit hus.
+          </p>
+          <p class="b-info-v3-fact">
+            <strong>Pris:</strong> Renovering fra ca. 388 kr/m² · Nyt stråtag efter opmåling
+          </p>
+        </div>
+      </article>
+
+      <article class="b-info-v3-card">
+        <figure class="b-info-v3-figure">
+          <img src="/img/algebehandling2.webp" alt="Algebehandling af stråtag — Tækkemand Carlsen" />
+          <figcaption>Algebehandling — op til 20% længere levetid.</figcaption>
+        </figure>
+        <div class="b-info-v3-body">
+          <span class="b-info-v3-kicker">Vedligehold</span>
+          <h3 class="b-info-v3-title">
+            Hvorfor er regelmæssig <em>algebehandling</em> vigtig?
+          </h3>
+          <p>
+            Et stråtag komposterer langsomt til muld hvis det ikke vedligeholdes løbende.
+            <strong>Mug, alger og mos holder fugt</strong> i stråtaget — og når taget tørrer
+            dårligt, accelererer nedbrydningen. Det kan efterlade store huller som fyldes med
+            vand eller sne.
+          </p>
+          <p>
+            Dit stråtag har brug for jævne flader, så vand og sne nemt kan glide af. Kun solen
+            og vinden kan tørre stråtaget — og jo hurtigere det tørrer, jo længere holder det.
+            Typisk holder et stråtag <strong>op til 20% længere</strong> med jævnlig
+            algebehandling.
+          </p>
+          <p class="b-info-v3-fact">
+            <strong>Pris:</strong> Algebehandling fra 2.500 kr · Vedligeholdelse fra 79 kr/m²
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .b-info-v3 { background: #fbf9f8; padding: 112px 0; }
+  .b-info-v3-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .b-info-v3-head { text-align: center; max-width: 720px; margin: 0 auto 64px; }
+  .b-eyebrow {
+    font-family: var(--font-label); font-size: 11px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: #a04f1b; display: block; margin-bottom: 16px;
+  }
+  .b-h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.2; color: #1a1310;
+    margin: 0; font-weight: 500;
+  }
+  .b-h2-italic { font-style: italic; color: #a04f1b; }
+
+  .b-info-v3-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .b-info-v3-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(26,19,16,0.04), 0 12px 32px -16px rgba(26,19,16,0.12);
+  }
+  .b-info-v3-figure {
+    margin: 0;
+    position: relative;
+  }
+  .b-info-v3-figure img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+  }
+  .b-info-v3-figure figcaption {
+    position: absolute;
+    bottom: 16px; left: 20px;
+    background: rgba(26,19,16,0.78);
+    color: #f4ede2;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    font-style: italic;
+  }
+  .b-info-v3-body {
+    padding: 40px 36px;
+  }
+  .b-info-v3-kicker {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #a04f1b;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .b-info-v3-title {
+    font-family: var(--font-headline);
+    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+    line-height: 1.25;
+    color: #1a1310;
+    margin: 0 0 24px;
+    font-weight: 500;
+  }
+  .b-info-v3-title em { font-style: italic; color: #a04f1b; }
+  .b-info-v3-body p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #51443a;
+    margin: 0 0 16px;
+  }
+  .b-info-v3-body strong { color: #1a1310; font-weight: 700; }
+  .b-info-v3-fact {
+    margin-top: 24px !important;
+    padding-top: 16px;
+    border-top: 1px solid rgba(160,79,27,0.2);
+    font-size: 0.92rem !important;
+    color: #6b5a4d !important;
+  }
+  .b-info-v3-fact strong { color: #a04f1b !important; }
+
+  /* Stacked: brug indenfor kortet 2-col (figure | body) på desktop */
+  @media (min-width: 900px) {
+    .b-info-v3-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .b-info-v3-figure img {
+      aspect-ratio: auto;
+      height: 100%;
+    }
+    .b-info-v3-body { padding: 48px 44px; }
+  }
+</style>

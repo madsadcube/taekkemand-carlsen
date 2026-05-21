@@ -1,0 +1,93 @@
+---
+// C CTA band — bygger på samme dybe-brune som GuaranteeC for ÉN sandhed for dybt brun
+//   • Mindre flashy gradient, mere editorial
+//   • Bruger samme italic-pattern som resten af siden
+---
+
+<section class="c-band">
+  <div class="c-band-container">
+    <div class="c-band-content">
+      <h2 class="c-band-h2">
+        Klar til at få <span class="c-band-italic">styr på taget?</span>
+      </h2>
+      <p class="c-band-sub">
+        Du får et uforpligtende tilbud — ofte ud fra skråfoto, så du hurtigt får svar. Du forpligter dig til ingenting.
+      </p>
+      <div class="c-band-cta">
+        <a href="#kontakt" class="c-btn c-btn--ghost-on-dark">
+          Få et uforpligtende tilbud
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+4524248080" class="c-band-phone">
+          eller ring direkte: <strong>24 24 80 80</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .c-band {
+    background: linear-gradient(135deg, var(--c-bg-deep) 0%, #2a1604 100%);
+    padding: 88px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .c-band::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255, 220, 193, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .c-band-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+  }
+  .c-band-content {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .c-band-h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    line-height: 1.15;
+    color: var(--c-white);
+    margin: 0 0 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .c-band-italic {
+    font-style: italic;
+    color: #ffdcc1;
+  }
+  .c-band-sub {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 36px;
+  }
+  .c-band-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .c-band-phone {
+    color: rgba(255, 220, 193, 0.85);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .c-band-phone strong {
+    color: var(--c-white);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+  }
+</style>

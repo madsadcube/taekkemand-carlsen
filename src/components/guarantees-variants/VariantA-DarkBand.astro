@@ -1,0 +1,53 @@
+---
+// Variant A — Mørk band med store italic key-facts forrest
+---
+
+<section class="ga-section">
+  <div class="ga-container">
+    <div class="ga-head">
+      <span class="ga-eyebrow">Hvad du kan regne med</span>
+      <h2 class="ga-h2">Fire ting <em>vi står for</em>.</h2>
+    </div>
+
+    <div class="ga-grid">
+      <div class="ga-card">
+        <div class="ga-num">12 mio.</div>
+        <div class="ga-label">Forsikret op til</div>
+        <p class="ga-body">Tækkemand Carlsen er forsikret hos Alm. Brand med en dækning på op til 12.000.000 kroner — så du står ikke alene, hvis noget går galt.</p>
+      </div>
+      <div class="ga-card">
+        <div class="ga-num">90 dage</div>
+        <div class="ga-label">Garanteret levering</div>
+        <p class="ga-body">Mangeårig erfaring gør, at vi kan garantere levering af nyt stråtag indenfor 90 dage fra projektstart til færdigt tag.</p>
+      </div>
+      <div class="ga-card">
+        <div class="ga-num">15+ år</div>
+        <div class="ga-label">Tækkeerfaring</div>
+        <p class="ga-body">Vi har arbejdet med tækkefaget i mere end 15 år og servicerer primært private kunder på Sjælland. Vores erfaring er din sikkerhed.</p>
+      </div>
+      <div class="ga-card">
+        <div class="ga-num">0 kr.</div>
+        <div class="ga-label">Uforpligtende tilbud</div>
+        <p class="ga-body">Vi udarbejder gerne et uforpligtende tilbud efter at have set taget. Du forpligter dig til ingenting før du har skrevet under.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ga-section { background: #1b1c1c; color: #fdf8ee; padding: 96px 0; }
+  .ga-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .ga-head { text-align: center; margin-bottom: 64px; }
+  .ga-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #ffdcc1; display: block; margin-bottom: 16px; }
+  .ga-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); color: #fff; margin: 0; font-weight: 500; }
+  .ga-h2 em { font-style: italic; color: #ffdcc1; font-weight: 400; }
+
+  .ga-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+  .ga-card { border-top: 1px solid rgba(255,220,193,0.25); padding-top: 32px; }
+  .ga-num { font-family: var(--font-headline); font-style: italic; font-size: 3.5rem; color: #ffdcc1; line-height: 1; margin-bottom: 8px; }
+  .ga-label { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,220,193,0.7); margin-bottom: 20px; }
+  .ga-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.7; color: rgba(253,248,238,0.8); margin: 0; }
+
+  @media (min-width: 768px) { .ga-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 56px; } }
+  @media (min-width: 1100px) { .ga-grid { grid-template-columns: repeat(4, 1fr); gap: 40px; } }
+</style>

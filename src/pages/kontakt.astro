@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Contact from '../components/Contact.astro'
+import ContactForm from '../components/ContactForm.astro'
+import ContactInfo from '../components/ContactInfo.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Kontakt Tækkemand Carlsen | Få et uforpligtende tilbud"
+  description="Få et uforpligtende tilbud på stråtag, mønning eller reparation. Ring 24 24 80 80 eller udfyld formularen — vi vender tilbage hurtigt."
+  canonical="https://taekkemandcarlsen.dk/kontakt/"
+>
+  <Nav />
+  <div class="pt-32 pb-16 px-8 max-w-4xl mx-auto text-center" style="background: #faf6f1;">
+    <p style="font-family: var(--font-headline); font-style: italic; color: #6f4315; font-size: 1rem; letter-spacing: 0.05em;">Vi vender tilbage hurtigt</p>
+    <h1 class="text-5xl md:text-6xl mt-3" style="font-family: var(--font-headline); color: #1b1c1c;">Kontakt</h1>
+    <p class="mt-4 text-lg" style="color: #51443a; font-family: var(--font-body);">Ring direkte på <a href="tel:+4524248080" style="color:#6f4315; font-weight:600;">24 24 80 80</a> eller udfyld formularen.</p>
+  </div>
+  <ContactInfo />
+  <ContactForm />
+  <Contact />
+  <Footer />
+</Layout>

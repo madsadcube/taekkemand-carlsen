@@ -1,0 +1,124 @@
+---
+const services = [
+  { name: 'Nyt stråtag', desc: 'Komplet tækning med vandrør, halm, lyng eller kobber til rygning. Du får et uforpligtende tilbud efter opmåling.', img: '/img/straatag1.jpg', href: '/tagdaekning/nyt-straatag/', from: 'Pris efter opmåling' },
+  { name: 'Reparation', desc: 'Reparation af alle typer skader på stråtag — fra små huller til større områder.', img: '/img/rep_straatag4.jpeg', href: '/tagdaekning/reparation-af-straatag/', from: 'Pris efter besigtigelse' },
+  { name: 'Mønning', desc: 'Halmrygning holder 3–5 år. Lyng- og tangmønning 8–10 år. Inkl. rugtræer og kragetræer.', img: '/img/rygning.jpg', href: '/tagdaekning/monning-til-straatag/', from: 'Fra 450 kr/m' },
+  { name: 'Reparation af rygning', desc: 'Rygningen er tagets svageste punkt. Vi reparerer og udskifter rygning hurtigt og professionelt.', img: '/img/rygning.jpg', href: '/tagdaekning/reparation-af-rygning/', from: 'Pris efter besigtigelse' },
+  { name: 'Algebehandling', desc: 'Mekanisk afrensning af mos efterfulgt af godkendt middel mod alger og svampesporer.', img: '/img/algebehandling2.jpeg', href: '/tagdaekning/aldebehandling-af-straatag/', from: 'Fra 2.500 kr' },
+  { name: 'Mosbehandling', desc: 'Mos holder fugt og nedbryder stråtaget indefra. Vi behandler mos effektivt på alle typer tage.', img: '/img/algebehandling2.jpeg', href: '/tagdaekning/mosbehandling-paa-straatag/', from: 'Pris efter besigtigelse' },
+  { name: 'Vedligeholdelse', desc: 'Regelmæssig vedligeholdelse forlænger dit stråtags levetid markant. Vi tilbyder serviceaftaler.', img: '/img/vedligehold1.jpeg', href: '/tagdaekning/vedligeholdelse-af-straatag/', from: 'Pris efter aftale' },
+  { name: 'Skorstensrenovering', desc: 'Skorstenen er tagets kritiske punkt. Vi renoverer og tætner skorstene professionelt.', img: '/img/skorsten3.jpeg', href: '/tagdaekning/skorstensrenovering/', from: 'Pris efter besigtigelse' },
+]
+
+const extras = [
+  { name: 'Rensning af tagrender', href: '/tagdaekning/rensning-af-tagrender/' },
+  { name: 'Vinduespolering', href: '/tagdaekning/vinduespolering/' },
+  { name: 'Rengøring af solceller', href: '/tagdaekning/rengoring-af-solceller/' },
+  { name: 'Taginspektion (gratis)', href: '/tagdaekning/taginspektion/' },
+]
+---
+
+<section class="v5-services" id="ydelser">
+  <div class="v5-s-container">
+    <div class="v5-s-head">
+      <span class="v5-eyebrow">Hvad vi laver</span>
+      <h2 class="v5-h2">
+        <span class="v5-h2-italic">Specialister</span> i stråtag — kun stråtag.
+      </h2>
+      <p class="v5-s-sub">
+        Vi har lavet hver eneste detalje tusind gange. Det er forskellen på en god tæknings-svend
+        og en generalist, der prøver sig frem på dit tag.
+      </p>
+    </div>
+
+    <div class="v5-s-grid">
+      {services.map((s) => (
+        <a href={s.href} class="v5-s-card">
+          <div class="v5-s-img">
+            <img src={s.img} alt={s.name} loading="lazy"/>
+          </div>
+          <div class="v5-s-text">
+            <h3 class="v5-s-name">{s.name}</h3>
+            <p class="v5-s-desc">{s.desc}</p>
+            <div class="v5-s-foot">
+              <span class="v5-s-price">{s.from}</span>
+              <span class="v5-s-arrow">→</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="v5-s-extras">
+      <span class="v5-s-extras-label">Vi tilbyder også:</span>
+      <ul class="v5-s-extras-list">
+        {extras.map((e) => (
+          <li><a href={e.href}>{e.name}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v5-services { background: #f4ede2; padding: 96px 0; }
+  .v5-s-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .v5-s-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .v5-eyebrow { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6f4315; display: block; margin-bottom: 16px; }
+  .v5-h2 { font-family: var(--font-headline); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; color: #1b1c1c; margin: 0 0 16px; font-weight: 500; }
+  .v5-h2-italic { font-style: italic; color: #6f4315; }
+  .v5-s-sub { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.7; color: #51443a; }
+
+  .v5-s-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .v5-s-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .v5-s-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  .v5-s-img { aspect-ratio: 4/3; overflow: hidden; }
+  .v5-s-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+  .v5-s-card:hover .v5-s-img img { transform: scale(1.05); }
+  .v5-s-text { padding: 24px; }
+  .v5-s-name { font-family: var(--font-body); font-weight: 700; font-size: 1.2rem; color: #1b1c1c; margin: 0 0 10px; }
+  .v5-s-desc { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.6; color: #51443a; margin: 0 0 20px; }
+  .v5-s-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid rgba(111,67,21,0.15); }
+  .v5-s-price { font-family: var(--font-body); font-weight: 700; font-size: 0.9rem; color: #6f4315; }
+  .v5-s-arrow { font-size: 1.25rem; color: #6f4315; transition: transform 0.3s; }
+  .v5-s-card:hover .v5-s-arrow { transform: translateX(4px); }
+
+  @media (min-width: 640px) { .v5-s-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+  @media (min-width: 1024px) { .v5-s-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .v5-s-extras {
+    margin-top: 48px;
+    padding: 24px 32px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
+    justify-content: center;
+  }
+  .v5-s-extras-label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #6f4315;
+  }
+  .v5-s-extras-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .v5-s-extras-list a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #1b1c1c;
+    border-bottom: 1px solid rgba(111,67,21,0.4);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .v5-s-extras-list a:hover { color: #6f4315; border-color: #6f4315; }
+</style>
+</content>
+</invoke>

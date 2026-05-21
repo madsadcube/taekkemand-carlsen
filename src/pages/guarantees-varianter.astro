@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import GuaranteesV5 from '../components/v5/GuaranteesV5.astro'
+import VariantA from '../components/guarantees-variants/VariantA-DarkBand.astro'
+import VariantB from '../components/guarantees-variants/VariantB-Polaroid.astro'
+import VariantC from '../components/guarantees-variants/VariantC-HorizontalStrip.astro'
+import VariantD from '../components/guarantees-variants/VariantD-StampBadges.astro'
+import VariantE from '../components/guarantees-variants/VariantE-Magazine.astro'
+---
+
+<Layout
+  title="Guarantees-varianter — Tækkemand Carlsen"
+  description="Test af 5 varianter af guarantees-sektionen + nuværende version."
+  canonical="https://taekkemandcarlsen.dk/guarantees-varianter"
+>
+  <Nav />
+
+  <div class="lbl"><div class="lbl-inner"><span class="lbl-tag">Nuværende</span><span class="lbl-name">V5 Baseline — Card-grid med ikoner</span></div></div>
+  <GuaranteesV5 />
+
+  <div class="lbl"><div class="lbl-inner"><span class="lbl-tag">Variant A</span><span class="lbl-name">Mørk band med store italic key-facts</span></div></div>
+  <VariantA />
+
+  <div class="lbl"><div class="lbl-inner"><span class="lbl-tag">Variant B</span><span class="lbl-name">Polaroid/note-stil med tape og rotation</span></div></div>
+  <VariantB />
+
+  <div class="lbl"><div class="lbl-inner"><span class="lbl-tag">Variant C</span><span class="lbl-name">Horisontal strip med separatorer</span></div></div>
+  <VariantC />
+
+  <div class="lbl"><div class="lbl-inner"><span class="lbl-tag">Variant D</span><span class="lbl-name">Stempel-badges (runde)</span></div></div>
+  <VariantD />
+
+  <div class="lbl"><div class="lbl-inner"><span class="lbl-tag">Variant E</span><span class="lbl-name">Magasin-layout (1 stor + 3 mindre)</span></div></div>
+  <VariantE />
+
+  <div style="background: #1b1c1c; color: #fff; padding: 64px 24px; text-align: center;">
+    <p style="font-family: var(--font-body); margin: 0;">Slut — vælg din favorit og fortæl Claude hvilken bogstav du vil bruge.</p>
+  </div>
+</Layout>
+
+<style>
+  .lbl {
+    position: sticky;
+    top: 80px;
+    z-index: 50;
+    background: rgba(27, 28, 28, 0.95);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid #6f4315;
+  }
+  .lbl-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .lbl-tag {
+    background: #6f4315;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .lbl-name {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+</style>
