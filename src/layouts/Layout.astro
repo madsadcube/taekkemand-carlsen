@@ -15,6 +15,10 @@ const {
   city,
 } = Astro.props
 
+// Sæt til true når sitet er klar til launch på det rigtige domæne.
+// Mens den er false: noindex, nofollow på ALLE sider (beskytter preview mod Google).
+const SITE_READY = false
+
 const siteUrl = 'https://taekkemandcarlsen.dk'
 const businessId = `${siteUrl}/#business`
 const websiteId = `${siteUrl}/#website`
@@ -99,7 +103,7 @@ const graph = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={canonical.includes('vercel.app') ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
+    <meta name="robots" content={SITE_READY ? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' : 'noindex, nofollow'} />
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
